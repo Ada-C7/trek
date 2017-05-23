@@ -5,6 +5,17 @@
   <title>Trek</title>
 </head>
 <body>
+  <script id="trip-list-template" type="text/template">
+    <li>
+      <h4><%- data.name %></h4>
+      <ul>
+        <li>
+          Travel to <%- data.continent %> for <%- data.weeks %> weeks!
+        </li>
+      </ul>
+    </li>
+  </script>
+
   <h1>Trek</h1>
   <section id="errors"></section>
   <button id="load-trips">See Trips</button>
