@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Lazy Traveler</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome, Lazy Travelers...</h1>
+    <button id="load">See Trips</button>
+  </header>
+
+  <main>
+    <script id="list-template" type="text/template">
+      <section>
+        <h2>
+          <%- data.name %>
+        </h2>
+        <p>
+          <strong>Continent: </strong>
+          <%- data.continent %>
+        </p>
+        <p>
+          <strong>Weeks: </strong>
+          <%- data.weeks %>
+        </p>
+      </section>
+    </script>
+
+    <div id="trip row">
+      <script id="details-template" type="text/template">
+        <section>
+          <h2>
+            <%- trip.name %>
+          </h2>
+          <p>
+            <strong>Trip ID: </strong>
+            <%- trip.id %>
+          </p>
+          <p>
+            <strong>Category: </strong>
+            <%- trip.category %>
+          </p>
+          <p>
+            <strong>Continent: </strong>
+            <%- trip.continent %>
+          </p>
+          <p>
+            <strong>Weeks: </strong>
+            <%- trip.weeks %>
+          </p>
+          <p>
+            <strong>Cost: $ </strong>
+            <%- trip.cost %>
+          </p>
+          <p>
+            <strong>About: </strong>
+            <%- trip.about %>
+          </p>
+        </section>
+      </script>
+      <section id="reserve"></section>
+
+    </div>
+  </main>
+
+
+  <script type="text/javascript"
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
