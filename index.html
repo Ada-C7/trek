@@ -11,10 +11,13 @@
     <h1>TRIP FINDER</h1>
     <h3>for people who never leave King County</h3>
     <p id="hitMe" class="button"> hit me </p>
+
+    <section id="errors"></section>
+
     <section id="display"></section>
 
     <script id="trip-list-template" type="text/template">
-      <section id=<%- data.id %>>
+      <section class="trip" id=<%- data.id %>>
         <h3><%- data.name %></h3>
         <p> <%- data.continent %>...<%- data.weeks %> weeks</p>
       </section>
