@@ -1,11 +1,36 @@
-var makeSuccessCallback = function(name) {
+var successTreksCallback = function(response) {
   console.log("success!");
-  var successCallback = function(response) {
-    // console.log(response);
-    // appendContent(response.results[0]);
-  };
-  return successCallback;
+  console.log(response);
+
+  // var treksTemplate = _.template($('#trek-list').html());
+
+  for (var i = 0; i < response.length; i++) {
+    // var genHTML = treksTemplate({
+    //   trek: response[i]
+    // });
+    // $('#trek-list').append($(genHTML));
+
+    console.log(response[i]);
+    $('#test').append('<p>name: ' + response[i].name + '</p>');
+  }
 };
+
+// var successTrekCallback = function(response) {
+//   console.log("success!");
+//   console.log(response);
+//
+//   // var treksTemplate = _.template($('#trek-list').html());
+//
+//   for (var i = 0; i < response.length; i++) {
+//     // var genHTML = treksTemplate({
+//     //   trek: response[i]
+//     // });
+//     // $('#trek-list').append($(genHTML));
+//
+//     console.log(response[i]);
+//     $('#test').append('<p>name: ' + response[i].name + '</p>');
+//   }
+// };
 
 var failureCallback = function() {
   console.log("Didn't work :(");
@@ -16,18 +41,26 @@ var alwaysCallback = function() {
   console.log("always get this");
 };
 
-const BASEURL = // "https://maps.googleapis.com/maps/api/geocode/json?address=";
+const BASEURL = 'https://trektravel.herokuapp.com/trips';
 
-// AJAX request
-var clickHandler = function(event) {
-  // $('table').empty();
-  // sevenWonders.forEach(function(wonder) {
-  //   var url = BASEURL + wonder;
-  //   $.get(url, makeSuccessCallback(wonder)).fail(failureCallback).always(alwaysCallback);
-  // });
+var getTreks = function(event) {
+  var target = $('.treks');
+  target.empty();
+
+  var url = BASEURL;
+  $.get(url, successTreksCallback).fail(failureCallback).always(alwaysCallback);
 };
+
+// var getTrek = function(event) {
+//   var target = $('.treks');
+//   target.empty();
+//
+//   var url = BASEURL + this id;
+//   $.get(url, successTrekCallback).fail(failureCallback).always(alwaysCallback);
+// };
 
 
 $(document).ready(function() {
-  // $('#load').click(clickHandler);
+  $('#load-treks').click(getTreks);
+  $('h2').click(getTrek);
 });
