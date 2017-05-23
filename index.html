@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Treks</title>
-  </head>
-  <body>
-    <section id="errors"></section>
-    <button id="load"> Find treks! </button>
-    <ul id="trips"></ul>
+<head>
+  <meta charset="utf-8">
+  <title>Treks</title>
+</head>
+<body>
+  <section id="errors"></section>
+  <button id="load"> Find treks! </button>
+  <div id="trips">
+  </div>
+  <script id="trek-item-template" type="text/template">
+    <section>
+      <h2>
+        <%- trek.name %>
+      </h2>
+      <p>
+        <strong>Where:</strong>
+        <%- trek.continent %>
+      </p>
+      <p>
+        <strong>How many weeks:</strong>
+        <%- trek.weeks %>
+        </p>
+      </section>
+    </script>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
-    <script> src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
     <script src="javascript.js" type="text/javascript"></script>
   </body>
-</html>
+  </html>

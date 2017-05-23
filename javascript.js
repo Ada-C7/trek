@@ -3,14 +3,18 @@ var failureCallback = function() {
   $("#errors").html("<h1>AJAX request failed!</h1>");
 };
 
-var successCallback = function(response) { // this is an event listener
-  console.log("Success!");
-  console.log(response);
+var successCallback = function(response) {
+  // console.log("Success!");
+  // console.log(response.length);
 
   var target = $('#trips');
+  var trekTemplate = _.template($('#trek-item-template').html());
+
   for (var i = 0; i < response.length; i++) {
-    var trek = response[i];
-    target.append("<li>" + trek.name + " " + trek.continent + " " + trek.weeks + "</li>");
+    var generatedHtml = trekTemplate({
+      trek: response[i]
+    });
+    target.append($(generatedHtml));
   }
 };
 
@@ -22,4 +26,5 @@ var clickHandler = function() {
 
 $(document).ready(function() {
   $('#load').click(clickHandler);
+
 });
