@@ -1,15 +1,28 @@
-// get trip data from API with AJAX
+// // get trip data from API with AJAX
 var url = "https://trektravel.herokuapp.com/trips";
+//
+//
+// // generate trip info on page
+//
+//
+// });
+// // make another API call for trip details (see API docs)
+// // var url = "https://trektravel.herokuapp.com/trips/1";
+//
+//
+
 
 var successCallback = function(response) {
   console.log("Success!");
   console.log(response);
 
-  var target = $('#trips');
-  for (var i = 0; i < response.length; i++) {
-    var trip = response[i];
-    // target.empty();
-    target.append("<li>" + trip['name'] + trip['continent'] + trip['weeks'] + "</li>");
+  var tripTemplate = _.template($('#all-trips-template').html());
+
+  for(var i = 0; i < response.length; i++) {
+    var generatedHtml = tripTemplate({
+      data: response[i]
+    });
+    $('#trips-list').append(generatedHtml);
   }
 };
 
@@ -23,19 +36,15 @@ var clickHandler = function(event) {
   $.get(url, successCallback).fail(failureCallback);
 };
 
-// generate trip info on page
-// underscore, html
-// weeks
-// trip name
-// continent
-
-// make another API call for trip details (see API docs)
-
 $(document).ready(function() {
   $('#load').click(clickHandler);
 });
 
 
-//  $(document).ready(function() {
-//    var tripTemplate = _.template('#all-trips-template').html();
-// });
+// var target = $('#trips');
+
+// for (var i = 0; i < response.length; i++) {
+//   var trip = response[i];
+//   // target.empty();
+//   target.append("<li>" + trip['name'] + trip['continent'] + trip['weeks'] + "</li>");
+// }
