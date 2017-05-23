@@ -7,16 +7,31 @@
 
 <body>
 <button id="load"> See list </button>
-<!-- <div id="trips"></div> -->
+
+<div id="trip"></div>
+ <script id="trip-template" type="text/template">
+   <section>
+      <%- data.name %> 
+     <p> Continent:
+       <%- data.continent %>
+     </p>
+     <p> Week:
+       <%- data.weeks %>
+     </p>
+  </section>
+ </script>
+
+
 
  <div id="trips-list"></div>
   <script id="trips-list-template" type="text/template">
     <section>
-      <h2>
-        <%- data.name %>
-      </h2>
-      <p>
+      <button class="see_trip" id ="<%-data.id %>"> <%- data.name %> </button>
+      <p> Continent:
         <%- data.continent %>
+      </p>
+      <p> Week:
+        <%- data.weeks %>
       </p>
    </section>
   </script>
