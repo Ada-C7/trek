@@ -1,15 +1,5 @@
-// // get trip data from API with AJAX
+// get trip data from API with AJAX
 var url = "https://trektravel.herokuapp.com/trips";
-//
-//
-// // generate trip info on page
-//
-//
-// });
-// // make another API call for trip details (see API docs)
-// // var url = "https://trektravel.herokuapp.com/trips/1";
-//
-//
 
 
 var successCallback = function(response) {
@@ -18,6 +8,7 @@ var successCallback = function(response) {
 
   var tripTemplate = _.template($('#all-trips-template').html());
 
+  // generate trip info on page
   for(var i = 0; i < response.length; i++) {
     var generatedHtml = tripTemplate({
       data: response[i]
@@ -40,11 +31,5 @@ $(document).ready(function() {
   $('#load').click(clickHandler);
 });
 
-
-// var target = $('#trips');
-
-// for (var i = 0; i < response.length; i++) {
-//   var trip = response[i];
-//   // target.empty();
-//   target.append("<li>" + trip['name'] + trip['continent'] + trip['weeks'] + "</li>");
-// }
+// make another API call for trip details (see API docs)
+// var url = "https://trektravel.herokuapp.com/trips/1";
