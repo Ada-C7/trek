@@ -7,7 +7,9 @@ var successCallback = function(response) {
   var target = $('#trips');
   for (var i = 0; i < response.length; i++) {
     trip = response[i];
-    target.append("<li>" + trip['name'] + "</li>");
+    target.append("<h2>" + trip['name'] + "</h2>" +
+    "<ul>" + "<li>" + "Continent: " + trip['continent'] + "</li>" +
+    "<li>" + "Duration: " + trip['weeks'] + " weeks" + "</li>" + "</ul>");
   }
 }
 
