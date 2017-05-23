@@ -5,6 +5,23 @@
     <title>Trek</title>
   </head>
   <body>
+    <button id="load"> Trips</button>
+    <!-- Template to use in order to display all trips -->
+    <script id="trip-template" type="text/template">
+      <section>
+        <h2>
+          <%- trip.name %>
+        </h2>
+        <p>
+          <strong>Continent:</strong>
+          <%- trip.continent %>
+        </p>
+        <p>
+          <strong>Weeks:</strong>
+          <%- trip.weeks %>
+        </p>
+      </section>
+    </script>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" type="text/javascript"></script>
