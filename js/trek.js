@@ -2,8 +2,7 @@ var tripListUrl = 'https://trektravel.herokuapp.com/trips';
 var tripListTemplate = _.template($('#trip-list-template').html());
 
 var tripListSuccess = function(response) {
-  console.log('Success!');
-  console.log(response);
+  $('#trips-list').empty();
 
   for (i = 0; i < response.length; i++) {
     var generatedHtml = tripListTemplate({
