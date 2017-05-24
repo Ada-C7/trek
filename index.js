@@ -32,9 +32,16 @@ var failureCallback = function() {
 };
 
 var clickHandler = function(event) {
-  $.get(url, successCallback).fail(failureCallback);
+    $.get(url, successCallback).fail(failureCallback);
 };
+// Should be able to see id, name, destination, continent, about, category,
+// weeks and cost
+
 
 $(document).ready(function() {
   $('#load').click(clickHandler);
+
+  $('#trip-list').on('click', '.show-info', function(event) {
+    alert("Working");
+  });
 });
