@@ -16,14 +16,17 @@
   </section>
   <script id="trips-template" type="text/template">
     <section>
+      <br>
       <p>
         <strong> id: </strong>
         <%- data.id %>
+
       </p>
 
       <p>
         <strong> name: </strong>
-        <%- data.name %>
+        <a href= <%- tripUrl %> ><%- data.name %></a>
+
       </p>
 
       <p>
