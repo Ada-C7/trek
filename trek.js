@@ -1,13 +1,17 @@
-const BASE_URL = "https://trektravel.herokuapp.com/trips";
+const BASE_URL = "https://trektravel.herokuapp.com/trips/";
 
-var successCallback = function(response) {
-  // console.log(response);
+var successTripsCallback = function(response) {
+  console.log(response);
 
   var trips = $('#trips');
   response.forEach(function(trip) {
-    trips.append("<h3>" + trip['name'] + "</h3>");
+    trips.append("<li>" + trip['name'] + "</li>");
   });
 };
+
+var successTripInfoCallback = function(response) {
+  console.log(response);
+}
 
 var failureCallback = function() {
   console.log("Unable to process request.");
@@ -15,9 +19,19 @@ var failureCallback = function() {
 };
 
 var clickHandler = function() {
-  $.get(BASE_URL, successCallback).fail(failureCallback);
+  $.get(BASE_URL, successTripsCallback).fail(failureCallback);
+};
+
+var clickHandler2 = function() {
+  $.get(BASE_URL + "1", successTripInfoCallback).fail(failureCallback);
 };
 
 $(document).ready(function() {
-  $('#load').click(clickHandler);
+  $('#load-trips').click(clickHandler);
+
+  $('#trips').on('click', 'li', function(event) {
+      console.log(event.key);
+      var url = BASE_URL + "1"
+      $.get(url, successTripInfoCallback).fail(failureCallback);
+  });
 });
