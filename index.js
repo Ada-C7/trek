@@ -29,7 +29,6 @@ var tripsSuccessCallback = function(response){
   $(".trip").on("click", "button",   (function(){
     var tripId = $(this).html().replace("Detail of Trip ", "");
     var tripUrl = buildUrl(tripId);
-    // console.log(tripUrl);
     $.get(tripUrl, tripSuccessCallback).fail(failureCallback);
   }));
 
