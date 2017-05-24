@@ -11,14 +11,28 @@
     <h1>Trips</h1>
     <button id="get-trips">Get Trips</button>
 
-    <main></main>
+    <main>
+      <ul id="trip-list"></ul>
+      <article id="trip-details"></article>
+    </main>
 
     <script id="trip-list-template" type="text/template">
-      <ul id="trip-list">
-        <% for (var i = 0; i < trips.length; i++) { %>
-          <li><%- trips[i].name %></li>
-        <% } %>
-      </ul>
+      <% for (var i = 0; i < trips.length; i++) { %>
+        <li><a href="#" id=<%- trips[i].id %>><%- trips[i].name %></a></li>
+      <% } %>
+    </script>
+
+    <script id="show-trip-template" type="text/template">
+      <article>
+        <h2><%- trip.name %></h2>
+        <ul>
+          <li><strong>Category</strong>: <%- trip.category %></li>
+          <li><strong>Continent</strong>: <%- trip.continent %></li>
+          <li><strong>Duration</strong>: <%- trip.weeks %> weeks</li>
+          <li><strong>Cost</strong>: $<%- trip.cost %></li>
+          <li><%- trip.about %></li>
+        </ul>
+      </article>
     </script>
 
   </body>
