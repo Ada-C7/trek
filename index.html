@@ -3,34 +3,51 @@
   <head>
     <meta charset="utf-8">
     <title>Trek</title>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-    <script src="index.js" type="text/javascript"></script>
   </head>
   <body>
+
     <!-- All Pages -->
     <section id="errors"></section>
     <button id="trips-show-btn">Show trips!</button>
-    <!-- Trips List -->
-    <section id="trips-list">
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Number of Weeks</th>
-          </tr>
-        </thead>
-          <script id="trips-list-template" type="text/template">
+    <section id="content">
+
+      <!-- Trips List -->
+      <section id="trips-list">
+        <table>
+          <thead>
             <tr>
-              <td><%= trip.name %></td>
-              <td><%= trip.weeks %></td>
             </tr>
-          </script>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Show Trip Details -->
+      <section id="trip-details">
+        <h2></h2>
+      </section>
     </section>
-    <!-- Show Trip Details -->
-    <section>
-    </section>
+
+    <!-- Trips List Template-->
+    <script id="trips-list-template" type="text/template">
+      <tr>
+        <td><%= trip.name %></td>
+        <td><%= trip.weeks %></td>
+      </tr>
+    </script>
+
+    <!-- Trip Details Template-->
+    <script id="trip-details-template" type="text/template">
+      <tr>
+        <td><%= trip.name %></td>
+        <td><%= trip.weeks %></td>
+      </tr>
+    </script>
+
+    <!-- Load JS after pageload-->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="index.js" type="text/javascript"></script>
   </body>
 </html>
