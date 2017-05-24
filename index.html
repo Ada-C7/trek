@@ -33,89 +33,86 @@
     </section>
   </header>
 
-  <main>
 
-    <div id = "new-trip"> </div>
+<main>
+<div id = "new-trip"> </div>
 
-    <div> <p> Search trips by  continent</p>
-    <form  id = "reservation-form" action="" method="post">
-        <select>
-          <option value="africa">Africa</option>
-          <option value="asia">Asia</option>
-          <option value="europe">Europe</option>
-          <option value="southamerica">South America</option>
-          <option value="northamerica">North America</option>
-          <option value="australia">Australia</option>
-          <option value="antarctica">Antarctica</option>
-        </select>
-        <section class="button">
-          <button id = "submit-continent-form" type="submit">Submit</button>
+<div class = "row">
+  <div class = "medium-6 large-6 columns">
+        <section id = "trip-block" class=" callout" data-closable="slide-out-left">
+          <div id="trip"></div>
+          <script id="trip-template" type="text/template">
+            <section>
+              <h3><%- data.name %></h3>
+              <p><strong>Id:</strong> <%- data.id %> </p>
+              <p><strong> Continent:</strong><%- data.continent %></p>
+              <p> <strong>Week: </strong><%- data.weeks %></p>
+              <p><strong> Cost:</strong><%- data.cost %></p>
+              <p> <strong>Category:</strong><%- data.category %> </p>
+              <p><strong> About:</strong><%- data.about %></p>
+            </section>
+            <form  id = "reservation-form" action="" method="post">
+              <section>
+                <label>Name</label>
+                <input type="text" id="name" name="name"></input>
+              </section>
+              <section>
+                <label>Age</label>
+                <input type="text" id="age" name="age"></input>
+              </section>
+              <section>
+                <label>Email</label>
+                <input type="text" id="email" name="email"></input>
+              </section>
+              <section class="button">
+                <button id = "submit-form-button" type="submit">Reserve a trip</button>
+              </section>
+            </form>
+          </script>
         </section>
-      </form>
 
-
-    </div>
-
-
-
-
-
-    <section id = "trip-block" class=" callout" data-closable="slide-out-left">
-      <div id="trip"></div>
-      <script id="trip-template" type="text/template">
-        <section>
-          <h3><%- data.name %></h3>
-          <p><strong>Id:</strong> <%- data.id %> </p>
-          <p><strong> Continent:</strong><%- data.continent %></p>
-          <p> <strong>Week: </strong><%- data.weeks %></p>
-          <p><strong> Cost:</strong><%- data.cost %></p>
-          <p> <strong>Category:</strong><%- data.category %> </p>
-          <p><strong> About:</strong><%- data.about %></p>
-        </section>
-        <form  id = "reservation-form" action="" method="post">
-          <section>
-            <label>Name</label>
-            <input type="text" id="name" name="name"></input>
-          </section>
-          <section>
-            <label>Age</label>
-            <input type="text" id="age" name="age"></input>
-          </section>
-          <section>
-            <label>Email</label>
-            <input type="text" id="email" name="email"></input>
-          </section>
-          <section class="button">
-            <button id = "submit-form-button" type="submit">Reserve a trip</button>
-          </section>
+</div>
+<div class = "medium-6 large-6 columns" id ="search-by-continent-div">
+    <section class = "row" id = "search-by-continent">
+      <section class = "medium-3 large-3 columns">
+        <p> Search trips by  continent:</p>
+      </section>
+      <section class = "medium-9 large-9 columns">
+      <form  id = "continent-form" action="" method="post">
+          <select>
+            <option value="africa">Africa</option>
+            <option value="asia">Asia</option>
+            <option value="europe">Europe</option>
+            <option value="southamerica">South America</option>
+            <option value="northamerica">North America</option>
+            <option value="australasia">Australasia</option>
+            <option value="antarctica">Antarctica</option>
+          </select>
         </form>
-      </script>
-      <button class="close-button trip-close-button" aria-label="Dismiss alert" type="button" data-close>
-        <span aria-hidden="true">&times;</span>
-      </button>
     </section>
-
-
-<section>
-  <table>
-    <thead id = "trips-list-table">
-      <tr>
-        <th> Trip name </th>
-        <th> Continent </th>
-        <th> Weeks </th>
-      </tr>
-    </thead>
-    <tbody id="trips-list">
-      <script id="trips-list-template" type="text/template">
+  <section>
+    <table>
+      <thead id = "trips-list-table">
         <tr>
-          <td><a class="see_trip" id ="<%-data.id %>"> <%- data.name %> </a></td>
-          <td><%- data.continent %></td>
-          <td><%- data.weeks %></td>
+          <th> Trip name </th>
+          <th> Continent </th>
+          <th> Weeks </th>
         </tr>
-      </script>
-    <tbody>
-  </table>
-</section>
+      </thead>
+      <tbody id="trips-list">
+        <script id="trips-list-template" type="text/template">
+          <tr>
+            <td><a class="see_trip" id ="<%-data.id %>"> <%- data.name %> </a></td>
+            <td><%- data.continent %></td>
+            <td><%- data.weeks %></td>
+          </tr>
+        </script>
+      <tbody>
+    </table>
+  </section>
+
+  </div>
+</div>
 
 
 

@@ -33,14 +33,28 @@ $(document).ready(function() {
   checkIfTripBlockEmpty();
   // checkIfErrorsEmpty();
 
+
+    $('#continent-form').change(continentClickHandler);
 }); // end of document ready
+
+var continentClickHandler = function(event){
+  var continent = $('select option:selected').text();
+  var continent_url = "https://trektravel.herokuapp.com/trips/continent?query=" + continent
+  $('#trips-list tr').remove();
+
+  $.get(continent_url, successTripsCallback).fail(failureCallback);
+};
 
 
 var allTripsClickHandler = function(event) {
+
+
+  $('#trips-list tr').remove();
   $.get(url_all_trip, successTripsCallback).fail(failureCallback);
 };
 
 var successTripsCallback = function(response) {
+
 
   var tripTemplate = _.template($('#trips-list-template').html());
   for (var i = 0; i < response.length; i++) {
@@ -61,6 +75,11 @@ var tripClickHandler = function(event) {
 };
 
 var successTripCallback = function(response) {
+  // console.log("HERE");
+  // console.log($("#trip").html());
+  // if ($("#trip").html()==""){
+  //   $("#search-by-continent-div").attr('large-6', 'large-12');
+  // }
   var singleTripTemplate = _.template($('#trip-template').html());
   var generatedHtml = singleTripTemplate({
     data: response
@@ -106,8 +125,8 @@ var checkIfTableEmpty = function(){
 
 
 var checkIfTripBlockEmpty = function(){
-  console.log("I AM HERE");
-  console.log($('#trip').html());
+  // console.log("I AM HERE");
+  // console.log($('#trip').html());
   // if ($('#trip').html() == ""){
   //   $('#trip-block').hide();
   // }
