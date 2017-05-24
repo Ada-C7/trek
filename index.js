@@ -5,9 +5,29 @@ var url_all_trip = "https://trektravel.herokuapp.com/trips";
 $(document).ready(function() {
   $('#load').click(allTripsClickHandler);
 
+  $('#new-trip-button').click(function(response){
+    var singleTripTemplate = _.template($('#new-trip-template').html());
+    var generatedHtml = singleTripTemplate({
+      data: response
+    });
+    $('#new-trip').html($(generatedHtml));
+
+    $('new-trip-form').submit(function(e) {
+      e.preventDefault();
+      var url = $(this).attr("action");
+      var formData = $(this).serialize();
+      $.post(url, formData, function(response){
+        $('#message').html('<p> New trip added! </p>');
+
+      });
+    });
+
+  });
   // checkIfTableEmpty();
   // checkIfErrorsEmpty();
+
 });
+
 
 var allTripsClickHandler = function(event) {
   $.get(url_all_trip, successTripsCallback).fail(failureCallback);

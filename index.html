@@ -14,6 +14,8 @@
     <section class = "row">
       <section class = "medium-2 large-2 columns">
         <button class="button  secondary hollow button" id="load"> All trips </button>
+        <button class="button  secondary hollow button small" id="new-trip-button"> Create new trip </button>
+
       </section>
       <section class = "medium-10 large-10 columns">
         <section id = "errors-block" class="alert callout" data-closable="slide-out-right">
@@ -105,15 +107,53 @@
   </table>
 </section>
 
+
+
+
+<div id = "new-trip"> </div>
+<script id="new-trip-template" type="text/template">
+  <form  id = "new-trip-form" action="https://trektravel.herokuapp.com/trips/new" method="post">
+    <section>
+      <label>Name</label>
+      <input type="text" id="name" name="name"></input>
+    </section>
+    <section>
+      <label>Continent</label>
+      <input type="text" id="continent" name="continent"></input>
+    </section>
+    <section>
+      <label>About</label>
+      <input type="text" id="about" name="about"></input>
+    </section>
+    <section>
+      <label>Category</label>
+      <input type="text" id="category" name="category"></input>
+    </section>
+    <section>
+      <label>Weeks</label>
+      <input type="text" id="weeks" name="weeks"></input>
+    </section>
+    <section>
+      <label>Cost</label>
+      <input type="text" id="cost" name="cost"></input>
+    </section>
+    <section class="button">
+      <button type="submit">Create new trip</button>
+    </section>
+  </form>
+</script>
+
+
+
+
   </main>
 </body>
 </html>
 
-
 <script src="js/vendor/jquery.js"></script>
 <script src="js/vendor/foundation.min.js"></script>
 <script src="js/vendor/what-input.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
 integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
