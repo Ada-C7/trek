@@ -7,13 +7,13 @@
   </head>
   <body>
     <button id="load-treks"> Gimme some cool treks! </button>
-    
+
     <section id="treks">
     </section>
     <section id="errors"></section>
 
     <script id="trek-list" type="text/template">
-      <h3 id="load-trek"><%- trek.name %></h3>
+      <h3 class="load-trek" id=<%- trek.id %> ><%- trek.name %></h3>
       <ul>
         <li>
           Continent: <%- trek.continent %>

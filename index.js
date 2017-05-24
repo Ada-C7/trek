@@ -38,7 +38,7 @@ var alwaysCallback = function() {
   console.log("always get this");
 };
 
-const BASEURL = 'https://trektravel.herokuapp.com/trips';
+const BASEURL = 'https://trektravel.herokuapp.com/trips/';
 
 var getTreks = function(event) {
   var target = $('.treks');
@@ -52,14 +52,13 @@ var getTrek = function(event) {
   var target = $('.treks');
   target.empty();
 
-  console.log($(this).id);
-  // var url = BASEURL + this.id;
-  // console.log(url);
-  // pull id from trip object
+  var id = $(this).attr("id");
+  var url = BASEURL + id;
+  console.log(url);
   $.get(url, successTrekCallback).fail(failureCallback).always(alwaysCallback);
 };
 
 $(document).ready(function() {
   $('body').on('click', '#load-treks', getTreks);
-  $('#treks').on('click', '#load-trek', getTrek);
+  $('#treks').on('click', '.load-trek', getTrek);
 });
