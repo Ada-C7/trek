@@ -29,6 +29,10 @@ var generateSingleTrip = function(response) {
   $('#single-trip').html($(generatedHtml));
 };
 
+var generateReservationResponse = function(response) {
+  console.log("success!");
+};
+
 var tripsClickHandler = function(event) {
   // AJAX call to API, response sending to function sendToTemplate
   $.get(allTripsUrl, generateAllTrips);
@@ -41,12 +45,11 @@ var singleTripClickHandler = function(event) {
 };
 
 var reserveClickHandler = function(event) {
-  e.preventDefault();
+  event.preventDefault();
   var id = event.target.getAttribute('value');
   var postUrl = allTripsUrl + id + '/' + 'reserve';
   var formData = $(this).serialize();
-  console.log("form data = ", formData);
-  // ALSKDJALSDJKASLDJSALKJD START FROM HERE.
+  $.post(postUrl, formData, generateReservationResponse);
 };
 
 $(document).ready(function() {
@@ -54,5 +57,5 @@ $(document).ready(function() {
 
   $("#trip-list").on("click", ".trips", singleTripClickHandler);
 
-  $('form').submit(reserveClickHandler);
+  $('#single-trip').on("submit", "#reserve", reserveClickHandler);
 });

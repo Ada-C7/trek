@@ -32,9 +32,9 @@
     <!-- Template to display a single trip's info -->
     <script id="single-trip-template" type="text/template">
       <section>
-        <h2><data value= <%- trip.id %> >
+        <h2>
           <%-trip.name %>
-        </data></h2>
+        </h2>
         <p>
           <strong>Continent:</strong>
           <%- trip.continent %>
@@ -58,17 +58,19 @@
       </section>
       <section class="form">
         <h2>Reserve a spot!</h2>
-        <form method="post">
+
+        <form method="post" id="reserve" value= <%- trip.id %>>
           <label>Name</label>
           <input type="text" id="name" name="name"></input>
           <label>Email</label>
           <input type="text" id="email" name="email"></input>
           <label>Age</label>
           <input type="text" id="age" name="age"></input>
-          <section>
-            <button class="button" type="submit">Reserve</button>
-          </section>
+        <section>
+          <button class="button" type="submit">Reserve</button>
+        </section>
         </form>
+
       </section>
     </script>
 
