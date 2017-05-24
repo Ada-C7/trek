@@ -33,15 +33,17 @@ var generateList = function(response) {
 };
 
 var generateTripInfo = function(response) {
-  console.log("Response:" + response);
+  console.log(response);
+
   var tripTemplate = _.template($('#trip-info-template').html());
-  var idSelection = response.id;
-  // for (var i = 0; i < response.length; i++) {
-    var generatedHtml = tripTemplate({
-      data: response
-    });
+    var generatedHtml = tripTemplate(
+      {
+        data: response
+      }
+    );
+    var idSelection = response.id;
+
     $('#' + idSelection).append($(generatedHtml));
-  // }
 };
 
 var failureCallback = function() {
@@ -50,9 +52,6 @@ var failureCallback = function() {
 };
 
 var clickHandler = function(event) {
-  // console.log(event);
-  // console.log("Current target: " + event.currentTarget);
-  // console.log(this);
 
   console.log("ID:" + event.target.id);
 
