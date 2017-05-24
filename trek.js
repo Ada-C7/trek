@@ -6,7 +6,7 @@ var successCallback = function(response) {
   var target = $('#all-trips');
   for (var i = 0; i < response.length; i++) {
     var generatedHTML = allTemplate({
-      data: response[i]
+      allData: response[i]
     });
     target.append($(generatedHTML));
   }
@@ -21,7 +21,7 @@ var allClickHandler = function(event) {
 };
 
 /***********/
-var singleTemplate = _.template($('#single-trip-template').html());
+// var singleTemplate = _.template($('#single-trip-template').html());
 
 
 

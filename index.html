@@ -21,9 +21,9 @@
     <script id="all-trips-template" type="text/template">
       <section class="column">
         <!-- Display results (name, continent, weeks) -->
-        <button id="singleLoad"><h2><%- data.name %></h2></button>
-        <p id="continent"><%- data.continent %></p>
-        <p><%- data.weeks %> week(s)</p>
+        <button id="singleLoad"><h2><%- allData.name %></h2></button>
+        <p id="continent"><%- allData.continent %></p>
+        <p><%- allData.weeks %> week(s)</p>
       </section>
     </script>
 
@@ -31,10 +31,15 @@
     <div id="single-trip"></div>
     <script id="single-trip-template" type="text/template">
       <section>
-
+        name
+        destination
+        continent
+        about
+        category
+        weeks
+        cost
       </section>
     </script>
-
 
     <!-- load JS files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
