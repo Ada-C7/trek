@@ -50,7 +50,31 @@
           Price: <%- data.cost %>
         </h3>
       </section>
+      <section id="reserve-form">
+        <form action="https://trektravel.herokuapp.com/trips/1/reserve" method="post">
+          <section>
+            <label>Name</label>
+            <input type="text" id="name" name="name"></input>
+          </section>
+          <section>
+            <label>Age</label>
+            <input type="text" id="age" name="age"></input>
+          </section>
+          <section>
+            <label>E-mail</label>
+            <input type="text" id="email" name="email"></input>
+          </section>
+
+          <section class="button">
+            <button type="submit">Add Pet</button>
+          </section>
+        </form>
+    </section>
     </script>
+
+
+
+
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="index.js" type="text/javascript"></script>
