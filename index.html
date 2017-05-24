@@ -6,7 +6,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="trek.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
-<h1>GlobePlotter</h1>
+    <h1>GlobePlotter</h1>
 
 
 
@@ -15,7 +15,7 @@
     <button id="load"> Get Trips! </button>
     <section id="trips"></section>
     <section id="errors"></section>
-    <script id="trip-details" type="text/template">
+    <script id="trip-details-template" type="text/template">
       <section>
         <h2>
           <%- data.name %>
@@ -24,18 +24,27 @@
           <%- data.continent %>
         </p>
         <p>
-          <%- data.cost %>
+          $<%- data.cost %>
         </p>
         <p>
-          <%- data.weeks %>
+          <%- data.weeks %> weeks
         </p>
         <p>
           <%- data.about %>
         </p>
         <p>
-          <%- data.category %>
+          Categories: <%- data.category %>
         </p>
 
+      </section>
+    </script>
+    <script id="trips-template" type="text/template">
+      <section>
+        <li>
+          <%- data.id %>.
+          <%- data.name %>
+          <%- data.continent %>
+        </li>
       </section>
     </script>
 
