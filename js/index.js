@@ -26,18 +26,22 @@ $(document).ready(function() {
   };
 
   var successCallback = function(response) {
-      for (var i = 0; i < response.length; i++) {
-        var generatedHTML = tripsTemplate({
-          trip: response[i]
-        });
-        $('#trips').append($(generatedHTML));
-      }
+    if(response.length === 0) {
+      $('#trips').append('<p>No Trips Were Found</p>');
+    } else {
+        for (var i = 0; i < response.length; i++) {
+          var generatedHTML = tripsTemplate({
+            trip: response[i]
+          });
+          $('#trips').append($(generatedHTML));
+        }
 
-      $('a').on("click", function() {
-        var id = $(this).parent().parent().attr('id');
-        $("#trips").empty();
-        $.get(url + "/" + id, singleTripCallback);
-      });
+        $('a').on("click", function() {
+          var id = $(this).parent().parent().attr('id');
+          $("#trips").empty();
+          $.get(url + "/" + id, singleTripCallback);
+        });
+      }
 
     return successCallback;
   };

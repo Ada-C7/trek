@@ -71,7 +71,15 @@
       <h2><strong>Filter Trips</strong></h2>
       <form action="https://trektravel.herokuapp.com/trips/" method="get">
         By Continent: <br />
-        <input type="text" name="continent?query" /><br />
+        <select name="continent?query">
+          <option value="Asia">Asia</option>
+          <option value="Africa">Africa</option>
+          <option value="Australasia">Astralasia</option>
+          <option value="Europe">Europe</option>
+          <option value="North America">North America</option>
+          <option value="South America">South America</option>
+          <option value="Antarctica">Antarctica</option>
+        </select>
         By Weeks: <br />
         <input type="text" name="weeks?query" /><br />
         By Budget: <br />
