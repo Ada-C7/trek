@@ -5,7 +5,7 @@ var successTripsCallback = function(response) {
 
   var trips = $('#trips');
   response.forEach(function(trip) {
-    trips.append("<li>" + trip['name'] + "</li>");
+    trips.append("<li id=" + trip['id'] + ">" + trip['name'] + "</li>");
   });
 };
 
@@ -31,7 +31,8 @@ $(document).ready(function() {
 
   $('#trips').on('click', 'li', function(event) {
       console.log(event.key);
-      var url = BASE_URL + "1"
+      var id = $(this).attr("id");
+      var url = BASE_URL + id
       $.get(url, successTripInfoCallback).fail(failureCallback);
   });
 });
