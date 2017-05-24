@@ -26,21 +26,23 @@ var successTripsCallback = function(response) {
 
 
 var tripClickHandler = function(event) {
-  // console.log(this.id);
   var url_trip = "https://trektravel.herokuapp.com/trips/" + this.id;
   $.get(url_trip, successTripCallback).fail(failureCallback);
 };
 
 var successTripCallback = function(response) {
   console.log(response);
-  var tripTemplate = _.template($('#trip-template').html());
- for (var i = 0; i < response.length; i++) {
-    var generatedHtml = tripTemplate({
+
+var singleTripTemplate = _.template($('#trip-template').html());
+ // for (var i = 0; i < response.length; i++) {
+    var generatedHtml = singleTripTemplate({
       data: response
     });
+
+  //  $('#trip').append("<li>" + "lalaal" + "</li>")
     $('#trip').append($(generatedHtml));
 
-  }
+  //}
 };
 
 
