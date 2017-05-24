@@ -29,7 +29,7 @@ var successCallback = function(response) {
 
     var id = tripsData[i]["id"];
     $(".name[data-id=" + tripsData[i]["id"] + "]").click(function() {
-      $(".hello[data-id=" + id + "]").slideToggle(1000);
+      $(".hello[data-id=" + id + "]").slideToggle("fast");
     });
 
   })
