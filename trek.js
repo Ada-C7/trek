@@ -74,7 +74,6 @@ var submitForm = function(){$('form').submit(function(e) {
 
 
 $(document).ready(function() {
-
   $('#load').click(getTrips);
   $('#trips').on('click','li', function() {
     console.log($(this).attr("id"));
