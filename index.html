@@ -20,28 +20,28 @@
     <div id="trip-list"></div>
     <script id="trip-list-template" type="text/template">
       <section>
-        <ul id="trips"></ul>
-          <li><%- trip.id %></li>
-          <li><%- trip.name %></li>
-          <li><%- trip.continent %></li>
-          <li><%- trip.weeks %></li>
-        <button id="seeTrip" trip-tripid = <%- trip.id%> ><%- trip.name %></button>
+        <div id="trips"></div>
+          <p><%- trip.id %></p>
+          <p><%- trip.name %></p>
+          <p><%- trip.continent %></p>
+          <p><%- trip.weeks %></p>
+        <button id="seeTrip" data-tripid = <%- trip.id%> ><%- trip.name %></button>
       </section>
     </script>
 
 
     <div id="trip-info-indv"></div>
     <script id="trip_template" type="text/template">
-    <ul id="trip_info">Trip Info</ul>
+    <div id="trip_info">Trip Info</div>
 
-      <li><%- trip.id %></li>
-      <li><%- trip.name %></li>
-      <li><%- trip.destination %></li>
-      <li><%- trip.continent %></li>
-      <li><%- trip.about %></li>
-      <li><%- trip.category %></li>
-      <li><%- trip.weeks %></li>
-      <li><%- trip.cost %></li>
+      <p><%- trip.id %></p>
+      <p><%- trip.name %></p>
+      <p><%- trip.destination %></p>
+      <p><%- trip.continent %></p>
+      <p><%- trip.about %></p>
+      <p><%- trip.category %></p>
+      <p><%- trip.weeks %></p>
+      <p><%- trip.cost %></p>
       <button id="reserve">Reserve Spot</button>
     </script>
 
