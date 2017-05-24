@@ -1,8 +1,7 @@
 // get trip data from API with AJAX
 var url = "https://trektravel.herokuapp.com/trips";
 
-
-var successCallback = function(response) {
+var successCallbackAll = function(response) {
   console.log("Success!");
   console.log(response);
 
@@ -15,6 +14,7 @@ var successCallback = function(response) {
     });
     $('#trips-list').append(generatedHtml);
   }
+  $('#trip-index').on('click', 'p', clickHandlerLocale);
 };
 
 var failureCallback = function() {
@@ -23,13 +23,30 @@ var failureCallback = function() {
 };
 
 var clickHandler = function(event) {
-  //$.get(url, successCallback);
-  $.get(url, successCallback).fail(failureCallback);
+  //$.get(url, success Callback);
+  $.get(url, successCallbackAll).fail(failureCallback);
+};
+
+// make another API call for trip details
+var detailsUrl = "https://trektravel.herokuapp.com/trips/1";
+
+var successCallbackOne = function(response) {
+  console.log("Success!");
+  console.log(response);
+
+
+  var detailsTemplate = _.template($('#details-template').html());
+
+// look at object and get stuff the right way
+    var generatedHtml = detailsTemplate({
+      data: response
+    });
+    $('#trip-details').append(generatedHtml);
+};
+var clickHandlerLocale = function(event) {
+  $.get(detailsUrl, successCallbackOne).fail(failureCallback);
 };
 
 $(document).ready(function() {
   $('#load').click(clickHandler);
 });
-
-// make another API call for trip details (see API docs)
-// var url = "https://trektravel.herokuapp.com/trips/1";
