@@ -15,10 +15,16 @@ var sendToTemplate = function(response) {
 };
 
 var tripsClickHandler = function(event) {
+  // AJAX call to API, response sending to function sendToTemplate
   $.get(allTripsUrl, sendToTemplate);
 };
 
+var singleTripClickHandler = function(event) {
+
+};
+
 $(document).ready(function() {
-  // AJAX call to API, response sending to function sendToTemplate
   $('#load').click(tripsClickHandler);
+
+  $('.single-trip').click(singleTripClickHandler);
 });
