@@ -6,7 +6,7 @@ $(document).ready(function() {
   $('#load').click(allTripsClickHandler);
 
   // checkIfTableEmpty();
-  checkIfErrorsEmpty();
+  // checkIfErrorsEmpty();
 });
 
 var allTripsClickHandler = function(event) {
@@ -54,6 +54,8 @@ var successTripCallback = function(response) {
       $('#errors').html('<p>Creating new reservation failed</p>');
     });
   });
+
+
 };
 
 
@@ -80,3 +82,36 @@ var checkIfErrorsEmpty = function(){
     $('#message-block').hide();
   }
 };
+
+
+// After closing modal reload a page:
+$( ".trip-close-button").click(function() {
+    location.reload();
+    // allTripsClickHandler ?????
+});
+
+
+
+
+// FORM VALIDATION:
+var validateForm = function() {
+    var name = document.forms["reservation-form"]["name"].value;
+    var age = document.forms["reservation-form"]["age"].value;
+    var email = document.forms["reservation-form"]["email"].value;
+    var alert_text = ""
+    if (name == "") {
+        alert_text += "Name must be filled out \n";
+    }
+    if (email == "") {
+        alert_text += "Email must be filled out \n";
+    }
+    if (age == "") {
+        alert_text += "Age must be filled out \n";
+    }
+    if (alert_text != ""){
+      alert(alert_text);
+    }
+    if (name == "" || email == "" || age == ""){
+      return false;
+    }
+}

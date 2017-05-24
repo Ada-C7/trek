@@ -45,7 +45,7 @@
           <p> <strong>Category:</strong><%- data.category %> </p>
           <p><strong> About:</strong><%- data.about %></p>
         </section>
-        <form action="" method="post">
+        <form  id = "reservation-form" action="" onsubmit="return validateForm()" method="post">
           <section>
             <label>Name</label>
             <input type="text" id="name" name="name"></input>
@@ -63,7 +63,7 @@
           </section>
         </form>
       </script>
-      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+      <button class="close-button trip-close-button" aria-label="Dismiss alert" type="button" data-close>
         <span aria-hidden="true">&times;</span>
       </button>
     </section>
