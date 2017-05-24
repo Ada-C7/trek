@@ -2,7 +2,11 @@ var allTripsUrl = 'https://trektravel.herokuapp.com/trips/';
 
 var tripsClickHandler = function(event) {
   // AJAX call to API, response sending to function sendToTemplate
-  $.get(allTripsUrl, generateAllTrips);
+  $.get(allTripsUrl, generateAllTrips).fail(tripsFail);
+};
+
+var tripsFail = function() {
+  $("#message").html("<p>I'm sorry, something has gone wrong.  Please try again shortly.</p>");
 };
 
 var generateAllTrips = function(response) {
@@ -25,7 +29,7 @@ var generateAllTrips = function(response) {
 var singleTripClickHandler = function(event) {
   var id = event.target.getAttribute('value');
   var singleTripUrl = allTripsUrl + id;
-  $.get(singleTripUrl, generateSingleTrip);
+  $.get(singleTripUrl, generateSingleTrip).fail(tripsFail);
 };
 
 var generateSingleTrip = function(response) {
@@ -47,7 +51,11 @@ var reserveClickHandler = function(event) {
   var id = event.target.getAttribute('value');
   var postUrl = allTripsUrl + id + '/' + 'reserve';
   var formData = $(this).serialize();
-  $.post(postUrl, formData, generateReservationResponse);
+  $.post(postUrl, formData, generateReservationResponse).fail(postFail);
+};
+
+var postFail = function() {
+  $('#single-trip-top').append("<p>I'm sorry, something has gone wrong.  Please try again shortly.</p>");
 };
 
 var generateReservationResponse = function(response) {
