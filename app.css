@@ -1,0 +1,121 @@
+/*@import url("https://fonts.googleapis.com/css?family=Open+Sans|Pacifico");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");*/
+
+/*MY COLOR PALLET
+
+  TEAL #18D4C6
+    lightest 97EBE5
+    light 4CDBD1
+    dark 00BBAD
+    darkest 00756C
+
+  GOLD #FFD71D
+    lightest FFEFA4
+    ligth FFE258
+    dark FFD200
+    darkest BE9C00
+
+  MAGENTA #E71A9B
+    lightest F49DD4
+    light EB51B2
+    dark D80088
+    darkest 94005D
+
+  ORANGE FF7F1D
+    lightest FFCCA4
+    light FFA158
+    dark FF6F00
+    darkest BE5300
+*/
+
+/*All Page Elements*/
+
+/*
+html {
+  font-family: 'Open Sans', sans-serif;
+  color: #4d4d4d;
+  font-size: 16px;
+  margin: 10px 10%;
+  overflow: auto;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Pacifico', cursive;
+  color: #4d4d4d;
+}
+
+/*arrange footer section*/
+/*
+footer {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  border-top: 3px #E71A9B solid;
+  margin-top: 10px;
+}
+
+footer h3 {
+  display: inline-block;
+}
+
+.copyright p {
+  width: 200px;
+  font-size: .7em;
+}
+
+footer section.social {
+  position: absolute;
+  right: 0;
+  top: 0%;
+}
+
+section.social a{
+  font-size: 1.2em;
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+a, a:visited {
+  color: #18D4C6;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #FFD71D
+}
+
+
+/*Adding CSS for new_index*/
+/*
+.round {
+  border-radius: 10%;
+}
+
+.teal {
+  background-color: #97EBE5;
+}
+
+.teal:hover > a {
+  background-color: #18D4C6;
+}
+
+.pink {
+  background-color: #F49DD4;
+}
+
+.pink:hover > a {
+  background-color: #E71A9B;
+}
+
+.big-row {
+  height: 100px;
+}
+
+.gold {
+  background-color: #FFEFA4;
+}
+
+.gold:hover > a {
+  background-color: #FFD71D;
+}
+*/

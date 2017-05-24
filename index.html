@@ -3,14 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>Trek</title>
+    <link rel="stylesheet" href="foundation.css">
+    <link rel="stylesheet" href="app.css">
   </head>
   <body>
-    <button id="load"> Trips</button>
+    <button class="button" id="load"> Trips</button>
     <div id="trip-list"></div>
     <!-- Template to use in order to display all trips -->
     <script id="trip-template" type="text/template">
       <section>
-        <%= "<a href='#' class='single-trip'>" %>
+        <%= "<a href='#' class='trips'>" %>
         <h2><data value= <%- trip.id %> >
           <%-trip.name %>
         </data></h2>
@@ -53,6 +55,17 @@
           <strong>About:</strong>
           <%- trip.about %>
         </p>
+      </section>
+      <section class="form">
+        <h2>Reserve a spot!</h2>
+        <form method="post">
+          <label>Name</label>
+          <input type="text" id="name" name="name"></input>
+          <label>Email</label>
+          <input type="text" id="email" name="email"></input>
+          <label>Age</label>
+          <input type="text" id="age" name="age"></input>
+        </form>
       </section>
     </script>
 

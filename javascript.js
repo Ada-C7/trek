@@ -20,7 +20,7 @@ var generateAllTrips = function(response) {
 var generateSingleTrip = function(response) {
   $('#trip-list').hide();
   $('#single-trip').show();
-  
+
   // compiles singleTripTemplate
   var singleTripTemplate = _.template($('#single-trip-template').html());
   var generatedHtml = singleTripTemplate({
@@ -43,10 +43,6 @@ var singleTripClickHandler = function(event) {
 $(document).ready(function() {
   $('#load').click(tripsClickHandler);
 
-  $("#trip-list").on("click", ".single-trip", singleTripClickHandler);
-
-  // $('.dynamic-list').click(function() {
-  // $(this).addClass('list-thinking');
-// })
+  $("#trip-list").on("click", ".trips", singleTripClickHandler);
 
 });
