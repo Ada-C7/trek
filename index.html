@@ -52,6 +52,7 @@
         <strong>Price: $</strong>
         <%- data.cost %>
       </p>
+      <div id="message"></div>
       <div id="name-form">
         <div class="small-4 small-centered columns">
           <form action="https://trektravel.herokuapp.com/trips" method="post">
@@ -59,6 +60,7 @@
               <label>Reserve this trip! </label>
               <input type="text" id="name" name="name" placeholder="Name"> </input>
             </section>
+            <section class="button" id="reserve" type="submit">Submit</section>
           </form>
         </div>
       </div>

@@ -32,6 +32,7 @@ body {
   color: #E2D1C5;
   margin: 15px;
   border-style: ridge;
+  padding: 10px;
 }
 
 #name-form, label {

@@ -52,3 +52,29 @@ var clickHandlerLocale = function(event) {
 $(document).ready(function() {
   $('#load').click(clickHandler);
 });
+
+
+
+// form stuff
+
+$('form').submit(function(e) {
+  e.preventDefault();
+  var reserveUrl = $(this).attr("action");
+  var formData = $(this).serialize();
+
+  $.post(reserveUrl, formData, function(response) {
+    $('#message').html('<p> Reservation successful! </p>');
+  });
+  console.log(response);
+})
+  .fail(function() {
+    $('#message').html('<p> Reservation unsuccessful. Please try again! </p>');
+});
+
+
+
+
+
+
+
+// space
