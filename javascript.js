@@ -14,6 +14,11 @@ var generateAllTrips = function(response) {
   }
 };
 
+var generateSingleTrip = function(response) {
+  // compiles tripTemplate
+  var singleTripTemplate = _.template($('#trip-template').html());
+};
+
 var tripsClickHandler = function(event) {
   // AJAX call to API, response sending to function sendToTemplate
   $.get(allTripsUrl, generateAllTrips);
@@ -21,9 +26,8 @@ var tripsClickHandler = function(event) {
 
 var singleTripClickHandler = function(event) {
   var id = event.target.getAttribute('value');
-  // make a call to API for a single trip.
   var singleTripUrl = allTripsUrl + id; //TRIP ID, where from?
-  // $.get()
+  $.get(singleTripUrl, generateSingleTrip);
 };
 
 $(document).ready(function() {
