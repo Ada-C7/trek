@@ -13,7 +13,7 @@
       </section>
       <section class="top-nav">
         <button id="get-trips" class="button">Get All Trips</button>
-
+        <button id="new-trip" class="button">New Trip</button>
         <form id="continent-filter">
           <section>
             <select size="1" id="continent-sort" name="continent">
@@ -124,12 +124,76 @@
       </article>
     </script>
 
+    <!-- template for the new trip view -->
+    <script id="new-trip-template" type="text/javascript">
+      <article class="columns small-6">
+        <h2>
+          <strong>Add a new trip!</strong>
+        </h2>
+        <form id="new-trip-form">
+          <section>
+            <label>Name</label>
+            <input type="text" id="name" name="name"></input>
+          </section>
+          <section>
+            <label>Continent</label>
+            <select size="1" id="continent-new" name="continent">
+              <option>Africa</option>
+              <option>Antarctica</option>
+              <option>Asia</option>
+              <option>Australasia</option>
+              <option>Europe</option>
+              <option>North America</option>
+              <option>South America</option>
+            </select>
+          </section>
+          <section>
+            <label>About</label>
+            <textarea type="text" id="about" name="about"></textarea>
+          </section>
+          <section>
+            <label>Category</label>
+            <select size="1" id="category" name="category">
+              <option>everything</option>
+              <option>historical</option>
+              <option>entertainment</option>
+              <option>culture</option>
+              <option>nature</option>
+              <option>adventure</option>
+            </select>
+          </section>
+          <section>
+            <label>Weeks</label>
+            <input type="text" id="weeks" name="weeks"></input>
+          </section>
+          <section>
+            <label>Cost</label>
+            <input type="text" id="cost" name="cost"></input>
+          </section>
+          <section class="button" id="add-new-trip">
+            <button type="submit">Create Trip</button>
+          </section>
+        </form>
+        <section id="successful-new-trip-create">
+        </section>
+      </article>
+    </script>
+
 
     <!-- template for join trip -->
     <script id="join-trip-template" type="text/javascript">
       <article class="joined">
         <p>Successfully signed up for
           <%- joined.name %>!
+        </p>
+      </article>
+    </script>
+
+    <!-- template for create trip -->
+    <script id="create-trip-template" type="text/javascript">
+      <article class="created">
+        <p>Successfully created new trip
+          <%- newTrip.name %>!
         </p>
       </article>
     </script>
