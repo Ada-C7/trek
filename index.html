@@ -6,8 +6,8 @@
   </head>
   <body>
     <h1> Tripcation </h1>
-    <button>  Explore All Trips </button>
-    <section id='trip-list'> </section>
+    <button id='explore'>  Explore All Trips </button>
+    <section id='trip-index'> </section>
     <section id='trip-show'> </section>
 
 
@@ -20,8 +20,9 @@
 
 
     <!-- Trip List Template  -->
-    <script id='trip-list-template' type='text/template'>
-      <h2><%- trip.name %></h2>
+    <script id='trip-index-template' type='text/template'>
+      <a href="#" id="trip-link"><h2><%- trip.name %></h2></a>
+
       <p><%- trip.continent %></p>
     </script>
 
