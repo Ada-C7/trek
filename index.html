@@ -12,20 +12,20 @@
   <section>
     <button id="button">Show All Trips</button>
   </section>
-  <section id="all">
+  <section id="display">
   </section>
   <script id="trips-template" type="text/template">
     <section>
       <br>
       <p>
         <strong> id: </strong>
-        <%- data.id %>
+        <div><%- data.id %></div>
 
       </p>
 
       <p>
         <strong> name: </strong>
-        <a href= <%- tripUrl %> ><%- data.name %></a>
+        <div><%- data.name %></div>
 
       </p>
 
@@ -38,11 +38,55 @@
         <strong> weeks: </strong>
         <%- data.weeks %>
       </p>
+      <button id= "trip<%-data.id%>">
+        Detail of Trip <%- data.id %>
+      </button>
 
     </section>
   </script>
-  <script id="trip" type="text/template">
+  <section id="trip"></section>
+  <script id="trip-template" type="text/template">
     <section>
+      <p>
+        <strong> id: </strong>
+        <%- data.id %>
+
+      </p>
+
+      <p>
+        <strong> name: </strong>
+        <%- data.name %>
+
+      </p>
+
+      <p>
+        <strong> continent: </strong>
+        <%- data.continent %>
+      </p>
+
+      <p>
+        <strong> about: </strong>
+        <%- data.about %>
+
+      </p>
+
+      <p>
+        <strong> category: </strong>
+        <%- data.category %>
+
+      </p>
+
+      <p>
+        <strong> weeks: </strong>
+        <%- data.weeks %>
+      </p>
+
+      <p>
+        <strong> cost: </strong>
+        <%- data.cost %>
+      </p>
+
+
     </section>
   </script>
 </body>
