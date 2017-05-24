@@ -1,7 +1,7 @@
 // save response from API in an array
 var allTripsUrl = 'https://trektravel.herokuapp.com/trips';
 
-var sendToTemplate = function(response) {
+var generateAllTrips = function(response) {
   // compiles tripTemplate
   var tripsTemplate = _.template($('#trip-template').html());
 
@@ -16,15 +16,23 @@ var sendToTemplate = function(response) {
 
 var tripsClickHandler = function(event) {
   // AJAX call to API, response sending to function sendToTemplate
-  $.get(allTripsUrl, sendToTemplate);
+  $.get(allTripsUrl, generateAllTrips);
 };
 
 var singleTripClickHandler = function(event) {
-
+  var id = event.target.getAttribute('value');
+  // make a call to API for a single trip.
+  var singleTripUrl = allTripsUrl + id; //TRIP ID, where from?
+  // $.get()
 };
 
 $(document).ready(function() {
   $('#load').click(tripsClickHandler);
 
-  $('.single-trip').click(singleTripClickHandler);
+  $("#trip-list").on("click", ".single-trip", singleTripClickHandler);
+
+  // $('.dynamic-list').click(function() {
+  // $(this).addClass('list-thinking');
+// })
+
 });
