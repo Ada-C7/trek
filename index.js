@@ -1,4 +1,4 @@
-var allTripsUrl = "https://trektravel.herokuapp.com/trips";
+var allTripsUrl = "https://trektravel.herokuapp.com/trips/";
 
 var successCallback = function(response) {
   console.log("Success!");
@@ -21,3 +21,6 @@ var clickHandler = function(event) {
 $(document).ready(function() {
   var response = $('#load-trips').click(clickHandler);
 });
+
+
+// var singletripUrl = allTripsUrl + data.id
