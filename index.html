@@ -22,8 +22,6 @@
       <div id="trip"></div>
 
 
-
-
       <script id="trip-template" type="text/template">
         <section>
           <p><%- data.name %></p>
@@ -34,7 +32,7 @@
           <p> Category:<%- data.category %> </p>
           <p> About:<%- data.about %></p>
         </section>
-        <form action="https://trektravel.herokuapp.com/trips/" + "<%- data.id %>" + "/reserve" method="post">
+        <form action="" method="post">
           <section>
             <label>Name</label>
             <input type="text" id="name" name="name"></input>
@@ -47,6 +45,7 @@
             <label>Email</label>
             <input type="text" id="email" name="email"></input>
           </section>
+
           <section class="button">
             <button type="submit">Reserve a trip</button>
           </section>
