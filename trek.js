@@ -2,57 +2,40 @@
 
 url = "https://trektravel.herokuapp.com/trips";
 
-// trekData = [
-// {
-// id: 1,
-// name: "Cairo to Zanzibar",
-// continent: "Africa",
-// weeks: 5
-// },
-// {
-// id: 2,
-// name: "Everest Base Camp Trek",
-// continent: "Asia",
-// weeks: 2
-// },
-// {
-// id: 3,
-// name: "Golden Triangle",
-// continent: "Asia",
-// weeks: 1
-// }];
-
 var clickHandler = function(event) {
-  console.log("CLICKHANDLER");
-  console.log(event);
   $.get(url, successCallback);
  };
 
-
-var clickHandlerLocale = function(event) {
- console.log("WHATTT");
- console.log(event);
+var localeClickHandler = function(event) {
   tripUrl = url + "/" + $(this).data().tripId;
-  console.log(url);
- // console.log(event);
  $.get(tripUrl, localeSuccessCallback);
   };
 
+var formClickHandler = function(e) {
+  e.preventDefault();
+  var url = $("form").attr("action");
+  var formData = $("form").serialize();
+    $.post(url, formData, function(e){
+    $('#message').html('<p> Trip Reserved! </p>');
+    });
+    $("form").trigger("reset");
+};
 
-localeSuccessCallback = function(localeData) {
-    console.log("WE ARE HERE");
+
+var localeSuccessCallback = function(localeData) {
     var localeTemplate = _.template($('#trek-detail-template').html());
     var generatedHtml = localeTemplate({
       data: localeData
     });
     $('#trip-list').empty();
+    $('#message').empty();
     $('#trip-list').append($(generatedHtml));
-  }
+  };
 
-
-successCallback = function(trekData) {
+var successCallback = function(trekData) {
   var trekTemplate = _.template($('#trek-list-template').html());
   $('#trip-list').empty();
+  $('#message').empty();
   for (var i = 0; i < trekData.length; i++) {
     var generatedHtml = trekTemplate({
       data: trekData[i]
@@ -67,8 +50,7 @@ var failureCallback = function() {
 };
 
 $(document).ready(function() {
-
-$('#load').click(clickHandler);
-$("#trip-list").on("click", ".trek-link", clickHandlerLocale);
-
+  $('#load').click(clickHandler);
+  $("#trip-list").on("click", ".trek-link", localeClickHandler);
+  $("#trip-list").on("click", "#prevent", formClickHandler);
 });
