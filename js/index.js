@@ -40,11 +40,15 @@ $(document).ready(function() {
     return successCallback;
   };
 
-  $('.button').click(function() {
+  $('#all').click(function() {
     if( $('#trips').children().length < 3 ) {
       $('#trips').empty();
       $.get(url, successCallback);
     }
+  });
+
+  $('#filter').click(function() {
+    $('#trips').empty();
   });
 
 

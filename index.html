@@ -14,7 +14,8 @@
       <section class="row" id="header">
         <h1>Trek</h1>
         <p>Find your next Adventure</p>
-        <button class="button">Show all Trips</button>
+        <button class="button" id="all">Show all Trips</button>
+        <button class="button" id="filter">Filter Trips</button>
       </section>
       <section id="trips">
 
@@ -24,7 +25,7 @@
         <section id="<%- trip.id %>" class="trips columns large-4 medium-4 small-12">
           <h2><a href="#"><strong><%- trip.name %></strong></a></h2>
           <p>
-            <%- trip.continent %> - <%- trip.weeks %> week(s)
+            <%- trip.continent %> - <%if(trip.weeks === 1){ %><%- trip.weeks %> week<% } else {%> <%- trip.weeks %> weeks <% } %>
           </p>
         </section>
     </main>
@@ -40,7 +41,7 @@
             Location: <%- trip.continent %>
           </p>
           <p>
-            Duration: <%- trip.weeks %> week(s)
+            Duration: <%if(trip.weeks === 1){ %><%- trip.weeks %> week<% } else {%> <%- trip.weeks %> weeks <% } %>
           </p>
           <p>
             Cost: $<%- trip.cost %>
