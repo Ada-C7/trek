@@ -16,18 +16,23 @@ $(document).ready(function() {
       e.preventDefault();
       var new_trip_url = "https://trektravel.herokuapp.com/trips";
       var formData = $(this).serialize();
-      $.post(new_trip_url, formData, function(response){
-        $('#message').html('<p> New trip added! </p>');
-        // console.log("NET TRIP CREATED");
-        $('#new-trip-form').hide();
-      });
-    });
 
-  });
+      var validation_result = validateNewTripForm();
+        if (validation_result != false){
+          $.post(new_trip_url, formData, function(response){
+            $('#message').html('<p> New trip added! </p>');
+          })
+          .fail(function(){
+            $('#errors').html('<p>Creating new reservation failed</p>');
+          });
+          $('#new-trip-form').hide();
+        }
+    });
+  }); // end of new trip block
   // checkIfTableEmpty();
   // checkIfErrorsEmpty();
 
-});
+}); // en dof document ready
 
 
 var allTripsClickHandler = function(event) {
@@ -129,6 +134,44 @@ var validateForm = function() {
       alert(alert_text);
     }
     if (name == "" || email == "" || age == ""){
+      return false;
+    }
+    return true;
+}
+
+
+var validateNewTripForm = function() {
+    var name = document.forms["new-trip-form"]["name"].value;
+    var continent = document.forms["new-trip-form"]["continent"].value;
+    var about = document.forms["new-trip-form"]["about"].value;
+    var category = document.forms["new-trip-form"]["category"].value;
+    var weeks = document.forms["new-trip-form"]["weeks"].value;
+    var cost = document.forms["new-trip-form"]["cost"].value;
+
+    var alert_text = ""
+    if (name == "") {
+        alert_text += "Name must be filled out \n";
+    }
+    if (continent == "") {
+        alert_text += "Continent must be filled out \n";
+    }
+    if (about == "") {
+        alert_text += "About must be filled out \n";
+    }
+    if (category == "") {
+        alert_text += "Category must be filled out \n";
+    }
+    if (weeks == "") {
+        alert_text += "Weeks must be filled out \n";
+    }
+    if (cost == "") {
+        alert_text += "Cost must be filled out \n";
+    }
+
+    if (alert_text != ""){
+      alert(alert_text);
+    }
+    if (name == ""|| continent == "" || about == "" || category == "" || weeks == "" || cost == ""){
       return false;
     }
     return true;
