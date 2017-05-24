@@ -8,6 +8,7 @@ var displayTrips = function(response) {
   var tripListTemplate = _.template($('#trip-list-template').html());
   $('#display').empty();
   for (var i = 0; i < response.length; i++) {
+    response[i]["days"] = response[i].weeks * 7;
     var generatedHtml = tripListTemplate({
       data: response[i]
     });
@@ -16,11 +17,18 @@ var displayTrips = function(response) {
 };
 
 var getOneTrip = function() {
-  $.get(baseUrl + "/" + this.id, displayOneTrip);
+  $.get(baseUrl + "/" + this.id, displayOneTrip).fail(failureCallback);
 };
 
 var displayOneTrip = function(response) {
-  console.log(response);
+  var showTripTemplate = _.template($('#show-trip-template').html());
+  $('#display').empty();
+  response["days"] = response.weeks * 7;
+  response["cost"] = response.cost.toFixed(2);
+  var generatedHtml = showTripTemplate({
+    data: response
+  });
+  $('#display').append(generatedHtml);
 }
 
 var failureCallback = function() {

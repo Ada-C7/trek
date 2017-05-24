@@ -19,7 +19,18 @@
     <script id="trip-list-template" type="text/template">
       <section class="trip" id=<%- data.id %>>
         <h3><%- data.name %></h3>
-        <p> <%- data.continent %>...<%- data.weeks %> weeks</p>
+        <p> <%- data.continent %>...<%- data.days %> days</p>
+      </section>
+    </script>
+
+    <script id="show-trip-template" type="text/template">
+      <section class="tripDetails">
+        <h3><%- data.name %></h3>
+        <h4><%- data.continent %></h4>
+        <p><%- data.about %></p>
+        <p> <%- data.category %></p>
+        <p><%- data.days %> days</p>
+        <p>$<%- data.cost %></p>
       </section>
     </script>
 
