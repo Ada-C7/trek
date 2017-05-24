@@ -12,7 +12,10 @@ var url = "https://trektravel.herokuapp.com/trips";
 var successCallback = function(response) {
   console.log("Successful request.");
   console.log(response);
+  generateList(response);
+};
 
+var generateList = function(response) {
   var tripTemplate = _.template($('#trip-item-template').html());
 
   for (var i = 0; i < response.length; i++) {
@@ -33,5 +36,10 @@ var clickHandler = function(event) {
 };
 
 $(document).ready(function() {
-  var response = $('#load').click(clickHandler);
+  $('#load').click(clickHandler);
+
+  $('#testing').click(function(event) {
+    alert("working!");
+  });
+
 });
