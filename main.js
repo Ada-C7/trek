@@ -21,22 +21,13 @@ $(document).ready(function(){
   var successCallbackTrip = function(response){
     console.log("success");
     console.log(response);
-    // console.log(this);
-    // console.log(response.id);
-    // console.log(event);
-    var id = '#trip-' + response.id;
-    console.log(id);
-
-    // $('#trip-' + response.id).empty();
 
     var generateHTML = tripsTemplate({
       trip: response
     });
-    // $('#trips-list').empty();
-    // need to figure out how to replace certain html already on page
-    $('#'+ response.id).show();
-    $('#trip-' + response.id).html($(generateHTML));
 
+    $('#'+ response.id).show();
+    $('#trip-' + response.id).replaceWith($(generateHTML));
   };
 
   var failureCallback = function() {
@@ -49,14 +40,18 @@ $(document).ready(function(){
 // working on showing details for one trip //
   $('#trips-list').on('click', 'a', function(event) {
     event.preventDefault();
-
-    /*your_code_here;*/
     console.log("someone clicked on a trip link");
     // how to access the trip id
     console.log(event.target.dataset.id)
-    var urlTrip = urlTrips + "/" + event.target.dataset.id
-    // console.log(urlTrip);
-    $.get(urlTrip, successCallbackTrip).fail(failureCallback);
 
+    var urlTrip = urlTrips + "/" + event.target.dataset.id
+    $.get(urlTrip, successCallbackTrip).fail(failureCallback);
   });
+
+  $('#trips-list').on('click', 'button', function(event){
+    event.preventDefault();
+    console.log("hide the info");
+    $('.hide-show-info').hide();
+  });
+
 });
