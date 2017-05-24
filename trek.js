@@ -73,7 +73,7 @@ var submitForm = function(){$('form').submit(function(e) {
 $(document).ready(function() {
   $('#load').click(getTrips);
   $('#trips').on('click','li', function() {
-    console.log($(this).attr("id"));
+    // console.log($(this).attr("id"));
     // need better way to save id
     var id = $(this).attr("id");
     getTripDetails(id);

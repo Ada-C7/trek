@@ -1,16 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Yellowtail');
+@import url('https://fonts.googleapis.com/css?family=Stalemate');
+
 
 
 .trip-tile {
-  display: inline-block;
-  height: 200px;
+  display: inline;
+  height: 300px;
   width: 200px;
+  color: white;
+  background-color: gray;
+  margin: auto;
+  border: 3px solid white;
+  padding: 100px 40px;
+  background-image: url(https://unsplash.it/200/300/?random);
 }
 
 
 #logo {
   color: black;
-  font-family: 'Yellowtail', cursive;
+  font-family: 'Stalemate', cursive;
   font-size: 72px;
   -ms-transform: rotate(-3deg); /* IE 9 */
   -webkit-transform: rotate(-3deg); /* Chrome, Safari, Opera */
@@ -35,9 +43,10 @@
 
 li {
   display: inline-block;
-  padding: 0px 5px;
+  padding: 15px 15px 15px 15px;
   text-transform: uppercase;
   font-size: .9em;
+  border-color: black;
 }
 
 li.highlight a, a:hover {
