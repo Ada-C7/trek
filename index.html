@@ -12,6 +12,7 @@
     <button id="get-trips">Get Trips</button>
 
     <main>
+      <p id="alert"></p>
       <ul id="trip-list"></ul>
       <article id="trip-details"></article>
     </main>
@@ -23,16 +24,25 @@
     </script>
 
     <script id="show-trip-template" type="text/template">
-      <article>
-        <h2><%- trip.name %></h2>
-        <ul>
-          <li><strong>Category</strong>: <%- trip.category %></li>
-          <li><strong>Continent</strong>: <%- trip.continent %></li>
-          <li><strong>Duration</strong>: <%- trip.weeks %> weeks</li>
-          <li><strong>Cost</strong>: $<%- trip.cost %></li>
-          <li><%- trip.about %></li>
-        </ul>
-      </article>
+      <h2><%- trip.name %></h2>
+      <ul>
+        <li><strong>Category</strong>: <%- trip.category %></li>
+        <li><strong>Continent</strong>: <%- trip.continent %></li>
+        <li><strong>Duration</strong>: <%- trip.weeks %> weeks</li>
+        <li><strong>Cost</strong>: $<%- trip.cost %></li>
+        <li><%- trip.about %></li>
+      </ul>
+
+      <h3>Reserve a Spot!</h3>
+      <form action=<%- url %> method="post">
+        Name:<br />
+        <input type="text" name="name" /><br />
+        Age:<br />
+        <input type="text" name="age" /><br />
+        Email:<br />
+        <input type="text" name="email" /><br />
+        <input type="submit" value="Submit" />
+      </form>
     </script>
 
   </body>
