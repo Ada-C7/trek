@@ -1,17 +1,24 @@
 var baseURL = " https://trektravel.herokuapp.com/trips";
 
 $(document).ready(function(){
-
   $("#load").on('click', clickAllTrips);
+  $(".trips-list").on('click', "tr", function()
+    {
+      var id = $(this).attr("id");
+      console.log(id);
+      clickShowTrip(id);
+    }  );
 });
 
 
 var clickAllTrips = function(){
-
+    $("#show-trip").empty();
+    $("#messages").empty();
     $.get(baseURL, successAllTrips).fail(failureCallback);
   };
 
 var clickShowTrip = function(tripID) {
+
   var showTripURL = baseURL + "/" + tripID;
   $.get(showTripURL, successShowTrip).fail(failureCallback);
 };
@@ -26,7 +33,9 @@ var clickReserveTrip = function(tripInfo) {
 var successShowTrip = function(response) {
     $("#trips-list-header").empty();
     $("#trips-list-body").empty();
+
     var target = $('#show-trip');
+    target.empty();
     keyNames = Object.keys(response);
     var showTripTemplate = _.template($('#show-trip-template').html());
 
@@ -70,15 +79,8 @@ var successAllTrips = function(response) {
   response.forEach(function(trip) {
     var generatedHTML = listTemplate({data: trip});
     targetTripList.append($(generatedHTML));
-    //generate click handler for each API id and add API as an id to the <th> tag in the trip list
-    targetTripList.on("click", "#"+ trip.id, function () {
-      clickShowTrip(trip.id);
-    });
   });
 };
-
-// Instead of binding events directly to the elements, bind one event to their container element, and delegate it:
-// In this case, the event handler is only executed for elements inside of the container #divID that have the class "pickup".
 
 var failureCallback = function() {
   $("#errors").html("<h4>TREK request failed!</h4>");

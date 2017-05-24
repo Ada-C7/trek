@@ -27,20 +27,19 @@
   </script>
 
   <script id="trips-list-template" type="text/template">
-    <tr>
-      <td id=<%- data.id%> > <%- data.name %></th>
-        <td> <%- data.continent %></td>
-        <td> <%- data.weeks %></td>
-      </tr>
-    </script>
+    <tr id=<%- data.id%> >
+      <td> <%- data.name %></td>
+      <td> <%- data.continent %></td>
+      <td> <%- data.weeks %></td>
+    </tr>
+  </script>
 
     <section id="show-trip"></section>
 
     <script id="show-trip-template" type="text/template">
-      <section>
         <h3><%- data.name %></h3>
         <p><%- data.about %></p>
-        <p>L  ocation: <%- data.continent %></p>
+        <p>Location: <%- data.continent %></p>
         <p>Duration: <%- data.weeks %> weeks</p>
         <p>Cost: $<%- data.cost %></p>
         <section id="reserve-trip">
@@ -62,7 +61,6 @@
               </section>
             </form>
         </section>
-      </section>
     </script>
 
 
