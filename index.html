@@ -12,8 +12,8 @@
 
       <div id='trips-list'>
         <script id="trips-template" type="text/template">
-          <section id=<%- 'trip-' + trip.id %> >
-            <h3 class="show_hide" data-id=<%- trip.id %> >
+          <section class="trip" id=<%- 'trip-' + trip.id %> >
+            <h3 class='closed' data-id=<%- trip.id %>  id=<%- 'show-hide-id-' + trip.id %> >
               <%- trip.name %>
             </h3>
             <p>
@@ -39,7 +39,32 @@
                 <strong>Cost: $</strong>
                 <%- trip.cost %>
               </p>
+
+              <div class="reservedMessage"></div>
+              <div>
+                <form id=<%- 'form' + trip.id %> method="post" action=<%-"https://trektravel.herokuapp.com/trips/" + trip.id + "/reserve" %> >
+                  <section>
+                    <label>Name</label>
+                    <input type="text" id="name" name="name"></input>
+                  </section>
+                  <section>
+                    <label>Age</label>
+                    <input type="text" id="age" name="age"></input>
+                  </section>
+
+                  <section>
+                    <label>Email</label>
+                    <input type="text" id="email" name="email"></input>
+                  </section>
+
+                  <section class="button">
+                    <button type="submit">Reserve</button>
+                  </section>
+                </form>
+              </div>
+
               <button id='hide'>Hide</button>
+
             </div>
           </section>
         </script>

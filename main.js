@@ -1,5 +1,7 @@
+var tripsTemplate;
+
 var successCallbackTrips = function(response){
-  var tripsTemplate = _.template($('#trips-template').html());
+  // var tripsTemplate = _.template($('#trips-template').html());
 
   console.log("success");
   console.log(response);
@@ -15,7 +17,7 @@ var successCallbackTrips = function(response){
 };
 
 var successCallbackTrip = function(response){
-  var tripsTemplate = _.template($('#trips-template').html());
+
   console.log("success");
   console.log(response);
 
@@ -24,6 +26,13 @@ var successCallbackTrip = function(response){
   });
 
   $('#trip-' + response.id).replaceWith($(generateHTML));
+  $('#show-hide-id-' + response.id).removeClass('closed').addClass('open');
+};
+
+var successCallbackReserve = function(response){
+  console.log(response);
+  alert('Trip Reserved!');
+  $('.reservedMessage').html('<p>You are Reserved for this Trip</p>')
 
 };
 
@@ -33,23 +42,32 @@ var failureCallback = function() {
 };
 
 $(document).ready(function(){
-
+  tripsTemplate = _.template($('#trips-template').html());
   var urlTrips = "https://trektravel.herokuapp.com/trips";
 
   // api request for all trips //
   $.get(urlTrips, successCallbackTrips).fail(failureCallback);
 
-  // gets the info for one trip//
-  $('#trips-list').on('click', 'h3', function(event) {
+  // have to use .on because .get might not be complete before document.ready
+  $('#trips-list').on('click', '.closed', function(event) {
     event.preventDefault();
 
     var urlTrip = urlTrips + "/" + event.target.dataset.id
     $.get(urlTrip, successCallbackTrip).fail(failureCallback);
   });
 
-  // will hide the extra info
-  $('#trips-list').on('click', 'button#hide', function(event){
+  $('#trips-list').on('click', '.open', function(event){
+    $('#'+event.target.dataset.id ).toggle();
+  });
+
+  $('#trips-list').on('submit', 'form', function(event) {
     event.preventDefault();
-    $('.slidingInfo').hide();
+    console.log("your in the submit form function");
+    console.log(this);
+
+    var url = $(this).attr("action");
+    var formData = $(this).serialize();
+
+    $.post(url, formData, successCallbackReserve).fail(failureCallback);
   });
 });

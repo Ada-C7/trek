@@ -1,4 +1,4 @@
-section {
+.trip {
   /*display: inline-block;*/
   border: solid;
 }
@@ -10,3 +10,7 @@ h3 {
 h3:hover {
   color:red;
 }
+
+/*form {
+  border: none;
+}*/
