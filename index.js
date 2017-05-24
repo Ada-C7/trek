@@ -1,6 +1,4 @@
-//write an API call function then call it in the document.ready
 var trekTemplate;
-
 var trekTemplateOne;
 
 var trekListURL = "https://trektravel.herokuapp.com"
@@ -23,13 +21,11 @@ var successCallbackTrek = function (response) {
 
   $('#form' + response.id).submit(function(e) {
     e.preventDefault();
-
     var url = $(this).attr("action");
     var formData = $(this).serialize();
-
     $.post(url, formData, function(response){
-      $('#message').html('<p>  Trip Reserved! </p>');
-      $('form').hide();
+      $('#message' + response.id).html('<p>  Trip Reserved! </p>');
+      $('#form' + response.id).hide();
     })
     .fail(function(){
       $('#message').html('<p> Trip Reservation Failed </p>');
