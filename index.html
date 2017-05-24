@@ -20,7 +20,6 @@
 
   <button class="button" id="load-all-trips"> Show All Trips </button>
   <section id="errors"></section>
-  <h2 id="trips-title" ></h2>
 
 
   <div id="trips"></div>
@@ -46,21 +45,37 @@
     </section>
   </script>
 
+<div id="singleTrip"></div>
 
   <script id="indiv-trip-template" type="text/template">
     <section>
+      <h3>
+        <%- data.name %>
+      </h3>
+
+      <p>Continent:
+        <%- data.continent %>
+      </p>
+
+      <p>
+        Length:
+        <%- data.weeks%> weeks
+
+      </p>
+
+      <p>
+        Cost: $<%- data.cost %>
+      </p>
       <p>Category:
         <%- data.category %>
       </p>
-      <p>
-        Cost:
-        <%- data.cost %>
-      </p>
 
-        <p>
-          The Journey:
-          <%- data.about %>
-        </p>
+        <h4>
+          The Journey:</h4>
+          <p>
+            <%- data.about %>
+          </p>
+
 
         <button class="button" id="ShowDetails"> Hide details</button>
       </div>
