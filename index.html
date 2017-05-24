@@ -14,16 +14,7 @@
   <button id="load">All Trips</button>
   <ul id="trips">
 
-    <script id="trips-item-template" type="text/template">
-
-    <% var target = $("#trips"); %>
-    <% for (var i = 0; i < tripsData.length; i ++) { %>
-      <% var trip = tripsData[i]; %>
-      <li><%- trip['name'] + ": " + trip['continent'] + ": " + trip["weeks"] + " weeks" %></li>
-    <% } %>
-</script>
-
-<script id="trips-item-template-2" type="text/template">
+<script id="trips-item-template" type="text/template">
   <li><%- trip['name'] + ": " + trip['continent'] + ": " + trip["weeks"] + " weeks" %></li>
 </script>
 

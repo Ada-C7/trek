@@ -5,21 +5,13 @@ var successCallback = function(response) {
   console.log("Success");
   console.log(response);
 
-  // var target = $("#trips");
-  // for (var i = 0; i < response.length; i ++) {
-  //   var trip = response[i];
-  //   target.append("<li>" + trip['name'] + ": " + trip['continent'] + ": " + trip["weeks"] + " weeks" + "</li>");
-  // }
-
-  tripsTemplate2 = _.template($('#trips-item-template-2').html());
+  tripsTemplate = _.template($('#trips-item-template').html());
   for (var i = 0; i < response.length; i ++) {
     // var trip = response[i];
-    var generatedHtml = tripsTemplate2({trip: response[i]});
+    var generatedHtml = tripsTemplate({trip: response[i]});
+    // append is going to cause the button to add on all the trips again every time its clicked
     $("#trips").append($(generatedHtml));
   }
-  // var generatedHtml = tripsTemplate({tripsData: response});
-  // console.log(generatedHtml);
-  // $("#trips").append($(generatedHtml));
 };
 
 var failureCallback = function() {
