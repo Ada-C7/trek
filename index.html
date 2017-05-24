@@ -18,27 +18,34 @@
       <article class="columns small-12 medium-6">
         <h2>
           <strong>Title: </strong>
-          <%- trip.title %>
+          <%- thisTrip.title %>
         </h2>
         // image here?
         <p>
           <strong>Description: </strong>
-          <%- trip.description %>
+          <%- thisTrip.about %>
+        </p>
+        <p>
+          <strong>Duration: </strong>
+          <%- thisTrip.weeks %> weeks
+        </p>
+        <p>
+          <strong>Cost: </strong>
+          $<%- thisTrip.cost %>
+        </p>
+        <p>
+          <strong>World Region: </strong>
+          <%- thisTrip.continent %>
         </p>
       </article>
       <article class="columns small-12 medium-6">
         <h2>
           <strong>Sign Up For This Trip! </strong>
-          <form> // how do I do a form-for type of thing??
-            <input />
-            <submit>Sign up!</submit>
-          </form>
         </h2>
-        // image here?
-        <p>
-          <strong>Description: </strong>
-          <%- trip.description %>
-        </p>
+        <form> // how do I do a form-for type of thing??
+        // <input />
+        <submit>Sign up!</submit>
+        </form>
       </article>
     </script>
     <!-- template for the main index view -->
@@ -46,7 +53,7 @@
       <article class="columns small-12 medium-6 large-3">
         <h2>
           <strong>Title: </strong>
-          <%- trip.name %>
+          <a class="get-trip"><%- trip.name %></a>
         </h2>
         <p>
           <strong>Duration: </strong>
