@@ -61,6 +61,8 @@ var successShowTrip = function(response) {
 
 //only works for trip-list class. how make it work for all the classes (details and reserve)?
 var successAllTrips = function(response) {
+  $("#trips-list-header").empty();
+  $("#trips-list-body").empty();
   $("#show-trip").empty();
 
   //fill in the headers with the template
