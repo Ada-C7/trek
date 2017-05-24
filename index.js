@@ -25,17 +25,16 @@ var successTrekCallback = function(response) {
   });
   $('#treks').append($(genHTML));
 
-  // console.log(response[i]);
-  // $('#test').append('<p>name: ' + response[i].name + '</p>');
+  $('form').submit(signUp);
 };
 
 var successSignUpCallback = function() {
-
+  $('#message').html("<p> You've signed up! </p>");
 };
 
 var failureCallback = function() {
   console.log("Didn't work :(");
-  $("#errors").html("<h1>AJAX request failed!</h1>");
+  $("#message").html("<h1>AJAX request failed!</h1>");
 };
 
 var alwaysCallback = function() {
@@ -62,11 +61,10 @@ var getTrek = function(event) {
 
 var signUp = function(event) {
   event.preventDefault();
-  var action = $(this).attr("action");
-  var id = $(this).attr("id");
-  console.log(id);
-  var url = BASEURL + id + reserve;
+  var url = $(this).attr("action");
+  // console.log(url);
   var formData = $(this).serialize();
+  // console.log(formData);
   $.post(url, formData, successSignUpCallback).fail(failureCallback).always(alwaysCallback);
 };
 
@@ -74,5 +72,4 @@ $(document).ready(function() {
   $('body').on('click', '#load-treks', getTreks);
 
   $('#treks').on('click', '.load-trek', getTrek);
-  $('form').submit(signUp);
 });
