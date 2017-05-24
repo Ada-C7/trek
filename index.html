@@ -12,20 +12,23 @@
   <section>
     <button id="button">Show All Trips</button>
   </section>
-  <section id="display">
-  </section>
+
+  <div id="errors"></div>
+
+  <section id="display"></section>
+
   <script id="trips-template" type="text/template">
-    <section>
+    <section class="trip">
       <br>
       <p>
         <strong> id: </strong>
-        <div><%- data.id %></div>
+        <%- data.id %>
 
       </p>
 
       <p>
         <strong> name: </strong>
-        <div><%- data.name %></div>
+        <%- data.name %>
 
       </p>
 
@@ -38,13 +41,13 @@
         <strong> weeks: </strong>
         <%- data.weeks %>
       </p>
-      <button id= "trip<%-data.id%>">
+      <button >
         Detail of Trip <%- data.id %>
       </button>
 
     </section>
   </script>
-  <section id="trip"></section>
+
   <script id="trip-template" type="text/template">
     <section>
       <p>
@@ -85,9 +88,27 @@
         <strong> cost: </strong>
         <%- data.cost %>
       </p>
-
-
     </section>
+
+    <form action="https://trektravel.herokuapp.com/trips/<%-data.id%>/reserve"  method="post">
+      <section>
+        <label>Name</label>
+        <input type="text" id="name" name= "name"></input>
+      </section>
+      <section>
+        <label>Age</label>
+        <input type="text" id="age" age= "age"></input>
+      </section>
+      <section>
+        <label>Email</label>
+        <input type="text" id="email" name= "email"></input>
+      </section>
+      <section class="button">
+        <button type="submit">Reserve the trip!</button>
+      </section>
+    </form>
   </script>
+
+
 </body>
 </html>

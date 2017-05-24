@@ -9,6 +9,7 @@ $(document).ready(function() {
 
 
 var tripsClickHandler = function(){
+  $("#display").empty();
   var url = buildUrl("");
   console.log(url);
   $.get(url, tripsSuccessCallback).fail(failureCallback);
@@ -21,37 +22,29 @@ var tripsSuccessCallback = function(response){
 
     var generatedHtml = tripsTemplate({
       data: response[i],
-      // tripUrl: buildUrl(response[i].id)
     });
     $("#display").append($(generatedHtml));
 
   }
-
-  for (var i = 0; i < response.length; i++) {
-  $("#trip"+response[i].id).click(function(){
-    alert("test");
-      var tripId = $(this).html().replace("Detail of Trip ", "");
-      var tripUrl = buildUrl(tripId);
-      console.log(tripUrl);
-
-      $.get(tripUrl, tripSuccessCallback).fail(failureCallback);
-
-  });
-};
+  $(".trip").on("click", "button",   (function(){
+    var tripId = $(this).html().replace("Detail of Trip ", "");
+    var tripUrl = buildUrl(tripId);
+    // console.log(tripUrl);
+    $.get(tripUrl, tripSuccessCallback).fail(failureCallback);
+  }));
 
 };
+
 
 var tripSuccessCallback = function(response){
-  console.log(response.id);
-
+  // console.log(response.id);
   var tripTemplate = _.template($("#trip-template").html());
   var generatedHtml = tripTemplate({
     data: response
   });
-  console.log("here");
-  $("#trip").append($(generatedHtml));
-
-  // for (var i = 0; i < )
+  // console.log("here");
+  $("#display").empty();
+  $("#display").append($(generatedHtml));
 }
 
 var failureCallback = function() {
