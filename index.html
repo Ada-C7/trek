@@ -23,7 +23,6 @@
         <h2>
           <strong><%- thisTrip.name %></strong>
         </h2>
-        // image here?
         <p>
           <strong>Description: </strong>
           <%- thisTrip.about %>
@@ -47,12 +46,15 @@
       </article>
       <article class="columns small-12 medium-6">
         <h2>
-          <strong>Sign Up For This Trip! </strong>
+          <strong>Join the Trek!</strong>
         </h2>
-        <form> // how do I do a form-for type of thing??
-        // <input />
-        <submit>Sign up!</submit>
+        <form>
+          <label>Name: </label>
+          <input class="text" id="join-name" />
+          <input class="button" id="join-trip" type="submit" value="Sign up!" />
         </form>
+        <section id="successful-sign-up">
+        </section>
       </article>
     </script>
     <!-- template for the main index view -->
@@ -64,6 +66,13 @@
         <p>
           <strong>Duration: </strong>
           <%- trip.weeks %> weeks
+        </p>
+      </article>
+    </script>
+    <script id="join-trip-template" type="text/javascript">
+      <article class="joined">
+        <p>
+          <%- joined %>
         </p>
       </article>
     </script>

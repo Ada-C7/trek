@@ -24,10 +24,24 @@ var tripCallback = function(response) {
     thisTrip: response
   });
   target.append($(oneTripHTML));
+  $('#join-trip').click(joinClickHandler);
 };
 
-var failureCallback = function() {
+var joinCallback = function(response) {
+  console.log("joined a trip!");
+  console.log(response);
+
+  var target = $('#successful-sign-up');
+  var joinTripTemplate = _.template($('#join-trip-template').html());
+  var joinTripHTML = joinTripTemplate({
+    joined: response
+  });
+  target.append(joinTripHTML);
+};
+
+var failureCallback = function(response) {
   console.log("Failed to get anything. Wooo....");
+  console.log(response);
 };
 
 var indexClickHandler = function() {
@@ -36,11 +50,24 @@ var indexClickHandler = function() {
   $.get(url, indexCallback).fail(failureCallback);
 };
 
+var joinClickHandler = function() {
+  // event.preventDefault();
+  console.log("clicked join!");
+  $("#successful-sign-up").empty();
+  var data = {
+    name: $("#join-name").val()
+  };
+  console.log(data);
+  var reserveBaseUrl = "https://trektravel.herokuapp.com/trips/";
+  var reserveUrl = reserveBaseUrl + $(this).attr('id') + "/reserve";
+  $.post(reserveUrl, data, joinCallback).fail(failureCallback);
+};
+
 var tripClickHandler = function() {
   console.log("clicked on a trip");
   $("#content").empty();
-  var baseUrl = "https://trektravel.herokuapp.com/trips/";
-  var finalUrl = baseUrl + $(this).attr('id');
+  var indexBaseUrl = "https://trektravel.herokuapp.com/trips/";
+  var finalUrl = indexBaseUrl + $(this).attr('id');
   $.get(finalUrl, tripCallback).fail(failureCallback);
 };
 
