@@ -20,6 +20,7 @@ var generateAllTrips = function(response) {
 var generateSingleTrip = function(response) {
   $('#trip-list').hide();
   $('#single-trip').show();
+  
   // compiles singleTripTemplate
   var singleTripTemplate = _.template($('#single-trip-template').html());
   var generatedHtml = singleTripTemplate({
