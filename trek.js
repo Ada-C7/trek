@@ -37,11 +37,10 @@ var successCallbackOne = function(response) {
 
   var detailsTemplate = _.template($('#details-template').html());
 
-// look at object and get stuff the right way
-    var generatedHtml = detailsTemplate({
-      data: response
-    });
-    $('#trip-details').append(generatedHtml);
+  var generatedHtml = detailsTemplate({
+    data: response
+  });
+  $('#trip-details').html($(generatedHtml));
 };
 var clickHandlerLocale = function(event) {
   $.get(detailsUrl, successCallbackOne).fail(failureCallback);
