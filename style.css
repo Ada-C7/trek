@@ -14,8 +14,9 @@ body {
 
 body::after {
   content: "";
-  background: url("http://www.environmentandsociety.org/sites/default/files/styles/popup/public/wegener-expedition2-walk_0.jpg?itok=u9iamiKA") repeat center center;
+  background: url("http://www.environmentandsociety.org/sites/default/files/styles/popup/public/wegener-expedition2-walk_0.jpg?itok=u9iamiKA") no-repeat center center;
   background-size: cover;
+  background-attachment: fixed;
   opacity: .5;
   display: block;
   top: 0;

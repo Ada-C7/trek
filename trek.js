@@ -1,4 +1,7 @@
 var indexCallback = function(response) {
+  if (notFound(response)) {
+    return;
+  }
   console.log("Loaded trips!");
   console.log(response);
 
@@ -14,23 +17,17 @@ var indexCallback = function(response) {
 
 };
 
-// var continentCallback = function(response) {
-//   console.log("filtering by continent!");
-//   console.log(response);
-//
-//   var target = $('#content');
-//   var allTripsTemplate = _.template($('#all-trips-template').html());
-//   for (var i = 0; i < response.length; i++) {
-//     var allTripsHTML = allTripsTemplate({
-//       trip: response[i]
-//     });
-//     target.append($(allTripsHTML));
-//   }
-//   $('.get-trip').click(tripClickHandler);
-//
-// };
+var notFound = function(response) {
+  if (response === undefined) {
+    $("#errors").append("Sorry, no trips found matching your search.");
+    return true;
+  }
+};
 
 var tripCallback = function(response) {
+  if (notFound(response)) {
+    return;
+  }
   console.log("Loaded a single trip!");
   console.log(response);
 
@@ -102,8 +99,37 @@ var continentClickHandler = function(event) {
   $.get(continentUrl, indexCallback).fail(failureCallback);
 };
 
+var priceClickHandler = function(event) {
+  event.preventDefault();
+  // console.log(event);
+  console.log("filtering trips by price");
+  $("#errors").empty();
+  $("#content").empty();
+  var data = $("#price-filter").serialize();
+  var price = data.replace("price=", "");
+  console.log(price);
+  var priceBaseUrl = "https://trektravel.herokuapp.com/trips/budget?query=";
+  var priceUrl = priceBaseUrl + price;
+  $.get(priceUrl, indexCallback).fail(failureCallback);
+};
+
+var weekClickHandler = function(event) {
+  event.preventDefault();
+  // console.log(event);
+  console.log("filtering trips by weeks");
+  $("#errors").empty();
+  $("#content").empty();
+  var data = $("#weeks-filter").serialize();
+  var week = data.replace("week=", "");
+  console.log(week);
+  var weekBaseUrl = "https://trektravel.herokuapp.com/trips/weeks?query=";
+  var weekUrl = weekBaseUrl + week;
+  $.get(weekUrl, indexCallback).fail(failureCallback);
+};
+
 $(document).ready(function() {
   $('#continent-filter').submit(continentClickHandler);
   $('#get-trips').click(indexClickHandler);
-
+  $('#price-filter').submit(priceClickHandler);
+  $('#weeks-filter').submit(weekClickHandler);
 });

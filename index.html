@@ -26,7 +26,25 @@
             </select>
           </section>
           <section >
-            <button class="button"  type="submit">Filter By Continent</button>
+            <button class="button"  type="submit">Search by Continent</button>
+          </section>
+        </form>
+
+        <form id="price-filter">
+          <section>
+            <input type="text" id="max-price" name="price"></input>
+          </section>
+          <section >
+            <button class="button"  type="submit">Search by Max Price</button>
+          </section>
+        </form>
+
+        <form id="weeks-filter">
+          <section>
+            <input type="text" id="max-week" name="week"></input>
+          </section>
+          <section >
+            <button class="button"  type="submit">Search by Max Weeks</button>
           </section>
         </form>
 
@@ -94,13 +112,14 @@
 
     <!-- template for the main index view -->
     <script id="all-trips-template" type="text/javascript">
-      <article class="trip columns small-12 medium-6 large-4">
-        <h3>
+      <article class="trip columns small-12 medium-4 large-3">
+        <h5>
           <a class="get-trip" id=<%- trip.id %> ><%- trip.name %></a>
-        </h3>
+        </h5>
         <p>
           <strong>Duration: </strong>
-          <%- trip.weeks %> weeks
+          <%- trip.weeks %> <% if (trip.weeks > 1) { %>
+            weeks <%  } else { %> week <% } %>
         </p>
       </article>
     </script>
