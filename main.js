@@ -26,8 +26,10 @@ $(document).ready(function(){
       trip: response
     });
 
+
     $('#'+ response.id).show();
     $('#trip-' + response.id).replaceWith($(generateHTML));
+    $('button#show').hide();
   };
 
   var failureCallback = function() {
@@ -38,7 +40,7 @@ $(document).ready(function(){
   $.get(urlTrips, successCallbackTrips).fail(failureCallback);
 
 // working on showing details for one trip //
-  $('#trips-list').on('click', 'a', function(event) {
+  $('#trips-list').on('click', '#show', function(event) {
     event.preventDefault();
     console.log("someone clicked on a trip link");
     // how to access the trip id
@@ -48,10 +50,11 @@ $(document).ready(function(){
     $.get(urlTrip, successCallbackTrip).fail(failureCallback);
   });
 
-  $('#trips-list').on('click', 'button', function(event){
+  $('#trips-list').on('click', 'button#hide', function(event){
     event.preventDefault();
     console.log("hide the info");
     $('.hide-show-info').hide();
+    $('button#show').show();
   });
 
 });

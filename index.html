@@ -26,6 +26,7 @@
               <%- trip.weeks %>
               weeks
             </p>
+            <button id='show' data-id=<%- trip.id %> >Show More</button>
             <div id=<%- trip.id %> class="hide-show-info">
               <p>
                 <strong>About:</strong>
@@ -39,7 +40,7 @@
                 <strong>Cost: $</strong>
                 <%- trip.cost %>
               </p>
-              <button>Hide</button>
+              <button id='hide'>Hide</button>
             </div>
           </section>
         </script>
