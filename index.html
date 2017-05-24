@@ -15,7 +15,6 @@
       <section class = "medium-2 large-2 columns">
         <button class="button  secondary hollow button" id="load"> All trips </button>
         <button class="button  secondary hollow button small" id="new-trip-button"> Create new trip </button>
-
       </section>
       <section class = "medium-10 large-10 columns">
         <section id = "errors-block" class="alert callout" data-closable="slide-out-right">
@@ -35,6 +34,32 @@
   </header>
 
   <main>
+
+    <div id = "new-trip"> </div>
+
+    <div> <p> Search trips by  continent</p>
+    <form  id = "reservation-form" action="" method="post">
+        <select>
+          <option value="africa">Africa</option>
+          <option value="asia">Asia</option>
+          <option value="europe">Europe</option>
+          <option value="southamerica">South America</option>
+          <option value="northamerica">North America</option>
+          <option value="australia">Australia</option>
+          <option value="antarctica">Antarctica</option>
+        </select>
+        <section class="button">
+          <button id = "submit-continent-form" type="submit">Submit</button>
+        </section>
+      </form>
+
+
+    </div>
+
+
+
+
+
     <section id = "trip-block" class=" callout" data-closable="slide-out-left">
       <div id="trip"></div>
       <script id="trip-template" type="text/template">
@@ -71,23 +96,8 @@
     </section>
 
 
-    <!--
-    <div id="trip"></div>
-    <script id="trip-template" type="text/template">
-    <section>
-    <p><%- data.name %></p>
-    <p>Id: <%- data.id %> </p>
-    <p> Continent:<%- data.continent %></p>
-    <p> Week: <%- data.weeks %></p>
-    <p> Cost:<%- data.cost %></p>
-    <p> Category:<%- data.category %> </p>
-    <p> About:<%- data.about %></p>
-  </section>
-</script> -->
-
-
 <section>
-  <table >
+  <table>
     <thead id = "trips-list-table">
       <tr>
         <th> Trip name </th>
@@ -107,8 +117,6 @@
   </table>
 </section>
 
-
-  <div id = "new-trip"> </div>
 
 
 
@@ -147,10 +155,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </section>
-
 </script>
-
-
 
 
   </main>

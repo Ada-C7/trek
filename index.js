@@ -29,10 +29,11 @@ $(document).ready(function() {
         }
     });
   }); // end of new trip block
-  // checkIfTableEmpty();
+  checkIfTableEmpty();
+  checkIfTripBlockEmpty();
   // checkIfErrorsEmpty();
 
-}); // en dof document ready
+}); // end of document ready
 
 
 var allTripsClickHandler = function(event) {
@@ -40,6 +41,7 @@ var allTripsClickHandler = function(event) {
 };
 
 var successTripsCallback = function(response) {
+
   var tripTemplate = _.template($('#trips-list-template').html());
   for (var i = 0; i < response.length; i++) {
     var generatedHtml = tripTemplate({
@@ -48,6 +50,8 @@ var successTripsCallback = function(response) {
     $('#trips-list').append($(generatedHtml));
   }
   $('.see_trip').click(tripClickHandler);
+    checkIfTableEmpty();
+    checkIfErrorsEmpty();
 };
 
 
@@ -81,6 +85,7 @@ var successTripCallback = function(response) {
         $('#reservation-form').hide();
       }
   });
+      // checkIfErrorsEmpty();
 };
 
 // Failure callback for all actions:
@@ -91,31 +96,43 @@ var failureCallback = function() {
 
 // Additional functions to check if table and error box is emty:
 var checkIfTableEmpty = function(){
-  console.log($('#trips-list').html().includes("1"));
   if (!$('#trips-list').html().includes("1")){
     $('#trips-list-table').hide();
   }
+  else {
+    $('#trips-list-table').show();
+  }
+};
+
+
+var checkIfTripBlockEmpty = function(){
+  console.log("I AM HERE");
+  console.log($('#trip').html());
+  // if ($('#trip').html() == ""){
+  //   $('#trip-block').hide();
+  // }
+  // else {
+  //   $('#trip-block').show();
+  // }
 };
 
 var checkIfErrorsEmpty = function(){
   if ($('#errors').html() == ""){
     $('#errors-block').hide();
   }
+  else {
+    $('#errors-block').show();
+  }
   if ($('#message').html() == ""){
     $('#message-block').hide();
+  }
+  else {
+    $('#message-block').show();
   }
 };
 
 
-// After closing modal reload a page:
-// $( ".trip-close-button").click(function() {
-//     location.reload();
-//     // allTripsClickHandler ?????
-// });
-
-
-
-// FORM VALIDATION:
+// FORM VALIDATION BLOCK:
 var validateForm = function() {
     var name = document.forms["reservation-form"]["name"].value;
     var age = document.forms["reservation-form"]["age"].value;
@@ -147,8 +164,8 @@ var validateNewTripForm = function() {
     var category = document.forms["new-trip-form"]["category"].value;
     var weeks = document.forms["new-trip-form"]["weeks"].value;
     var cost = document.forms["new-trip-form"]["cost"].value;
-
     var alert_text = ""
+
     if (name == "") {
         alert_text += "Name must be filled out \n";
     }
@@ -167,7 +184,6 @@ var validateNewTripForm = function() {
     if (cost == "") {
         alert_text += "Cost must be filled out \n";
     }
-
     if (alert_text != ""){
       alert(alert_text);
     }
