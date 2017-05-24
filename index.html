@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Trek</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <script id="trip-list-template" type="text/template">
@@ -10,7 +11,8 @@
       <h4><%- data.name %></h4>
       <ul>
         <li>
-          Travel to <%- data.continent %> for <%- data.weeks %> weeks!
+          <% var weeks = (data.weeks == 1) ? "week" : "weeks" %>
+          Travel to <%- data.continent %> for <%- data.weeks + " " + weeks %>!
         </li>
       </ul>
     </li>
