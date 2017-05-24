@@ -8,26 +8,17 @@
   <body>
     <button id="load-treks"> Gimme some cool treks! </button>
     <section id="errors"></section>
-    <div id="test">
+    <div id="treks">
     </div>
     <script id="trek-list" type="text/template">
-      <section class="treks">
+      <section>
         <h2><%- trek.name %></h2>
         <ul>
           <li>
             Continent: <%- trek.continent %>
           </li>
           <li>
-            About: <%- trek.about %>
-          </li>
-          <li>
-            Category: <%- trek.category %>
-          </li>
-          <li>
             Weeks: <%- trek.weeks %>
-          </li>
-          <li>
-            Cost: <%- trek.cost %>
           </li>
         </ul>
       </section>

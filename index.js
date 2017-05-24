@@ -2,17 +2,14 @@ var successTreksCallback = function(response) {
   console.log("success!");
   console.log(response);
 
-  // var treksTemplate = _.template($('#trek-list').html());
+  var treksTemplate = _.template($('#trek-list').html());
 
-  for (var i = 0; i < response.length; i++) {
-    // var genHTML = treksTemplate({
-    //   trek: response[i]
-    // });
-    // $('#trek-list').append($(genHTML));
-
-    console.log(response[i]);
-    $('#test').append('<p>name: ' + response[i].name + '</p>');
-  }
+  response.forEach(function(object) {
+    var genHTML = treksTemplate({
+      trek: object
+    });
+    $('#treks').append($(genHTML));
+  });
 };
 
 // var successTrekCallback = function(response) {
@@ -25,7 +22,7 @@ var successTreksCallback = function(response) {
 //     // var genHTML = treksTemplate({
 //     //   trek: response[i]
 //     // });
-//     // $('#trek-list').append($(genHTML));
+//     // $('#treks').append($(genHTML));
 //
 //     console.log(response[i]);
 //     $('#test').append('<p>name: ' + response[i].name + '</p>');
@@ -62,5 +59,5 @@ var getTreks = function(event) {
 
 $(document).ready(function() {
   $('#load-treks').click(getTreks);
-  $('h2').click(getTrek);
+  // $('h2').click(getTrek);
 });
