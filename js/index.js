@@ -42,30 +42,31 @@ $(document).ready(function() {
     return successCallback;
   };
 
+
+
   $('#all').click(function() {
-    if( $('#trips').children().length < 3 ) {
       $('#trips').empty();
       $.get(url, successCallback);
-    }
   });
 
-  $('#filter').click(function() {
-    $('#trips').empty();
-    var generatedHTML = filterTemplate({});
-    $('#trips').append($(generatedHTML));
-    $('form').submit(function(e){
-      e.preventDefault();
+    $('#filter').click(function() {
+      $('#trips').empty();
+      var generatedHTML = filterTemplate({});
+      $('#trips').append($(generatedHTML));
+      $('form').submit(function(e){
+        e.preventDefault();
 
-      var url = $(this).attr("action");
-      var formData = $(this).serialize().split('&');
-      for(var i = 0; i < formData.length; i++) {
-        formData[i] = formData[i].replace("%3F", "?");
-      }
-      formData = formData.join('');
-      console.log(url);
-      console.log(formData);
-    });
+        var url = $(this).attr("action");
+        var formData = $(this).serialize().split('&');
+        for(var i = 0; i < formData.length; i++) {
+          formData[i] = formData[i].replace("%3F", "?");
+        }
+        formData = formData.join('&');
+        $('#trips').empty();
+        $.get(url + formData, successCallback);
+      });
   });
+
 
 
 
