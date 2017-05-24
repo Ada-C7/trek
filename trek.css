@@ -1,0 +1,23 @@
+
+
+body{
+  /*background-image:url(./sunset.jpg);
+  background-position: center;
+  background-repeat: no-repeat;*/
+  /*background-size: cover;*/
+  /*margin-top:5.6rem;
+  padding-bottom:3rem;*/
+  background-color: #f7d9b6;
+}
+
+h1{
+  text-align: center;
+}
+
+.oneTrip{
+  border: 1px solid #6b2e03;
+  background-color: #fae9d6;
+  margin: 1%;
+  padding: 1%;
+  display: inline-block;
+}
