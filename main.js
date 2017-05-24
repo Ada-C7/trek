@@ -17,9 +17,10 @@ $(document).ready(function(){
     };
   };
 
-  // $('link').onClick(function(event){
+  var failureCallback = function() {
+    console.log("Didn't work :(");
+    $("#errors").html("<h2>Something went wrong - check back later</h2>");
+  };
 
-  // });
-
-  $.get(urlTrips, successCallback)
+  $.get(urlTrips, successCallback).fail(failureCallback);
 });
