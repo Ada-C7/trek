@@ -4,10 +4,8 @@ $(document).ready(function () {
   var tripListTemplate = _.template($('#trip-list-template').html());
 
   var successCallback = function (response) {
-    for (var i = 0; i < response.length; i++) {
-      var generatedHtml = tripListTemplate({ trips: response });
-      $('main').append(generatedHtml);
-    }
+    var generatedHtml = tripListTemplate({ trips: response });
+    $('main').append(generatedHtml);
   };
 
   var failCallback = function (response) {
