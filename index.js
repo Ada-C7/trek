@@ -28,7 +28,7 @@ var indexSuccessCallback = function(response){
 
 
 var failureCallback = function(){
-
+    $('#errors').html("<h1>Oops Something Went Wrong</h1>");
 };
 
 
@@ -44,7 +44,7 @@ var showClickHandler = function(event){
 };
 
 var showSuccessCallback = function(response){
-
+console.log(response);
   var tripShowTemplate = _.template($('#trip-show-template').html());
 
     var generatedHtml = tripShowTemplate({

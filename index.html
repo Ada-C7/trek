@@ -7,6 +7,7 @@
   <body>
     <h1> Tripcation </h1>
     <button id='explore'>  Explore All Trips </button>
+    <section id='errors'></section>
     <section id='trip-index'> </section>
     <section id='trip-show'> </section>
 
@@ -29,10 +30,13 @@
     <!-- Trip Show Template  -->
     <script id='trip-show-template' type='text/template'>
       <h1> <%- trip.name  %></h1>
-      <p><%- trip.continent %></p>
-      <p><%- trip.cost %></p>
+      <p>Trip id: <%- trip.id %></p>
+      <p>Category: <%- trip.category %></p>
+      <p>Location: <%- trip.continent %></p>
+      <p>Cost: $<%- trip.cost %></p>
+      <p>Duration: <%- trip.weeks %> week(s)</p>
+      <h3>About</h3>
       <p><%- trip.about %></p>
-      <p><%- trip.weeks %></p>
     </script>
   </body>
 </html>
