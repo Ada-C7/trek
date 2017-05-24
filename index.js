@@ -14,7 +14,7 @@ var successCallback = function(response) {
   console.log(response);
 
   // TODO: TEMP FIX
-  if (response.length === 68) {
+  if (response.length > 50) {
     generateList(response);
   } else {
     generateTripInfo(response);
@@ -33,23 +33,15 @@ var generateList = function(response) {
 };
 
 var generateTripInfo = function(response) {
-  console.log(response);
-
-  var tripInfoTemplate = _.template($('#trip-info-template').html());
-
-  for(var i = 0; i < response.length; i++) {
-    var generatedHtml = tripInfoTemplate ({
-      data: response[i]
+  console.log("Response:" + response);
+  var tripTemplate = _.template($('#trip-info-template').html());
+  var idSelection = response.id;
+  // for (var i = 0; i < response.length; i++) {
+    var generatedHtml = tripTemplate({
+      data: response
     });
-    // $('#hidden').toggleClass('#display');
-  }
-
-  // $('li').click(function(){
-  //   $(this).toggleClass('clicked');
-  // });
-  // $('#hidden').on('click', 'li', function(event) {
-  //   $('this').toggleClass('#display');
-  // });
+    $('#' + idSelection).append($(generatedHtml));
+  // }
 };
 
 var failureCallback = function() {
