@@ -45,12 +45,12 @@
     </section>
   </script>
 
-<div id="singleTrip"></div>
+  <div id="singleTrip"></div>
 
   <script id="indiv-trip-template" type="text/template">
     <section>
       <h3>
-        <%- data.name %>
+        <%- data.name.toUpperCase() %>
       </h3>
 
       <p>Continent:
@@ -67,17 +67,17 @@
         Cost: $<%- data.cost %>
       </p>
       <p>Category:
-        <%- data.category %>
+        <%- data.category.charAt(0).toUpperCase() + data.category.slice(1)%>
       </p>
 
-        <h4>
-          The Journey:</h4>
-          <p>
-            <%- data.about %>
-          </p>
+      <h4>
+        The Journey:</h4>
+        <p>
+          <%- data.about %>
+        </p>
 
 
-        <button class="button" id="ShowDetails"> Hide details</button>
+        <button class="button" id="HideDetails"> Back to Trips List</button>
       </div>
     </section>
   </script>

@@ -6,7 +6,7 @@ $(document).ready(function() {
   var tripsData = [];
 
   var tripsSuccessCallback = function(response) {
-    
+
   var tripsTtitle = "Which of these exciting adventures are in your future?";
 
   $('#trips').append("<h2>"+tripsTtitle+"</h2>");
@@ -51,6 +51,7 @@ $(document).ready(function() {
     });
 
   $('#trips').hide();
+  $('#singleTrip').show();
   $('#singleTrip').html($(generatedHtml));
 
   };
@@ -70,11 +71,18 @@ var singleTripHandler = function(event){
   $.get(tripURL, singleTripSuccess).fail(singleTripFailure);
 };
 
+var hideTripHandler = function(event){
+  $('#singleTrip').hide();
+  $('#trips').show();
+  console.log("Uh-oh");
+};
+
 
 $('#load-all-trips').click(tripsClickHandler);
 
-$("#trips").on("click", "button#ShowDetails",
-singleTripHandler);
+$("#trips").on("click", "button#ShowDetails", singleTripHandler);
+
+$("#singleTrip").on("click", "button#HideDetails", hideTripHandler);
 
 
 });
