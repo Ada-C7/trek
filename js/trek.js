@@ -36,15 +36,18 @@ var tripClickHandler = function() {
   $.get(baseUrl + tripId, tripSuccess);
 };
 
+var reserveClickHandler = function(e) {
+  e.preventDefault();
+  var url = $('#reserve-trip-form').attr('action');
+  var formData = $('#reserve-trip-form').serialize();
+  $.post(url, formData, function(response) {
+    console.log('Trip booked');
+  });
+  $('#reserve-trip-form').trigger('reset');
+};
+
 $(document).ready(function() {
   $('#load-trips').click(tripListClickHandler);
   $('#trip-info').on('click', 'h4', tripClickHandler);
-  $('#trip-info').on('click', '#reserve-trip button', function(e) {
-    e.preventDefault();
-    var url = $('#reserve-trip').attr('action');
-    var formData = $('#reserve-trip').serialize();
-    $.post(url, formData, function(response) {
-      console.log('Trip booked');
-    });
-  });
+  $('#trip-info').on('click', '#reserve-trip-form button', reserveClickHandler);
 });
