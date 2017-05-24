@@ -34,28 +34,32 @@ $(document).ready(function() {
   // checkIfErrorsEmpty();
 
 
-    $('#continent-form').change(continentClickHandler);
+  $('#continent-form').change(continentClickHandler);
+  // $('#weeks-form').change(weeksClickHandler);
+  $('#budget-form').change(budgetClickHandler);
 }); // end of document ready
 
 var continentClickHandler = function(event){
-  var continent = $('select option:selected').text();
+  var continent = $('#continent-select option:selected').text();
   var continent_url = "https://trektravel.herokuapp.com/trips/continent?query=" + continent
   $('#trips-list tr').remove();
-
   $.get(continent_url, successTripsCallback).fail(failureCallback);
+};
+
+var budgetClickHandler = function(event){
+  var budget = $('#budget-select option:selected').text();
+  var budget_url = " https://trektravel.herokuapp.com/trips/budget?query=" +budget
+  $('#trips-list tr').remove();
+  $.get(budget_url, successTripsCallback).fail(failureCallback);
 };
 
 
 var allTripsClickHandler = function(event) {
-
-
   $('#trips-list tr').remove();
   $.get(url_all_trip, successTripsCallback).fail(failureCallback);
 };
 
 var successTripsCallback = function(response) {
-
-
   var tripTemplate = _.template($('#trips-list-template').html());
   for (var i = 0; i < response.length; i++) {
     var generatedHtml = tripTemplate({
