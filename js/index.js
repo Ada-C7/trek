@@ -1,4 +1,5 @@
 var url = 'https://trektravel.herokuapp.com/trips';
+var id;
 
 var listSuccessCallback = function(response) {
   console.log("list feature is working!");
@@ -30,7 +31,7 @@ var tripSuccessCallback = function(response) {
 };
 
   var tripClickHandler = function() {
-    var id = $(this).attr('id');
+    id = $(this).attr('id');
     $('#list').empty();
     $.get(url + "/" + id, tripSuccessCallback).fail(failureCallback);
   };
@@ -40,22 +41,22 @@ var tripSuccessCallback = function(response) {
     $("#errors").html("<h1>AJAX request failed!</h1>");
   };
 
+
+var reservationSuccessCallback = function(response) {
+   $('#message').html('<p><strong> Reservation has been made!</strong></p>');
+   console.log(response);
+};
+
   $(document).ready(function() {
     $('#reserve').hide();
     $('#load').click(listClickHandler);
     $('#list').on('click', 'a', tripClickHandler);
 
-
-
-
     $('form').submit(function(e) {
       e.preventDefault();
-      var url = $(this).attr("action");
+      var url = $(this).attr("action") + id + "/reserve";
       var formData = $(this).serialize();
-      console.log("form data = ", formData);
-      $.post(url, formData, function(response){
-        $('#message').html('<h2> Reservation has been made!</h2>');
-        console.log(response);
-      });
+      $.post(url, formData, reservationSuccessCallback).fail(failureCallback);
+      $('#reserveForm').trigger('reset');
     });
   });

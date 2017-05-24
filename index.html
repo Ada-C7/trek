@@ -8,7 +8,7 @@
 </head>
 <body class="row">
   <main>
-    <section class="small-12 medium-4 large-4 columns" id="trips-button">
+    <section class="small-12 medium-4 large-4 columns" id="trips">
       <h1 >Welcome, Lazy Travelers</h1>
       <button class="button" id="load">See Trips</button>
     </section>
@@ -67,15 +67,24 @@
 
 
     <section class="small-12 medium-4 large-4 columns" id="reserve">
+      <h2>Reserve Your Spot</h2>
       <div id="message"></div>
-      <form action="https://trektravel.herokuapp.com/trips/1/reserve" method="post">
+      <form action="https://trektravel.herokuapp.com/trips/" method="post" id="reserveForm">
         <section>
           <label>Name</label>
           <input type="text" id="name" name="name"></input>
         </section>
+        <section>
+          <label>Age</label>
+          <input type="text" id="age" name="age"></input>
+        </section>
+        <section>
+          <label>Email</label>
+          <input type="text" id="email" name="email"></input>
+        </section>
 
-        <section class="button">
-          <button type="submit">Make Reservation</button>
+        <section>
+          <button class="button" type="submit">Make Reservation</button>
         </section>
       </form>
     </section>
