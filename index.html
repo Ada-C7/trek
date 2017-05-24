@@ -14,12 +14,14 @@
     <script id="trips-template" type="text/template">
       <section>
       <h2>
-        <%- data.name %>
+        <a href=https://trektravel.herokuapp.com/trips/<%- data.id %> > <%- data.name %></a>
       </h2>
-      <p>
-        <strong>Continent:</strong>
-        <%- data.continent %>
-      </p>
+      <ul>
+        <li><strong>Continent:</strong>
+        <%- data.continent %></li>
+        <li><strong>Duration:</strong>
+          <%- data.weeks %> weeks</li>
+      </ul>
       </section>
     </script>
 
