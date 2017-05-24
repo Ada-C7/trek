@@ -8,11 +8,6 @@ body {
   margin: 20px;
 }
 
-.individual-trip {
-  color: #E2D1C5;
-  margin: 15px;
-  border-style: ridge;
-}
 
 #trip-index {
   color: #074F57;
@@ -31,4 +26,16 @@ body {
 .transbox:hover {
   opacity: 0.9;
   filter: alpha(opaacity=90);
+}
+
+.individual-trip {
+  color: #E2D1C5;
+  margin: 15px;
+  border-style: ridge;
+}
+
+#name-form, label {
+  font-size: 25px;
+  color: #E2D1C5;
+  text-align: center;
 }
