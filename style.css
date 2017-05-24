@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  color: magenta;
+}
+
+
+#compass-rose {
+  width: 175px;
+}
+
+.button {
+  background-color: magenta;
+}

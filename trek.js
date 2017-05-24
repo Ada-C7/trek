@@ -11,7 +11,7 @@ var indexCallback = function(response) {
     target.append($(allTripsHTML));
   }
   $('.get-trip').click(tripClickHandler);
-  
+
 };
 
 var tripCallback = function(response) {
@@ -39,13 +39,11 @@ var indexClickHandler = function() {
 var tripClickHandler = function() {
   console.log("clicked on a trip");
   $("#content").empty();
-  var baseUrl = "https://trektravel.herokuapp.com/trips/1";
-  var id = "1";
-  var finalUrl = baseUrl + id;
+  var baseUrl = "https://trektravel.herokuapp.com/trips/";
+  var finalUrl = baseUrl + $(this).attr('id');
   $.get(finalUrl, tripCallback).fail(failureCallback);
 };
 
 $(document).ready(function() {
   $('#get-trips').click(indexClickHandler);
-  $('.get-trip').click(tripClickHandler);
 });
