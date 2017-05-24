@@ -5,14 +5,13 @@ $(document).ready(function() {
 
 var tripsData = [];
 
-var successCallback = function(response) {
-  // console.log("Success!");
-  // console.log(response);
-
+var tripsSuccessCallback = function(response) {
+  $('#trips-title').html("Which of these exciting adventures are in your future?");
   for (var i = 0; i < response.length; i++) {
     tripsData.push(response[i]);
   }
-  console.log("tripsDATA:"+tripsData[3]['name']);
+
+  console.log(response);
   var tripsListTemplate = _.template($("#trips-list-template").html());
 
 
@@ -25,22 +24,32 @@ var successCallback = function(response) {
 };
 
 
-
-var failureCallback = function() {
-  console.log("Didn't work :(");
-  $("#errors").html("<h1>Could not get list of trips</h1>");
+var tripsFailureCallback = function() {
+  console.log("Getting all trips did not work");
+  $("#errors").html("<h1>Sorry, we could not retrieve the list of trips at this time.</h1>");
 };
 
-var clickHandler = function(event) {
-  $('#trips-title').html("Which of these exciting adventures are in your future?");
-  $.get(url, successCallback).fail(failureCallback);
+var tripsClickHandler = function(event) {
+
+  $.get(url, tripsSuccessCallback).fail(tripsFailureCallback);
 };
 
-$('#load-all-trips').click(clickHandler);
 
-$("#trips").on("click", "button", function(event){
- console.log("HI!");
-});
+var singleTripHandler = function(event){
+ tripURL = url + "/" + $(this).attr("data-tripID");
+ $.get(tripURL, singleTripSuccess);
+ };
+
+var singleTripSuccess= function(response) {
+
+  console.log(response);
+};
+
+
+$('#load-all-trips').click(tripsClickHandler);
+
+$("#trips").on("click", "button#ShowDetails",
+singleTripHandler);
 
 
 });

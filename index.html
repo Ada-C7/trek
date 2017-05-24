@@ -18,36 +18,55 @@
 
   <h1>Thinking about taking a journey...</h1>
 
-<button class="button" id="load-all-trips"> Show All Trips </button>
-<section id="errors"></section>
-<h2 id="trips-title" ></h2>
+  <button class="button" id="load-all-trips"> Show All Trips </button>
+  <section id="errors"></section>
+  <h2 id="trips-title" ></h2>
 
 
- <div id="trips"></div>
+  <div id="trips"></div>
 
- <script id="trips-list-template" type="text/template">
-   <section>
+  <script id="trips-list-template" type="text/template">
+    <section>
 
+      <div class="oneTrip">
+        <h3>
+          <%- data.name %>
+        </h3>
 
-
-    <div class="oneTrip">
-     <h3>
-       <%- data.name %>
-     </h3>
-
-<button class="button" id="ShowDetails"> Learn More </button>
-
-     <p>Continent:
-       <%- data.continent %>
-     </p>
-     <p>
-       Weeks:
+        <p>Continent:
+          <%- data.continent %>
+        </p>
+        <p>
+          Weeks:
           <%- data.weeks%>
-     </p>
-  </div>
+        </p>
+        <button class="button" id="ShowDetails" data-tripID="<%- data.id%>"> Learn More </button>
 
-   </section>
- </script>
+      </div>
+    </section>
+  </script>
+
+
+  <script id="indiv-trip-template" type="text/template">
+    <section>
+      <p>Category:
+        <%- data.category %>
+      </p>
+      <p>
+        Cost:
+        <%- data.cost %>
+      </p>
+
+        <p>
+          The Journey:
+          <%- data.about %>
+        </p>
+
+        <button class="button" id="ShowDetails"> Hide details</button>
+      </div>
+    </section>
+  </script>
+
 
 
 
