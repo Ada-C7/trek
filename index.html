@@ -10,6 +10,24 @@
   </head>
   <body>
     <h1>Trips</h1>
+
       <div id='trips-list'></div>
+      <script id="trips-template" type="text/template">
+        <section>
+          <h2>
+            <%- trip['name'] %>
+          </h2>
+          <p>
+            <strong>Location: </strong>
+            <%- trip.continent %>
+          </p>
+          <p>
+            <strong>Duration: </strong>
+            <%- trip.weeks %>
+            weeks
+          </p>
+        </section>
+      </script>
+
   </body>
 </html>
