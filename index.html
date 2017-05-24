@@ -4,38 +4,76 @@
   <meta charset="utf-8">
   <title>Tripper</title>
   <link rel="stylesheet" href="foundation.css"  type="text/css"/>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"/>
 
-  <body>
 
-    <script id="trippy" type="text/template">
 
-      <section>
-        <button id="bon-voyage" class="button">Bon Voyage!</button>
-        <section id="trips">
+</head>
 
-          <h2>
-            <%- data.name %>
-          </h2>
-          <p>
-            <strong>Description:</strong>
-            <%- data.description %>
-          </p>
-          <p>
-            <strong>Location:</strong>
-            <% for (var i = 0; i < data.location.length; i++) { %>
-              <%- data.location[i] %>
-              <% } %>
-            </p>
-          </section>
-        </script>
+<body class="surround">
+  <header class="head">
 
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" type="text/javascript"></script>
-        <script src="trek.js"type="text/javascript"></script>
-        <script src="js/vendor/jquery.js"></script>
-        <script src="js/foundation.min.js"></script>
-        <script>
-        $(document).foundation();
-        </script>
-      </body>
+    <section>
+
+      <button id="bon-voyage" class="button">Bon Voyage!
+      </button>
+
+    </header>
+
+  </section>
+
+  <section id="print-trippy">
+
+  </section>
+  <script id="trippy" type="text/template">
+
+    <p>
+      <strong>Trips!</strong>
+      <h2>
+        <%- trip.name %>
+      </h2>
+    </p>
+    <p>
+      <strong>Continent</strong>
+      <%- trip.continent %>
+    </p>
+    <p>
+      <strong>Weeks</strong>
+      <%- trip.weeks %>
+      </p>
+
+    </script>
+    <!-- ***********************************
+
+
+    *********************************** -->
+    <!-- <section id="tripper" type="text/template">
+
+    <p>
+    <strong>Trip</strong>
+    <h2>
+    <%- trip.name %>
+  </h2>
+</p>
+
+<p>
+<strong>Location</strong>
+<%- trip.location.id %>
+</p>
+
+<p>
+<strong>Description:</strong>
+<%- data.description %>
+</p>
+<p>
+
+
+</p>
+
+</section> -->
+
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="trek.js"type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" type="text/javascript"></script>
+</body>
