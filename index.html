@@ -8,6 +8,9 @@
   <section id="errors">
 
   </section>
+  <section id="message">
+    
+  </section>
   <button id="load"> Fetch! </button>
   <div id="trips-list"></div>
   <script id="trips-template" type="text/template">
@@ -51,7 +54,7 @@
         </h3>
       </section>
       <section id="reserve-form">
-        <form action="https://trektravel.herokuapp.com/trips/1/reserve" method="post">
+        <form action="https://trektravel.herokuapp.com/trips/<%- data.id %>/reserve" method="post">
           <section>
             <label>Name</label>
             <input type="text" id="name" name="name"></input>
@@ -66,7 +69,7 @@
           </section>
 
           <section class="button">
-            <button type="submit">Add Pet</button>
+            <button type="submit">Reserve Trip</button>
           </section>
         </form>
     </section>
