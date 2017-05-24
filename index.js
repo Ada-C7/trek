@@ -12,13 +12,14 @@ $(document).ready(function() {
     });
     $('#new-trip').html($(generatedHtml));
 
-    $('new-trip-form').submit(function(e) {
+    $('#new-trip-form').submit(function(e) {
       e.preventDefault();
-      var url = $(this).attr("action");
+      var new_trip_url = "https://trektravel.herokuapp.com/trips";
       var formData = $(this).serialize();
-      $.post(url, formData, function(response){
+      $.post(new_trip_url, formData, function(response){
         $('#message').html('<p> New trip added! </p>');
-
+        // console.log("NET TRIP CREATED");
+        $('#new-trip-form').hide();
       });
     });
 
