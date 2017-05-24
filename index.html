@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
 
+  <!-- <link href="foundation.css" media="screen" rel="stylesheet" type="text/css"> -->
   <link href="trek.css" media="screen" rel="stylesheet" type="text/css">
   <title>Trekkin'</title>
 
@@ -17,7 +18,7 @@
 
   <h1>Thinking about taking a journey...</h1>
 
-<button id="load-all-trips"> Show All Trips </button>
+<button class="button" id="load-all-trips"> Show All Trips </button>
 <section id="errors"></section>
 <h2 id="trips-title" ></h2>
 
@@ -26,10 +27,16 @@
 
  <script id="trips-list-template" type="text/template">
    <section>
+
+
+
     <div class="oneTrip">
      <h3>
        <%- data.name %>
      </h3>
+
+<button class="button" id="ShowDetails"> Learn More </button>
+
      <p>Continent:
        <%- data.continent %>
      </p>

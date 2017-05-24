@@ -32,11 +32,15 @@ var failureCallback = function() {
 };
 
 var clickHandler = function(event) {
-  $('#trips-title').append("Which of these exciting adventures are in your future?");
+  $('#trips-title').html("Which of these exciting adventures are in your future?");
   $.get(url, successCallback).fail(failureCallback);
 };
 
 $('#load-all-trips').click(clickHandler);
+
+$("#trips").on("click", "button", function(event){
+ console.log("HI!");
+});
 
 
 });
