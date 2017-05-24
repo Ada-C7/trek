@@ -68,10 +68,7 @@ var submitForm = function(){$('form').submit(function(e) {
     $('#message').html('<p>Reservation Failed</p>');
   });
 });
-}
-
-
-
+};
 
 $(document).ready(function() {
   $('#load').click(getTrips);
