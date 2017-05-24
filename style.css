@@ -1,19 +1,28 @@
+
+
+/*comfortaa for headers*/
+/*kurale for trek?*/
+/*maybe imfell english for trek?*/
+/*cutive mono for main text*/
+
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Antic|IM+Fell+English+SC|Kurale');
+
 * {
   margin: 0;
   padding: 0;
+  font-family: "Comfortaa";
 }
 
 body {
   display: block;
   position: relative;
   min-height: 675px;
-  /*width: 100%;*/
 }
+
 body::after {
   content: "";
   background: url("http://www.environmentandsociety.org/sites/default/files/styles/popup/public/wegener-expedition2-walk_0.jpg?itok=u9iamiKA") repeat center center;
   background-size: cover;
-  /*background-attachment: fixed;*/
   opacity: .5;
   display: block;
   top: 0;
@@ -25,24 +34,24 @@ body::after {
 }
 
 header {
-  /*color: magenta;*/
   text-align: center;
 }
 
-.button {
-  /*background-color: magenta;*/
-}
-
-/*.button:hover {
-  background-color: gold;
-  color: magenta;
-}*/
-
 
 h1 {
-  font-size: 3em;
+  font-size: 4em;
 }
 
-.trip {
-  padding: 10px;
+
+
+button, p {
+  font-family: "Antic";
+}
+
+.hidden {
+  display: none;
+}
+
+#header-title {
+  font-family: "IM Fell English SC";
 }

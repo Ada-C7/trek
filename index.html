@@ -19,7 +19,7 @@
 
     <!-- template for the individual trip view -->
     <script id="single-trip-template" type="text/javascript">
-      <article class="columns small-12 medium-6">
+      <article class="columns small-12 medium-12 large-9">
         <h2>
           <strong><%- thisTrip.name %></strong>
         </h2>
@@ -44,7 +44,7 @@
           <%- thisTrip.category %>
         </p>
       </article>
-      <article class="columns small-12 medium-6">
+      <article class="columns small-12 medium-12 large-3">
         <h2>
           <strong>Join the Trek!</strong>
         </h2>
@@ -61,8 +61,9 @@
             <label>Email</label>
             <input type="text" id="email" name="email"></input>
           </section>
-          <section class="button">
+          <section class="button" id="sign-up">
             <button type="submit">Sign Up!</button>
+            <p class="hidden" id="join-id"> <%- thisTrip.id %> </p>
           </section>
         </form>
         <section id="successful-sign-up">
@@ -83,8 +84,8 @@
     </script>
     <script id="join-trip-template" type="text/javascript">
       <article class="joined">
-        <p>
-          <%- joined %>
+        <p>Successfully signed up for
+          <%- joined.name %>!
         </p>
       </article>
     </script>

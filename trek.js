@@ -55,15 +55,9 @@ var joinClickHandler = function(event) {
   console.log("clicked join!");
   $("#successful-sign-up").empty();
   var data = $(this).serialize();
-  // var data = {
-  //   name: "Aurora",
-  //   age: 34,
-  //   email: "aurora@test.com"
-  // };
   console.log(data);
-  // $(this).attr('id')
-  var reserveBaseUrl = "https://trektravel.herokuapp.com/trips/22";
-  var reserveUrl = reserveBaseUrl + "/reserve";
+  var reserveBaseUrl = "https://trektravel.herokuapp.com/trips/";
+  var reserveUrl = reserveBaseUrl + $('#join-id').html() + "/reserve";
   $.post(reserveUrl, data, joinCallback).fail(failureCallback);
 };
 
