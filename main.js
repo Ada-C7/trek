@@ -1,3 +1,4 @@
+// $(document).foundation();
 var tripsTemplate;
 
 var successCallbackTrips = function(response){

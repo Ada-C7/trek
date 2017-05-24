@@ -1,6 +1,15 @@
+
 .trip {
   /*display: inline-block;*/
+  margin: 3%;
   border: solid;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+  margin-top: 2%;
+  padding: 0;
 }
 
 h3 {
