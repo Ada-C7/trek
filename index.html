@@ -2,12 +2,36 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link href="trek.css" media="screen" rel="stylesheet" type="text/css">
     <title></title>
   </head>
   <body>
-    <button id="load">Get All Trips!</button>
+    <section>
+      <button id="load">Get All Trips!</button>
+    </section>
+    <div class="errors"></div>
     <div id="trips"></div>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script id="list-template" type="text/template">
+      <section>
+        <p>
+          <strong>Continent:</strong>
+          <%- data.continent %>
+        </p>
+        <p>
+          <strong>Name of the Trip:</strong>
+          <%- data.name %>
+        </p>
+        <p>
+          <strong>Length:</strong>
+          <%- data.weeks %>
+        </p>
+      </section>
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
     <script src="trek.js" type="text/javascript"></script>
   </body>
 </html>
