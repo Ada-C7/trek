@@ -15,12 +15,15 @@
 
     <main>
 
-      <table>
+      <table id = 'view_list'>
         <thead id = 'list_head_of_trips'>
         </thead>
         <tbody id = 'list_of_trips'>
         </tbody>
       </table>
+
+      <section id = 'trip'>
+      </section>
 
     </main>
 
@@ -31,9 +34,7 @@
 
 
 
-
-
-
+<!--  TEMPLATES ****************************************************-->
 
 <script id="list_head_template" type="text/template">
         <tr>
@@ -44,7 +45,6 @@
         </tr>
 </script>
 
-
 <script id="list_template" type="text/template">
         <tr>
           <td><%- data.id%></td>
@@ -52,7 +52,33 @@
           <td><%- data.continent%></td>
           <td><%- data.weeks %></td>
           <td>
-            <button id= 'getTrip'>Info for trip <%- data.id%></button>
+            <button id= 'getTrip' data-tripid = <%- data.id%> >Info for trip <%- data.id%></button>
           </td>
         </tr>
+</script>
+
+
+<script id="trip_template" type="text/template">
+  <section>
+
+    <div>
+      <h3><%- data.id%>: <%- data.name%></h3>
+      <p>
+        <%- data.continent%>
+      </p>
+      <p>
+        <%- data.weeks%>
+      </p>
+      <p>
+        $<%- data.cost%>
+      </p>
+    </div>
+
+    <div>
+      <article>
+        <%- data.about%>
+      </article>
+    </div>
+
+  </section>
 </script>
