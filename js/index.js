@@ -18,19 +18,18 @@ $(document).ready(function() {
         });
         $('#trips').append($(generatedHTML));
       }
+
       $('a').on("click", function() {
         var id = $(this).parent().parent().attr('id');
         $("#trips").empty();
         $.get(url + "/" + id, singleTripCallback);
-        console.log($('#trips').children().length);
-
-
       });
+
     return successCallback;
   };
 
   $('.button').click(function() {
-    if( $('#trips').children().length < 2 ) {
+    if( $('#trips').children().length < 3 ) {
       $('#trips').empty();
       $.get(url, successCallback);
     }

@@ -15,7 +15,7 @@
       </section>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
       <script id="trips-template" type="text/template">
-        <section id="<%- trip.id %>">
+        <section id="<%- trip.id %>" class="columns large-4 small-12">
           <h2><a href="#"><%- trip.name %></a></h2>
           <p>
             <%- trip.continent %>
@@ -24,7 +24,7 @@
     </main>
     </script>
     <script id="trip-template" type="text/template">
-      <section class="row">
+      <section class="columns large-6 small-12">
         <h2><%- trip.name %></h2>
         <p>
           <%- trip.id %>
@@ -38,6 +38,14 @@
         <p>
           <%- trip.weeks %>
         </p>
+      </section>
+      <section class="columns large-6 small-12">
+        <h2>Reserve Trip</h2>
+        <form>
+          Name: <br />
+          <input type="text" name="name"><br>
+          <input type="submit" value="Submit" class="button">
+        </form>
       </section>
   </main>
   </script>
