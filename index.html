@@ -3,14 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>🐒 Trek</title>
-    <link href="main.css" media="screen" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="styles/foundation.css">
+    <link href="styles/main.css" media="screen" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
     <script src="trek.js" type="text/javascript"></script>
   </head>
   <body>
     <section id="errors"></section>
-    <button id="load-trips"> Show all trips! </button>
+    <button class="button row" id="load-trips"> Show all trips! </button>
     <ul id="trips"></ul>
+
+    <div class="popup-backdrop" id="popup">
+      <article class="popup">
+          <section id="popup-content"></section>
+          <p><a id="close-popup" href="#">x</a></p>
+          <!-- <a id="close-popup" class="popup-close">x</a> -->
+      </article>
+    </div>
   </body>
 </html>

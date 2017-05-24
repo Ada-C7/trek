@@ -9,11 +9,21 @@ var successTripsCallback = function(response) {
   });
 };
 
+// var successTripInfoCallback = function(response) {
+//   console.log(response);
+//   var id = response['id'];
+//   var trip = $('#' + id);
+//   trip.append("<p>" + response['about'] + "</p>");
+//   popupHandler();
+// }
+
 var successTripInfoCallback = function(response) {
   console.log(response);
   var id = response['id'];
-  var trip = $('#' + id);
-  trip.append("<p>" + response['about'] + "</p>");
+  var target = $('#popup-content');
+  target.empty();
+  target.prepend("<h2>" + response['name'] + "</h2>" + "<p>" + response['about'] + "</p>");
+  popupHandler();
 }
 
 var failureCallback = function() {
@@ -25,6 +35,16 @@ var clickHandler = function() {
   $.get(BASE_URL, successTripsCallback).fail(failureCallback);
 };
 
+var popupHandler = function() {
+  $('#popup').fadeIn(500);
+  
+  // close popup window
+  $('#close-popup').on('click', function(event)  {
+      event.preventDefault();
+      $('#popup').fadeOut(500);
+  });
+};
+
 $(document).ready(function() {
   $('#load-trips').click(clickHandler);
 
@@ -33,4 +53,17 @@ $(document).ready(function() {
       var url = BASE_URL + id
       $.get(url, successTripInfoCallback).fail(failureCallback);
   });
+
+  // $('#popup-link').on('click', function(event)  {
+  //     event.preventDefault();
+  //     $('#popup').fadeIn(500);
+  //
+  // });
+  //
+  // // close popup window
+  // $('#close-popup').on('click', function(event)  {
+  //     event.preventDefault();
+  //     $('#popup').fadeOut(500);
+  // });
+
 });
