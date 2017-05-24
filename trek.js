@@ -24,3 +24,6 @@ var clickHandler = function(event) {
 $(document).ready(function() {
   $('#load').click(clickHandler);
 });
+
+/* would like some error handling to get rid of the ugly
+responses.*/
