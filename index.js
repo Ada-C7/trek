@@ -8,7 +8,6 @@
 // html page (index.html).
 
 var url = "https://trektravel.herokuapp.com/trips";
-var lastId = null;
 
 var successCallback = function(response) {
   console.log("Successful request.");
@@ -44,16 +43,17 @@ var generateTripInfo = function(response) {
       data: response
     }
   );
-  var idSelection = response.id;
 
-  if (idSelection != lastId) {
-    $('#' + idSelection).append($(generatedHtml));
+  var idSelection = '#' + response.id;
 
-    lastId = idSelection;
+  if ($(idSelection).find('ul').length > 0) {
+    console.log(idSelection);
+    console.log("Inside delete loop.");
+    $('.trip-info', idSelection).remove();
   } else {
-    $('.trip-info').remove();
+    console.log("Create loop.");
+    $(idSelection).append($(generatedHtml));
 
-    lastId = null;
   }
 };
 
