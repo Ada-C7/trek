@@ -1,20 +1,36 @@
 var url = 'https://trektravel.herokuapp.com/trips';
 
-var successCallback = function(response) {
+var successTripsCallback = function(response) {
   var target = $('#trips');
-  console.log(response[0]);
   for (var i = 0; i < response.length; i++) {
     trip = response[i];
-    target.append("<li>" + trip.name + "</li>");
+    target.append("<li>" + trip.id + ": " + trip.name + "</li>");
+
   }
 };
 
+var successSingleTripCallback = function(response) {
+  var target = $('#trip-details');
+  var trip = response;
+  var tripDetails = _.template(target.html());
+  var generatedHtml = tripDetails({
+    data: trip
+    });
+    console.log(generatedHtml)
+  target.append($(generatedHtml));
 
-var clickHandler = function() {
-  $('body').empty();
+};
 
-  $.getJSON(url).success(successCallback).fail(failureCallback);
 
+var getTrips = function() {
+  $('#trips').empty();
+  $.getJSON(url).success(successTripsCallback).fail(failureCallback);
+};
+
+var getTripDetails = function(id) {
+  $('#trips').empty();
+  var url = "https://trektravel.herokuapp.com/trips/" + id;
+  $.getJSON(url).success(successSingleTripCallback).fail(failureCallback);
 };
 
 var failureCallback = function(){
@@ -24,6 +40,9 @@ var failureCallback = function(){
 
 
 $(document).ready(function() {
-  $('#load').click(clickHandler);
-
+  $('#load').click(getTrips);
+  $('#trips').on('click','li', function() {
+    var id = $(this).text().charAt(0);
+    getTripDetails(id);
+  });
 });

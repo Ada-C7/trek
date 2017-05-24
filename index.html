@@ -5,9 +5,7 @@
     <title>Trips</title>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="trek.js"></script>
-    <script type="text/underscore" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js
-Copy
-"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
 <h1>GlobePlotter</h1>
 
 
@@ -15,8 +13,31 @@ Copy
   </head>
   <body>
     <button id="load"> Get Trips! </button>
-    <ul id="trips"></ul>
+    <section id="trips"></section>
     <section id="errors"></section>
+    <script id="trip-details" type="text/template">
+      <section>
+        <h2>
+          <%- data.name %>
+        </h2>
+        <p>
+          <%- data.continent %>
+        </p>
+        <p>
+          <%- data.cost %>
+        </p>
+        <p>
+          <%- data.weeks %>
+        </p>
+        <p>
+          <%- data.about %>
+        </p>
+        <p>
+          <%- data.category %>
+        </p>
+
+      </section>
+    </script>
 
   </body>
 </html>
