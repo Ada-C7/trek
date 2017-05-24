@@ -9,11 +9,11 @@
     <h1>Trips</h1>
       <div id='errors'></div>
 
-      <div id='trips-list'></div>
+      <div id='trip-info'></div>
       <script id="trips-template" type="text/template">
         <section>
-          <a id="trip" href="">
-            <%- trip['name'] %>
+          <a id="trip" href="" data-id=<%- trip.id %> >
+            <%- trip.name %>
           </a>
           <p>
             <strong>Location: </strong>
@@ -23,6 +23,18 @@
             <strong>Duration: </strong>
             <%- trip.weeks %>
             weeks
+          </p>
+          <p>
+            <strong>About:</strong>
+            <%- trip.about %>
+          </p>
+          <p>
+            <strong>Category: </strong>
+            <%- trip.category %>
+          </p>
+          <p>
+            <strong>Cost: $</strong>
+            <%- trip.cost %>
           </p>
         </section>
       </script>
