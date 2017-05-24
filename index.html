@@ -3,10 +3,6 @@
 <head>
   <meta charset="utf-8">
   <title>Trek Travel</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
-  <script src="index.js" type="text/javascript"></script>
-</head>
 <body>
   <button id="load-trips"> Trips </button>
   <section id="trip-list"></section>
@@ -14,11 +10,21 @@
 
     <section>
       <p>
-        Trip Id: <%- data.id %> Trip Location: <%- data.name %> Trip Continent: <%- data.continent %> Week: <%- data.weeks %>
+        Trip Id: <a href="#"><%- data.id %></a> Trip Location: <%- data.name %> Trip Continent: <%- data.continent %> Week: <%- data.weeks %>
       </p>
     </section>
   </script>
 
+
+
+
+
+
+  
+//script tags, i don't want anything to go below this.
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
+  <script src="index.js" type="text/javascript"></script>
 </body>
 </html>
 
