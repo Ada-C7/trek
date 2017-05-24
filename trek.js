@@ -46,8 +46,9 @@ var failureCallback = function(){
 $(document).ready(function() {
   $('#load').click(getTrips);
   $('#trips').on('click','li', function() {
-    // console.log($(this).html().charAt(11));
-    var id = $(this).html().charAt(11);
+    console.log($(this).html().charAt(9));
+    // need better way to save id
+    var id = $(this).html().charAt(9);
     getTripDetails(id);
   });
 });
