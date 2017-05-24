@@ -12,7 +12,13 @@ var url = "https://trektravel.herokuapp.com/trips";
 var successCallback = function(response) {
   console.log("Successful request.");
   console.log(response);
-  generateList(response);
+
+  // TODO: TEMP FIX
+  if (response.length === 68) {
+    generateList(response);
+  } else {
+    generateTripInfo(response);
+  }
 };
 
 var generateList = function(response) {
@@ -26,13 +32,48 @@ var generateList = function(response) {
   }
 };
 
+var generateTripInfo = function(response) {
+  console.log(response);
+
+  var tripInfoTemplate = _.template($('#trip-info-template').html());
+
+  for(var i = 0; i < response.length; i++) {
+    var generatedHtml = tripInfoTemplate ({
+      data: response[i]
+    });
+    // $('#hidden').toggleClass('#display');
+  }
+
+  // $('li').click(function(){
+  //   $(this).toggleClass('clicked');
+  // });
+  // $('#hidden').on('click', 'li', function(event) {
+  //   $('this').toggleClass('#display');
+  // });
+};
+
 var failureCallback = function() {
   console.log("Something went wrong.");
   $("#errors").html("<h1> AJAX request failed. </h1>");
 };
 
 var clickHandler = function(event) {
+  // console.log(event);
+  // console.log("Current target: " + event.currentTarget);
+  // console.log(this);
+
+  console.log("ID:" + event.target.id);
+
+  var uniqueId = event.target.id;
+  console.log(typeof event.target.id === 'string');
+
+  // TODO: TEMP FIX
+  if (uniqueId === "load") {
     $.get(url, successCallback).fail(failureCallback);
+  } else {
+    var individualTripUrl = url + "/" + uniqueId;
+    var response = $.get(individualTripUrl, successCallback).fail(failureCallback);
+  }
 };
 // Should be able to see id, name, destination, continent, about, category,
 // weeks and cost
@@ -42,6 +83,6 @@ $(document).ready(function() {
   $('#load').click(clickHandler);
 
   $('#trip-list').on('click', '.show-info', function(event) {
-    alert("Working");
+    clickHandler(event);
   });
 });

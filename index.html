@@ -11,16 +11,52 @@
 <body>
   <section id="errors"></section>
   <button id="load"> Find Trips </button>
-  <div id="trip-list"></div>
-  <script id="trip-item-template" type="text/template">
-    <section class="show-info">
-        <%- data.id + " " + data.name %>
-        <ul id='hidden'>
-          <li>
+  <div id="trip-list">
+    <div id="trip-info"></div>
+  </div>
 
-          </li>
-        </ul>
-    </section>
-  </script>
+  <ul id='hidden'>
+    <li>
+
+    </li>
+  </ul>
+
 </body>
 </html>
+
+
+<script id="trip-item-template" type="text/template">
+  <section class="show-info">
+    <p id=<%- data.id %>>
+        <%- data.id + " " + data.name %>
+      </p>
+      <ul id='hidden'>
+        <li><%- data.id %></li>
+        <li><%- data.name %></li>
+        <li><%- data.destination %></li>
+        <li><%- data.continent %></li>
+        <li><%- data.about %></li>
+        <li><%- data.category %></li>
+        <li><%- data.weeks %></li>
+        <li><%- data.cost %></li>
+      </ul>
+    </section>
+  </script>
+
+  <script id="trip-info-template" type="text/template">
+    <section class="show-info">
+      <p id=<%- data.id %>>
+          <%- data.id + " " + data.name %>
+        </p>
+        <ul id='hidden'>
+          <li><%- data.id %></li>
+          <li><%- data.name %></li>
+          <li><%- data.destination %></li>
+          <li><%- data.continent %></li>
+          <li><%- data.about %></li>
+          <li><%- data.category %></li>
+          <li><%- data.weeks %></li>
+          <li><%- data.cost %></li>
+        </ul>
+      </section>
+    </script>
