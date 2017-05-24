@@ -21,7 +21,6 @@ var formClickHandler = function(e) {
     $("form").trigger("reset");
 };
 
-
 var localeSuccessCallback = function(localeData) {
     var localeTemplate = _.template($('#trek-detail-template').html());
     var generatedHtml = localeTemplate({

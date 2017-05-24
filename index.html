@@ -3,43 +3,62 @@
   <head>
     <meta charset="utf-8">
     <link href="trek.css" media="screen" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
     <title></title>
   </head>
   <body>
-    <button id="load"> Trek! </button>
+    <h1>Welcome to Trek</h1>
+    <button id="load" class="button">See All Trips</button>
     <section id="errors"></section>
     <section id="message"></section>
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="trek.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-
 
     <div id="trip-list"></div>
     <script id="trek-list-template" type="text/template">
       <section>
-        <h2>
+        <h3>
           <a href= "#" class="trek-link" data-trip-id= "<%- data.id %>"><%- data.name %></a>
-        </h2>
+        </h3>
         <p>
           <strong>Continent:</strong>
           <%- data.continent %>
         </p>
         <p>
           <strong>Trek Length:</strong>
-          <%- data.weeks + " weeks"%>
+          <% var w = (data.weeks == 1 ? " week" : " weeks" )%>
+          <%- data.weeks +  w %>
         </p>
-
       </section>
     </script>
 
-
     <script id="trek-detail-template" type="text/template">
-
-      <section>
+      <div class="row">
+        <div class="small-12 large-6 columns">
+        <h2>
+          <%- data.name %>
+        </h2>
+        <p>
+          <strong>Continent:</strong>
+          <%- data.continent %>
+        </p>
+        <p>
+          <strong>Length:</strong>
+          <% var w = (data.weeks == 1 ? " week" : " weeks" )%>
+          <%- data.weeks +  w %>
+        </p>
+        <p>
+          <strong>Cost:</strong>
+          <%- "$" + data.cost %>
+        </p>
+        <p>
+          <strong>Details:</strong>
+          <%- data.about %>
+        </p>
+      </div>
+      <div class="small-12 large-6 columns">
         <form action="https://trektravel.herokuapp.com/trips/<%-data.id %>/reserve" method="post">
           <section>
+            <h2>Reserve this Trip</h2>
             <label>Name</label>
             <input type="text" id="name" name="name"></input>
           </section>
@@ -51,37 +70,19 @@
             <label>Email</label>
             <input type="text" id="email" name="email"></input>
           </section>
-
           <section class="button">
             <button id="prevent" type="submit">Reserve Trip</button>
           </section>
         </form>
+      </div>
+      </div>
 
-        <h2>
-          <%- data.name %>
-        </h2>
-        <p>
-          <strong>Continent:</strong>
-          <%- data.continent %>
-        </p>
-        <p>
-          <strong>Details:</strong>
-          <%- data.about %>
-        </p>
-        <p>
-          <strong>Length:</strong>
-          <%- data.weeks + " week(s)" %>
-        </p>
-        <p>
-          <strong>Cost:</strong>
-          <%- "$" + data.cost %>
-        </p>
 
-      </section>
     </script>
 
-
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="trek.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 
   </body>
 </html>
