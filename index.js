@@ -1,10 +1,11 @@
 
-var tripsList = function(response) {
-  console.log(response);
-  var target = $('#trips-list');
+var tripsListCallback = function(response) {
+  var tripsListTemplate = _.template($('#trips-list-template').html());
   for ( i = 0; i < response.length; i++){
-    var name = response[i].name;
-    target.append("<li>" + trip.name + "</li>");
+    var tripHTML = tripsListTemplate({
+      trip: response[i]
+    });
+   $('#trips-list').append($(tripHTML));
   }
 };
 
@@ -14,12 +15,11 @@ var failureCallback = function() {
   $("#errors").html("<h1>Request failed</h1>");
 };
 
-var getTripsList = function() {
-  $("#trips-list").empty();
+var tripsListClickHandler = function() {
   url = "https://trektravel.herokuapp.com/trips";
-  $.get(url, tripsList).fail(failureCallback);
+  $.get(url, tripsListCallback).fail(failureCallback);
 };
 
 $(document).ready(function() {
-  $('#trips-show-btn').click(getTripsList);
+  $('#trips-show-btn').click(tripsListClickHandler);
 });

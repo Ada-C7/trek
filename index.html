@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Trek</title>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="index.js" type="text/javascript"></script>
   </head>
   <body>
@@ -22,7 +23,7 @@
           <script id="trips-list-template" type="text/template">
             <tr>
               <td><%= trip.name %></td>
-              <td><%= trip.week_count%></td>
+              <td><%= trip.weeks %></td>
             </tr>
           </script>
         </tbody>
