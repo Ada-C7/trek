@@ -21,7 +21,7 @@
 
   <script id="trip-template" type="text/template">
     <section class="small-12 medium-6 columns">
-      <h2><%- data.name %></h2>
+      <h2><%- data.name %> (Trip #<%-data.id %>)</h2>
       <ul>
         <li><strong>Continent:</strong> <%- data.continent %></li>
         <li><strong>Cost:</strong> $<%- data.cost %></li>
@@ -37,8 +37,11 @@
         <input type="text" id="name" name="name">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email">
-        <button class="button">Reserve Trip</button>
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age">
+        <input type="submit" class="button" id="reserve-button" value="Reserve Trip">
       </form>
+      <section id="reserve-message"></section>
     </section>
   </script>
 
