@@ -4,76 +4,82 @@
     <meta charset="utf-8">
     <title>Trek</title>
     <link rel="stylesheet" href="foundation.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico|Special+Elite|Finger+Paint|Faster+One|Josefin+Slab" rel="stylesheet">
     <link rel="stylesheet" href="app.css">
   </head>
+
   <body>
-    <button class="button" id="load"> Trips</button>
-    <div id="message"></div>
-    <div id="trip-list"></div>
-    <!-- Template to use in order to display all trips -->
-    <script id="trip-template" type="text/template">
-      <section>
-        <%= "<a href='#' class='trips'>" %>
-        <h2><data value= <%- trip.id %> >
-          <%-trip.name %>
-        </data></h2>
-        <p>
-          <strong>Continent:</strong>
-          <%- trip.continent %>
-        </p>
-        <p>
-          <strong>Weeks:</strong>
-          <%- trip.weeks %>
-        </p>
-        <%= "</a>" %>
-      </section>
-    </script>
-
-    <div id="single-trip"></div>
-    <!-- Template to display a single trip's info -->
-    <script id="single-trip-template" type="text/template">
-      <section id="single-trip-top">
-        <h2>
-          <%-trip.name %>
-        </h2>
-        <p>
-          <strong>Continent:</strong>
-          <%- trip.continent %>
-        </p>
-        <p>
-          <strong>Weeks:</strong>
-          <%- trip.weeks %>
-        </p>
-        <p>
-          <strong>Category:</strong>
-          <%- trip.category %>
-        </p>
-        <p>
-          <strong>Cost:</strong>
-          <%- trip.cost %>
-        </p>
-        <p>
-          <strong>About:</strong>
-          <%- trip.about %>
-        </p>
-      </section>
-      <section class="form">
-        <h2>Reserve a spot!</h2>
-
-        <form method="post" id="reserve" value= <%- trip.id %>>
-          <label>Name</label>
-          <input type="text" id="name" name="name" required></input>
-          <label>Email</label>
-          <input type="text" id="email" name="email" required></input>
-          <label>Age</label>
-          <input type="text" id="age" name="age"></input>
+    <div class="row">
+      <div class="small-12 small-centered column">
+        <button class="button" id="load">Show me Everything</button>
+      </div>
+      <div id="message"></div>
+      <div id="trip-list"></div>
+      <!-- Template to use in order to display all trips -->
+      <script id="trip-template" type="text/template">
         <section>
-          <button class="button" type="submit">Reserve</button>
+          <%= "<a href='#' class='trips'>" %>
+          <h3><data value= <%- trip.id %> >
+            <%-trip.name %>
+          </data></h3>
+          <p>
+            <strong>Continent:</strong>
+            <%- trip.continent %>
+          </p>
+          <p>
+            <strong>Weeks:</strong>
+            <%- trip.weeks %>
+          </p>
+          <%= "</a>" %>
         </section>
-        </form>
+      </script>
 
-      </section>
-    </script>
+      <div id="single-trip"></div>
+      <!-- Template to display a single trip's info -->
+      <script id="single-trip-template" type="text/template">
+        <section id="single-trip-top">
+          <h2>
+            <%-trip.name %>
+          </h2>
+          <p>
+            <strong>Continent:</strong>
+            <%- trip.continent %>
+          </p>
+          <p>
+            <strong>Weeks:</strong>
+            <%- trip.weeks %>
+          </p>
+          <p>
+            <strong>Category:</strong>
+            <%- trip.category %>
+          </p>
+          <p>
+            <strong>Cost:</strong>
+            <%- trip.cost %>
+          </p>
+          <p>
+            <strong>About:</strong>
+            <%- trip.about %>
+          </p>
+        </section>
+        <section class="form">
+          <h2>Reserve a spot!</h2>
+
+          <form method="post" id="reserve" value= <%- trip.id %>>
+            <label>Name</label>
+            <input type="text" id="name" name="name" required></input>
+            <label>Email</label>
+            <input type="text" id="email" name="email" required></input>
+            <label>Age</label>
+            <input type="text" id="age" name="age"></input>
+          <section>
+            <button class="button" type="submit">Reserve</button>
+          </section>
+          </form>
+
+        </section>
+      </script>
+    </div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" type="text/javascript"></script>
