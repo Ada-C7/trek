@@ -48,3 +48,12 @@ body {
 #trip h2 {
   font-family: 'Amatic SC', cursive;
 }
+
+#filter-form {
+  background-color: rgba(255,255,255, 0.75);
+  padding: 2%;
+}
+
+#filter-form h2 {
+  font-family: 'Amatic SC', cursive;
+}

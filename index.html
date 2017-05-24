@@ -66,6 +66,21 @@
     </section>
   </main>
   </script>
+  <script id="filter-template" type="text/template">
+    <section id="filter-form" class="row">
+      <h2><strong>Filter Trips</strong></h2>
+      <form action="https://trektravel.herokuapp.com/trips/" method="get">
+        By Continent: <br />
+        <input type="text" name="continent" /><br />
+        By Weeks: <br />
+        <input type="text" name="weeks" /><br />
+        By Budget: <br />
+        <input type="text" name="budget" />
+        <input type="submit" value="Submit" class="button" />
+      </form>
+    </section>
+</main>
+</script>
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

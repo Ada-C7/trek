@@ -1,6 +1,8 @@
 $(document).ready(function() {
   var tripsTemplate = _.template($('#trips-template').html());
   var tripTemplate = _.template($('#trip-template').html());
+  var filterTemplate = _.template($('#filter-template').html());
+
 
   var url = 'https://trektravel.herokuapp.com/trips';
 
@@ -49,6 +51,8 @@ $(document).ready(function() {
 
   $('#filter').click(function() {
     $('#trips').empty();
+    var generatedHTML = filterTemplate({});
+    $('#trips').append($(generatedHTML));
   });
 
 
