@@ -1,3 +1,5 @@
+const BASEURL = 'https://trektravel.herokuapp.com/trips/';
+
 var successTreksCallback = function(response) {
   console.log("success!");
   console.log(response);
@@ -27,6 +29,10 @@ var successTrekCallback = function(response) {
   // $('#test').append('<p>name: ' + response[i].name + '</p>');
 };
 
+var successSignUpCallback = function() {
+
+};
+
 var failureCallback = function() {
   console.log("Didn't work :(");
   $("#errors").html("<h1>AJAX request failed!</h1>");
@@ -35,8 +41,6 @@ var failureCallback = function() {
 var alwaysCallback = function() {
   console.log("always get this");
 };
-
-const BASEURL = 'https://trektravel.herokuapp.com/trips/';
 
 var getTreks = function(event) {
   var target = $('#treks');
@@ -52,11 +56,23 @@ var getTrek = function(event) {
 
   var id = $(this).attr("id");
   var url = BASEURL + id;
-  console.log(url);
+  // console.log(url);
   $.get(url, successTrekCallback).fail(failureCallback).always(alwaysCallback);
+};
+
+var signUp = function(event) {
+  event.preventDefault();
+  var action = $(this).attr("action");
+  var id = $(this).attr("id");
+  console.log(id);
+  var url = BASEURL + id + reserve;
+  var formData = $(this).serialize();
+  $.post(url, formData, successSignUpCallback).fail(failureCallback).always(alwaysCallback);
 };
 
 $(document).ready(function() {
   $('body').on('click', '#load-treks', getTreks);
+
   $('#treks').on('click', '.load-trek', getTrek);
+  $('form').submit(signUp);
 });
