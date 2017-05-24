@@ -11,6 +11,18 @@
 <body>
     <section id="errors"></section>
     <ul id="trips"></ul>
+    <script id='trip-template' type="text/template">
+        <%= "<section id=" + trip.id + ">" %>
+            <p>
+                <strong>Continent:</strong>
+                <%- trip.continent %>
+            </p>
+            <p>
+                <strong>Weeks:</strong>
+                <%- trip.weeks %>
+            </p>
+            </section>
+    </script>
 </body>
 
 </html>
