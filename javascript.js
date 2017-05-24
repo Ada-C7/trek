@@ -1,9 +1,14 @@
-// save response from API in an array
 var allTripsUrl = 'https://trektravel.herokuapp.com/trips/';
+
+var tripsClickHandler = function(event) {
+  // AJAX call to API, response sending to function sendToTemplate
+  $.get(allTripsUrl, generateAllTrips);
+};
 
 var generateAllTrips = function(response) {
   $('#single-trip').hide();
   $('#trip-list').show();
+
   // compiles tripTemplate
   var tripsTemplate = _.template($('#trip-template').html());
 
@@ -17,6 +22,12 @@ var generateAllTrips = function(response) {
   }
 };
 
+var singleTripClickHandler = function(event) {
+  var id = event.target.getAttribute('value');
+  var singleTripUrl = allTripsUrl + id;
+  $.get(singleTripUrl, generateSingleTrip);
+};
+
 var generateSingleTrip = function(response) {
   $('#trip-list').hide();
   $('#single-trip').show();
@@ -26,22 +37,9 @@ var generateSingleTrip = function(response) {
   var generatedHtml = singleTripTemplate({
     trip: response
   });
+
+  // adds content
   $('#single-trip').html($(generatedHtml));
-};
-
-var generateReservationResponse = function(response) {
-  console.log("success!");
-};
-
-var tripsClickHandler = function(event) {
-  // AJAX call to API, response sending to function sendToTemplate
-  $.get(allTripsUrl, generateAllTrips);
-};
-
-var singleTripClickHandler = function(event) {
-  var id = event.target.getAttribute('value');
-  var singleTripUrl = allTripsUrl + id;
-  $.get(singleTripUrl, generateSingleTrip);
 };
 
 var reserveClickHandler = function(event) {
@@ -50,6 +48,11 @@ var reserveClickHandler = function(event) {
   var postUrl = allTripsUrl + id + '/' + 'reserve';
   var formData = $(this).serialize();
   $.post(postUrl, formData, generateReservationResponse);
+};
+
+var generateReservationResponse = function(response) {
+  $('input').val("");
+  $('#single-trip-top').append('<p class="success">Thank you for signing up!  Your Reservation is Complete!</p>');
 };
 
 $(document).ready(function() {
