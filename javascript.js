@@ -2,6 +2,8 @@
 var allTripsUrl = 'https://trektravel.herokuapp.com/trips';
 
 var generateAllTrips = function(response) {
+  $('#single-trip').hide();
+  $('#trip-list').show();
   // compiles tripTemplate
   var tripsTemplate = _.template($('#trip-template').html());
 
@@ -10,13 +12,20 @@ var generateAllTrips = function(response) {
     var generatedHtml = tripsTemplate({
       trip: tripArray[i]
     });
+    // adds content
     $('#trip-list').append($(generatedHtml));
   }
 };
 
 var generateSingleTrip = function(response) {
-  // compiles tripTemplate
-  var singleTripTemplate = _.template($('#trip-template').html());
+  $('#trip-list').hide();
+  $('#single-trip').show();
+  // compiles singleTripTemplate
+  var singleTripTemplate = _.template($('#single-trip-template').html());
+  var generatedHtml = singleTripTemplate({
+    trip: response
+  });
+  $('#single-trip').html($(generatedHtml));
 };
 
 var tripsClickHandler = function(event) {
@@ -26,7 +35,7 @@ var tripsClickHandler = function(event) {
 
 var singleTripClickHandler = function(event) {
   var id = event.target.getAttribute('value');
-  var singleTripUrl = allTripsUrl + id; //TRIP ID, where from?
+  var singleTripUrl = allTripsUrl + "/" + id;
   $.get(singleTripUrl, generateSingleTrip);
 };
 
