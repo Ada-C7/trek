@@ -14,3 +14,11 @@
     diplay: none;
   }
 }*/
+
+body{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+table{
+  width: 70%;
+}

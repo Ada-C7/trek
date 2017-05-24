@@ -44,15 +44,12 @@ var failureCallback = function() {
 };
 
 
-
-
 var checkIfTableEmpty = function(){
   // console.log($('#trips-list').html());
   if (!$('#trips-list').html().includes("td")){
     $('#trips-list-table').hide();
   }
 };
-
 
 
 var checkIfErrorsEmpty = function(){
