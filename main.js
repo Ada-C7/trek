@@ -7,12 +7,34 @@ var successCallback = function(response) {
   var tripsData = response;
   var tripsTemplate = _.template($('#trips-template').html());
 
-  for (var i = 0; i < tripsData.length; i++) {
+  // for (var i = 0; i < tripsData.length; i++) {
+  //   var generatedHtml = tripsTemplate({
+  //     trip: tripsData[i]
+  //   });
+  //   $('#trips').append($(generatedHtml));
+  //
+  //     var id = tripsData[i]["id"];
+  //     $(".name[data-id=" + tripsData[i]["id"] + "]").click(function() {
+  //       console.log(id);
+  //       $(".hello[data-id=" + id + "]").slideToggle(1000);
+  //     });
+  //
+  // }
+
+  $.each(tripsData, function(i) {
     var generatedHtml = tripsTemplate({
       trip: tripsData[i]
     });
     $('#trips').append($(generatedHtml));
-  }
+
+    var id = tripsData[i]["id"];
+    $(".name[data-id=" + tripsData[i]["id"] + "]").click(function() {
+      $(".hello[data-id=" + id + "]").slideToggle(1000);
+    });
+
+  })
+
+
 
 };
 
@@ -27,4 +49,16 @@ var clickHandler = function(event) {
 
 $(document).ready(function() {
   $('#load').click(clickHandler);
+  // $(".name").click(toggleHandler)
+  // $("#trips").delegate(".name", "click", function() {
+  //   console.log("the click");
+  //   $(".hello").slideToggle(1000);
+  // });
+
+  // console.log("ready was called");
+  //
+  // $(".name").click(function() {
+  //   console.log("the click");
+  //   $("#hello").slideToggle(1000);
+  // });
 });
