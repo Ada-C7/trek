@@ -1,3 +1,5 @@
+// TRIP LIST
+
 var tripsListCallback = function(response) {
   $('#trips-list thead tr').append("<th>Name</th><th>Number of Weeks</th>");
   var tripsListTemplate = _.template($('#trips-list-template').html());
@@ -7,28 +9,35 @@ var tripsListCallback = function(response) {
     });
    $('#trips-list tbody').append($(newTripRow));
   }
+  $('.trip-details-btn').click(tripDetailsClickHandler);
 };
 
-var tripDetailsCallback = function() {
+var tripsListClickHandler = function() {
+  $('.clear').empty();
+  url = "https://trektravel.herokuapp.com/trips";
+  $.get(url, tripsListCallback).fail(failureCallback);
 };
+
+// TRIP DETAILS
+
+var tripDetailsCallback = function() {
+  console.log("success!");
+};
+
+var tripDetailsClickHandler = function() {
+  url = "https://trektravel.herokuapp.com/trips/" + $(this).attr('id');
+  $.get(url, tripDetailsCallback).fail(failureCallback);
+  $('.clear').empty();
+};
+
+// FAIL
 
 var failureCallback = function() {
   console.log("Didn't Work! :(");
   $("#errors").html("<h1>Request failed</h1>");
 };
 
-
-var tripsListClickHandler = function() {
-  $('#trips-list thead tr').empty();
-  $('#trips-list tbody').empty();
-  url = "https://trektravel.herokuapp.com/trips";
-  $.get(url, tripsListCallback).fail(failureCallback);
-};
-
-var tripDetailsClickHandler = function() {
-  url = "https://trektravel.herokuapp.com/trips";
-  $.get(url, tripDetailsCallback).fail(failureCallback);
-};
+// DOCUMENT READY
 
 $(document).ready(function() {
   $('#trips-show-btn').click(tripsListClickHandler);
