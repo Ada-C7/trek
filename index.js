@@ -37,9 +37,4 @@ var clickHandler = function(event) {
 
 $(document).ready(function() {
   $('#load').click(clickHandler);
-
-  $('#testing').click(function(event) {
-    alert("working!");
-  });
-
 });
