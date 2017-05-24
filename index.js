@@ -8,6 +8,7 @@
 // html page (index.html).
 
 var url = "https://trektravel.herokuapp.com/trips";
+var lastId = null;
 
 var successCallback = function(response) {
   console.log("Successful request.");
@@ -25,25 +26,35 @@ var generateList = function(response) {
   var tripTemplate = _.template($('#trip-item-template').html());
 
   for (var i = 0; i < response.length; i++) {
-    var generatedHtml = tripTemplate({
-      data: response[i]
-    });
+    var generatedHtml = tripTemplate(
+      {
+        data: response[i]
+      }
+    );
     $('#trip-list').append($(generatedHtml));
   }
 };
 
+
 var generateTripInfo = function(response) {
-  console.log(response);
 
   var tripTemplate = _.template($('#trip-info-template').html());
-    var generatedHtml = tripTemplate(
-      {
-        data: response
-      }
-    );
-    var idSelection = response.id;
+  var generatedHtml = tripTemplate(
+    {
+      data: response
+    }
+  );
+  var idSelection = response.id;
 
+  if (idSelection != lastId) {
     $('#' + idSelection).append($(generatedHtml));
+
+    lastId = idSelection;
+  } else {
+    $('.trip-info').remove();
+
+    lastId = null;
+  }
 };
 
 var failureCallback = function() {
@@ -53,10 +64,8 @@ var failureCallback = function() {
 
 var clickHandler = function(event) {
 
-  console.log("ID:" + event.target.id);
-
+  // console.log(event);
   var uniqueId = event.target.id;
-  console.log(typeof event.target.id === 'string');
 
   // TODO: TEMP FIX
   if (uniqueId === "load") {
@@ -66,14 +75,13 @@ var clickHandler = function(event) {
     var response = $.get(individualTripUrl, successCallback).fail(failureCallback);
   }
 };
-// Should be able to see id, name, destination, continent, about, category,
-// weeks and cost
-
 
 $(document).ready(function() {
   $('#load').click(clickHandler);
 
   $('#trip-list').on('click', '.show-info', function(event) {
+    currentTarget = event.currentTarget;
+
     clickHandler(event);
   });
 });
