@@ -44,8 +44,8 @@ var successTripCallback = function(response) {
     e.preventDefault();
     var url = $(this).attr("action");
     var formData = $(this).serialize();
-
-      if (validateForm() != false){
+    var validation_result = validateForm();
+      if (validation_result != false){
         $.post(url, formData, function(response){
           $('#message').html('<p> You succesfully reserved your trip! </p>');
         })
@@ -54,17 +54,14 @@ var successTripCallback = function(response) {
         });
         $('#reservation-form').hide();
       }
-
   });
 };
-
 
 // Failure callback for all actions:
 var failureCallback = function() {
   console.log("Didn't work :(");
   $("#errors").html("<p>AJAX request failed! Check your Internet connection</p>");
 };
-
 
 // Additional functions to check if table and error box is emty:
 var checkIfTableEmpty = function(){
@@ -109,7 +106,6 @@ var validateForm = function() {
     }
     if (alert_text != ""){
       alert(alert_text);
-
     }
     if (name == "" || email == "" || age == ""){
       return false;
