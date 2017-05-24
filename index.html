@@ -8,6 +8,18 @@
   <body>
     <h1>Hi there here be tripz</h1>
     <button class="button">Thing here</button>
+    <section id="trips">
+
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script id="trips-template" type="text/template">
+      <section>
+        <h2><%- trip.name %></h2>
+        <p>
+          <%- trip.continent %>
+        </p>
+      </section>
+    </script>
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
