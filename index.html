@@ -10,8 +10,16 @@
   <body>
     <h1>Trips</h1>
     <button id="get-trips">Get Trips</button>
-    <ul id="trip-list">
 
-    </ul>
+    <main></main>
+
+    <script id="trip-list-template" type="text/template">
+      <ul id="trip-list">
+        <% for (var i = 0; i < trips.length; i++) { %>
+          <li><%- trips[i].name %></li>
+        <% } %>
+      </ul>
+    </script>
+
   </body>
 </html>

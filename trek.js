@@ -1,17 +1,19 @@
 url = "https://trektravel.herokuapp.com/trips";
 
-var successCallback = function (response) {
-  for (var i = 0; i < response.length; i++) {
-    $('#trip-list').append("<li>" + response[i].name + "</li>");
-  }
-  console.log(response);
-};
-
-var failCallback = function (response) {
-  $('#trip-list').html("<li>AJAX Request Failed!</li>");
-};
-
 $(document).ready(function () {
+  var tripListTemplate = _.template($('#trip-list-template').html());
+
+  var successCallback = function (response) {
+    for (var i = 0; i < response.length; i++) {
+      var generatedHtml = tripListTemplate({ trips: response });
+      $('main').append(generatedHtml);
+    }
+  };
+
+  var failCallback = function (response) {
+    $('main').html("<p>AJAX Request Failed!</p>");
+  };
+
   $('#get-trips').click(function() {
     $.get(url, successCallback).fail(failCallback);
   });
