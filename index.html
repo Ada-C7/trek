@@ -4,20 +4,17 @@
     <meta charset="utf-8">
     <title>Trek</title>
 
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js'></script>
-    <script src="main.js" type="text/javascript"></script>
   </head>
   <body>
     <h1>Trips</h1>
       <div id='errors'></div>
-      
+
       <div id='trips-list'></div>
       <script id="trips-template" type="text/template">
         <section>
-          <h2>
+          <a id="trip" href="">
             <%- trip['name'] %>
-          </h2>
+          </a>
           <p>
             <strong>Location: </strong>
             <%- trip.continent %>
@@ -29,6 +26,10 @@
           </p>
         </section>
       </script>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js'></script>
+    <script src="main.js" type="text/javascript"></script>
 
   </body>
 </html>

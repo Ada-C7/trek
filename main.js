@@ -1,6 +1,5 @@
 
 
-
 $(document).ready(function(){
   var urlTrips = "https://trektravel.herokuapp.com/trips";
   var tripsTemplate = _.template($('#trips-template').html());
@@ -23,4 +22,13 @@ $(document).ready(function(){
   };
 
   $.get(urlTrips, successCallback).fail(failureCallback);
+
+// working on showing details for one trip //
+  $('#trips-list').on('click', 'a#trip', function(event) {
+    event.preventDefault();
+    /*your_code_here;*/
+    console.log("someone clicked on a trip link");
+
+    return false;
+  });
 });
