@@ -62,6 +62,10 @@ h1, h2, h3, h4 {
   top: 0;
 }
 
+#trip-list a h3:hover{
+  background-color: yellow;
+}
+
 .small-12.small-centered.column {
   padding: 0;
 }
