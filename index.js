@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 $('#explore').click(indexClickHandler);
-// $('#trip-link').click(showClickHandler);
+$('#trip-index').on('click', '#trip-link', showClickHandler);
 });
 
 
@@ -33,3 +33,26 @@ var failureCallback = function(){
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~ SHOW ~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+var showClickHandler = function(event){
+
+  var tripId = $(event.target)[0].getAttribute('id');
+
+     url = 'https://trektravel.herokuapp.com/trips/' + tripId;
+    $.get(url, showSuccessCallback).fail(failureCallback);
+
+};
+
+var showSuccessCallback = function(response){
+
+  var tripShowTemplate = _.template($('#trip-show-template').html());
+
+    var generatedHtml = tripShowTemplate({
+      trip: response
+    });
+
+    // TODO what is the difference between .append and .html
+    $('#trip-index').html($(generatedHtml));
+    // $('#trip-show').append($(generatedHtml));
+
+};
