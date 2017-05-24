@@ -6,10 +6,30 @@
   font-family: "Comfortaa";
 }
 
+
+/*body {
+  display: block;
+  background: url("http://www.environmentandsociety.org/sites/default/files/styles/popup/public/wegener-expedition2-walk_0.jpg?itok=u9iamiKA") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 675px;
+}
+
+#opaque {
+  background-color: rgba(255,255,255, 0.25);
+  display: block;
+  z-index: -1;
+  height: 300px;
+  width: 300px;
+
+}*/
+
 body {
   display: block;
   position: relative;
   min-height: 675px;
+  /*background-color: rgba(255,255,255, 0.55);*/
+  /*overflow: scroll;*/
 }
 
 body::after {
@@ -61,4 +81,8 @@ button, p {
 
 .top-nav form section {
   display: inline-block;
+}
+
+#content {
+  overflow: scroll;
 }

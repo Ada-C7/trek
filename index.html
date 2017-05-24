@@ -7,6 +7,7 @@
       <link rel="stylesheet" href="style.css">
   </head>
   <body class="">
+
     <header class="row">
       <section class="row">
         <h1 class="columns small-12" id="header-title">TrekkingPole</h1>
@@ -52,8 +53,11 @@
     </header>
     <section id="errors">
     </section>
-    <section id="content">
-    </section>
+    <div id="opaque">
+      <section id="content">
+      </section>
+    </div>
+
 
     <!-- template for the individual trip view -->
     <script id="single-trip-template" type="text/javascript">
@@ -112,6 +116,7 @@
 
     <!-- template for the main index view -->
     <script id="all-trips-template" type="text/javascript">
+
       <article class="trip columns small-12 medium-4 large-3">
         <h5>
           <a class="get-trip" id=<%- trip.id %> ><%- trip.name %></a>

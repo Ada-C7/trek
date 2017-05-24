@@ -56,7 +56,7 @@ var newTripCallback = function(response) {
   console.log("created a trip!");
   console.log(response);
 
-  var target = $('#successful-new-trip-create');
+  var target = $('#errors');
   var createTripTemplate = _.template($('#create-trip-template').html());
   var createTripHTML = createTripTemplate({
     newTrip: response
