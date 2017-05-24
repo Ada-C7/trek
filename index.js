@@ -29,6 +29,7 @@ var displayOneTrip = function(response) {
     data: response
   });
   $('#display').append(generatedHtml);
+  $('form').submit(reserveTrip);
 }
 
 var reserveTrip = function(event) {
@@ -36,12 +37,12 @@ var reserveTrip = function(event) {
   var url = $(this).attr("action");
   var formData = $(this).serialize();
   $.post(url, formData, function(response) {
-    $("#message").html("<p>Trip successfully reserved with reservation #" + response.id + "</p>");
-  })
+    $("#message").html("<p>Trip successfully reserved with confirmation #" + response.id + "</p>");
+  }).fail(failureCallback);
 };
 
 var failureCallback = function() {
-  $("#message").html("<h3>Alas, the request for data has failed.</h3>");
+  $("#message").html("<h4>Alas, your request could not be completed.</h4>");
 };
 
 
@@ -50,6 +51,8 @@ $(document).ready(function() {
 
   $(document).on('click', '.trip', getOneTrip);
 
-  $('form').submit(reserveTrip);
+
+
+
 
 });
