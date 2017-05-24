@@ -10,11 +10,11 @@
   <script src="trek.js" type="text/javascript"></script>
   <div id="trip-details"></div>
   <script id="all-trips-template" type="text/template">
-    <div class="row">
-      <div class="large-6 columns">
+    <div class="transbox">
+      <div class="large-6 large-columns">
         <section id ="trip-index">
           <p>
-            <strong>Destination: </strong>
+            <strong id="<%-data.id%>">Destination: </strong>
             <%- data.name %>
           </p>
           <p>
@@ -31,34 +31,37 @@
   </script>
 
   <script id="details-template" type="text/template">
-        <section>
-          <p>
-            <strong>Destination: </strong>
-            <%- data.name %>
-          </p>
-          <p>
-            <strong>Continent: </strong>
-            <%- data.continent %>
-          </p>
-          <p>
-            <strong>Description: </strong>
-            <%- data.about %>
-          </p>
-          <p>
-            <strong>Weeks: </strong>
-            <%- data.weeks %>
-          </p>
-          <p>
-            <strong>Price: $</strong>
-            <%- data.cost %>
-          </p>
-        </section>
+    <section class="individual-trip">
+      <p>
+        <strong>Destination: </strong>
+        <%- data.name %>
+      </p>
+      <p>
+        <strong>Continent: </strong>
+        <%- data.continent %>
+      </p>
+      <p>
+        <strong>Description: </strong>
+        <%- data.about %>
+      </p>
+      <p>
+        <strong>Weeks: </strong>
+        <%- data.weeks %>
+      </p>
+      <p>
+        <strong>Price: $</strong>
+        <%- data.cost %>
+      </p>
+    </section>
   </script>
 
 </head>
 <body>
   <section id="errors"></section>
-  <button class="button" id="load" type="submit">View all trips!</button>
-  <div id="trips-list"></div>
+  <div class="load-button">
+    <div class="small-6 small-centered text-center columns"></div>
+    <button class="button" id="load" type="submit">View all trips!</button>
+    <div id="trips-list"></div>
+  </div>
 </body>
 </html>

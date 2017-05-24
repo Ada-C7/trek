@@ -30,6 +30,8 @@ var clickHandler = function(event) {
 // make another API call for trip details
 var detailsUrl = "https://trektravel.herokuapp.com/trips/1";
 
+// var detailsUrl = ("https://trektravel.herokuapp.com/trips/" + "this.id");
+
 var successCallbackOne = function(response) {
   console.log("Success!");
   console.log(response);
@@ -43,6 +45,7 @@ var successCallbackOne = function(response) {
   $('#trip-details').html($(generatedHtml));
 };
 var clickHandlerLocale = function(event) {
+ // $('#response.id').html($(this).id);
   $.get(detailsUrl, successCallbackOne).fail(failureCallback);
 };
 

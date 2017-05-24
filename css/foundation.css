@@ -1582,13 +1582,13 @@ kbd {
   line-height: 1;
   text-align: center;
   cursor: pointer;
-  background-color: #1779ba;
-  color: #fefefe; }
+  background-color: #E2D1C5;
+  color: #074F57; }
   [data-whatinput='mouse'] .button {
     outline: 0; }
   .button:hover, .button:focus {
-    background-color: #14679e;
-    color: #fefefe; }
+    background-color: #74A57F;
+    color: #E2D1C5; }
   .button.tiny {
     font-size: 0.6rem; }
   .button.small {
