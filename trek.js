@@ -1,5 +1,5 @@
 var indexCallback = function(response) {
-  console.log("Loaded all trips!");
+  console.log("Loaded trips!");
   console.log(response);
 
   var target = $('#content');
@@ -14,6 +14,22 @@ var indexCallback = function(response) {
 
 };
 
+// var continentCallback = function(response) {
+//   console.log("filtering by continent!");
+//   console.log(response);
+//
+//   var target = $('#content');
+//   var allTripsTemplate = _.template($('#all-trips-template').html());
+//   for (var i = 0; i < response.length; i++) {
+//     var allTripsHTML = allTripsTemplate({
+//       trip: response[i]
+//     });
+//     target.append($(allTripsHTML));
+//   }
+//   $('.get-trip').click(tripClickHandler);
+//
+// };
+
 var tripCallback = function(response) {
   console.log("Loaded a single trip!");
   console.log(response);
@@ -24,7 +40,7 @@ var tripCallback = function(response) {
     thisTrip: response
   });
   target.append($(oneTripHTML));
-  $('form').submit(joinClickHandler);
+  $('#join-form').submit(joinClickHandler);
 };
 
 var joinCallback = function(response) {
@@ -70,10 +86,24 @@ var tripClickHandler = function() {
   $("#errors").empty();
   $("#content").empty();
   var indexBaseUrl = "https://trektravel.herokuapp.com/trips/";
-  var finalUrl = indexBaseUrl + $(this).attr('id');
-  $.get(finalUrl, tripCallback).fail(failureCallback);
+  var indexUrl = indexBaseUrl + $(this).attr('id');
+  $.get(indexUrl, tripCallback).fail(failureCallback);
+};
+
+var continentClickHandler = function(event) {
+  event.preventDefault();
+  // console.log(event);
+  console.log("filtering trips by continent");
+  $("#errors").empty();
+  $("#content").empty();
+  var continent = $("#continent-sort option:selected").text();
+  var continentBaseUrl = "https://trektravel.herokuapp.com/trips/continent?query=";
+  var continentUrl = continentBaseUrl + continent;
+  $.get(continentUrl, indexCallback).fail(failureCallback);
 };
 
 $(document).ready(function() {
+  $('#continent-filter').submit(continentClickHandler);
   $('#get-trips').click(indexClickHandler);
+
 });

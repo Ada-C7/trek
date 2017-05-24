@@ -14,20 +14,19 @@
       <section class="top-nav">
         <button id="get-trips" class="button">Get All Trips</button>
 
-        <form>
+        <form id="continent-filter">
           <section>
-            <!-- <label>Continent</label> -->
-            <select size="1" id="Continent-sort" name="continent">
-              <option>Antarctica</option>
+            <select size="1" id="continent-sort" name="continent">
               <option>Africa</option>
+              <option>Antarctica</option>
               <option>Asia</option>
               <option>Europe</option>
               <option>North America</option>
               <option>South America</option>
             </select>
           </section>
-          <section class="button" id="continent-sort">
-            <button type="submit">Sort By Continent</button>
+          <section >
+            <button class="button"  type="submit">Filter By Continent</button>
           </section>
         </form>
 
@@ -69,7 +68,7 @@
         <h2>
           <strong>Join the Trek!</strong>
         </h2>
-        <form>
+        <form id="join-form">
           <section>
             <label>Name</label>
             <input type="text" id="name" name="name"></input>
