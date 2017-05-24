@@ -12,6 +12,7 @@ var tripsFail = function() {
 var generateAllTrips = function(response) {
   $('#single-trip').hide();
   $('#trip-list').show();
+  $('#trip-sort').show();
 
   // compiles tripTemplate
   var tripsTemplate = _.template($('#trip-template').html());
@@ -63,10 +64,39 @@ var generateReservationResponse = function(response) {
   $('#single-trip-top').append('<p class="success">Thank you for signing up!  Your Reservation is Complete!</p>');
 };
 
+var sortClickHandler = function(event) {
+  event.preventDefault();
+  var formData = $("select").serialize();
+  var sortUrl = allTripsUrl + "continent?" + formData;
+  $.get(sortUrl, sortSuccess);
+};
+
+var sortSuccess = function(response) {
+  $('#trip-list').empty();
+  console.log(response);
+
+  // compile trips template
+  var tripsTemplate = _.template($('#trip-template').html());
+
+  var tripArray = response;
+  for (var i = 0; i < tripArray.length; i++) {
+    var generatedHtml = tripsTemplate({
+      trip: tripArray[i]
+    });
+    // adds content
+    $('#trip-list').append($(generatedHtml));
+  }
+};
+
+
 $(document).ready(function() {
+  $('#trip-sort').hide();
+
   $('#load').click(tripsClickHandler);
 
   $("#trip-list").on("click", ".trips", singleTripClickHandler);
 
   $('#single-trip').on("submit", "#reserve", reserveClickHandler);
+
+  $('#trip-sort').on("submit", '#sort', sortClickHandler);
 });
