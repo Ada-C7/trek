@@ -11,8 +11,8 @@
   <button id="load"> Fetch! </button>
   <div id="trips-list"></div>
   <script id="trips-template" type="text/template">
-    <section>
-      <h1 class="trip-name">
+    <section class="individual-trip" id="<%- data.id %>">
+      <h1>
         <%- data.name %>
       </h1>
       <p>
@@ -32,14 +32,23 @@
     <script id="trip-template" type="text/template">
       <section>
         <h1 class="trip-name">
-          <%- data.name %>
+          <%- data.name %> - TripID: <%- data.id %>
         </h1>
         <h3>
           <%- data.continent %>
         </h3>
         <p>
-          <%- data.about %>
+          Description: <%- data.about %>
         </p>
+        <h3>
+          Weeks: <%- data.weeks %>
+        </h3>
+        <h3>
+          Category: <%- data.category %>
+        </h3>
+        <h3>
+          Price: <%- data.cost %>
+        </h3>
       </section>
     </script>
 
