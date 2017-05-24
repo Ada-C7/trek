@@ -41,16 +41,20 @@ var joinCallback = function(response) {
 
 var failureCallback = function(response) {
   console.log("Failed to get anything. Wooo....");
+  $("#errors").html("Sorry, something went wrong! Please try again shortly.");
+
   console.log(response);
 };
 
 var indexClickHandler = function() {
+  $("#errors").empty();
   $("#content").empty();
   var url = "https://trektravel.herokuapp.com/trips";
   $.get(url, indexCallback).fail(failureCallback);
 };
 
 var joinClickHandler = function(event) {
+  $("#errors").empty();
   event.preventDefault();
   console.log("clicked join!");
   $("#successful-sign-up").empty();
@@ -63,6 +67,7 @@ var joinClickHandler = function(event) {
 
 var tripClickHandler = function() {
   console.log("clicked on a trip");
+  $("#errors").empty();
   $("#content").empty();
   var indexBaseUrl = "https://trektravel.herokuapp.com/trips/";
   var finalUrl = indexBaseUrl + $(this).attr('id');
