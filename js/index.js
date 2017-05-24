@@ -53,7 +53,21 @@ $(document).ready(function() {
     $('#trips').empty();
     var generatedHTML = filterTemplate({});
     $('#trips').append($(generatedHTML));
+    $('form').submit(function(e){
+      e.preventDefault();
+
+      var url = $(this).attr("action");
+      var formData = $(this).serialize().split('&');
+      for(var i = 0; i < formData.length; i++) {
+        formData[i] = formData[i].replace("%3F", "?");
+      }
+      formData = formData.join('');
+      console.log(url);
+      console.log(formData);
+    });
   });
+
+
 
 
 
