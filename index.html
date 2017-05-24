@@ -21,13 +21,26 @@
   </div>
 
 
-  <!-- <div id="trip" class = "callout secondary primary small  data-closable">
-  <button class="close-button small" aria-label="Dismiss alert" type="button" data-close>
-  <span aria-hidden="true">&times;</span>
-</button>
-</div> -->
+  <div id = "trip-block" class="success callout" data-closable="slide-out-left">
+    <div id="trip"></div>
+    <script id="trip-template" type="text/template">
+      <section>
+        <p><%- data.name %></p>
+        <p>Id: <%- data.id %> </p>
+        <p> Continent:<%- data.continent %></p>
+        <p> Week: <%- data.weeks %></p>
+        <p> Cost:<%- data.cost %></p>
+        <p> Category:<%- data.category %> </p>
+        <p> About:<%- data.about %></p>
+      </section>
+    </script>
+    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 
 
+<!--
 
 <div id="trip" class= "text-center"></div>
 <script id="trip-template" type="text/template">
@@ -40,7 +53,7 @@
     <p> Category:<%- data.category %> </p>
     <p> About:<%- data.about %></p>
   </section>
-</script>
+</script> -->
 
 
 

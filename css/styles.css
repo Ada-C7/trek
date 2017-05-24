@@ -1,7 +1,7 @@
-#trip{
+/*#trip{
   background-color: green;
   min-height: 170px;
-}
+}*/
 /*#errors:empty*/
 #trip:empty{
    display: none;
