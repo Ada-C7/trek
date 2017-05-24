@@ -4,42 +4,45 @@
     <meta charset="utf-8">
     <title>Trek</title>
 
+    <link href="main.css" rel="stylesheet" type="text/css">
+
   </head>
   <body>
     <h1>Trips</h1>
       <div id='errors'></div>
 
-      <div id='trip-info'></div>
-      <script id="trips-template" type="text/template">
-        <section>
-          <a id="trip" href="" data-id=<%- trip.id %> >
-            <%- trip.name %>
-          </a>
-          <p>
-            <strong>Location: </strong>
-            <%- trip.continent %>
-          </p>
-          <p>
-            <strong>Duration: </strong>
-            <%- trip.weeks %>
-            weeks
-          </p>
-          <div id=<%- trip.id %> class="hide-show-info">
+      <div id='trips-list'>
+        <script id="trips-template" type="text/template">
+          <section id=<%- 'trip-' + trip.id %> >
+            <a href="" data-id=<%- trip.id %> >
+              <%- trip.name %>
+            </a>
             <p>
-              <strong>About:</strong>
-              <%- trip.about %>
+              <strong>Location: </strong>
+              <%- trip.continent %>
             </p>
             <p>
-              <strong>Category: </strong>
-              <%- trip.category %>
+              <strong>Duration: </strong>
+              <%- trip.weeks %>
+              weeks
             </p>
-            <p>
-              <strong>Cost: $</strong>
-              <%- trip.cost %>
-            </p>
-          </div>
-        </section>
-      </script>
+            <div id=<%- trip.id %> class="hide-show-info">
+              <p>
+                <strong>About:</strong>
+                <%- trip.about %>
+              </p>
+              <p>
+                <strong>Category: </strong>
+                <%- trip.category %>
+              </p>
+              <p>
+                <strong>Cost: $</strong>
+                <%- trip.cost %>
+              </p>
+            </div>
+          </section>
+        </script>
+      </div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js'></script>
