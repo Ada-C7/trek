@@ -60,8 +60,6 @@ $(document).ready(function() {
 
 
 
-
-
 var singleTripFailure = function(){
   console.log("Getting an individual trip did not work");
   // $("#single-trip-errors").html("<h1>Sorry, we could not retrieve this trip at this time.</h1>");
@@ -78,12 +76,34 @@ var hideTripHandler = function(event){
   console.log("Uh-oh");
 };
 
+var ReserveTripHandler = function(event){
+  console.log("Reserving A spot");
+
+  reserveTripURL = url + "/" + $(this).attr("data-tripID")+ "/" + "reserve";
+
+
+  var reservationTemplate = _.template($("#reservation-template").html());
+
+  var generatedHtml = reservationTemplate({
+    data: reserveTripURL
+  });
+
+ $('div#reservationForm').html(generatedHtml);
+
+};
+
+
+
+
+
 
 $('#load-all-trips').click(tripsClickHandler);
 
 $("#trips").on("click", "button#ShowDetails", singleTripHandler);
 
 $("#singleTrip").on("click", "button#HideDetails", hideTripHandler);
+
+$("#singleTrip").on("click", "button#reserve", ReserveTripHandler);
 
 
 });

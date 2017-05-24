@@ -53,6 +53,10 @@
         <%- data.name.toUpperCase() %>
       </h3>
 
+      <div id=reservationForm>
+        <button class="button" id="reserve" data-tripID="<%- data.id%>"> RESERVE YOUR SPOT!</button>
+      </div>
+
 
       <p>Continent:
         <%- data.continent %>
@@ -88,8 +92,30 @@
   </script>
 
 
+  <script id="reservation-template" type="text/template">
 
+    <form action="<%- data %>" method="post">
+      <section>
+        <label>Name: </label>
+        <input type="text" id="name" name="name"></input>
+      </section>
 
+      <section>
+        <label>Age: </label>
+        <input type="text" id="age" name="age"></input>
+      </section>
+
+      <section>
+        <label>Email: </label>
+        <input type="text" id="email" name="email"></input>
+      </section>
+
+      <section class="button">
+        <button type="submit">Make Reservation</button>
+      </section>
+    </form>
+
+  </script>
 
 
 
