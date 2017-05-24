@@ -1,7 +1,7 @@
 const BASE_URL = "https://trektravel.herokuapp.com/trips/";
 
 var successTripsCallback = function(response) {
-  console.log(response);
+  // console.log(response);
 
   var trips = $('#trips');
   response.forEach(function(trip) {
@@ -11,6 +11,9 @@ var successTripsCallback = function(response) {
 
 var successTripInfoCallback = function(response) {
   console.log(response);
+  var id = response['id'];
+  var trip = $('#' + id);
+  trip.append("<p>" + response['about'] + "</p>");
 }
 
 var failureCallback = function() {
@@ -22,15 +25,10 @@ var clickHandler = function() {
   $.get(BASE_URL, successTripsCallback).fail(failureCallback);
 };
 
-var clickHandler2 = function() {
-  $.get(BASE_URL + "1", successTripInfoCallback).fail(failureCallback);
-};
-
 $(document).ready(function() {
   $('#load-trips').click(clickHandler);
 
-  $('#trips').on('click', 'li', function(event) {
-      console.log(event.key);
+  $('#trips').on('click', 'li', function() {
       var id = $(this).attr("id");
       var url = BASE_URL + id
       $.get(url, successTripInfoCallback).fail(failureCallback);
