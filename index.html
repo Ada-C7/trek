@@ -49,9 +49,21 @@
           <strong>Join the Trek!</strong>
         </h2>
         <form>
-          <label>Name: </label>
-          <input class="text" id="join-name" />
-          <input class="button" id="join-trip" type="submit" value="Sign up!" />
+          <section>
+            <label>Name</label>
+            <input type="text" id="name" name="name"></input>
+          </section>
+          <section>
+            <label>Age</label>
+            <input type="text" id="age" name="age"></input>
+          </section>
+          <section>
+            <label>Email</label>
+            <input type="text" id="email" name="email"></input>
+          </section>
+          <section class="button">
+            <button type="submit">Sign Up!</button>
+          </section>
         </form>
         <section id="successful-sign-up">
         </section>

@@ -24,7 +24,7 @@ var tripCallback = function(response) {
     thisTrip: response
   });
   target.append($(oneTripHTML));
-  $('#join-trip').click(joinClickHandler);
+  $('form').submit(joinClickHandler);
 };
 
 var joinCallback = function(response) {
@@ -50,16 +50,20 @@ var indexClickHandler = function() {
   $.get(url, indexCallback).fail(failureCallback);
 };
 
-var joinClickHandler = function() {
-  // event.preventDefault();
+var joinClickHandler = function(event) {
+  event.preventDefault();
   console.log("clicked join!");
   $("#successful-sign-up").empty();
-  var data = {
-    name: $("#join-name").val()
-  };
+  var data = $(this).serialize();
+  // var data = {
+  //   name: "Aurora",
+  //   age: 34,
+  //   email: "aurora@test.com"
+  // };
   console.log(data);
-  var reserveBaseUrl = "https://trektravel.herokuapp.com/trips/";
-  var reserveUrl = reserveBaseUrl + $(this).attr('id') + "/reserve";
+  // $(this).attr('id')
+  var reserveBaseUrl = "https://trektravel.herokuapp.com/trips/22";
+  var reserveUrl = reserveBaseUrl + "/reserve";
   $.post(reserveUrl, data, joinCallback).fail(failureCallback);
 };
 
