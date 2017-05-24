@@ -12,7 +12,7 @@
     <h3>for people who never leave King County</h3>
     <p id="hitMe" class="button"> hit me </p>
 
-    <section id="errors"></section>
+    <section id="message"></section>
 
     <section id="display"></section>
 
@@ -31,6 +31,17 @@
         <p> <%- data.category %></p>
         <p><%- data.days %> days</p>
         <p>$<%- data.cost %></p>
+      </section>
+      <section class="reservationForm">
+        <form action="https://trektravel.herokuapp.com/trips/<%- data.id %>/reserve"
+          method="post">
+          <label>Name</label>
+          <input type="text" name="name"></input>
+          <label>Age</label>
+          <input type="text" name="age"></input>
+          <label>E-mail</label>
+          <input type="text" name="email"></input>
+          <button class="button" type="submit">Reserve now!</button>
       </section>
     </script>
 

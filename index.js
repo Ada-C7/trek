@@ -31,8 +31,17 @@ var displayOneTrip = function(response) {
   $('#display').append(generatedHtml);
 }
 
+var reserveTrip = function(event) {
+  event.preventDefault();
+  var url = $(this).attr("action");
+  var formData = $(this).serialize();
+  $.post(url, formData, function(response) {
+    $("#message").html("<p>Trip successfully reserved with reservation #" + response.id + "</p>");
+  })
+};
+
 var failureCallback = function() {
-  $("#errors").html("<h3>Alas, the request for data has failed.</h3>");
+  $("#message").html("<h3>Alas, the request for data has failed.</h3>");
 };
 
 
@@ -40,5 +49,7 @@ $(document).ready(function() {
   $('#hitMe').click(getTrips);
 
   $(document).on('click', '.trip', getOneTrip);
+
+  $('form').submit(reserveTrip);
 
 });
