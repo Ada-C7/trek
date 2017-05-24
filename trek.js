@@ -1,12 +1,12 @@
-// var url = 'https://trektravel.herokuapp.com/trips';
+$(document).ready(function() {
+  var tripUrl = 'https://trektravel.herokuapp.com/trips/';
 
-var tripUrl = 'https://trektravel.herokuapp.com/trips';
+  var allTrips = function(response) {
+    console.log("Success!")
+    console.log(response);
+    //new template, new event handler (get request to specific trip) from there it will append the template t the slide thing
 
-var successCallback = function(response) {
-  console.log("Success!")
-  console.log(response);
 
-  $(document).ready(function() {
     var tripTemplate = _.template($('#trips-template').html());
     for (var i = 0; i < response.length; i++) {
       var generatedHtml = tripTemplate ({
@@ -14,19 +14,25 @@ var successCallback = function(response) {
       });
       $("#trips-list").append(generatedHtml);
     }
-  })
-};
 
-var failureCallback = function() {
-  console.log("Didn't work");
-  $("#errors").html("<h1>AJAX request failed!</h1>");
-}
 
-var clickHandler = function() {
-  $.get(tripUrl, successCallback) //passing a function around as a variable (to be invoted later.) when the request comes in, that is when it willb e called.
-};
-//as soon as the document is ready, load the page
-$(document).ready(function() {
+    $(".flip").click(function() {
+      $(".info").slideToggle("slow");
+    });
+  };
+
+
+  var failureCallback = function() {
+    console.log("Didn't work");
+    $("#errors").html("<h1>AJAX request failed!</h1>");
+  }
+
+
+  var clickHandler = function() {
+    $.get(tripUrl, allTrips) //passing a function around as a variable (to be invoted later.) when the request comes in, that is when it willb e called.
+  };
+  //as soon as the document is ready, load the page
+
   $('#load').click(clickHandler);
 });
 

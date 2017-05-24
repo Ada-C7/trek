@@ -14,9 +14,16 @@
     <section id="trips-list"></section>
     <script id="trips-template" type="text/template">
       <section>
-      <h2>
-        <a href=https://trektravel.herokuapp.com/trips/<%- data.id %> > <%- data.name %></a>
+      <h2 class="flip">
+        <!-- <a href=https://trektravel.herokuapp.com/trips/<%- data.id %> ></a> -->
+        <%- data.name %>
       </h2>
+      <p class="info">
+        <!-- <a href=https://trektravel.herokuapp.com/trips/<%- data.id %> > <%- data.name %></a> -->
+        <%- data.about %>
+        in the paragraph
+      </p>
+
       <ul>
         <li><strong>Continent:</strong>
         <%- data.continent %></li>
