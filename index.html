@@ -8,25 +8,22 @@
 
     <!-- All Pages -->
     <section id="errors"></section>
-    <h1>Trek</h1>
-    <button id="trips-show-btn">Show trips!</button>
-    <section id="content">
-      <!-- Trips List -->
-      <section id="trips-list">
-        <table>
-          <thead>
-            <tr class="clear">
-            </tr>
-          </thead>
-          <tbody class="clear">
-          </tbody>
-        </table>
-      </section>
+    <h1 id="list-trips-btn">Trek</h1>
 
-      <!-- Show Trip Details -->
-      <section id="trip-details">
-        <h1></h1>
-      </section>
+    <!-- Trips List -->
+    <section id="trips-list">
+      <table>
+        <thead>
+          <tr class="clear">
+          </tr>
+        </thead>
+        <tbody class="clear">
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Show Trip Details -->
+    <section id="trip-details" class="clear">
     </section>
 
     <!-- Trips List Template-->
@@ -39,7 +36,9 @@
 
     <!-- Trip Details Template-->
     <script id="trip-details-template" type="text/template">
-      <p>Trip details! woooh!</p>
+      <h2><%= trip.name %></h2>
+      <h3><%= trip.weeks %> weeks | $<%= trip.cost %></h3>
+      <p><%= trip.about %></p>
     </script>
 
     <!-- Load JS after pageload-->
