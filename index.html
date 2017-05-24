@@ -6,13 +6,12 @@
       <link href="foundation.css" media="screen" rel="stylesheet" type="text/css"/>
       <link rel="stylesheet" href="style.css">
   </head>
-  <body class="row">
+  <body class="">
     <header class="row">
       <section class="row">
-        <h1 class="columns small-12 medium-8" id="header-title">TrekkingPole</h1>
-        <img class="columns small-12 medium-4" id="compass-rose" src="https://img.clipartfest.com/eb877cf31a8c1e71469769fed6971856_simple-compass-rose-map-compass-rose-map-clipart_600-600.svg" alt="compass rose" />
+        <h1 class="columns small-12" id="header-title">TrekkingPole</h1>
       </section>
-      <button id="get-trips" class="button">Get Trips</button>
+      <button id="get-trips" class="row button">Get Trips</button>
     </header>
     <section id="content">
 
@@ -22,8 +21,7 @@
     <script id="single-trip-template" type="text/javascript">
       <article class="columns small-12 medium-6">
         <h2>
-          <strong>Title: </strong>
-          <%- thisTrip.name %>
+          <strong><%- thisTrip.name %></strong>
         </h2>
         // image here?
         <p>
@@ -59,11 +57,10 @@
     </script>
     <!-- template for the main index view -->
     <script id="all-trips-template" type="text/javascript">
-      <article class="trip columns small-12 medium-6 large-3">
-        <h2>
-          <strong>Title: </strong>
+      <article class="trip columns small-12 medium-6 large-4">
+        <h3>
           <a class="get-trip" id=<%- trip.id %> ><%- trip.name %></a>
-        </h2>
+        </h3>
         <p>
           <strong>Duration: </strong>
           <%- trip.weeks %> weeks

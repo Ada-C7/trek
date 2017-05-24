@@ -3,15 +3,46 @@
   padding: 0;
 }
 
-header {
-  color: magenta;
+body {
+  display: block;
+  position: relative;
+  min-height: 700px;
+  /*width: 100%;*/
+}
+body::after {
+  content: "";
+  background: url("http://www.environmentandsociety.org/sites/default/files/styles/popup/public/wegener-expedition2-walk_0.jpg?itok=u9iamiKA") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: .5;
+  display: block;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
 
-
-#compass-rose {
-  width: 175px;
+header {
+  color: magenta;
+  text-align: center;
 }
 
 .button {
   background-color: magenta;
+}
+
+.button:hover {
+  background-color: gold;
+  color: magenta;
+}
+
+
+h1 {
+  font-size: 3em;
+}
+
+.trip {
+  padding: 10px;
 }
