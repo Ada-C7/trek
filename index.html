@@ -5,10 +5,23 @@
     <title></title>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="trek.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
   </head>
   <body>
     <button id="load"> See Trips </button>
     <section id="errors"></section>
-    <section id="trips"></section>
+    <section id="trips-list"></section>
+    <script id="trips-template" type="text/template">
+      <section>
+      <h2>
+        <%- data.name %>
+      </h2>
+      <p>
+        <strong>Continent:</strong>
+        <%- data.continent %>
+      </p>
+      </section>
+    </script>
+
   </body>
 </html>
