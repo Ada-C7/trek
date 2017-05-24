@@ -26,7 +26,7 @@ var tripDetailsCallback = function(response) {
       trip: response
     });
    $('#trip-details').append($(tripDetails));
- };
+  };
 
 var tripDetailsClickHandler = function() {
   url = "https://trektravel.herokuapp.com/trips/" + $(this).attr('id');
@@ -34,11 +34,26 @@ var tripDetailsClickHandler = function() {
   $('.clear').empty();
 };
 
+// RESERVE TRIP
+
+var reservationCallback = function(){
+  $("#messages").html("<h3>Reservation complete!</h3>");
+  console.log(response);
+};
+
+var reservationClickHandler = function(){
+  $('form').submit(e);
+    e.preventDefault();
+    var url = $(this).attr("action");
+    var formData = $(this).serialize();
+    $.post(url, formData, reservationCallback).fail(failureCallback);
+  };
+
 // FAIL
 
 var failureCallback = function() {
+  $("#messages").html("<h3>Request failed</h3>");
   console.log("Didn't Work! :(");
-  $("#errors").html("<h1>Request failed</h1>");
 };
 
 // DOCUMENT READY
