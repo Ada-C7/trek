@@ -21,15 +21,19 @@ var successCallbackTrip = function(response) {
   var indivTripTemplate = _.template($("#trip_template").html());
   var generatedHtml = indivTripTemplate({
     trip: response
-  });
 
+  })
+
+  // $("#trip-info-indv").empty();
   $("#trip-info-indv").html($(generatedHtml));
+  $("#trip-info-indv").show();
 };
 
 var failureCallback = function() {
   console.log("Didn't work :( ");
   $("errors").html("<h1>AJAX request failed!</h1>");
 };
+
 
 var clickHandler = function() {
   $.get(url, successCallback).fail(failureCallback);
@@ -48,6 +52,5 @@ $("#load").click(clickHandler);
 
 $("#trip-list").on("click", "button#seeTrip", clickHandlerTrip);
 
-// $("#trips").show()
 
 });

@@ -3,6 +3,7 @@
   <head>
       <title>Trek</title>
       <meta charset="utf-8">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.css">
       <link href="trek.css" media="screen" rel="stylesheet" type="text/css">
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js">
     </script>
@@ -15,22 +16,23 @@
     <h1>WanderLust</h1>
 
     <section id="errors"></section>
-    <button id="load"> See all trips! </button>
+    <button id="load" class="success button"> See all trips! </button>
+
+    <div id="trip-info-indv"></div>
 
     <div id="trip-list"></div>
     <script id="trip-list-template" type="text/template">
       <section>
-        <div id="trips"></div>
+
           <p><%- trip.id %></p>
           <p><%- trip.name %></p>
           <p><%- trip.continent %></p>
           <p><%- trip.weeks %></p>
-        <button id="seeTrip" data-tripid = <%- trip.id%> ><%- trip.name %></button>
+        <button id="seeTrip" class="success button" data-tripid = <%- trip.id%> ><%- trip.name %></button>
+
       </section>
     </script>
 
-
-    <div id="trip-info-indv"></div>
     <script id="trip_template" type="text/template">
     <div id="trip_info">Trip Info</div>
 
@@ -42,26 +44,10 @@
       <p><%- trip.category %></p>
       <p><%- trip.weeks %></p>
       <p><%- trip.cost %></p>
-      <button id="reserve">Reserve Spot</button>
+      <button id="reserve" class="success button">Reserve Spot</button>
     </script>
 
 
-
-    <!-- <div id="message"></div>
-<form action="https://petdibs.herokuapp.com/pets" method="post">
-  <section>
-    <label>Name</label>
-    <input type="text" id="name" name="name"></input>
-  </section>
-  <section>
-    <label>Age</label>
-    <input type="text" id="age" name="age"></input>
-  </section>
-
-  <section class="button">
-    <button type="submit">Add Pet</button>
-  </section>
-</form> -->
 
   </body>
 </html>
