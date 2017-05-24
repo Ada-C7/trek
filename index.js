@@ -44,18 +44,18 @@ var successTripCallback = function(response) {
     e.preventDefault();
     var url = $(this).attr("action");
     var formData = $(this).serialize();
-    console.log(url);
-    $.post(url, formData, function(response){
-      $('#message').html('<p> You succesfully reserved your trip! </p>');
-      console.log(response);
-      console.log("I AM IN POST");
-    })
-    .fail(function(){
-      $('#errors').html('<p>Creating new reservation failed</p>');
-    });
+
+      if (validateForm() != false){
+        $.post(url, formData, function(response){
+          $('#message').html('<p> You succesfully reserved your trip! </p>');
+        })
+        .fail(function(){
+          $('#errors').html('<p>Creating new reservation failed</p>');
+        });
+        $('#reservation-form').hide();
+      }
+
   });
-
-
 };
 
 
@@ -85,11 +85,10 @@ var checkIfErrorsEmpty = function(){
 
 
 // After closing modal reload a page:
-$( ".trip-close-button").click(function() {
-    location.reload();
-    // allTripsClickHandler ?????
-});
-
+// $( ".trip-close-button").click(function() {
+//     location.reload();
+//     // allTripsClickHandler ?????
+// });
 
 
 
@@ -110,8 +109,10 @@ var validateForm = function() {
     }
     if (alert_text != ""){
       alert(alert_text);
+
     }
     if (name == "" || email == "" || age == ""){
       return false;
     }
+    return true;
 }
