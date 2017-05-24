@@ -1,5 +1,5 @@
 // save response from API in an array
-var allTripsUrl = 'https://trektravel.herokuapp.com/trips';
+var allTripsUrl = 'https://trektravel.herokuapp.com/trips/';
 
 var generateAllTrips = function(response) {
   $('#single-trip').hide();
@@ -36,8 +36,17 @@ var tripsClickHandler = function(event) {
 
 var singleTripClickHandler = function(event) {
   var id = event.target.getAttribute('value');
-  var singleTripUrl = allTripsUrl + "/" + id;
+  var singleTripUrl = allTripsUrl + id;
   $.get(singleTripUrl, generateSingleTrip);
+};
+
+var reserveClickHandler = function(event) {
+  e.preventDefault();
+  var id = event.target.getAttribute('value');
+  var postUrl = allTripsUrl + id + '/' + 'reserve';
+  var formData = $(this).serialize();
+  console.log("form data = ", formData);
+  // ALSKDJALSDJKASLDJSALKJD START FROM HERE.
 };
 
 $(document).ready(function() {
@@ -45,4 +54,5 @@ $(document).ready(function() {
 
   $("#trip-list").on("click", ".trips", singleTripClickHandler);
 
+  $('form').submit(reserveClickHandler);
 });
