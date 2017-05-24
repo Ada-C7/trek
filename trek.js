@@ -3,7 +3,6 @@ var tripsUrl = "https://trektravel.herokuapp.com/trips";
 var clickHandler = function(event) {
   var target = $('#list-trips');
   // target.empty(); // might use later so trip list does not repeat if button clicked again
-
   $.get(tripsUrl, successCallback).fail(failureCallback);
 };
 
