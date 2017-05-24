@@ -16,10 +16,9 @@
 
     <div id="trip-list"></div>
     <script id="trek-list-template" type="text/template">
-
       <section>
         <h2>
-    <%- data.name %>
+          <a href= "#" class="trek-link" data-trip-id= "<%- data.id%>"><%- data.name %></a>
         </h2>
         <p>
           <strong>Continent:</strong>
@@ -27,10 +26,41 @@
         </p>
         <p>
           <strong>Trek Length:</strong>
-          <%- data.weeks %>
+          <%- data.weeks + " weeks"%>
         </p>
 
       </section>
     </script>
+
+
+    <script id="trek-detail-template" type="text/template">
+
+      <section>
+        <h2>
+          <%- data.name %>
+        </h2>
+        <p>
+          <strong>Continent:</strong>
+          <%- data.continent %>
+        </p>
+        <p>
+          <strong>Details:</strong>
+          <%- data.about %>
+        </p>
+        <p>
+          <strong>Length:</strong>
+          <%- data.weeks + " week(s)" %>
+        </p>
+        <p>
+          <strong>Cost:</strong>
+          <%- "$" + data.cost %>
+        </p>
+
+      </section>
+    </script>
+
+
+
+
   </body>
 </html>
