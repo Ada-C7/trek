@@ -8,10 +8,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div id="test-trek"></div>
+    <!-- <div id="test-trek"></div> -->
     <div id="trek-list"></div>
     <script id="trek-template" type="text/template">
-      <section id= <%-data.id %> >
+      <section class="unopened" id= <%-data.id %> >
         <h2 data-id= <%- data.id %> >
           <%- data.name %>
         </h2>
@@ -24,22 +24,32 @@
       </section>
     </script>
 
+
     <script id="test-template" type="text/template">
-      <section>
-        <h2 data-id= <%- data.id %> >
-          <%- data.name %>
-        </h2>
-        <p>
-          <strong>to: <%- data.continent %> </strong>
-        </p>
-        <p>
-          <strong>for: <%- data.weeks %> weeks</strong>
-        </p>
+      <section id= <%- "about" + data.id %> >
         <p><strong> about: </strong>
           <%- data.about %>
         </p>
         <p>Category: <%- data.category %> </p>
         <p>Cost: $<%- data.cost %> </p>
+      <div id="message"></div>
+      <form id= <%- "form" + data.id %> action= <%-"https://trektravel.herokuapp.com/trips/" + data.id + "/reserve" %> method="post" >
+        <section>
+          <label>Name</label>
+          <input type="text" id="name" name="name"></input>
+        </section>
+        <section>
+          <label>Age</label>
+          <input type="text" id="age" name="age"></input>
+        </section>
+        <section>
+          <label>Email</label>
+          <input type="text" id="email" name="email"></input>
+        </section>
+        <section class="button">
+          <button type="submit">Reserve Spot on Trip</button>
+        </section>
+      </form>
       </section>
     </script>
   </body>
