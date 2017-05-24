@@ -4,8 +4,7 @@ var failureCallback = function() {
 };
 
 var successCallback = function(response) {
-  // console.log("Success!");
-  // console.log(response.length);
+
   $('#trips').empty();
 
   var target = $('#trips');
@@ -28,23 +27,36 @@ var successLocaleCallback = function(response) {
   });
   target.append($(generatedHtml));
 
+  $('form').submit(clickHandlerReserve);
+};
+
+var successLocaleReserved = function() {
+  $('#message').html('<p> You reserved this trek! </p>');
 };
 
 var clickHandler = function() {
-  // $('#trips').empty();
   var url = "https://trektravel.herokuapp.com/trips";
   $.get(url, successCallback).fail(failureCallback);
 };
 
 var clickHandlerLocale = function(event) {
-  // console.log(event);
-  // $('trips').empty();
   var url = "https://trektravel.herokuapp.com/trips/";
   var tripUrl = $(this).data().trekId;
-  $.get(url + tripUrl, successLocaleCallback);
+  $.get(url + tripUrl, successLocaleCallback).fail(failureCallback);
+};
+
+var clickHandlerReserve = function(event) {
+  alert("It's ME!");
+  event.preventDefault();
+
+  var url = $(this).attr("action");
+  var formData = $(this).serialize();
+  console.log("form data = ", formData);
+  $.post(url, formData, successLocaleReserved).fail(failureCallback);
 };
 
 $(document).ready(function() {
   $('#load').click(clickHandler);
   $('#trips').on('click', '#oneTrek', clickHandlerLocale);
+
 });
