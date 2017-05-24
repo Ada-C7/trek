@@ -3,10 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>Trek</title>
-
     <link href="main.css" rel="stylesheet" type="text/css">
-
   </head>
+
   <body>
     <h1>Trips</h1>
       <div id='errors'></div>
@@ -14,9 +13,9 @@
       <div id='trips-list'>
         <script id="trips-template" type="text/template">
           <section id=<%- 'trip-' + trip.id %> >
-            <a href="" data-id=<%- trip.id %> >
+            <h3 class="show_hide" data-id=<%- trip.id %> >
               <%- trip.name %>
-            </a>
+            </h3>
             <p>
               <strong>Location: </strong>
               <%- trip.continent %>
@@ -26,8 +25,8 @@
               <%- trip.weeks %>
               weeks
             </p>
-            <button id='show' data-id=<%- trip.id %> >Show More</button>
-            <div id=<%- trip.id %> class="hide-show-info">
+            <!-- <button id='show' data-id=<%- trip.id %> >Learn More</button> -->
+            <div id=<%- trip.id %> class="slidingInfo">
               <p>
                 <strong>About:</strong>
                 <%- trip.about %>

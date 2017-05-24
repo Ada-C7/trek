@@ -1,3 +1,12 @@
 section {
+  /*display: inline-block;*/
   border: solid;
+}
+
+h3 {
+  color: blue;
+}
+
+h3:hover {
+  color:red;
 }
