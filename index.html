@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-      <link href="styles.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="styles.css" media="screen" rel="stylesheet" type="text/css">
   <title>Trek</title>
   <meta charset="utf-8">
 </head>
 
 <body>
 
-<button id="load"> See list </button>
+  <button id="load"> See list </button>
 
 
-<div id="trip"></div>
- <script id="trip-template" type="text/template">
-   <section>
-      <%- data.name %>
-     <p> Continent:
-       <%- data.continent %>
-     </p>
-     <p> Week:
-       <%- data.weeks %>
-     </p>
-  </section>
- </script>
+  <div id="trip"></div>
+  <script id="trip-template" type="text/template">
+    <section>
+      <p><%- data.name %></p>
+      <p>Id: <%- data.id %> </p>
+      <p> Continent:<%- data.continent %></p>
+      <p> Week: <%- data.weeks %></p>
+      <p> Cost:<%- data.cost %></p>
+      <p> Category:<%- data.category %> </p>
+      <p> About:<%- data.about %></p>
+    </section>
+  </script>
 
 
- <div id="trips-list"></div>
+  <div id="trips-list"></div>
   <script id="trips-list-template" type="text/template">
     <section>
       <button class="see_trip" id ="<%-data.id %>"> <%- data.name %> </button>
@@ -35,7 +35,7 @@
       <p> Week:
         <%- data.weeks %>
       </p>
-   </section>
+    </section>
   </script>
 
 
