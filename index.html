@@ -19,6 +19,17 @@
     </li>
   </script>
 
+  <script id="trip-template" type="text/template">
+    <h2><%- data.name %></h2>
+    <ul>
+      <li><strong>Continent:</strong> <%- data.continent %></li>
+      <li><strong>Cost:</strong> <%- data.cost %></li>
+      <li><strong>Number of weeks:</strong> <%- data.weeks %></li>
+      <li><strong>Category:</strong> <%- data.category %></li>
+    </ul>
+    <p><%- data.about %></p>
+  </script>
+
   <h1>Trek</h1>
   <section id="errors"></section>
   <button id="load-trips" class="button">See All Trips</button>
