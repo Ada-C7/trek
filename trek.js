@@ -8,8 +8,13 @@ var successCallback = function(response) {
 
   for (var i = 0; i < response.length; i++) {
     trip = response[i];
-    target.append("<li>" + trip.name + "</li>");
+    var row = $('<tr></tr>');
+    var name = $('<td><a href="#" id=' + trip.id + '>' + trip.name + '</a></td>');
+
+    row.append(name);
+    target.append(row);
   }
+  $('#load');
 };
 
 var failureCallback = function() {
