@@ -1,16 +1,18 @@
 var tripsUrl = "https://trektravel.herokuapp.com/trips";
 
-var clickHandler = function(event) {
-  var target = $('#list-trips');
+var allTripClickHandler = function(event) {
+  // console.log(this.event);
+  var target = $('#trips-template');
   // target.empty(); // might use later so trip list does not repeat if button clicked again
-  $.get(tripsUrl, successCallback).fail(failureCallback);
+  $.get(tripsUrl, allSuccessCallback).fail(failureCallback);
 };
 
-var successCallback = function(response) {
-  console.log("Success!");
-  console.log(response[0]);
-
-  var tripsTemplate = _.template($('#list-trips').html());
+var allSuccessCallback = function(response) {
+  // console.log("Success!");
+  // console.log(response[0]);
+  $('#print-trip-data').empty();
+  $('#print-trips').show();
+  var tripsTemplate = _.template($('#trips-template').html());
 
   for (var i = 0; i < response.length; i++) {
     var generatedHtml = tripsTemplate({
@@ -19,6 +21,31 @@ var successCallback = function(response) {
     console.log(generatedHtml);
     $('#print-trips').append(generatedHtml);
   }
+  $('.trip').click(oneTripClickHandler);
+};
+
+var oneTripClickHandler = function(event) {
+
+  // console.log(event.target);
+  // var tripID = event.target;
+  // var trying = 'https://trektravel.herokuapp.com/trips/1';
+  var oneTripUrl = tripsUrl + "/" + this.id;//loop that changes trips Url according to the link the user clicks
+
+  $.get(oneTripUrl, oneSuccessCallback).fail(failureCallback);
+};
+
+var oneSuccessCallback = function(response) {
+  $('#print-trips').hide();
+  $('#print-trip-data').empty();
+  $('#print-trip-data').show();
+  var oneTripTemplate = _.template($('#trip-data').html());
+
+  var generatedHtml = oneTripTemplate({
+    data: response
+  });
+  console.log(generatedHtml);
+  $('#print-trip-data').append(generatedHtml);
+
 };
 
 var failureCallback = function() {
@@ -27,5 +54,5 @@ var failureCallback = function() {
 };
 
 $(document).ready(function(){
-  $('#load').click(clickHandler);
+  $('#load').click(allTripClickHandler);
 });

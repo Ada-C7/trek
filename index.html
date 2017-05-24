@@ -10,19 +10,21 @@
   <body>
     <section id="errors"></section>
     <button class="button" id="load">View all Trips!</button>
+
     <section id="print-trips"></section>
-    <script id="list-trips" type="text/template">
+    <script id="trips-template" type="text/template">
+      <!-- somehow need to make a link that will take user to specific trip -->
+      <!-- maybe something with a href="#" to select an id? -->
       <section>
-        <h4>
+        <h4 class="trip" id=<%= data.id %> >
           <%- data.name %>
         </h4>
         <p>
-          Location: <%- data.continent %></br>
-          Durration: <%- data.weeks %>
+          <strong>Continent: </strong><%- data.continent %></br>
+          <strong>Durration: </strong><%- data.weeks %>
         </p>
       </section>
     </script>
-
     <section id="print-trip-data"></section>
     <script id="trip-data" type="text/template">
       <section>
@@ -30,8 +32,8 @@
           <%- data.name %>
         </h2>
         <p>
-          Continent: <%- data.continent %></br>
-          About: <%- data %>
+          <strong>Continent: </strong><%- data.continent %></br>
+          <strong>About: </strong><%- data.about %>
         </p>
       </section>
     </script>
