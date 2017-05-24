@@ -1,4 +1,4 @@
-var tripListUrl = 'https://trektravel.herokuapp.com/trips';
+var baseUrl = 'https://trektravel.herokuapp.com/trips';
 var tripListTemplate = _.template($('#trip-list-template').html());
 
 var tripListSuccess = function(response) {
@@ -13,11 +13,13 @@ var tripListSuccess = function(response) {
   $('#trip-info').html(tripList);
 };
 
-var tripClickHandler = function() {
-  response = $.get(tripListUrl, tripListSuccess);
+var tripListClickHandler = function() {
+  response = $.get(baseUrl, tripListSuccess).fail(function() {
+    console.log('AJAX failed to load.');
+    $('#errors').html('Couldn\'t load trips.');
+  });
 };
 
-
 $(document).ready(function() {
-  $('#load-trips').click(tripClickHandler);
+  $('#load-trips').click(tripListClickHandler);
 });
