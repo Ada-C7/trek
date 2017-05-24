@@ -17,6 +17,10 @@ var successCallback = function(response) {
 };
 
 $(document).ready(function() {
+  $("#trips").toggle(); //to turn trips 'off' on load
   var url = "https://trektravel.herokuapp.com/trips";
-  $.get(url, successCallback);
+  $("#load").click(function(event) {
+    $.get(url, successCallback);
+    $("#trips").toggle();
+  });
 });
