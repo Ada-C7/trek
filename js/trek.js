@@ -39,4 +39,12 @@ var tripClickHandler = function() {
 $(document).ready(function() {
   $('#load-trips').click(tripListClickHandler);
   $('#trip-info').on('click', 'h4', tripClickHandler);
+  $('#trip-info').on('click', '#reserve-trip button', function(e) {
+    e.preventDefault();
+    var url = $('#reserve-trip').attr('action');
+    var formData = $('#reserve-trip').serialize();
+    $.post(url, formData, function(response) {
+      console.log('Trip booked');
+    });
+  });
 });
