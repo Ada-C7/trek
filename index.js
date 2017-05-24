@@ -48,16 +48,18 @@ var getTreks = function(event) {
   $.get(url, successTreksCallback).fail(failureCallback).always(alwaysCallback);
 };
 
-// var getTrek = function(event) {
-//   var target = $('.treks');
-//   target.empty();
-//
-//   var url = BASEURL + this id;
-//   $.get(url, successTrekCallback).fail(failureCallback).always(alwaysCallback);
-// };
+var getTrek = function(event) {
+  var target = $('.treks');
+  target.empty();
 
+  console.log($(this).id);
+  // var url = BASEURL + this.id;
+  // console.log(url);
+  // pull id from trip object
+  $.get(url, successTrekCallback).fail(failureCallback).always(alwaysCallback);
+};
 
 $(document).ready(function() {
-  $('#load-treks').click(getTreks);
-  // $('h2').click(getTrek);
+  $('body').on('click', '#load-treks', getTreks);
+  $('#treks').on('click', '#load-trek', getTrek);
 });
