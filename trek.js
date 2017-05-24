@@ -67,7 +67,6 @@ var newTripCallback = function(response) {
 var failureCallback = function(response) {
   console.log("Failed to get anything. Wooo....");
   $("#errors").html("Sorry, something went wrong! Please try again shortly.");
-
   console.log(response);
 };
 
@@ -146,7 +145,9 @@ var createTripClickHandler = function(event) {
   $("#successful-new-trip-create").empty();
   var data = $(this).serialize();
   console.log(data);
-  var newTripUrl = "https://trektravel.herokuapp.com/trips/new";
+  // var newTripUrl = "https://trektravel.herokuapp.com/trips/new";
+  var newTripUrl = "https://trektravel.herokuapp.com/trips/";
+
   $.post(newTripUrl, data, newTripCallback).fail(failureCallback);
 };
 
