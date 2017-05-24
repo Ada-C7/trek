@@ -6,6 +6,7 @@
     <title></title>
   </head>
   <body>
+    <h1>Globe Trotters</h1>
     <section>
       <button id="load">Get All Trips!</button>
     </section>
@@ -19,12 +20,23 @@
         </p>
         <p>
           <strong>Name of the Trip:</strong>
-          <%- data.name %>
+          <a href="#" id="<%- data.id %>"><%- data.name %></a>
         </p>
         <p>
           <strong>Length:</strong>
-          <%- data.weeks %>
+          <%- data.weeks %> weeks
         </p>
+      </section>
+    </script>
+
+    <div id="trip-details"></div>
+    <script id="details-template" type="text/template">
+      <section>
+        <h1><%- data.name %></h1>
+        <p>ID: <%- data.id %></p>
+        <p>Continent: <%- data.continent %></p>
+        <p>Category: <%- data.category %></p>
+        <p>About: <%- data.about %></p>
       </section>
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
