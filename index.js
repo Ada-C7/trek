@@ -4,6 +4,8 @@ var url_all_trip = "https://trektravel.herokuapp.com/trips";
 
 $(document).ready(function() {
   $('#load').click(allTripsClickHandler);
+  // checkIfTableEmpty();
+  checkIfErrorsEmpty();
 });
 
 var allTripsClickHandler = function(event) {
@@ -38,5 +40,23 @@ var successTripCallback = function(response) {
 
 var failureCallback = function() {
   console.log("Didn't work :(");
-  $("#errors").html("<h1>AJAX request failed!</h1>");
+  $("#errors").html("<p>AJAX request failed! Check your Internet connection</p>");
+};
+
+
+
+
+var checkIfTableEmpty = function(){
+  // console.log($('#trips-list').html());
+  if (!$('#trips-list').html().includes("td")){
+    $('#trips-list-table').hide();
+  }
+};
+
+
+
+var checkIfErrorsEmpty = function(){
+  if ($('#errors').html() == ""){
+    $('#errors-block').hide();
+  }
 };

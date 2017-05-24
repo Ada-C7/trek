@@ -1,54 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link href="styles.css" media="screen" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/foundation.min.css">
+  <link href="css/styles.css" media="screen" rel="stylesheet" type="text/css">
   <title>Trek</title>
   <meta charset="utf-8">
 </head>
 
 <body>
 
-  <button id="load"> See list </button>
+  <button class="button success" id="load"> All trips </button>
+
+  <div id = "errors-block" class="alert callout" data-closable="slide-out-right">
+    <div id = "errors"></div>
+    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 
 
-  <div id="trip"></div>
-  <script id="trip-template" type="text/template">
-    <section>
-      <p><%- data.name %></p>
-      <p>Id: <%- data.id %> </p>
-      <p> Continent:<%- data.continent %></p>
-      <p> Week: <%- data.weeks %></p>
-      <p> Cost:<%- data.cost %></p>
-      <p> Category:<%- data.category %> </p>
-      <p> About:<%- data.about %></p>
-    </section>
-  </script>
-
-
-  <div id="trips-list"></div>
-  <script id="trips-list-template" type="text/template">
-    <section>
-      <button class="see_trip" id ="<%-data.id %>"> <%- data.name %> </button>
-      <p> Continent:
-        <%- data.continent %>
-      </p>
-      <p> Week:
-        <%- data.weeks %>
-      </p>
-    </section>
-  </script>
+  <!-- <div id="trip" class = "callout secondary primary small  data-closable">
+  <button class="close-button small" aria-label="Dismiss alert" type="button" data-close>
+  <span aria-hidden="true">&times;</span>
+</button>
+</div> -->
 
 
 
+<div id="trip" class= "text-center"></div>
+<script id="trip-template" type="text/template">
+  <section>
+    <p><%- data.name %></p>
+    <p>Id: <%- data.id %> </p>
+    <p> Continent:<%- data.continent %></p>
+    <p> Week: <%- data.weeks %></p>
+    <p> Cost:<%- data.cost %></p>
+    <p> Category:<%- data.category %> </p>
+    <p> About:<%- data.about %></p>
+  </section>
+</script>
 
 
 
-</body>
-</html>
+<table id = "trips-list-table">
+  <thead>
+    <tr>
+      <th> Trip name </th>
+      <th> Continent </th>
+      <th> Weeks </th>
+    </tr>
+  </thead>
+  <tbody id="trips-list">
+    <script id="trips-list-template" type="text/template">
+      <tr>
+        <td><button class="see_trip button success" id ="<%-data.id %>"> <%- data.name %> </button></td>
+        <td><%- data.continent %></td>
+        <td><%- data.weeks %></td>
+      </tr>
+    </script>
+    <tbody>
+    </table>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"
-integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-crossorigin="anonymous"></script>
-<script src="index.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+  </body>
+  </html>
+
+
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/vendor/foundation.min.js"></script>
+  <script src="js/vendor/what-input.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- <script type="text/javascript" src="scripts.js"></script> -->
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="index.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>

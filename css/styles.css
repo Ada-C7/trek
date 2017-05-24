@@ -1,0 +1,16 @@
+#trip{
+  background-color: green;
+  min-height: 170px;
+}
+/*#errors:empty*/
+#trip:empty{
+   display: none;
+}
+/*#errors:empty{
+  display: none;
+}*/
+/*table:empty{
+  table {
+    diplay: none;
+  }
+}*/
