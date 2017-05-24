@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
   <link rel="stylesheet" href="css/foundation.css">
   <link rel="stylesheet" href="css/foundation.min.css">
   <link href="css/styles.css" media="screen" rel="stylesheet" type="text/css">
@@ -9,28 +10,40 @@
 </head>
 
 <body>
-  <main>
-    <button class="button success" id="load"> All trips </button>
-    <section id = "errors-block" class="alert callout" data-closable="slide-out-right">
-      <div id = "errors"></div>
-      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-        <span aria-hidden="true">&times;</span>
-      </button>
+  <header>
+    <section class = "row">
+      <section class = "medium-2 large-2 columns">
+        <button class="button  secondary hollow button" id="load"> All trips </button>
+      </section>
+      <section class = "medium-10 large-10 columns">
+        <section id = "errors-block" class="alert callout" data-closable="slide-out-right">
+          <div id = "errors"></div>
+          <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </section>
+        <section id = "message-block" class="success callout" data-closable="slide-out-right">
+          <div id = "message"></div>
+          <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </section>
+      </section>
     </section>
+  </header>
 
-    <section id = "trip-block" class="success callout" data-closable="slide-out-left">
+  <main>
+    <section id = "trip-block" class=" callout" data-closable="slide-out-left">
       <div id="trip"></div>
-
-
       <script id="trip-template" type="text/template">
         <section>
-          <p><%- data.name %></p>
-          <p>Id: <%- data.id %> </p>
-          <p> Continent:<%- data.continent %></p>
-          <p> Week: <%- data.weeks %></p>
-          <p> Cost:<%- data.cost %></p>
-          <p> Category:<%- data.category %> </p>
-          <p> About:<%- data.about %></p>
+          <h3><%- data.name %></h3>
+          <p><strong>Id:</strong> <%- data.id %> </p>
+          <p><strong> Continent:</strong><%- data.continent %></p>
+          <p> <strong>Week: </strong><%- data.weeks %></p>
+          <p><strong> Cost:</strong><%- data.cost %></p>
+          <p> <strong>Category:</strong><%- data.category %> </p>
+          <p><strong> About:</strong><%- data.about %></p>
         </section>
         <form action="" method="post">
           <section>
@@ -45,12 +58,10 @@
             <label>Email</label>
             <input type="text" id="email" name="email"></input>
           </section>
-
           <section class="button">
             <button type="submit">Reserve a trip</button>
           </section>
         </form>
-
       </script>
       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
         <span aria-hidden="true">&times;</span>
@@ -74,8 +85,8 @@
 
 
 <section>
-  <table id = "trips-list-table">
-    <thead>
+  <table >
+    <thead id = "trips-list-table">
       <tr>
         <th> Trip name </th>
         <th> Continent </th>
@@ -85,14 +96,14 @@
     <tbody id="trips-list">
       <script id="trips-list-template" type="text/template">
         <tr>
-          <td><button class="see_trip button success" id ="<%-data.id %>"> <%- data.name %> </button></td>
+          <td><a class="see_trip" id ="<%-data.id %>"> <%- data.name %> </a></td>
           <td><%- data.continent %></td>
           <td><%- data.weeks %></td>
         </tr>
       </script>
-      <tbody>
-      </table>
-    </section>
+    <tbody>
+  </table>
+</section>
 
   </main>
 </body>

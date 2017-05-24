@@ -1,10 +1,16 @@
-/*#trip{
-  background-color: green;
-  min-height: 170px;
-}*/
-/*#errors:empty*/
+body{
+  font-family: 'Lora', serif;
+}
+header{
+  padding-top: 4%;
+  background-color: #E9E6F4;
+}
 #trip:empty{
    display: none;
+}
+
+#load:hover{
+  background-color: #832161;
 }
 /*#errors:empty{
   display: none;
@@ -14,11 +20,30 @@
     diplay: none;
   }
 }*/
+#trip{
+  background-color: #9B75A8;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+#trip h3{
+  color: white;
+}
+#trip form{
+  width:75%;
+  margin: auto;
+}
+#trip form .button{
+  background-color: white;
+}
 
-body{
+main{
   margin-left: 10%;
   margin-right: 10%;
 }
 table{
-  width: 70%;
+  width: 100%;
+}
+.see_trip:hover {
+  background-color: #3D2645;
+  color: #F0EFF4;
 }
