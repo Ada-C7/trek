@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="app.css" media="screen" type="text/css">
   </head>
   <body>
-    <header class="row">
-      <h1 class="small-11 small-centered columns">Treks for Trekkies</h1>
+    <header class="row column text-center">
+      <h1>Treks for Trekkies</h1>
       <!-- Button to get all trips -->
-      <button id="load" class="small-3 small-centered columns"><em>Boldly go</em></button>
+      <button id="load"><em>Boldly go</em></button>
     </header>
     <section id="errors"></section>
-    <div id="all-trips"></div>
+    <div id="all-trips" class="row small-up-1 medium-up-2 large-up-3"></div>
     <script id="all-trips-template" type="text/template">
-      <section>
+      <section class="column">
         <!-- Display results (name, continent, weeks) -->
         <h2><%- data.name %></h2>
         <p id="continent"><%- data.continent %></p>
