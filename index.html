@@ -11,7 +11,27 @@
       <section class="row">
         <h1 class="columns small-12" id="header-title">TrekkingPole</h1>
       </section>
-      <button id="get-trips" class="row button">Get Trips</button>
+      <section class="top-nav">
+        <button id="get-trips" class="button">Get All Trips</button>
+
+        <form>
+          <section>
+            <!-- <label>Continent</label> -->
+            <select size="1" id="Continent-sort" name="continent">
+              <option>Antarctica</option>
+              <option>Africa</option>
+              <option>Asia</option>
+              <option>Europe</option>
+              <option>North America</option>
+              <option>South America</option>
+            </select>
+          </section>
+          <section class="button" id="continent-sort">
+            <button type="submit">Sort By Continent</button>
+          </section>
+        </form>
+
+      </section>
     </header>
     <section id="errors">
     </section>
@@ -71,6 +91,8 @@
         </section>
       </article>
     </script>
+
+
     <!-- template for the main index view -->
     <script id="all-trips-template" type="text/javascript">
       <article class="trip columns small-12 medium-6 large-4">
@@ -83,6 +105,9 @@
         </p>
       </article>
     </script>
+
+
+    <!-- template for join trip -->
     <script id="join-trip-template" type="text/javascript">
       <article class="joined">
         <p>Successfully signed up for
