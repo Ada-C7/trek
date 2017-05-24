@@ -14,6 +14,24 @@
         <button class="button" id="load">Show me Everything</button>
       </div>
       <div id="message"></div>
+      <div id="trip-sort">
+        <h4>Sort Trips via:</h4>
+        <form method="get" id="sort">
+          <label>Continent</label>
+          <select name="continents">
+            <option value="North America">North America</option>
+            <option value="South America">South America</option>
+            <option value="Asia">Asia</option>
+            <option value="Africa">Africa</option>
+            <option value="Australia">Australia</option>
+            <option value="Europe">Europe</option>
+            <option value="Antarctica">Antarctica</option>
+          </select>
+        <section>
+          <button class="button" type="submit">Search</button>
+        </section>
+        </form>
+      </div>
       <div id="trip-list"></div>
       <!-- Template to use in order to display all trips -->
       <script id="trip-template" type="text/template">
