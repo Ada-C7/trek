@@ -12,14 +12,14 @@
   margin: auto;
   border: 3px solid white;
   padding: 100px 40px;
-  background-image: url(https://unsplash.it/200/300/?random);
+  background-color:	#f08080;
 }
 
 
 #logo {
   color: black;
   font-family: 'Stalemate', cursive;
-  font-size: 72px;
+  font-size: 150px;
   -ms-transform: rotate(-3deg); /* IE 9 */
   -webkit-transform: rotate(-3deg); /* Chrome, Safari, Opera */
   transform: rotate(-3deg);
@@ -51,4 +51,13 @@ li {
 
 li.highlight a, a:hover {
   color: #E24E42;
+}
+
+.center {
+    padding: 300px 10px 0;
+    text-align: center;
+}
+
+.center-vertical {
+    text-align: center;
 }

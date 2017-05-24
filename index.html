@@ -8,17 +8,31 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="trek.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
-  <h1 id="logo">GlobePlotter</h1>
+  <h1 class="center-vertical" id="logo">GlobePlotter</h1>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="css/foundation.css">
   <link rel="stylesheet" href="css/app.css">
-  <script src="js/vendor/modernizr.js"></script>
 
 
 </head>
 <body>
-  <button class="button" id="load"> Get Trips! </button>
+  <div class="center-vertical">
+    <button class="button" id="load"> Get Trips! </button>
+  </div>
+
+  <div id=trips-by-continent class="center-vertical">
+    <button class="button" id="Asia"> Asia </button>
+    <button class="button" id="Africa"> Africa </button>
+    <button class="button" id="Antarctica"> Antarctica </button>
+    <button class="button" id="South America"> South America </button>
+    <button class="button" id="Australasia"> Australasia </button>
+    <button class="button" id="Europe"> Europe </button>
+
+
+
+
+  </div>
   <section id="trips"></section>
   <section id="success"></section>
   <section id="errors"></section>
@@ -69,12 +83,13 @@
 
   <script id="trips-template" type="text/template">
     <section>
-      <li class="column small-12 medium-4 columns trip-tile" id=<%-data.id%>>
+      <li class="column small-12 medium-4 columns trip-tile center-vertical" id=<%-data.id%>>
         <%- data.name %>
-        <%- data.continent %>
       </li>
     </section>
   </script>
 
 </body>
+<footer>
+</footer>
 </html>

@@ -54,7 +54,6 @@ var failureCallback = function(){
 var submitForm = function(){$('form').submit(function(e) {
   e.preventDefault();
   var url = $(this).attr("action") + $(this).attr("id") + "/reserve"; // Retrieve the action from the form
-  // console.log(url);
 
   var formData = $(this).serialize();
 
@@ -70,12 +69,25 @@ var submitForm = function(){$('form').submit(function(e) {
 });
 };
 
+// Trips by Continent
+
+var getTripsByContinent = function(id) {
+  var continentURL = url+"/continent?query="+id;
+  console.log(continentURL);
+  $('#trips').empty();
+  $.getJSON(continentURL).success(successTripsCallback).fail(failureCallback);
+};
+
+
+
 $(document).ready(function() {
   $('#load').click(getTrips);
   $('#trips').on('click','li', function() {
-    // console.log($(this).attr("id"));
-    // need better way to save id
     var id = $(this).attr("id");
     getTripDetails(id);
+  });
+  $('#trips-by-continent').on('click','button',function(){
+    var id = $(this).attr("id");
+    getTripsByContinent(id);
   });
 });
