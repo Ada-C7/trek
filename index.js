@@ -8,11 +8,9 @@ var successCallback = function(response) {
   console.log("Success!");
   console.log(response);
 
-
-
   // console.log($('#trips'));
 
- // var tripsTemplate = _.template($('#trips-template').html());
+  // var tripsTemplate = _.template($('#trips-template').html());
   // var trips = [];
   $("#trips-list").empty();
   for (var i = 0; i < response.length; i++) {
@@ -26,6 +24,20 @@ var successCallback = function(response) {
     // $('#trips-template').append("<h1>" + name + "</h1>");
   }
 
+  $('.trip-name').click(clickHandler2);
+};
+
+var tripCallback = function(response) {
+  console.log("Success!");
+  console.log(response);
+
+  $("#trips-list").empty();
+  $("#trip").empty();
+
+  var generatedHtml = tripTemplate({
+    data: response
+  });
+  $('#trip').append($(generatedHtml));
 };
 
 var failureCallback = function() {
@@ -33,18 +45,29 @@ var failureCallback = function() {
   $("#errors").html("<h1>AJAX request failed!</h1>");
 };
 
+var clickHandler2 = function() {
+  // console.log(clickHandler2);
+  var url2 = "https://trektravel.herokuapp.com/trips/1";
+  $.get(url2, tripCallback).fail(failureCallback);
+};
+
 var clickHandler = function() {
   $.get(url, successCallback).fail(failureCallback);
+
+  // $('.trip-name').click(clickHandler2);
 };
 
 
 $(document).ready(function() {
-    url = buildUrl();
+  url = buildUrl();
 
-    $('#load').click(clickHandler);
+  $('#load').click(clickHandler);
 
-    tripsTemplate = _.template($('#trips-template').html());
 
-    // var tripsTemplate = _.template($('#trips-template').html());
+
+  tripsTemplate = _.template($('#trips-template').html());
+  tripTemplate = _.template($('#trip-template').html());
+
+  // var tripsTemplate = _.template($('#trips-template').html());
 
 });

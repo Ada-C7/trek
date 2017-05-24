@@ -10,13 +10,11 @@
   </section>
   <button id="load"> Fetch! </button>
   <div id="trips-list"></div>
-
-
   <script id="trips-template" type="text/template">
     <section>
-      <h2>
+      <h1 class="trip-name">
         <%- data.name %>
-      </h2>
+      </h1>
       <p>
         <strong>Continent:</strong>
         <%- data.continent %>
@@ -27,11 +25,24 @@
       </p>
     </section>
   </script>
-  <div id="trips">
 
-  </div>
 
-</script>
+  <div id="trip"></div>
+
+    <script id="trip-template" type="text/template">
+      <section>
+        <h1 class="trip-name">
+          <%- data.name %>
+        </h1>
+        <h3>
+          <%- data.continent %>
+        </h3>
+        <p>
+          <%- data.about %>
+        </p>
+      </section>
+    </script>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="index.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
