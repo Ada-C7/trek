@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Trek</title>
+      <meta charset="utf-8">
+      <link href="trek.css" media="screen" rel="stylesheet" type="text/css">
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
+      <script src="trek.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+
+    <h1>WanderLust</h1>
+
+    <section id="errors"></section>
+    <button id="load"> See all trips! </button>
+
+    <div id="trip-list"></div>
+    <script id="trip-list-template" type="text/template">
+      <section>
+        <ul id="trips"></ul>
+          <li><%- trip.id %></li>
+          <li><%- trip.name %></li>
+          <li><%- trip.continent %></li>
+          <li><%- trip.weeks %></li>
+        <button id="seeTrip" trip-tripid = <%- trip.id%> ><%- trip.name %></button>
+      </section>
+    </script>
+
+
+    <div id="trip-info-indv"></div>
+    <script id="trip_template" type="text/template">
+    <ul id="trip_info">Trip Info</ul>
+
+      <li><%- trip.id %></li>
+      <li><%- trip.name %></li>
+      <li><%- trip.destination %></li>
+      <li><%- trip.continent %></li>
+      <li><%- trip.about %></li>
+      <li><%- trip.category %></li>
+      <li><%- trip.weeks %></li>
+      <li><%- trip.cost %></li>
+      <button id="reserve">Reserve Spot</button>
+    </script>
+
+
+
+    <!-- <div id="message"></div>
+<form action="https://petdibs.herokuapp.com/pets" method="post">
+  <section>
+    <label>Name</label>
+    <input type="text" id="name" name="name"></input>
+  </section>
+  <section>
+    <label>Age</label>
+    <input type="text" id="age" name="age"></input>
+  </section>
+
+  <section class="button">
+    <button type="submit">Add Pet</button>
+  </section>
+</form> -->
+
+  </body>
+</html>
