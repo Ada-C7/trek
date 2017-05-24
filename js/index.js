@@ -9,6 +9,18 @@ $(document).ready(function() {
       trip: response
     });
     $('#trips').append($(generatedHTML));
+
+    $('form').submit(function(e){
+      e.preventDefault();
+
+      var url = $(this).attr("action");
+      var formData = $(this).serialize();
+
+      $.post(url, formData, function(response){
+        $('#message').html('<p> You have reserved this trip </p>');
+        console.log(response);
+      });
+    });
   };
 
   var successCallback = function(response) {

@@ -52,7 +52,10 @@
         </section>
         <section class="columns large-6 small-12">
           <h2>Reserve Trip</h2>
-          <form>
+          <section id="message">
+            
+          </section>
+          <form action="https://trektravel.herokuapp.com/trips/<%- trip.id %>/reserve" method="post">
             Name: <br />
             <input type="text" name="name"><br>
             <input type="submit" value="Submit" class="button">
