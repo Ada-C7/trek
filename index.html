@@ -3,66 +3,73 @@
 <head>
   <meta charset="utf-8">
   <title>Lazy Traveler</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/foundation.css" />
 </head>
-<body>
-  <header>
-    <h1>Welcome, Lazy Travelers...</h1>
-    <button id="load">See Trips</button>
-  </header>
-
+<body class="row">
   <main>
-    <script id="list-template" type="text/template">
-      <section>
-        <h2>
-          <%- data.name %>
-        </h2>
-        <p>
-          <strong>Continent: </strong>
-          <%- data.continent %>
-        </p>
-        <p>
-          <strong>Weeks: </strong>
-          <%- data.weeks %>
-        </p>
-      </section>
-    </script>
+    <section class="small-12 medium-4 large-4 columns" id="trips-button">
+      <h1 >Welcome, Lazy Travelers</h1>
+      <button class="button" id="load">See Trips</button>
+    </section>
 
-    <div id="trip row">
-      <script id="details-template" type="text/template">
+    <section class="small-12 medium-4 large-4 columns">
+      <div id="errors"></div>
+
+      <div id="list"></div>
+      <script id="list-template" type="text/template">
         <section>
           <h2>
-            <%- trip.name %>
+            <%- data.name %>
           </h2>
           <p>
-            <strong>Trip ID: </strong>
-            <%- trip.id %>
-          </p>
-          <p>
-            <strong>Category: </strong>
-            <%- trip.category %>
-          </p>
-          <p>
             <strong>Continent: </strong>
-            <%- trip.continent %>
+            <%- data.continent %>
           </p>
           <p>
             <strong>Weeks: </strong>
-            <%- trip.weeks %>
-          </p>
-          <p>
-            <strong>Cost: $ </strong>
-            <%- trip.cost %>
-          </p>
-          <p>
-            <strong>About: </strong>
-            <%- trip.about %>
+            <%- data.weeks %>
           </p>
         </section>
       </script>
-      <section id="reserve"></section>
 
-    </div>
+      <div id="trip row">
+        <script id="details-template" type="text/template">
+          <section>
+            <h2>
+              <%- trip.name %>
+            </h2>
+            <p>
+              <strong>Trip ID: </strong>
+              <%- trip.id %>
+            </p>
+            <p>
+              <strong>Category: </strong>
+              <%- trip.category %>
+            </p>
+            <p>
+              <strong>Continent: </strong>
+              <%- trip.continent %>
+            </p>
+            <p>
+              <strong>Weeks: </strong>
+              <%- trip.weeks %>
+            </p>
+            <p>
+              <strong>Cost: $ </strong>
+              <%- trip.cost %>
+            </p>
+            <p>
+              <strong>About: </strong>
+              <%- trip.about %>
+            </p>
+          </section>
+        </script>
+      </div>
+    </section>
+    <section class="small-12 medium-4 large-4 columns">
+      <section id="reserve"></section>
+    </section>
   </main>
 
 
@@ -73,6 +80,8 @@
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
 
-  <script type="text/javascript" src="index.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+
+
 </body>
 </html>
