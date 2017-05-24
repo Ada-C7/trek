@@ -36,9 +36,24 @@
 
     <!-- Trip Details Template-->
     <script id="trip-details-template" type="text/template">
-      <h2><%= trip.name %></h2>
-      <h3><%= trip.weeks %> weeks | $<%= trip.cost %></h3>
-      <p><%= trip.about %></p>
+      <section>
+        <h2><%= trip.name %></h2>
+        <h3><%= trip.weeks %> Week Trek Around <%= trip.continent %> | $<%= trip.cost %></h3>
+        <p><%= trip.about %></p>
+        <p class="tags"><%= trip.category %></p>
+      </section>
+      <section id="reserve-trip">
+        <h3>Reserve this Trek!</h3>
+        <form action="   " method="post">
+          <label>Name</label>
+          <input type="text" id="name" name="name"></input>
+          <label>Age</label>
+          <input type="text" id="age" name="age"></input>
+          <label>Email</label>
+          <input type="text" id="email" name="email"></input>
+          <button type="submit">Reserve</button>
+        </form>
+      </section>
     </script>
 
     <!-- Load JS after pageload-->
