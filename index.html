@@ -53,6 +53,7 @@
         <%- data.name.toUpperCase() %>
       </h3>
 
+
       <p>Continent:
         <%- data.continent %>
       </p>
@@ -64,10 +65,14 @@
       </p>
 
       <p>
-        Cost: $<%- data.cost %>
+        Cost: $<%- Number(data.cost).toFixed(2) %>
       </p>
       <p>Category:
         <%- data.category.charAt(0).toUpperCase() + data.category.slice(1)%>
+      </p>
+
+      <p>Trip ID:
+        <%- data.id %>
       </p>
 
       <h4>

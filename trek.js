@@ -50,6 +50,7 @@ $(document).ready(function() {
       data: response
     });
 
+  $('#load-all-trips').hide();
   $('#trips').hide();
   $('#singleTrip').show();
   $('#singleTrip').html($(generatedHtml));
