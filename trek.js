@@ -22,7 +22,7 @@ var successTripInfoCallback = function(response) {
   var id = response['id'];
   var target = $('#popup-content');
   target.empty();
-  target.prepend("<h2>" + response['name'] + "</h2>" + "<p>" + response['about'] + "</p>");
+  target.append("<h2>" + response['name'] + "</h2>" + "<p class='about'>" + response['about'] + "</p>");
   popupHandler();
 }
 
@@ -37,7 +37,7 @@ var clickHandler = function() {
 
 var popupHandler = function() {
   $('#popup').fadeIn(500);
-  
+
   // close popup window
   $('#close-popup').on('click', function(event)  {
       event.preventDefault();
