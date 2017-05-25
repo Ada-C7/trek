@@ -1,6 +1,18 @@
 
+header, main {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+#form1 {
+  padding-top: 2rem;
+}
+
 .button {
   border-radius: 0.25rem;
   margin: 0;
   padding: 0.5em 1em;
+}
+
+.button, .trip {
+  width: 90px
 }
