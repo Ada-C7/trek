@@ -3,13 +3,24 @@ $(document).ready(function() {
   // Associate the click handler
 
   var successCallback = function(response) {
-    console.log(response);
     response.forEach(function (trip) {
       //make rows with using trip template
       var tripHtml = tripTemplate({trip: trip}); //passing the whole trip obhect
       $("#trip_table").append($(tripHtml));
     });
+    // console.log("About to clear trip details");
+    $("#trip_details").html("");
   }; //only interate if the response is successful
+
+  var showDetails = function(trip) {
+    var tripIdHtml = tripIdTemplate({trip: trip});
+
+    //passing the whole trip obhect
+    $("#trip_details").append($(tripIdHtml));
+    $("#trip_table").html("");
+    $('.reservation').click(clickonReserve);
+
+  };
 
   var failureCallback = function() {
     console.log("Didn't work :(");
@@ -17,25 +28,49 @@ $(document).ready(function() {
   };
 
   var clickHandler = function(event) {
-    console.log("aaaa");
     //$.get(url, successCallback);
     $.get("https://trektravel.herokuapp.com/trips", function(response){
       successCallback(response);
     }).fail(failureCallback);
   };
 
-  // var contextHandler = function(event) {
-  //   var target = $(event.target).html();
-  //   console.log(target);
-  //   $.get("https://trektravel.herokuapp.com/trips" + "/"+ target, function(response){
-  //     console.log(response);
-  //     successCallback_1(response);
-  //   }).fail(failureCallback);
-  //
-  // };
+  var clickonId = function(event) {
+    var target = $(event.target).html();
+    $.get("https://trektravel.herokuapp.com/trips" + "/"+ target, showDetails).fail(failureCallback);
+  };
+
+  var clickonDetail = function(event) {
+    var target = $(event.target).attr("data-trip-id");
+    // console.log("data-trip-id")
+    $.get("https://trektravel.herokuapp.com/trips" + "/"+ target, showDetails).fail(failureCallback);
+  };
+
+  var clickonReserve = function(event) {
+    event.preventDefault();
+    var target = $(event.target).attr("data-trip-id");
+    console.log(event.target);
+    var url = "https://trektravel.herokuapp.com/trips" + "/"+ target + "/" + "reserve"; // Retrieve the action from the form
+    var formData = $(this).serialize();
+
+    $.post(url, formData, function(response){
+      $('#message').html('<p> Your trip reserved! </p>');
+
+      // What do we get in the response?
+      console.log(response);
+    });
+  };
 
   var tripTemplate = _.template($('#trips').html());
   $('#load').click(clickHandler);
-  // $('#trip_table').on('click', '.id_td', contextHandler);
+  $('#trip_table').on('click', '.id_td', clickonId);
+  $('#trip_table').on('click', '.detail', clickonDetail);
+  // $('#trip_detail').on('click', '.reservation', clickonReserve);
+  // $('.reservation').click(function(){
+  //   alert("Hi there");
+  // });
+
+  var tripIdTemplate = _.template($('#trip_detail').html());
+  // $('#load').click(contextHandler);
+
 
 });
