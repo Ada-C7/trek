@@ -9,17 +9,30 @@
 
 var url = "https://trektravel.herokuapp.com/trips";
 
+// Click Director
+
+var clickDirector = function(event) {
+
+  var uniqueId = event.target.id;
+
+  if (uniqueId === "load") {
+    $.get(url, successCallback).fail(failureCallback);
+  } else {
+    var individualTripUrl = url + "/" + uniqueId;
+    var response = $.get(individualTripUrl, successCallback).fail(failureCallback);
+  }
+};
+
+// Callbacks
+
 var successCallback = function(response) {
   console.log("Successful request.");
   console.log(response);
 
-  var tripTemplate = _.template($('#trip-item-template').html());
-
-  for (var i = 0; i < response.length; i++) {
-    var generatedHtml = tripTemplate({
-      data: response[i]
-    });
-    $('#trip-list').append($(generatedHtml));
+  if (response.length > 1) {
+    generateList(response);
+  } else {
+    generateTripInfo(response);
   }
 };
 
@@ -28,10 +41,42 @@ var failureCallback = function() {
   $("#errors").html("<h1> AJAX request failed. </h1>");
 };
 
-var clickHandler = function(event) {
-  $.get(url, successCallback).fail(failureCallback);
+// Template functions
+
+var generateList = function(response) {
+  var tripTemplate = _.template($('#trip-item-template').html());
+
+  for (var i = 0; i < response.length; i++) {
+    var generatedHtml = tripTemplate(
+      {
+        data: response[i]
+      }
+    );
+    $('#trip-list').append($(generatedHtml));
+  }
+};
+
+var generateTripInfo = function(response) {
+  var tripTemplate = _.template($('#trip-info-template').html());
+  var generatedHtml = tripTemplate(
+    {
+      data: response
+    }
+  );
+
+  var idSelection = '#' + response.id;
+
+  if ($(idSelection).find('ul').length > 0) {
+    $('.trip-info', idSelection).remove();
+  } else {
+    $(idSelection).append($(generatedHtml));
+  }
 };
 
 $(document).ready(function() {
-  var response = $('#load').click(clickHandler);
+  $('#load').click(clickDirector);
+
+  $('#trip-list').on('click', '.show-info', function(event) {
+    clickDirector(event);
+  });
 });
