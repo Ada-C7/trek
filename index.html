@@ -11,24 +11,16 @@
 
 <body>
   <header>
+
+
     <section class = "row">
       <section class = "medium-2 large-2 columns">
         <button class="button  secondary hollow button" id="load"> All trips </button>
         <button class="button  secondary hollow button small" id="new-trip-button"> Create new trip </button>
       </section>
       <section class = "medium-10 large-10 columns">
-        <section id = "errors-block" class="alert callout" data-closable="slide-out-right">
-          <div id = "errors"></div>
-          <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </section>
-        <section id = "message-block" class="success callout" data-closable="slide-out-right">
-          <div id = "message"></div>
-          <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </section>
+      <div id = "message" class = "text-center">
+      </div>
       </section>
     </section>
   </header>
@@ -39,8 +31,10 @@
 
 <div class = "row">
   <div class = "medium-6 large-6 columns">
+
+
+    <div id="trip"></div>
         <section id = "trip-block" class=" callout" data-closable="slide-out-left">
-          <div id="trip"></div>
           <script id="trip-template" type="text/template">
             <section>
               <h3><%- data.name %></h3>
@@ -75,11 +69,13 @@
 <div class = "medium-6 large-6 columns" id ="search-by-continent-div">
     <section class = "row" id = "search-by-continent">
       <section class = "medium-3 large-3 columns">
-        <p> Search trips by  continent:</p>
+        <p><strong> Search trips by  continent:</strong> </p>
+        <p> OR </p>
       </section>
       <section class = "medium-9 large-9 columns">
       <form  id = "continent-form" action="" method="post">
           <select id ="continent-select">
+            <!-- <option value="all">Choose an options</option> -->
             <option value="africa">Africa</option>
             <option value="asia">Asia</option>
             <option value="europe">Europe</option>
@@ -93,11 +89,12 @@
   </section>
   <section class = "row" id = "search-by-continent">
     <section class = "medium-3 large-3 columns">
-      <p> Search trips by max budget $:</p>
+      <p> <strong>Search trips by max budget $:</strong> </p>
     </section>
     <section class = "medium-9 large-9 columns">
     <form  id = "budget-form" action="" method="post">
         <select id ="budget-select">
+          <!-- <option value="all">Choose an option</option> -->
           <option value="500">500</option>
           <option value="1000">1000</option>
           <option value="2000">2000</option>
@@ -111,11 +108,11 @@
 </section>
 
 
-
-
-
   <section>
-    <table>
+
+          <!-- <button id = "sort-button" type="submit">Sort by continent</button> -->
+    <table id = "trips-table">
+
       <thead id = "trips-list-table">
         <tr>
           <th> Trip name </th>
@@ -126,7 +123,7 @@
       <tbody id="trips-list">
         <script id="trips-list-template" type="text/template">
           <tr>
-            <td><a class="see_trip" id ="<%-data.id %>"> <%- data.name %> </a></td>
+            <td><a class="see_trip"  id ="<%-data.id %>"> <%- data.name %> </a></td>
             <td><%- data.continent %></td>
             <td><%- data.weeks %></td>
           </tr>
@@ -139,10 +136,8 @@
 </div>
 
 
-
-
 <script id="new-trip-template" type="text/template">
-  <section  class="success callout" data-closable="slide-out-right">
+  <section  class="success callout" data-closable="slide-out-right" id = "new-trip-callout">
     <form  id = "new-trip-form" action="https://trektravel.herokuapp.com/trips/new" method="post">
       <section>
         <label>Name</label>
@@ -180,6 +175,11 @@
 
 
   </main>
+
+
+
+
+
 </body>
 </html>
 

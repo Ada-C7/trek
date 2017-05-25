@@ -1,7 +1,6 @@
 
 var url_all_trip = "https://trektravel.herokuapp.com/trips";
 
-
 $(document).ready(function() {
   $('#load').click(allTripsClickHandler);
 
@@ -21,23 +20,38 @@ $(document).ready(function() {
         if (validation_result != false){
           $.post(new_trip_url, formData, function(response){
             $('#message').html('<p> New trip added! </p>');
+            $('#new-trip-callout').hide();
           })
           .fail(function(){
-            $('#errors').html('<p>Creating new reservation failed</p>');
+            $('#message').html('<p>Creating new reservation failed</p>');
           });
-          $('#new-trip-form').hide();
         }
     });
   }); // end of new trip block
   checkIfTableEmpty();
   checkIfTripBlockEmpty();
-  // checkIfErrorsEmpty();
 
 
+// $('#continent-budget-form').change(continentBudgetClickHandler);
   $('#continent-form').change(continentClickHandler);
-  // $('#weeks-form').change(weeksClickHandler);
   $('#budget-form').change(budgetClickHandler);
 }); // end of document ready
+
+
+// var continentBudgetClickHandler = function(event){
+//   var continent = $('#continent-select option:selected').text();
+//   var budget = $('#budget-select option:selected').text();
+//   var url = "https://trektravel.herokuapp.com/trips/"
+//   if (continent != "Choose an options"){
+//     url += "continent?query=" + continent + "&";
+//   }
+//   if (budget != "Choose an options"){
+//     url += "budget?query=" + budget;
+//   }
+//   console.log(url);
+//   $('#trips-list tr').remove();
+//   $.get(url, successTripsCallback).fail(failureCallback);
+// }
 
 var continentClickHandler = function(event){
   var continent = $('#continent-select option:selected').text();
@@ -53,8 +67,12 @@ var budgetClickHandler = function(event){
   $.get(budget_url, successTripsCallback).fail(failureCallback);
 };
 
-
 var allTripsClickHandler = function(event) {
+  // console.log($('#trip').html().innerText);
+  // if ($('#trip').html().innerText == ""){
+  //   console.log("I AM heRE");
+  //   $('#trips-table').addClass('large-12 columns');
+  // }
   $('#trips-list tr').remove();
   $.get(url_all_trip, successTripsCallback).fail(failureCallback);
 };
@@ -69,7 +87,25 @@ var successTripsCallback = function(response) {
   }
   $('.see_trip').click(tripClickHandler);
     checkIfTableEmpty();
-    checkIfErrorsEmpty();
+
+
+    // $('#sort-button').click(function(response){
+    //   // console.log("here");
+    //   // console.log($('#trips-list tr'));
+    //   var result =  _.sortBy($('#trips-list tr'));
+    //   // $('#trips-list').
+    //     // $('#trips-list tr').remove();
+    //   // var tripTemplate = _.template($('#trips-list-template').html());
+    //   // for (var i = 0; i < response.length; i++) {
+    //   //   var generatedHtml = tripTemplate({
+    //   //     data: response[i]
+    //   //   });
+    //     console.log(result);
+    //     $('#trips-list').html($(result));
+    //   //}
+    // });
+
+
 };
 
 
@@ -79,11 +115,6 @@ var tripClickHandler = function(event) {
 };
 
 var successTripCallback = function(response) {
-  // console.log("HERE");
-  // console.log($("#trip").html());
-  // if ($("#trip").html()==""){
-  //   $("#search-by-continent-div").attr('large-6', 'large-12');
-  // }
   var singleTripTemplate = _.template($('#trip-template').html());
   var generatedHtml = singleTripTemplate({
     data: response
@@ -100,21 +131,25 @@ var successTripCallback = function(response) {
     var validation_result = validateForm();
       if (validation_result != false){
         $.post(url, formData, function(response){
+           $('#message').addClass("callout");
+           $('#message').html('<section  class="success callout" data-closable="slide-out-right" >');
           $('#message').html('<p> You succesfully reserved your trip! </p>');
+
         })
         .fail(function(){
-          $('#errors').html('<p>Creating new reservation failed</p>');
+          $('#message').html('<p>Creating new reservation failed</p>');
+          $('#message').addClass("alert");
         });
         $('#reservation-form').hide();
       }
   });
-      // checkIfErrorsEmpty();
+
 };
 
 // Failure callback for all actions:
 var failureCallback = function() {
   console.log("Didn't work :(");
-  $("#errors").html("<p>AJAX request failed! Check your Internet connection</p>");
+  $("#message").html("<p>AJAX request failed! Check your Internet connection</p>");
 };
 
 // Additional functions to check if table and error box is emty:
@@ -129,30 +164,24 @@ var checkIfTableEmpty = function(){
 
 
 var checkIfTripBlockEmpty = function(){
-  // console.log("I AM HERE");
-  // console.log($('#trip').html());
-  // if ($('#trip').html() == ""){
-  //   $('#trip-block').hide();
-  // }
-  // else {
-  //   $('#trip-block').show();
-  // }
+  if ($('#trip').html() == ""){
+    $('#trip-block').hide();
+  }
+  else {
+    $('#trip-block').show();
+  }
 };
 
-var checkIfErrorsEmpty = function(){
-  if ($('#errors').html() == ""){
-    $('#errors-block').hide();
-  }
-  else {
-    $('#errors-block').show();
-  }
-  if ($('#message').html() == ""){
-    $('#message-block').hide();
-  }
-  else {
-    $('#message-block').show();
-  }
-};
+// var checkIfErrorsEmpty = function(){
+//   if ($('#message').html() == ""){
+//     $('#message').hide();
+//   }
+//   else {
+//     $('#message').show();
+//   }
+// };
+//
+
 
 
 // FORM VALIDATION BLOCK:
