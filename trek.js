@@ -163,8 +163,8 @@ var newTripClickHandler = function() {
 };
 
 $(document).ready(function() {
+  $('#get-trips').click(indexClickHandler);  
   $('#continent-filter').submit(continentClickHandler);
-  $('#get-trips').click(indexClickHandler);
   $('#price-filter').submit(priceClickHandler);
   $('#weeks-filter').submit(weekClickHandler);
   $('#new-trip').click(newTripClickHandler);
