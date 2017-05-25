@@ -14,6 +14,10 @@
     <script id='trip-template' type="text/template">
         <%= "<section id=" + trip.id + ">" %>
             <p>
+                <strong>Cost:</strong>
+                <%- trip.cost %>
+            </p>
+            <p>
                 <strong>Continent:</strong>
                 <%- trip.continent %>
             </p>
@@ -21,8 +25,49 @@
                 <strong>Weeks:</strong>
                 <%- trip.weeks %>
             </p>
+            <p>
+                <strong>ID:</strong>
+                <%- trip.id %>
+            </p>
+            <p>
+                <strong>About:</strong>
+                <%- trip.about %>
+            </p>
+            <p>
+                <strong>Category:</strong>
+                <%- trip.category %>
+            </p>
+
+            <button id="myBtn">Make Reservation</button>
             </section>
     </script>
+
+
+    <div id='popUpReserve' class='modal'>
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="message"></div>
+            <form action="https://trektravel.herokuapp.com/trips/1/reserve" method="post">
+                <section>
+                    <label>Name</label>
+                    <input type="text" id="name" name="name"></input>
+                </section>
+                <section>
+                    <label>Age</label>
+                    <input type="text" id="age" name="age"></input>
+                </section>
+                <section>
+                    <label>Email</label>
+                    <input type="text" id="email" name="email"></input>
+                </section>
+
+                <section class="button">
+                    <button type="submit">Reserve Trip</button>
+                </section>
+            </form>
+        </div>
+    </div>
+
 </body>
 
 </html>
