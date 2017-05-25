@@ -39,10 +39,9 @@
       <li>Trip about: <%- trip.about %></li>
       <li>Trip category: <%- trip.category %></li>
       <li>Trip weeks: <%- trip.weeks %></li>
-      <li>Trip cost: <%- trip.cost %></li>
+      <li>Trip cost: $<%- trip.cost %></li>
     </ul>
-    <form>
-      <form  id = "reservation-form" action="" method="post">
+      <form  id="reservation-form" action="" method="post" data-trip-id="<%- trip.id%>">
         <section>
           <label>Name</label>
           <input type="text" id="name" name="name"></input>

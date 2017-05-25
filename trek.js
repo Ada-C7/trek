@@ -18,7 +18,7 @@ $(document).ready(function() {
     //passing the whole trip object
     $("#trip_details").append($(tripIdHtml));
     $("#trip_table").html("");
-    $('.reservation').click(clickonReserve);
+    $('#reservation-form').submit(clickonReserve);
   };
 
   var failureCallback = function() {
