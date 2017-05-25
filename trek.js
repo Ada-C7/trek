@@ -54,6 +54,36 @@ $(document).ready(function() {
       $.get(url, successTripInfoCallback).fail(failureCallback);
   });
 
+  $('form').submit(function(event) {
+    event.preventDefault();
+    var url = $(this).attr("action");
+    var formData = $(this).serialize();
+
+    $.post(url, formData, function(response) {
+      $('#popup').fadeOut(500);
+      $('#errors').html('<h3> Spot reserved! </h3>');
+      console.log(response);
+    }).fail(function() { $('#errors').html('<h3> Unable to reserve spot at this time. </h3>')})
+
+  });
+
+  // $('form').submit(function(e) {
+  // // By default, the form will attempt to do it's own local POST so we want to prevent that default behavior
+  // e.preventDefault();
+  //
+  // var url = $(this).attr("action"); // Retrieve the action from the form
+  // var formData = $(this).serialize();
+  //
+  // $.post(url, formData, function(response){
+  //   $('#message').html('<p> Pet added! </p>');
+  //
+  //   // What do we get in the response?
+  //   console.log(response);
+  // }).fail(function(){
+  //   $('#message').html('<p>Adding Pet Failed</p>');
+  // });
+  // });
+
   // $('#popup-link').on('click', function(event)  {
   //     event.preventDefault();
   //     $('#popup').fadeIn(500);
