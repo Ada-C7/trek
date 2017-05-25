@@ -1,63 +1,91 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8">
     <title>Trek</title>
   </head>
+
   <body>
     <h1>Trek</h1>
 
     <section id="errors"></section>
     <button id="load"> All Trips </button>
-    <ul id="trips">
-    </ul>
-    <section id="show-page">
-    </section>
+    <ul id="trips"></ul>
+    <section id="show-page"></section>
 
+    <!-- underscore TEMPLATE: show all trips -->
     <script id="index-trip-template" type="text/template">
       <section>
         <h2><%- data.name %></h2>
-        <p>
-          <strong>Location:</strong>
-          <%- data.continent %>
-        </p>
-        <p>
-          <strong>Duration:</strong>
-          <%- data.weeks %> weeks
-        </p>
-        <button class="show">
 
-          <%- data.id %>
-        </button>
+        <p>
+          <strong>Location:</strong> <%- data.continent %>
+        </p>
+
+        <p>
+          <strong>Duration:</strong> <%- data.weeks %> weeks
+        </p>
+
+        <button class="show"><%- data.id %></button>
       </section>
     </script>
 
+    <!-- underscore TEMPLATE: show each trips -->
     <script id="show-trip-template" type="text/template">
       <section>
         <h2><%- data.name %></h2>
+
         <p>
-          <strong>Location:</strong>
-          <%- data.continent %>
+          <strong>Location:</strong> <%- data.continent %>
         </p>
+
         <p>
-          <strong>Duration:</strong>
-          <%- data.weeks %> weeks
+          <strong>Duration:</strong> <%- data.weeks %> weeks
         </p>
+
         <p>
-          <strong>Cost:</strong>
-          $<%- data.cost %>
+          <strong>Cost:</strong> $<%- data.cost %>
         </p>
+
         <p>
-          <strong>About:</strong>
-          <%- data.about %>
+          <strong>About:</strong> <%- data.about %>
         </p>
+
+        <p>
+          <strong>Category:</strong> <%- data.category %>
+        </p>
+
+        <p>
+          (ID #00<%- data.id %>)
+        </p>
+
+        <button class="reserve-start">Make Reservation</button>
       </section>
     </script>
 
+    <script id="reserve-trip-template" type="text/template">
+
+      <form action="https://trektravel.herokuapp.com/trips/1/reserve" method="post">
+
+        <label>Name:</label>
+        <input name="name" type="text"/>
+
+        <label>Email:</label>
+        <input name="email" type="text"/>
+
+        <!-- <input name="trip_id" type="hidden" value=1 /> -->
+
+        <!-- trip id is passed through as a hidden field -->
+        <section>
+          <button class="reserve-complete" type="submit">Submit</button>
+        </section>
+
+      </form>
+    </script>
 
     <script src="jquery.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
-
     <script src="index.js" type="text/javascript"></script>
 
   </body>
