@@ -1,8 +1,11 @@
-
+* {
+  padding: 1%;
+}
 .trip {
   /*display: inline-block;*/
   margin: 3%;
   border: solid;
+  /*padding: 1%*/
 }
 
 h1 {
@@ -14,12 +17,17 @@ h1 {
 
 h3 {
   color: blue;
+  border-bottom: solid;
 }
 
 h3:hover {
   color:red;
 }
 
+.reservedMessage {
+  color: red;
+  font-size: 1.75em;
+}
 /*form {
   border: none;
 }*/

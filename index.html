@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="foundation.css">
     <link href="main.css" rel="stylesheet" type="text/css">
-    <script src="/js/vendor/modernizr.js"></script>
+    <!-- <script src="/js/vendor/modernizr.js"></script> -->
   </head>
 
   <body>
@@ -28,8 +28,7 @@
               <%- trip.weeks %>
               weeks
             </p>
-            <!-- <button id='show' data-id=<%- trip.id %> >Learn More</button> -->
-            <div id=<%- trip.id %> class="slidingInfo">
+            <div class="slidingInfo" id=<%- trip.id %> >
               <p>
                 <strong>About:</strong>
                 <%- trip.about %>

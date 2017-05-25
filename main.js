@@ -2,8 +2,6 @@
 var tripsTemplate;
 
 var successCallbackTrips = function(response){
-  // var tripsTemplate = _.template($('#trips-template').html());
-
   console.log("success");
   console.log(response);
 
@@ -18,7 +16,6 @@ var successCallbackTrips = function(response){
 };
 
 var successCallbackTrip = function(response){
-
   console.log("success");
   console.log(response);
 
@@ -34,7 +31,6 @@ var successCallbackReserve = function(response){
   console.log(response);
   alert('Trip Reserved!');
   $('.reservedMessage').html('<p>You are Reserved for this Trip</p>')
-
 };
 
 var failureCallback = function() {
@@ -63,11 +59,10 @@ $(document).ready(function(){
 
   $('#trips-list').on('submit', 'form', function(event) {
     event.preventDefault();
-    console.log("your in the submit form function");
-    console.log(this);
-
+    // console.log("your in the submit form function");
     var url = $(this).attr("action");
     var formData = $(this).serialize();
+    // console.log(formData);
 
     $.post(url, formData, successCallbackReserve).fail(failureCallback);
   });
