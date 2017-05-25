@@ -162,10 +162,49 @@ var newTripClickHandler = function() {
   $('#new-trip-form').submit(createTripClickHandler);
 };
 
+var filterTripsClickHandler = function(event) {
+  $("#errors").empty();
+  event.preventDefault();
+  console.log("submitted filter trips form!");
+  $("#content").empty();
+  var data = $(this).serialize();
+  console.log(data);
+  var params;
+  params = data.split("&");
+  var cont, wks, prc;
+  for (var i = 0; i < params.length; i++) {
+    params[i] = params[i].split("=");
+  }
+  console.log(params);
+
+  cont = params[0][1];
+  wks = params[1][1];
+  prc = params[2][1];
+  console.log(cont, wks, prc);
+
+  var filterTripsUrl = "https://trektravel.herokuapp.com/trips/continent?query=" + cont + "&weeks?query=" + wks + "&price?query=" + prc;
+  console.log(filterTripsUrl);
+  $.get(filterTripsUrl, indexCallback).fail(failureCallback);
+};
+
+var filterTripsFormClickHandler = function() {
+  $("#errors").empty();
+  $("#content").empty();
+  console.log("clicked filter trips!");
+  var target = $('#content');
+  var filterTripsTemplate = _.template($('#filter-trips-template').html());
+  var filterTripsHTML = filterTripsTemplate({});
+  target.append(filterTripsHTML);
+  $('#trip-filters-form').submit(filterTripsClickHandler);
+};
+
+
 $(document).ready(function() {
-  $('#get-trips').click(indexClickHandler);  
-  $('#continent-filter').submit(continentClickHandler);
-  $('#price-filter').submit(priceClickHandler);
-  $('#weeks-filter').submit(weekClickHandler);
+  $('#get-trips').click(indexClickHandler);
+  // $('#continent-filter').submit(continentClickHandler);
+  // $('#price-filter').submit(priceClickHandler);
+  // $('#weeks-filter').submit(weekClickHandler);
   $('#new-trip').click(newTripClickHandler);
+  $('#filter-trips').click(filterTripsFormClickHandler);
+
 });

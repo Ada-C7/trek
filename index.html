@@ -13,9 +13,10 @@
         <h1 class="columns small-12" id="header-title">TrekkingPole</h1>
       </section>
       <section class="top-nav">
-        <button id="get-trips" class="button">Get All Trips</button>
-        <button id="new-trip" class="button">New Trip</button>
-        <form id="continent-filter">
+        <button id="get-trips" class="button hollow">Get All Trips</button>
+        <button id="new-trip" class="button hollow">New Trip</button>
+        <button id="filter-trips" class="button hollow">Filter Trips</button>
+        <!-- <form id="continent-filter">
           <section>
             <select size="1" id="continent-sort" name="continent">
               <option>Africa</option>
@@ -27,7 +28,7 @@
             </select>
           </section>
           <section >
-            <button class="button"  type="submit">Search by Continent</button>
+            <button class="button hollow"  type="submit">Search by Continent</button>
           </section>
         </form>
 
@@ -36,7 +37,7 @@
             <input type="text" id="max-price" name="price"></input>
           </section>
           <section >
-            <button class="button"  type="submit">Search by Max Price</button>
+            <button class="button hollow"  type="submit">Search by Max Price</button>
           </section>
         </form>
 
@@ -45,9 +46,9 @@
             <input type="text" id="max-week" name="week"></input>
           </section>
           <section >
-            <button class="button"  type="submit">Search by Max Weeks</button>
+            <button class="button hollow"  type="submit">Search by Max Weeks</button>
           </section>
-        </form>
+        </form> -->
 
       </section>
     </header>
@@ -103,8 +104,8 @@
             <label>Email</label>
             <input type="text" id="email" name="email"></input>
           </section>
-          <section class="button" id="sign-up">
-            <button type="submit">Sign Up!</button>
+          <section  id="sign-up">
+            <button class="button hollow" type="submit">Sign Up!</button>
             <p class="hidden" id="join-id"> <%- thisTrip.id %> </p>
           </section>
         </form>
@@ -127,6 +128,40 @@
             weeks <%  } else { %> week <% } %>
         </p>
       </article>
+    </script>
+
+    <!-- template for filter trips form -->
+    <script id="filter-trips-template">
+      <section class="columns small-6">
+
+        <h2><strong>Narrow your search...</strong></h2>
+        <form id="trip-filters-form">
+          <section>
+            <label>Continent</label>
+
+            <select size="1" id="continent-sort" name="continent">
+              <option>Africa</option>
+              <option>Antarctica</option>
+              <option>Asia</option>
+              <option>Europe</option>
+              <option>North America</option>
+              <option>South America</option>
+            </select>
+          </section>
+          <section>
+            <label>Max Cost</label>
+            <input type="text" id="max-price" name="cost"></input>
+          </section>
+          <section>
+            <label>Max Weeks</label>
+            <input type="text" id="max-week" name="weeks"></input>
+          </section>
+          <section >
+            <button class="button hollow"  type="submit">Search for trips</button>
+          </section>
+        </form>
+        </section>
+
     </script>
 
     <!-- template for the new trip view -->
@@ -175,7 +210,7 @@
             <label>Cost</label>
             <input type="text" id="cost" name="cost"></input>
           </section>
-          <section class="button" id="add-new-trip">
+          <section class="button hollow" id="add-new-trip">
             <button type="submit">Create Trip</button>
           </section>
         </form>
