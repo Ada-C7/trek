@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css"/>
 
 
-
 </head>
 
 <body class="surround">
@@ -25,7 +24,6 @@
   <section id="print-trippy">
 
   </section>
-  <strong>Trips!</strong>
   <script id="trippy" type="text/template">
 
     <p>
@@ -40,42 +38,42 @@
     <p>
       <strong>Weeks</strong>
       <%- trip.weeks %>
-      </p>
-      <button id="details" class="button">Details
-      </button>
+    </p>
+    <button id="detail-buttons" class="button">Details
+    </button>
 
-    </script>
-    <!-- ***********************************
+  </script>
+  <!-- ***********************************
 
 
-    *********************************** -->
-    <!-- <section id="tripper" type="text/template">
+  *********************************** -->
+  <section id="print-tripper">
+
+  </section>
+  <script id="tripper" type="text/template">
 
     <p>
-    <strong>Trip</strong>
-    <h2>
-    <%- trip.name %>
-  </h2>
-</p>
+      <strong>Trip</strong>
+      <h2>
+        <%- trip.name %>
+      </h2>
+    </p>
 
-<p>
-<strong>Location</strong>
-<%- trip.location.id %>
-</p>
-
-<p>
-<strong>Description:</strong>
-<%- data.description %>
-</p>
-<p>
+    <p>
+      <strong>Description:</strong>
+      <%- data.description %>
+    </p>
+    <p>
 
 
-</p>
-
-</section> -->
+    </p>
+  </script>
+</section>
 
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
 <script src="trek.js"type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" type="text/javascript"></script>
+
+
 </body>
