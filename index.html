@@ -75,6 +75,25 @@
       <p>
         $<%- data.cost%>
       </p>
+      <div>
+        <form action = <%- url%> method="post">
+          <section>
+            <label>Name</label>
+            <input type="text" id="name" name="name"></input>
+          </section>
+          <section>
+            <label>Age</label>
+            <input type="text" id="age" name="age"></input>
+          </section>
+          <section>
+            <label>Email</label>
+            <input type="text" id="email" name="email"></input>
+          </section>
+          <section>
+            <button class="button" type="submit" id= 'makeReservation'>Make Reservation</button>
+          </section>
+        </form>
+      </div>
 
     </div>
 
