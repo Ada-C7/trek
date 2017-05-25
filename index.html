@@ -9,13 +9,15 @@
 
     <section id="errors"></section>
     <button id="load"> All Trips </button>
-    <ul id="trips"></ul>
+    <ul id="trips">
+      <p id="trips-tests">
 
-    <script id="show-trip-template" type="text/template">
+      </p>
+    </ul>
+
+    <script id="index-trip-template" type="text/template">
       <section>
-        <a href="">
-          <h2><%- data.name %></h2>
-        </a>
+        <h2><%- data.name %></h2>
         <p>
           <strong>Location:</strong>
           <%- data.continent %>
@@ -24,11 +26,39 @@
           <strong>Duration:</strong>
           <%- data.weeks %> weeks
         </p>
+        <button class="show">
+          <%- data.id %>
+        </button>
       </section>
     </script>
 
+    <script id="show-trip-template" type="text/template">
+      <section>
+        <h2><%- data.name %></h2>
+        <p>
+          <strong>Location:</strong>
+          <%- data.continent %>
+        </p>
+        <p>
+          <strong>Duration:</strong>
+          <%- data.weeks %> weeks
+        </p>
+        <p>
+          <strong>Cost:</strong>
+          <%- data.cost %> weeks
+        </p>
+        <p>
+          <strong>About:</strong>
+          <%- data.about %> weeks
+        </p>
+      </section>
+    </script>
+
+
     <script src="jquery.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
+
     <script src="index.js" type="text/javascript"></script>
+
   </body>
 </html>
