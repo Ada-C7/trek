@@ -9,17 +9,39 @@
 
 var url = "https://trektravel.herokuapp.com/trips";
 
+// Click Director
+
+var clickDirector = function(event) {
+
+  var uniqueId = event.target.id;
+
+  if (uniqueId === "load") {
+    $.get(url, successCallback).fail(failureCallback);
+  } else {
+    var individualTripUrl = url + "/" + uniqueId;
+    var response = $.get(individualTripUrl, successCallback).fail(failureCallback);
+  }
+};
+
+// Callbacks
+
 var successCallback = function(response) {
   console.log("Successful request.");
   console.log(response);
 
-  // TODO: TEMP FIX
-  if (response.length > 50) {
+  if (response.length > 1) {
     generateList(response);
   } else {
     generateTripInfo(response);
   }
 };
+
+var failureCallback = function() {
+  console.log("Something went wrong.");
+  $("#errors").html("<h1> AJAX request failed. </h1>");
+};
+
+// Template functions
 
 var generateList = function(response) {
   var tripTemplate = _.template($('#trip-item-template').html());
@@ -34,9 +56,7 @@ var generateList = function(response) {
   }
 };
 
-
 var generateTripInfo = function(response) {
-
   var tripTemplate = _.template($('#trip-info-template').html());
   var generatedHtml = tripTemplate(
     {
@@ -47,41 +67,16 @@ var generateTripInfo = function(response) {
   var idSelection = '#' + response.id;
 
   if ($(idSelection).find('ul').length > 0) {
-    console.log(idSelection);
-    console.log("Inside delete loop.");
     $('.trip-info', idSelection).remove();
   } else {
-    console.log("Create loop.");
     $(idSelection).append($(generatedHtml));
-
-  }
-};
-
-var failureCallback = function() {
-  console.log("Something went wrong.");
-  $("#errors").html("<h1> AJAX request failed. </h1>");
-};
-
-var clickHandler = function(event) {
-
-  // console.log(event);
-  var uniqueId = event.target.id;
-
-  // TODO: TEMP FIX
-  if (uniqueId === "load") {
-    $.get(url, successCallback).fail(failureCallback);
-  } else {
-    var individualTripUrl = url + "/" + uniqueId;
-    var response = $.get(individualTripUrl, successCallback).fail(failureCallback);
   }
 };
 
 $(document).ready(function() {
-  $('#load').click(clickHandler);
+  $('#load').click(clickDirector);
 
   $('#trip-list').on('click', '.show-info', function(event) {
-    currentTarget = event.currentTarget;
-
-    clickHandler(event);
+    clickDirector(event);
   });
 });
