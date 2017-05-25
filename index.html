@@ -10,10 +10,9 @@
     <section id="errors"></section>
     <button id="load"> All Trips </button>
     <ul id="trips">
-      <p id="trips-tests">
-
-      </p>
     </ul>
+    <section id="show-page">
+    </section>
 
     <script id="index-trip-template" type="text/template">
       <section>
@@ -45,11 +44,11 @@
         </p>
         <p>
           <strong>Cost:</strong>
-          <%- data.cost %> weeks
+          $<%- data.cost %>
         </p>
         <p>
           <strong>About:</strong>
-          <%- data.about %> weeks
+          <%- data.about %>
         </p>
       </section>
     </script>

@@ -7,15 +7,18 @@ var indexCallback = function(response) {
   var tripsData = response;
 
   var tripTemplate = _.template($('#index-trip-template').html());
+
+  // each loop to create template for each trip object
   for (var i = 0; i < tripsData.length; i ++) {
-    var tripHtml = tripTemplate( { data: tripsData[i] }); //rename
-    $('#trips-tests').append(tripHtml);
+    var index_template = tripTemplate( { data: tripsData[i] }); //rename
+    $('#trips').append(index_template);
   }
 
-  $(".show").click(function(event) {
-    var url = baseUrl + "/" + event.which;
+  $(".show").mousedown(function(event) {
+    var url = "";
+    url = baseUrl + "/" + this.innerHTML;
     $.get(url, showCallback).fail(failureCallback);
-    $("#trips").toggle();
+    $("#trips").toggle(false);
   });
 };
 
@@ -27,7 +30,7 @@ var showCallback = function(response) {
 
   var showTemplate = _.template($('#show-trip-template').html());
   var showHtml = showTemplate( { data: tripData } );
-    $('#trips').html(showHtml);
+    $('#show-page').html(showHtml);
 };
 
 var failureCallback = function() {
@@ -36,7 +39,7 @@ var failureCallback = function() {
 };
 
 $(document).ready(function() {
-  $("#trips").toggle(); //to turn trips 'off' on load
+  $("#trips").toggle(false); //to turn trips 'off' on load
 
   $("#load").click(function(event) {
     $.get(baseUrl, indexCallback).fail(failureCallback);
