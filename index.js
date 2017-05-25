@@ -17,41 +17,23 @@ $(document).ready(function() {
       var formData = $(this).serialize();
 
       var validation_result = validateNewTripForm();
-        if (validation_result != false){
-          $.post(new_trip_url, formData, function(response){
-            $('#message').html('<p> New trip added! </p>');
-            $('#new-trip-callout').hide();
-          })
-          .fail(function(){
-            $('#message').html('<p>Creating new reservation failed</p>');
-          });
-        }
+      if (validation_result != false){
+        $.post(new_trip_url, formData, function(response){
+          $('#message').html('<p> New trip added! </p>');
+          $('#new-trip-callout').hide();
+        })
+        .fail(function(){
+          $('#message').html('<p>Creating new reservation failed</p>');
+        });
+      }
     });
   }); // end of new trip block
   checkIfTableEmpty();
   checkIfTripBlockEmpty();
 
-
-// $('#continent-budget-form').change(continentBudgetClickHandler);
   $('#continent-form').change(continentClickHandler);
   $('#budget-form').change(budgetClickHandler);
 }); // end of document ready
-
-
-// var continentBudgetClickHandler = function(event){
-//   var continent = $('#continent-select option:selected').text();
-//   var budget = $('#budget-select option:selected').text();
-//   var url = "https://trektravel.herokuapp.com/trips/"
-//   if (continent != "Choose an options"){
-//     url += "continent?query=" + continent + "&";
-//   }
-//   if (budget != "Choose an options"){
-//     url += "budget?query=" + budget;
-//   }
-//   console.log(url);
-//   $('#trips-list tr').remove();
-//   $.get(url, successTripsCallback).fail(failureCallback);
-// }
 
 var continentClickHandler = function(event){
   var continent = $('#continent-select option:selected').text();
@@ -86,27 +68,54 @@ var successTripsCallback = function(response) {
     $('#trips-list').append($(generatedHtml));
   }
   $('.see_trip').click(tripClickHandler);
-    checkIfTableEmpty();
 
+  checkIfTableEmpty();
 
-    // $('#sort-button').click(function(response){
-    //   // console.log("here");
-    //   // console.log($('#trips-list tr'));
-    //   var result =  _.sortBy($('#trips-list tr'));
-    //   // $('#trips-list').
-    //     // $('#trips-list tr').remove();
-    //   // var tripTemplate = _.template($('#trips-list-template').html());
-    //   // for (var i = 0; i < response.length; i++) {
-    //   //   var generatedHtml = tripTemplate({
-    //   //     data: response[i]
-    //   //   });
-    //     console.log(result);
-    //     $('#trips-list').html($(result));
-    //   //}
-    // });
+  $('#sort-button').click(sortTripClickHandler)
+};
 
+var sortTripClickHandler = function(event){
+  $('#trips-list tr').remove();
+  $.get(url_all_trip, successSortTripsCallback).fail(failureCallback);
+};
+
+var successSortTripsCallback = function(response) {
+  console.log("Inside sorting:");
+  $('#trips-list tr').remove();
+  var tripTemplate = _.template($('#trips-list-template').html());
+  var unsorted_array = []
+  for (var i = 0; i < response.length; i++) {
+    unsorted_array.push(response[i]);
+  }
+
+  var array_without_nulls = unsorted_array.filter(function( obj ) {
+    return obj.continent !== null;
+  });
+
+  array_without_nulls.sort(function(a, b){
+    var x = a['continent'].toLowerCase();
+    var y = b['continent'].toLowerCase();
+    return x<y ? -1 : x>y ? 1 : 0;
+  })
+
+  for (var i = 0; i < array_without_nulls.length; i++) {
+    var generatedHtml = tripTemplate({
+      data: array_without_nulls[i]
+    });
+    $('#trips-list').append($(generatedHtml));
+  }
+  for (var i = 0; i < unsorted_array.length; i++) {
+    if (unsorted_array[i]['continent'] === null){
+      var generatedHtml = tripTemplate({
+        data: unsorted_array[i]
+      });
+      $('#trips-list').append($(generatedHtml));
+    }
+  }
 
 };
+
+
 
 
 var tripClickHandler = function(event) {
@@ -129,19 +138,19 @@ var successTripCallback = function(response) {
     var url = $(this).attr("action");
     var formData = $(this).serialize();
     var validation_result = validateForm();
-      if (validation_result != false){
-        $.post(url, formData, function(response){
-           $('#message').addClass("callout");
-           $('#message').html('<section  class="success callout" data-closable="slide-out-right" >');
-          $('#message').html('<p> You succesfully reserved your trip! </p>');
+    if (validation_result != false){
+      $.post(url, formData, function(response){
+        $('#message').addClass("callout");
+        $('#message').html('<section  class="success callout" data-closable="slide-out-right" >');
+        $('#message').html('<p> You succesfully reserved your trip! </p>');
 
-        })
-        .fail(function(){
-          $('#message').html('<p>Creating new reservation failed</p>');
-          $('#message').addClass("alert");
-        });
-        $('#reservation-form').hide();
-      }
+      })
+      .fail(function(){
+        $('#message').html('<p>Creating new reservation failed</p>');
+        $('#message').addClass("alert");
+      });
+      $('#reservation-form').hide();
+    }
   });
 
 };
@@ -186,61 +195,61 @@ var checkIfTripBlockEmpty = function(){
 
 // FORM VALIDATION BLOCK:
 var validateForm = function() {
-    var name = document.forms["reservation-form"]["name"].value;
-    var age = document.forms["reservation-form"]["age"].value;
-    var email = document.forms["reservation-form"]["email"].value;
-    var alert_text = ""
-    if (name == "") {
-        alert_text += "Name must be filled out \n";
-    }
-    if (email == "") {
-        alert_text += "Email must be filled out \n";
-    }
-    if (age == "") {
-        alert_text += "Age must be filled out \n";
-    }
-    if (alert_text != ""){
-      alert(alert_text);
-    }
-    if (name == "" || email == "" || age == ""){
-      return false;
-    }
-    return true;
+  var name = document.forms["reservation-form"]["name"].value;
+  var age = document.forms["reservation-form"]["age"].value;
+  var email = document.forms["reservation-form"]["email"].value;
+  var alert_text = ""
+  if (name == "") {
+    alert_text += "Name must be filled out \n";
+  }
+  if (email == "") {
+    alert_text += "Email must be filled out \n";
+  }
+  if (age == "") {
+    alert_text += "Age must be filled out \n";
+  }
+  if (alert_text != ""){
+    alert(alert_text);
+  }
+  if (name == "" || email == "" || age == ""){
+    return false;
+  }
+  return true;
 }
 
 
 var validateNewTripForm = function() {
-    var name = document.forms["new-trip-form"]["name"].value;
-    var continent = document.forms["new-trip-form"]["continent"].value;
-    var about = document.forms["new-trip-form"]["about"].value;
-    var category = document.forms["new-trip-form"]["category"].value;
-    var weeks = document.forms["new-trip-form"]["weeks"].value;
-    var cost = document.forms["new-trip-form"]["cost"].value;
-    var alert_text = ""
+  var name = document.forms["new-trip-form"]["name"].value;
+  var continent = document.forms["new-trip-form"]["continent"].value;
+  var about = document.forms["new-trip-form"]["about"].value;
+  var category = document.forms["new-trip-form"]["category"].value;
+  var weeks = document.forms["new-trip-form"]["weeks"].value;
+  var cost = document.forms["new-trip-form"]["cost"].value;
+  var alert_text = ""
 
-    if (name == "") {
-        alert_text += "Name must be filled out \n";
-    }
-    if (continent == "") {
-        alert_text += "Continent must be filled out \n";
-    }
-    if (about == "") {
-        alert_text += "About must be filled out \n";
-    }
-    if (category == "") {
-        alert_text += "Category must be filled out \n";
-    }
-    if (weeks == "") {
-        alert_text += "Weeks must be filled out \n";
-    }
-    if (cost == "") {
-        alert_text += "Cost must be filled out \n";
-    }
-    if (alert_text != ""){
-      alert(alert_text);
-    }
-    if (name == ""|| continent == "" || about == "" || category == "" || weeks == "" || cost == ""){
-      return false;
-    }
-    return true;
+  if (name == "") {
+    alert_text += "Name must be filled out \n";
+  }
+  if (continent == "") {
+    alert_text += "Continent must be filled out \n";
+  }
+  if (about == "") {
+    alert_text += "About must be filled out \n";
+  }
+  if (category == "") {
+    alert_text += "Category must be filled out \n";
+  }
+  if (weeks == "") {
+    alert_text += "Weeks must be filled out \n";
+  }
+  if (cost == "") {
+    alert_text += "Cost must be filled out \n";
+  }
+  if (alert_text != ""){
+    alert(alert_text);
+  }
+  if (name == ""|| continent == "" || about == "" || category == "" || weeks == "" || cost == ""){
+    return false;
+  }
+  return true;
 }
