@@ -1,0 +1,12 @@
+.trip-block {
+  background-color: lightgrey;
+  border-style: solid;
+  border-color: lightblue;
+  height: 10em;
+  text-align: center;
+  margin: 1em;
+}
+
+body {
+  background-color: white;
+}

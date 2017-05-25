@@ -15,25 +15,25 @@
 
     <div id="trip-list"></div>
     <script id="trek-list-template" type="text/template">
-      <section>
-        <h3>
+      <div class="small-12 columns medium-6 columns end large-4 columns end">
+      <section class="trip-block">
+        <h4>
           <a href= "#" class="trek-link" data-trip-id= "<%- data.id %>"><%- data.name %></a>
-        </h3>
+        </h4>
         <p>
           <strong>Continent:</strong>
-          <%- data.continent %>
-        </p>
-        <p>
+          <%- data.continent %></br>
           <strong>Trek Length:</strong>
           <% var w = (data.weeks == 1 ? " week" : " weeks" )%>
           <%- data.weeks +  w %>
         </p>
       </section>
+    </div>
     </script>
 
     <script id="trek-detail-template" type="text/template">
       <div class="row">
-        <div class="small-12 large-6 columns">
+        <div class="small-12 large-8 columns">
         <h2>
           <%- data.name %>
         </h2>
@@ -55,7 +55,7 @@
           <%- data.about %>
         </p>
       </div>
-      <div class="small-12 large-6 columns">
+      <div class="small-12 large-4 columns">
         <form action="https://trektravel.herokuapp.com/trips/<%-data.id %>/reserve" method="post">
           <section>
             <h2>Reserve this Trip</h2>
