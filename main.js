@@ -2,6 +2,10 @@
 var tripsTemplate;
 var urlTrips;
 
+// var checkName = function(name) {
+
+// };
+
 var successCallbackTrips = function(response){
   console.log("success");
   console.log(response);
@@ -26,7 +30,10 @@ var successCallbackTrip = function(response){
 
   $('#trip-' + response.id).replaceWith($(generateHTML));
   $('#show-hide-id-' + response.id).removeClass('closed').addClass('open');
-  $$('.slidingInfo').slideDown("slow");
+  // where did $$ come from and it only works if you have $$
+  //- it appears to let you only grab the current element - comes from the browser - can only use with cool browsers (chrome, safari, firefox)
+  // $$('.slidingInfo').slideDown("slow");
+  $('#tripDetails-' + response.id).slideDown("slow");
 };
 
 var successCallbackReserve = function(response){
@@ -50,13 +57,16 @@ $(document).ready(function(){
   // have to use .on because .get all trips might not be complete before document.ready (asynch issue)
   $('#trips-list').on('click', '.closed', function(event) {
     event.preventDefault();
+    // scope/context/boundaries for searching through with selectors
+    var scope = event.target.parent;
 
     var urlTrip = urlTrips + "/" + event.target.dataset.id
     $.get(urlTrip, successCallbackTrip).fail(failureCallback);
   });
 
   $('#trips-list').on('click', '.open', function(event){
-    $('#'+event.target.dataset.id ).slideToggle();
+
+    $('#tripDetails-' + event.target.dataset.id ).slideToggle();
   });
 
   $('#trips-list').on('submit', 'form', function(event) {
@@ -69,3 +79,7 @@ $(document).ready(function(){
     $.post(url, formData, successCallbackReserve).fail(failureCallback);
   });
 });
+
+// add validations for forms
+// add background color on header - make sure it appears cickable
+// add custom searches// - drop down menus with budject, weeks, and contitent
