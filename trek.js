@@ -1,6 +1,14 @@
-// get trips
+// shared failure callback
+
+var failureCallback = function(){
+  console.log('bad call');
+  $('#errors').html('<h1>Ajax request failed.</h1>');
+};
+
 
 var url = 'https://trektravel.herokuapp.com/trips';
+
+// get trips
 
 var successTripsCallback = function(response) {
   var target = $('#trips-template');
@@ -44,11 +52,6 @@ var getTripDetails = function(id) {
   $.getJSON(url).success(successSingleTripCallback).fail(failureCallback);
 };
 
-var failureCallback = function(){
-  console.log('bad call');
-  $('#errors').html('<h1>Ajax request failed.</h1>');
-};
-
 
 // Reserve a trip
 var submitForm = function(){$('form').submit(function(e) {
@@ -69,6 +72,38 @@ var submitForm = function(){$('form').submit(function(e) {
 });
 };
 
+// post a new trip, repetitive
+
+var submitTrip = function(){$('trip-form').submit(function(e) {
+  e.preventDefault();
+  var url = $(this).attr("action");
+
+  var formData = $(this).serialize();
+
+  $.post(url, formData, function(response){
+    $('#success').html('<p> Trip Successfully Created! </p>');
+    // $('#trips').empty();
+    $("#trips").append(response);
+    console.log(response);
+  })
+    .fail(function(){
+    $('#message').html('<p>Trip Creation Failed</p>');
+  });
+});
+};
+
+var getNewTripForm = function(id) {
+  $('#trips').empty();
+
+  var target = $('#new-trip-template');
+  var newTripForm = _.template(target.html());
+  $('#trips').append($(newTripForm));
+  submitTrip();
+
+
+};
+
+
 // Trips by Continent
 
 var getTripsByContinent = function(id) {
@@ -82,6 +117,8 @@ var getTripsByContinent = function(id) {
 
 $(document).ready(function() {
   $('#load').click(getTrips);
+  $('#new-trip').click(getNewTripForm);
+
   $('#trips').on('click','li', function() {
     var id = $(this).attr("id");
     getTripDetails(id);
