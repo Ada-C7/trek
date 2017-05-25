@@ -16,20 +16,20 @@ $(document).ready(function() {
     }
 
     $(".flip").click(function() {
-      $("#trip-" + response.id).slideToggle("slow");
+      $(".info").slideToggle("slow");
     });
   };
 
   var trip = function(response) {
     console.log("in the trip function!!");
     console.log(response);
-    var tripTemplate = _.template($('#info-template').html());
+    var tripTemplate = _.template($('#trips-template').html());
     // for (var i = 0; i < response.length; i++) {
       var generatedHtml = tripTemplate ({
         data: response
       });
       console.log("obj id: " + "#trip-" + response.id);
-      $("#trip-" + response.id).replaceWith($(generatedHtml)); //need to make a specific trip append to the specific name
+      $("#trip-" + response.id).replaceWith(generatedHtml); //need to make a specific trip append to the specific name
 
 
   };

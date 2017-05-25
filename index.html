@@ -13,17 +13,19 @@
     <section id="errors"></section>
     <div id="trips-list">
       <script id="trips-template" type="text/template">
-        <section class="trip">
+        <section class="trip" id=<%- "trip-" + data.id %> >
           <!-- data-id is a special html thing -->
         <h2 class="flip" data-id=<%- data.id %> >
           <!-- <a href=https://trektravel.herokuapp.com/trips/<%- data.id %> ></a> -->
           <%- data.name %>
         </h2>
-        <p class="info">
-          <!-- <a href=https://trektravel.herokuapp.com/trips/<%- data.id %> > <%- data.name %></a> -->
-          <p id=<%= "trip-" + data.id %>> <%- data.about %> </p>
-          <!-- in the paragraph -->
-        </p>
+        <!-- <div class="info"> -->
+          <div id=<%= "trip-" + data.id %>>
+            <p> <%- data.about %> </p>
+            <p> <%- data.category %> </p>
+            <p> <%- data.cost %> </p>
+          </div>
+        <!-- </div> -->
 
         <ul>
           <li><strong>Continent:</strong>
