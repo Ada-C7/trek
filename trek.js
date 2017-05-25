@@ -38,6 +38,16 @@ var clickHandler = function() {
 var popupHandler = function() {
   $('#popup').fadeIn(500);
 
+  $("form").hide();
+  $("#reserve-spot").show();
+
+  $("#reserve-spot").click(function(){
+    // $("form").toggle();
+    $("form").show();
+    $("#reserve-spot").hide();
+
+  });
+
   // close popup window
   $('#close-popup').on('click', function(event)  {
       event.preventDefault();
@@ -46,14 +56,14 @@ var popupHandler = function() {
 };
 
 $(document).ready(function() {
-  $("form").hide();
+  // $("form").hide();
 
-  $("#reserve-spot").click(function(){
-    // $("form").toggle();
-    $("form").show();
-    $("#reserve-spot").hide();
-
-  });
+  // $("#reserve-spot").click(function(){
+  //   // $("form").toggle();
+  //   $("form").show();
+  //   $("#reserve-spot").hide();
+  //
+  // });
 
   $('#load-trips').click(clickHandler);
 
