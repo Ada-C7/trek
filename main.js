@@ -1,5 +1,6 @@
 // $(document).foundation();
 var tripsTemplate;
+var urlTrips;
 
 var successCallbackTrips = function(response){
   console.log("success");
@@ -25,6 +26,7 @@ var successCallbackTrip = function(response){
 
   $('#trip-' + response.id).replaceWith($(generateHTML));
   $('#show-hide-id-' + response.id).removeClass('closed').addClass('open');
+  $$('.slidingInfo').slideDown("slow");
 };
 
 var successCallbackReserve = function(response){
@@ -45,7 +47,7 @@ $(document).ready(function(){
   // api request for all trips //
   $.get(urlTrips, successCallbackTrips).fail(failureCallback);
 
-  // have to use .on because .get might not be complete before document.ready
+  // have to use .on because .get all trips might not be complete before document.ready (asynch issue)
   $('#trips-list').on('click', '.closed', function(event) {
     event.preventDefault();
 
@@ -54,7 +56,7 @@ $(document).ready(function(){
   });
 
   $('#trips-list').on('click', '.open', function(event){
-    $('#'+event.target.dataset.id ).toggle();
+    $('#'+event.target.dataset.id ).slideToggle();
   });
 
   $('#trips-list').on('submit', 'form', function(event) {
