@@ -11,7 +11,7 @@
   <div id="trip-details"></div>
   <script id="all-trips-template" type="text/template">
     <div class="transbox">
-      <div class="large-6 large-columns">
+      <div class="large-6 large-centered-columns">
         <section class="trip-index" id ="trip-index-<%-data.id%>">
           <p>
             <strong>Destination: </strong>
@@ -60,6 +60,7 @@
             <section>
               <label>Reserve this trip! </label>
               <input type="text" id="name" name="name" placeholder="Name"></input>
+              <input type="text" id="email" name="email" placeholder="Email"></input>
             </section>
             <input class="button" id="reserve" type="submit"></input>
           </form>
