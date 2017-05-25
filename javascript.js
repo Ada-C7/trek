@@ -13,6 +13,8 @@ var generateAllTrips = function(response) {
   $('#single-trip').hide();
   $('#trip-list').show();
   $('#trip-sort').show();
+  $('#trip-list').addClass('.trip-list-outline');
+  $("#message").empty();
 
   // compiles tripTemplate
   var tripsTemplate = _.template($('#trip-template').html());
@@ -34,17 +36,24 @@ var singleTripClickHandler = function(event) {
 };
 
 var generateSingleTrip = function(response) {
+  $('#trip-sort').hide();
   $('#trip-list').hide();
   $('#single-trip').show();
+// add a console.log response to see what it gives me
+// add in if statement to save it if that happens
 
-  // compiles singleTripTemplate
-  var singleTripTemplate = _.template($('#single-trip-template').html());
-  var generatedHtml = singleTripTemplate({
-    trip: response
-  });
-
-  // adds content
-  $('#single-trip').html($(generatedHtml));
+  if (response) {
+    // compiles singleTripTemplate
+    var singleTripTemplate = _.template($('#single-trip-template').html());
+    var generatedHtml = singleTripTemplate({
+      trip: response
+    });
+    // adds content
+    $('#single-trip').html($(generatedHtml));
+  } else {
+    console.log(response);
+    $("#message").html("<p>I'm sorry, something has gone wrong.  Please refresh and try again.</p>");
+  }
 };
 
 var reserveClickHandler = function(event) {

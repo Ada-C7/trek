@@ -11,13 +11,23 @@
   <body>
     <div class="row">
       <div class="small-12 small-centered column">
-        <button class="button" id="load">Show me Everything</button>
+        <button class="button" id="load">Show Me Everything</button>
       </div>
       <div id="message"></div>
-      <div id="trip-sort">
+      <div id="trip-list" class='trip-list-outline small-12 medium-6 column'></div>
+      <div id="trip-sort" class="small-12 medium-6 column">
         <h4>Narrow Results by:</h4>
         <form method="get" id="sort">
           <label>Continent</label>
+          <select name="query">
+            <option value="North America">North America</option>
+            <option value="South America">South America</option>
+            <option value="Asia">Asia</option>
+            <option value="Africa">Africa</option>
+            <option value="Australia">Australia</option>
+            <option value="Europe">Europe</option>
+            <option value="Antarctica">Antarctica</option>
+          </select>
           <select name="query">
             <option value="North America">North America</option>
             <option value="South America">South America</option>
@@ -32,7 +42,6 @@
         </section>
         </form>
       </div>
-      <div id="trip-list"></div>
       <!-- Template to use in order to display all trips -->
       <script id="trip-template" type="text/template">
         <section>
@@ -40,6 +49,7 @@
           <h3><data value= <%- trip.id %> >
             <%-trip.name %>
           </data></h3>
+          <%= "</a>" %>
           <p>
             <strong>Continent:</strong>
             <%- trip.continent %>
@@ -48,7 +58,6 @@
             <strong>Weeks:</strong>
             <%- trip.weeks %>
           </p>
-          <%= "</a>" %>
         </section>
       </script>
 
