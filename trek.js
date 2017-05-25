@@ -1,16 +1,11 @@
 var tripsUrl = "https://trektravel.herokuapp.com/trips";
 
 var allTripClickHandler = function(event) {
-  // console.log(this.event);
   var target = $('#trips-template');
-  // target.empty(); // might use later so trip list does not repeat if button clicked again
   $.get(tripsUrl, allSuccessCallback).fail(failureCallback);
 };
 
 var allSuccessCallback = function(response) {
-  // console.log("Success!");
-  // console.log(response[0]);
-  // $('#print-trip-data').hide();
   $('#print-trip-data').empty();
   $('#print-trips').show();
 
@@ -23,23 +18,14 @@ var allSuccessCallback = function(response) {
     console.log(generatedHtml);
     $('#print-trips').append(generatedHtml);
   }
-
 };
 
 var oneTripClickHandler = function(oneTripUrl) {
-
-  // console.log(event.target);
-  // var tripID = event.target;
-  // var trying = 'https://trektravel.herokuapp.com/trips/1';
-
   $.get(oneTripUrl, oneSuccessCallback).fail(failureCallback);
 };
 
 var oneSuccessCallback = function(response) {
-  // $('#print-trips').hide();
-
   $('#print-trips').empty();
-  // $('#print-trip-data').empty();
   $('#print-trip-data').show();
 
   var oneTripTemplate = _.template($('#trip-data').html());

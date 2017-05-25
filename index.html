@@ -17,11 +17,12 @@
   <section id="print-trips" class="row small-up-2 medium-up-3 large-up-3"></section>
 
   <script id="trips-template" type="text/template">
-    <section class="column">
-
-    <h4 class="trip" id=<%= data.id %> >
-      <%- data.name %>
-    </h4>
+    <section id="style-box" class="column">
+    <section id="box-trips">
+      <h4 class="trip" id=<%= data.id %> >
+        <%- data.name %>
+      </h4>
+    </section>
     <p>
       <strong>Continent: </strong><%- data.continent %></br>
       <strong>Durration: </strong><%- data.weeks %>

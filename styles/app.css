@@ -1,4 +1,21 @@
 
+/*#box-trips {
+  border-top: solid;
+  padding: .3em;
+}*/
+
+body {
+  background: #DBDBDB;
+}
 h4 {
   color: maroon;
 }
+
+#box-trips {
+  border-top: solid;
+  border-top-color: #40798C;
+}
+/*
+#style-box {
+  background: #F7F0F0;
+}*/
