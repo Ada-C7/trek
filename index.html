@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/foundation.css">
   <link rel="stylesheet" href="css/app.css">
-  <title>Chantal's trip Finder</title>
+  <title>Trip Finder</title>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <script src="trek.js" type="text/javascript"></script>
@@ -12,9 +12,9 @@
   <script id="all-trips-template" type="text/template">
     <div class="transbox">
       <div class="large-6 large-columns">
-        <section id ="trip-index">
+        <section class="trip-index" id ="trip-index-<%-data.id%>">
           <p>
-            <strong id="<%-data.id%>">Destination: </strong>
+            <strong>Destination: </strong>
             <%- data.name %>
           </p>
           <p>
@@ -55,7 +55,7 @@
       <div id="message"></div>
       <div id="name-form">
         <div class="small-4 small-centered columns">
-          <form action="https://trektravel.herokuapp.com/trips" method="post">
+          <form id="reserve-form" action="https://trektravel.herokuapp.com/trips" method="post">
             <section>
               <label>Reserve this trip! </label>
               <input type="text" id="name" name="name" placeholder="Name"> </input>

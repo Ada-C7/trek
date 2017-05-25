@@ -13,8 +13,8 @@ var successCallbackAll = function(response) {
       data: response[i]
     });
     $('#trips-list').append(generatedHtml);
+    $('#trip-index-' + response[i].id).on('click', 'p', clickHandlerLocale);
   }
-  $('#trip-index').on('click', 'p', clickHandlerLocale);
 };
 
 var failureCallback = function() {
@@ -28,14 +28,10 @@ var clickHandler = function(event) {
 };
 
 // make another API call for trip details
-var detailsUrl = "https://trektravel.herokuapp.com/trips/1";
-
-// var detailsUrl = ("https://trektravel.herokuapp.com/trips/" + "this.id");
 
 var successCallbackOne = function(response) {
   console.log("Success!");
   console.log(response);
-
 
   var detailsTemplate = _.template($('#details-template').html());
 
@@ -45,7 +41,9 @@ var successCallbackOne = function(response) {
   $('#trip-details').html($(generatedHtml));
 };
 var clickHandlerLocale = function(event) {
- // $('#response.id').html($(this).id);
+  // getting the id from the event
+  var tripId = event.delegateTarget.id.split("-")[2];
+  var detailsUrl = "https://trektravel.herokuapp.com/trips/" + tripId;
   $.get(detailsUrl, successCallbackOne).fail(failureCallback);
 };
 
@@ -54,10 +52,9 @@ $(document).ready(function() {
 });
 
 
+// form stuff...WIP
 
-// form stuff
-
-$('form').submit(function(e) {
+$('#reserve-form').submit(function(e) {
   e.preventDefault();
   var reserveUrl = $(this).attr("action");
   var formData = $(this).serialize();
@@ -67,8 +64,8 @@ $('form').submit(function(e) {
   });
   console.log(response);
 })
-  .fail(function() {
-    $('#message').html('<p> Reservation unsuccessful. Please try again! </p>');
+.fail(function() {
+  $('#message').html('<p> Reservation unsuccessful. Please try again! </p>');
 });
 
 
