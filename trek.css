@@ -1,3 +1,8 @@
 /*#trip-info-indv {
   display: none;
 }*/
+
+.thumbnail {
+  border: 2px solid black;
+  text-align: center;
+}

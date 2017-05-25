@@ -26,6 +26,25 @@ var successCallbackTrip = function(response) {
 
   // $("#trip-info-indv").empty();
   $("#trip-info-indv").html($(generatedHtml));
+
+  // $("form").submit(function(e) {
+  //
+  //   e.preventDefault();
+  //
+  //   var url = $(this).attr("action");
+  //   var formData = $(this).serialize();
+  //
+  //   console.log(formData);  //gives us back a string
+  //
+  //   $.post(url, formData, function(response){
+  //     $("#message").html("<p>Reservation Confirmed!</p>");
+  //
+  //     console.log(response);
+  //   }).fail(function(){
+  //     $("#message").html("<p>Reservation Did Not Go Through</p>");
+  //   });
+  // });
+
   $("#trip-info-indv").show();
 };
 
@@ -33,7 +52,6 @@ var failureCallback = function() {
   console.log("Didn't work :( ");
   $("errors").html("<h1>AJAX request failed!</h1>");
 };
-
 
 var clickHandler = function() {
   $.get(url, successCallback).fail(failureCallback);
@@ -45,12 +63,49 @@ var clickHandlerTrip = function(event){
   $.get(tripUrl, successCallbackTrip).fail(failureCallback);
 };
 
+var makeReservation = function(event){
+  event.preventDefault();
+
+  var url = $(this).attr("action");
+  var formData = $(this).serialize();
+
+  console.log(formData);  //gives us back a string
+
+  $.post(url, formData, function(response){
+    $("#message").html("<p>Reservation Confirmed!</p>");
+
+    console.log(response);
+  }).fail(function(){
+    $("#message").html("<p>Reservation Did Not Go Through</p>");
+  });
+};
+
 $(document).ready(function() {
 
 //associate the click handler
 $("#load").click(clickHandler);
 
 $("#trip-list").on("click", "button#seeTrip", clickHandlerTrip);
+
+$("#trip-info-indv").on("submit", "form", makeReservation);
+
+// $("form").submit(function(e) {
+//
+//   e.preventDefault();
+//
+//   var url = $(this).attr("action");
+//   var formData = $(this).serialize();
+//
+//   console.log(formData);  //gives us back a string
+//
+//   $.post(url, formData, function(response){
+//     $("#message").html("<p>Reservation Confirmed!</p>");
+//
+//     console.log(response);
+//   }).fail(function(){
+//     $("#message").html("<p>Reservation Did Not Go Through</p>");
+//   });
+// });
 
 
 });

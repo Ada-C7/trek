@@ -20,9 +20,9 @@
 
     <div id="trip-info-indv"></div>
 
-    <div id="trip-list"></div>
+    <div id="trip-list" class="row small-up-2 medium-up-3 large-up-4" ></div>
     <script id="trip-list-template" type="text/template">
-      <section>
+      <section class="column column-block" class="thumbnail">
 
           <p><%- trip.id %></p>
           <p><%- trip.name %></p>
@@ -44,7 +44,16 @@
       <p><%- trip.category %></p>
       <p><%- trip.weeks %></p>
       <p><%- trip.cost %></p>
-      <button id="reserve" class="success button">Reserve Spot</button>
+      <div id="message"></div>
+      <form action="https://trektravel.herokuapp.com/trips/<%- trip.id %>/reserve" method="post">
+        <section>
+          <label>Name</label>
+          <input type="text" id="name" name="name"></input>
+        </section>
+        <section class="button">
+          <button type="submit">Reserve Spot</button>
+        </section>
+      </form>
     </script>
 
 
