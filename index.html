@@ -31,7 +31,16 @@
   </table>
 
   <script id="trip_detail" type="text/template">
-    <p><%- trip.id %><%- trip.name %><%- trip.destination %><%- trip.continent %><%- trip.about %><%- trip.category %><%- trip.weeks %><%- trip.cost %><br /></p>
+    <ul>
+      <li>Trip id: <%- trip.id %></li>
+      <li>Trip name: <%- trip.name %></li>
+      <li>Trip destination: <%- trip.destination %></li>
+      <li>Trip continent: <%- trip.continent %></li>
+      <li>Trip about: <%- trip.about %></li>
+      <li>Trip category: <%- trip.category %></li>
+      <li>Trip weeks: <%- trip.weeks %></li>
+      <li>Trip cost: <%- trip.cost %></li>
+    </ul>
     <form>
       <form  id = "reservation-form" action="" method="post">
         <section>

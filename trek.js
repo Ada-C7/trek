@@ -15,11 +15,10 @@ $(document).ready(function() {
   var showDetails = function(trip) {
     var tripIdHtml = tripIdTemplate({trip: trip});
 
-    //passing the whole trip obhect
+    //passing the whole trip object
     $("#trip_details").append($(tripIdHtml));
     $("#trip_table").html("");
     $('.reservation').click(clickonReserve);
-
   };
 
   var failureCallback = function() {
@@ -55,7 +54,6 @@ $(document).ready(function() {
     $.post(url, formData, function(response){
       $('#message').html('<p> Your trip reserved! </p>');
 
-      // What do we get in the response?
       console.log(response);
     });
   };
