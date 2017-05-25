@@ -55,12 +55,12 @@
       <div id="message"></div>
       <div id="name-form">
         <div class="small-4 small-centered columns">
-          <form id="reserve-form" action="https://trektravel.herokuapp.com/trips" method="post">
+          <form id="reserve-form" action="https://trektravel.herokuapp.com/trips/<%-data.id%>/reserve" method="post">
             <section>
               <label>Reserve this trip! </label>
-              <input type="text" id="name" name="name" placeholder="Name"> </input>
+              <input type="text" id="name" name="name" placeholder="Name"></input>
             </section>
-            <section class="button" id="reserve" type="submit">Submit</section>
+            <input class="button" id="reserve" type="submit"></input>
           </form>
         </div>
       </div>

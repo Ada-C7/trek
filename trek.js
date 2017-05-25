@@ -13,7 +13,7 @@ var successCallbackAll = function(response) {
       data: response[i]
     });
     $('#trips-list').append(generatedHtml);
-    $('#trip-index-' + response[i].id).on('click', 'p', clickHandlerLocale);
+    $('#trip-index-' + response[i].id).on('click', clickHandlerLocale);
   }
 };
 
@@ -39,6 +39,20 @@ var successCallbackOne = function(response) {
     data: response
   });
   $('#trip-details').html($(generatedHtml));
+  $('#reserve-form').submit(function(e) {
+    e.preventDefault();
+    var reserveUrl = $(this).attr("action");
+    var formData = $(this).serialize();
+
+    $.post(reserveUrl, formData, function(response) {
+      console.log(response);
+      $('#message').html('<p> Reservation successful! </p>');
+    })
+    .fail(function() {
+      $('#message').html('<p> Reservation unsuccessful. Please try again! </p>');
+    });
+  });
+  $('html,body').scrollTop(0);
 };
 var clickHandlerLocale = function(event) {
   // getting the id from the event
@@ -50,28 +64,3 @@ var clickHandlerLocale = function(event) {
 $(document).ready(function() {
   $('#load').click(clickHandler);
 });
-
-
-// form stuff...WIP
-
-$('#reserve-form').submit(function(e) {
-  e.preventDefault();
-  var reserveUrl = $(this).attr("action");
-  var formData = $(this).serialize();
-
-  $.post(reserveUrl, formData, function(response) {
-    $('#message').html('<p> Reservation successful! </p>');
-  });
-  console.log(response);
-})
-.fail(function() {
-  $('#message').html('<p> Reservation unsuccessful. Please try again! </p>');
-});
-
-
-
-
-
-
-
-// space
