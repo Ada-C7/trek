@@ -41,9 +41,12 @@ var successCallbackTrip= function(response){
   console.log(response);
   showPage('trip');
 
+  var url = urlBasic + '/' + response.id + '/' + 'reserve'
+
   var tripTemplate = _.template($('#trip_template').html());
   var generatedHtml = tripTemplate({
-    data: response
+    data: response,
+    url: url
   });
   $('#trip').html($(generatedHtml));
 };
@@ -70,4 +73,24 @@ var clickHandlerTrip = function(event) {
 $(document).ready(function() {
   $('#load_list').click(clickHandlerList);
   $('#list_of_trips').on('click', 'button#getTrip' ,clickHandlerTrip);
+  // $('#trip').click();
+
+  $('form').submit(function(e) {
+    // By default, the form will attempt to do it's own local POST so we want to prevent that default behavior
+    e.preventDefault();  /// VERY IMPORTANT TO INCLUDE
+    var url = $(this).attr("action"); // Retrieve the action from the form
+    var formData = $(this).serialize();
+    console.log(formData);
+
+    $.post(url, formData, function(response){
+      $('#message').html('<p> Pet added! </p>');
+  // What do we get in the response?
+      console.log(response);
+    }).fail(function(){
+      $('#message').html('<p>Adding Pet Failed</p>');
+    });
+  });
+
+
+
 });
