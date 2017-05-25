@@ -64,10 +64,6 @@ $(document).ready(function() {
   $('#load').click(clickHandler);
   $('#trip_table').on('click', '.id_td', clickonId);
   $('#trip_table').on('click', '.detail', clickonDetail);
-  // $('#trip_detail').on('click', '.reservation', clickonReserve);
-  // $('.reservation').click(function(){
-  //   alert("Hi there");
-  // });
 
   var tripIdTemplate = _.template($('#trip_detail').html());
   // $('#load').click(contextHandler);
