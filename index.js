@@ -75,47 +75,6 @@ var successTripsCallback = function(response) {
   $('#sort-by-weeks-button').click(sortTripClickHandler);
 };
 
-var sortTripClickHandler = function(event){
-  $('#trips-list tr').remove();
-    console.log(this);
-  $.get(url_all_trip, successSortTripsCallback).fail(failureCallback);
-};
-
-var successSortTripsCallback = function(response) {
-  $('#trips-list tr').remove();
-  var tripTemplate = _.template($('#trips-list-template').html());
-  var unsorted_array = []
-  for (var i = 0; i < response.length; i++) {
-    unsorted_array.push(response[i]);
-  }
-
-  var array_without_nulls = unsorted_array.filter(function( obj ) {
-    return obj.continent !== null;
-  });
-
-  array_without_nulls.sort(function(a, b){
-    var x = a['continent'].toLowerCase();
-    var y = b['continent'].toLowerCase();
-    return x<y ? -1 : x>y ? 1 : 0;
-  })
-
-  for (var i = 0; i < array_without_nulls.length; i++) {
-    var generatedHtml = tripTemplate({
-      data: array_without_nulls[i]
-    });
-    $('#trips-list').append($(generatedHtml));
-  }
-  for (var i = 0; i < unsorted_array.length; i++) {
-    if (unsorted_array[i]['continent'] === null){
-      var generatedHtml = tripTemplate({
-        data: unsorted_array[i]
-      });
-      $('#trips-list').append($(generatedHtml));
-    }
-  }
-$('.see_trip').click(tripClickHandler);
-};
-
 var tripClickHandler = function(event) {
   var url_trip = "https://trektravel.herokuapp.com/trips/" + this.id;
   $.get(url_trip, successTripCallback).fail(failureCallback);
@@ -157,6 +116,94 @@ var failureCallback = function() {
   console.log("Didn't work :(");
   $("#message").html("<p>AJAX request failed! Check your Internet connection</p>");
 };
+
+
+// ==========START OF SORTING BLOCK=================================
+var sortTripClickHandler = function(event){
+  $('#trips-list tr').remove();
+  if (this.id.includes('continent')){
+    $.get(url_all_trip, successSortContinentCallback).fail(failureCallback);
+  }
+  else{
+    $.get(url_all_trip, successSortWeekCallback).fail(failureCallback);
+  }
+};
+
+
+var successSortContinentCallback = function(response) {
+  $('#trips-list tr').remove();
+  var tripTemplate = _.template($('#trips-list-template').html());
+  var unsorted_array = []
+  for (var i = 0; i < response.length; i++) {
+    unsorted_array.push(response[i]);
+  }
+  var sorted_array = sortBy(unsorted_array, "continent");
+  for (var i = 0; i < sorted_array.length; i++) {
+    var generatedHtml = tripTemplate({
+      data: sorted_array[i]
+    });
+    $('#trips-list').append($(generatedHtml));
+  }
+  for (var i = 0; i < unsorted_array.length; i++) {
+    if (unsorted_array[i]["continent"] === null){
+      var generatedHtml = tripTemplate({
+        data: unsorted_array[i]
+      });
+      $('#trips-list').append($(generatedHtml));
+    }
+  }
+  $('.see_trip').click(tripClickHandler);
+};
+
+var successSortWeekCallback = function(response) {
+  $('#trips-list tr').remove();
+  var tripTemplate = _.template($('#trips-list-template').html());
+  var unsorted_array = []
+  for (var i = 0; i < response.length; i++) {
+    unsorted_array.push(response[i]);
+  }
+  var sorted_array = sortBy(unsorted_array, "weeks");
+  for (var i = 0; i < sorted_array.length; i++) {
+    var generatedHtml = tripTemplate({
+      data: sorted_array[i]
+    });
+    $('#trips-list').append($(generatedHtml));
+  }
+  for (var i = 0; i < unsorted_array.length; i++) {
+    if (unsorted_array[i]["weeks"] === null){
+      var generatedHtml = tripTemplate({
+        data: unsorted_array[i]
+      });
+      $('#trips-list').append($(generatedHtml));
+    }
+  }
+  $('.see_trip').click(tripClickHandler);
+};
+
+
+var sortBy = function(unsorted_array, param){
+  var array_without_nulls = unsorted_array.filter(function(obj) {
+    return obj[param] !== null;
+  });
+  array_without_nulls.sort(function(a, b){
+    var x;
+    var y;
+    if (param == "weeks"){
+      x = a[param];
+      y = b[param];
+    }
+    else{
+      x = a[param].toLowerCase();
+      y = b[param].toLowerCase();
+    }
+    return x<y ? -1 : x>y ? 1 : 0;
+  })
+  return array_without_nulls;
+}; // end of sortBy function
+
+// END OF SORTING BLOCK=================================
+
+
 
 // Additional functions to check if table and error box is emty:
 var checkIfTableEmpty = function(){
