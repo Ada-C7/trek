@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
   <header>
     <section class = "row">
       <section class = "medium-2 large-2 columns">
@@ -29,9 +30,7 @@
 
 <div class = "row">
   <div class = "medium-6 large-6 columns">
-
-
-    <div id="trip"></div>
+  <div id="trip"></div>
         <section id = "trip-block" class=" callout" data-closable="slide-out-left">
           <script id="trip-template" type="text/template">
             <section>
@@ -62,8 +61,8 @@
             </form>
           </script>
         </section>
-
 </div>
+
 <div class = "medium-6 large-6 columns" id ="search-by-continent-div">
     <section class = "row" id = "search-by-continent">
       <section class = "medium-3 large-3 columns">
@@ -73,7 +72,7 @@
       <section class = "medium-9 large-9 columns">
       <form  id = "continent-form" action="" method="post">
           <select id ="continent-select">
-            <!-- <option value="all">Choose an options</option> -->
+            <option selected="true" disabled="disabled">Choose an options</option>
             <option value="africa">Africa</option>
             <option value="asia">Asia</option>
             <option value="europe">Europe</option>
@@ -92,7 +91,7 @@
     <section class = "medium-9 large-9 columns">
     <form  id = "budget-form" action="" method="post">
         <select id ="budget-select">
-          <!-- <option value="all">Choose an option</option> -->
+          <option selected="true" disabled="disabled">Choose an option</option>
           <option value="500">500</option>
           <option value="1000">1000</option>
           <option value="2000">2000</option>
@@ -105,14 +104,12 @@
   </section>
 </section>
 
-
   <section>
-
-    <button id = "sort-button" type="submit">Sort by continent</button>
-
-
+    <section id = "sorting-setion">
+      <button id = "sort-by-continent-button" type="submit">Sort all by continent  <strong>|</strong> </button>
+      <button id = "sort-by-weeks-button" type="submit">Sort all by weeks</button>
+    </section>
     <table id = "trips-table">
-
       <thead id = "trips-list-table">
         <tr>
           <th> Trip name </th>
@@ -175,18 +172,12 @@
 
 
   </main>
-
-
-
-
-
 </body>
 </html>
 
 <script src="js/vendor/jquery.js"></script>
 <script src="js/vendor/foundation.min.js"></script>
 <script src="js/vendor/what-input.js"></script>
-<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
 integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

@@ -28,6 +28,7 @@ $(document).ready(function() {
       }
     });
   }); // end of new trip block
+
   checkIfTableEmpty();
   checkIfTripBlockEmpty();
 
@@ -70,17 +71,17 @@ var successTripsCallback = function(response) {
   $('.see_trip').click(tripClickHandler);
 
   checkIfTableEmpty();
-
-  $('#sort-button').click(sortTripClickHandler)
+  $('#sort-by-continent-button').click(sortTripClickHandler);
+  $('#sort-by-weeks-button').click(sortTripClickHandler);
 };
 
 var sortTripClickHandler = function(event){
   $('#trips-list tr').remove();
+    console.log(this);
   $.get(url_all_trip, successSortTripsCallback).fail(failureCallback);
 };
 
 var successSortTripsCallback = function(response) {
-  console.log("Inside sorting:");
   $('#trips-list tr').remove();
   var tripTemplate = _.template($('#trips-list-template').html());
   var unsorted_array = []
@@ -112,11 +113,8 @@ var successSortTripsCallback = function(response) {
       $('#trips-list').append($(generatedHtml));
     }
   }
-
+$('.see_trip').click(tripClickHandler);
 };
-
-
-
 
 var tripClickHandler = function(event) {
   var url_trip = "https://trektravel.herokuapp.com/trips/" + this.id;
@@ -143,7 +141,6 @@ var successTripCallback = function(response) {
         $('#message').addClass("callout");
         $('#message').html('<section  class="success callout" data-closable="slide-out-right" >');
         $('#message').html('<p> You succesfully reserved your trip! </p>');
-
       })
       .fail(function(){
         $('#message').html('<p>Creating new reservation failed</p>');
@@ -164,13 +161,14 @@ var failureCallback = function() {
 // Additional functions to check if table and error box is emty:
 var checkIfTableEmpty = function(){
   if (!$('#trips-list').html().includes("1")){
+    $('#sorting-setion').hide();
     $('#trips-list-table').hide();
   }
   else {
+    $('#sorting-setion').show();
     $('#trips-list-table').show();
   }
 };
-
 
 var checkIfTripBlockEmpty = function(){
   if ($('#trip').html() == ""){
