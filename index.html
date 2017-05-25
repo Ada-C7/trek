@@ -27,11 +27,11 @@
 
   <button id="load" class = "success button"> Fetch! </button>
   <table id="trip_table">
-    <tr><th>continent</th><th>id</th><th>name</th><th>weeks</th></tr>
+    <tr><th>continent</th><th>id</th><th>name</th><th>weeks</th><th>detail</th></tr>
   </table>
 
   <script id="trip_detail" type="text/template">
-    <p><%- trip.id %><%- trip.name %><%- trip.destination %><%- trip.continent %><%- trip.about %><%- trip.category %><%- trip.weeks %><%- trip.cost %><br /><button class="reservation">reserve this trip!!</button></p>
+    <p><%- trip.id %><%- trip.name %><%- trip.destination %><%- trip.continent %><%- trip.about %><%- trip.category %><%- trip.weeks %><%- trip.cost %><br /></p>
     <form>
       <form  id = "reservation-form" action="" method="post">
         <section>
