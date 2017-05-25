@@ -28,6 +28,10 @@ body {
   filter: alpha(opaacity=90);
 }
 
+h2 {
+  text-align: center;
+}
+
 .individual-trip {
   color: #E2D1C5;
   margin: 15px;
