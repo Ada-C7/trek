@@ -80,3 +80,22 @@ $(document).ready(function() {
     clickDirector(event);
   });
 });
+
+$('form').submit(function(event) {
+  event.preventDefault();
+
+  var url = $(this).attr("action");
+
+  var formData = $(this).serialize();
+
+  $.post(url, formData, function(response){
+    $('#message').html('<p> Enjoy your trip! </p>');
+
+    // What do we get in the response?
+    console.log(response);
+
+  }).fail(function(){
+    $('#message').html('<p>Reservation could not be made.</p>');
+
+  });
+});
