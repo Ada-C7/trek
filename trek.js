@@ -66,7 +66,5 @@ $(document).ready(function() {
   $('#trip_table').on('click', '.detail', clickonDetail);
 
   var tripIdTemplate = _.template($('#trip_detail').html());
-  // $('#load').click(contextHandler);
-
 
 });
