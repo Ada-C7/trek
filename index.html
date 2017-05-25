@@ -7,26 +7,29 @@
 <body>
   <button id="load"> See Trips </button>
   <ul id="trips"></ul>
-<section id="trip-list">
-</section>
-<script id="trip-template" type="text/template">
-<table>
-    <tr>
-      <th> Continent </th>
-      <th> Trip Name </th>
-    </tr>
+
+  <table id="trip-list">
+    <thead>
+      <tr>
+        <th> Continent </th>
+        <th> Trip Name </th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+
+  </table>
+
+
+
+
+
+  <script id="trip-template" type="text/template">
     <tr>
       <td><%- trip.continent %></td>
-      <td><%- trip.name %></td>
+      <td><a href="<%- link %>"</a><%- trip.name %></td>
     </tr>
-</table>
-</script>
-
-
-
-
-
-
+  </script>
   <script src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
