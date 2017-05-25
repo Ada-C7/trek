@@ -29,6 +29,7 @@ var failureCallback = function(response) {
 };
 
 var clickHandler = function() {
+  $("#trip-details").empty();
   $("#trips").empty();
   $.get(url, successCallback).fail(failureCallback);
 };
@@ -37,7 +38,6 @@ var detailsClickHandler = function() {
   var id = $(this).attr('id');
   // console.log(id);
   $("#trips").empty();
-  $("#trip-details").empty();
   $.get(url + "/" + id, detailsSuccessCallback).fail(failureCallback);
 };
 

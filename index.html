@@ -24,7 +24,8 @@
         </p>
         <p>
           <strong>Length:</strong>
-          <%- data.weeks %> weeks
+          <% var week = (data.weeks == 1) ? " week" : " weeks" %>
+          <%- data.weeks + week %>
         </p>
       </section>
     </script>
@@ -33,10 +34,10 @@
     <script id="details-template" type="text/template">
       <section>
         <h1><%- data.name %></h1>
-        <p>ID: <%- data.id %></p>
-        <p>Continent: <%- data.continent %></p>
-        <p>Category: <%- data.category %></p>
-        <p>About: <%- data.about %></p>
+        <p><strong>ID:</strong> <%- data.id %></p>
+        <p><strong>Continent:</strong> <%- data.continent %></p>
+        <p><strong>Category:</strong> <%- data.category %></p>
+        <p><strong>About:</strong> <%- data.about %></p>
       </section>
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
