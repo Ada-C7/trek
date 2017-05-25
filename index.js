@@ -67,30 +67,26 @@ var clickHandlerTrip = function(event) {
   var id = $(this).attr('data-tripid');
   var url = urlBasic + '/' + id;
   $.get(url, successCallbackTrip).fail(failureCallback);
-}
+};
+
+
+var makeReservation = function(event) {
+  event.preventDefault();  /// VERY IMPORTANT TO INCLUDE // By default, the form will attempt to do it's own local POST so we want to prevent that default behavior
+  var url = $(this).attr("action"); // Retrieve the action from the form
+  var formData = $(this).serialize();
+  console.log(formData);
+  $.post(url, formData, function(response){
+    $('#message').html('<p> You have a reservation! </p>');
+    document.getElementById("form1").style.display = "none";
+    console.log(response);
+  }).fail(function(){
+    $('#message').html('<p>Reservation Failed</p>');
+  });
+}; // END of "var makeReservation"
 
 
 $(document).ready(function() {
   $('#load_list').click(clickHandlerList);
   $('#list_of_trips').on('click', 'button#getTrip' ,clickHandlerTrip);
-  // $('#trip').click();
-
-  $('form').submit(function(e) {
-    // By default, the form will attempt to do it's own local POST so we want to prevent that default behavior
-    e.preventDefault();  /// VERY IMPORTANT TO INCLUDE
-    var url = $(this).attr("action"); // Retrieve the action from the form
-    var formData = $(this).serialize();
-    console.log(formData);
-
-    $.post(url, formData, function(response){
-      $('#message').html('<p> Pet added! </p>');
-  // What do we get in the response?
-      console.log(response);
-    }).fail(function(){
-      $('#message').html('<p>Adding Pet Failed</p>');
-    });
-  });
-
-
-
+  $('#trip').on('submit', 'form' ,makeReservation);
 });
