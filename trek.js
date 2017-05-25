@@ -23,22 +23,23 @@ var allSuccessCallback = function(response) {
     console.log(generatedHtml);
     $('#print-trips').append(generatedHtml);
   }
-  $('.trip').click(oneTripClickHandler);
+
 };
 
-var oneTripClickHandler = function(event) {
+var oneTripClickHandler = function(oneTripUrl) {
 
   // console.log(event.target);
   // var tripID = event.target;
   // var trying = 'https://trektravel.herokuapp.com/trips/1';
-  var oneTripUrl = tripsUrl + "/" + this.id;
 
   $.get(oneTripUrl, oneSuccessCallback).fail(failureCallback);
 };
 
 var oneSuccessCallback = function(response) {
   // $('#print-trips').hide();
+
   $('#print-trips').empty();
+  // $('#print-trip-data').empty();
   $('#print-trip-data').show();
 
   var oneTripTemplate = _.template($('#trip-data').html());
@@ -71,4 +72,9 @@ var failureCallback = function() {
 
 $(document).ready(function(){
   $('#load').click(allTripClickHandler);
+  $('#print-trips').on('click', 'h4', function() {
+    console.log(this);
+    var oneTripUrl = tripsUrl + "/" + this.id;
+    oneTripClickHandler(oneTripUrl);
+  });
 });

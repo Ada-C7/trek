@@ -8,21 +8,24 @@
   <link rel="stylesheet" href="styles/app.css">
 </head>
 <body>
+  <header>
+    <h1>Trip Planner</h1>
+    <button class="button" id="load">View all Trips!</button>
+  </header>
   <section id="errors"></section>
-  <button class="button" id="load">View all Trips!</button>
 
-  <section id="print-trips"></section>
+  <section id="print-trips" class="row small-up-2 medium-up-3 large-up-3"></section>
+
   <script id="trips-template" type="text/template">
-    <!-- somehow need to make a link that will take user to specific trip -->
-    <!-- maybe something with a href="#" to select an id? -->
-    <section>
-      <h4 class="trip" id=<%= data.id %> >
-        <%- data.name %>
-      </h4>
-      <p>
-        <strong>Continent: </strong><%- data.continent %></br>
-        <strong>Durration: </strong><%- data.weeks %>
-      </p>
+    <section class="column">
+
+    <h4 class="trip" id=<%= data.id %> >
+      <%- data.name %>
+    </h4>
+    <p>
+      <strong>Continent: </strong><%- data.continent %></br>
+      <strong>Durration: </strong><%- data.weeks %>
+    </p>
     </section>
   </script>
 
@@ -37,8 +40,11 @@
         <strong>About: </strong><%- data.about %>
       </p>
     </section>
-    <section id="add-reservation">
+    <section class="column small-12 medium-7 large-7" id="add-reservation">
       <form action="https://trektravel.herokuapp.com/trips/<%= data.id %>/reserve" method="post">
+        <section>
+          <h3>Reservation Form: </h3>
+        </section>
         <section>
           <label>Name</label>
           <input type="text" id="name" name="name"></input>
@@ -51,7 +57,7 @@
           <label>Email</label>
           <input type="text" id="email" name="email"></input>
         </section>
-        <button class="button" type="submit">Reserve Trip!></button>
+        <button class="button" type="submit">Reserve Trip!</button>
       </section>
     </form>
   </section>
