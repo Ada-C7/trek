@@ -26,6 +26,7 @@ var clickDirector = function(event) {
 // Callbacks
 
 var successCallback = function(response) {
+  // Turn off this response while testing.
   console.log("Successful request.");
   console.log(response);
 
@@ -68,6 +69,8 @@ var generateTripInfo = function(response) {
 
   if ($(idSelection).find('ul').length > 0) {
     $('.trip-info', idSelection).remove();
+    $('form', idSelection).remove();
+    $('.submit', idSelection).remove();
   } else {
     $(idSelection).append($(generatedHtml));
   }
@@ -81,6 +84,7 @@ $(document).ready(function() {
   });
 });
 
+// Does this need to go in the doc ready? 
 $('form').submit(function(event) {
   event.preventDefault();
 
