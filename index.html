@@ -14,8 +14,8 @@
       </section>
       <section class="top-nav">
         <button id="get-trips" class="button hollow">Get All Trips</button>
-        <button id="new-trip" class="button hollow">New Trip</button>
         <button id="filter-trips" class="button hollow">Filter Trips</button>
+        <button id="new-trip" class="button hollow">New Trip</button>
       </section>
     </header>
     <section id="errors">
@@ -27,7 +27,7 @@
     </div>
     <footer>
       <p id="attribution">
-        an Ada Cohort 7 project by Aurora Anderson
+        an <a href="https://www.adadevelopersacademy.org">Ada</a> Cohort 7 project by <a href="https://www.github.com/auroralemieux">Aurora Anderson</a>
       </p>
     </footer>
 
@@ -36,7 +36,7 @@
     <script id="single-trip-template" type="text/javascript">
       <article class="columns small-12 medium-12 large-9">
         <h2>
-          <strong><%- thisTrip.name %></strong>
+          <strong class="page-header"><%- thisTrip.name %></strong>
         </h2>
         <p>
           <strong>Description: </strong>
@@ -61,7 +61,7 @@
       </article>
       <article class="columns small-12 medium-12 large-3">
         <h2>
-          <strong>Join the Trek!</strong>
+          <strong class="page-header">Join the Trek!</strong>
         </h2>
         <form id="join-form">
           <section>
@@ -106,7 +106,7 @@
     <script id="filter-trips-template">
       <section class="columns small-6">
 
-        <h2><strong>Narrow your search...</strong></h2>
+        <h2><strong class="page-header">narrow your search</strong></h2>
         <form id="continent-filter">
           <section>
             <label>Continent</label>
@@ -151,7 +151,7 @@
     <script id="new-trip-template" type="text/javascript">
       <article class="columns small-12">
         <h2>
-          <strong>Add a new trip!</strong>
+          <strong class="page-header">add a new trip</strong>
         </h2>
         <form id="new-trip-form">
           <section class="columns medium-6">

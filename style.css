@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Comfortaa|Antic|IM+Fell+English+SC|Kurale');
+@import url('https://fonts.googleapis.com/css?family=Allura|La+Belle+Aurore|Nothing+You+Could+Do|Petit+Formal+Script');
 
 * {
   margin: 0;
   padding: 0;
   font-family: "Comfortaa";
 }
-
 
 body {
   display: block;
@@ -28,18 +28,27 @@ body::after {
   z-index: -1;
 }
 
+#header-title {
+  font-family: "IM Fell English SC";
+}
+
 #header-title, #errors {
   text-align: center;
 }
 
 #subtitle {
-  font-family: "Kurale";
+  font-family: "La Belle Aurore";
   text-align: center;
-  margin-top: 150px;
+  margin-top: 100px;
 }
 
 h1 {
   font-size: 4em;
+}
+
+.page-header {
+  font-family: "La Belle Aurore";
+  text-align: center;
 }
 
 button, p {
@@ -50,24 +59,12 @@ button, p {
   display: none;
 }
 
-#header-title {
-  font-family: "IM Fell English SC";
-}
-
 .top-nav {
   display: block;
   text-align: center;
 }
 
-.top-nav form, .top-nav button {
-  display: inline-block;
-}
-
-.top-nav form {
-  display: block;
-}
-
-.top-nav form section {
+.top-nav button {
   display: inline-block;
 }
 
@@ -76,9 +73,6 @@ button, p {
   min-height: 500px;
 }
 
-footer {
-
-}
 #attribution {
   font-size: .75em;
   text-align: center;
