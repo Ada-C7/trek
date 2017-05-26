@@ -75,10 +75,31 @@ $(document).ready(function(){
 
   $('#trips-list').on('submit', 'form', function(event) {
     event.preventDefault();
-    // console.log("your in the submit form function");
+    console.log("your in the submit form function");
+    // this is also the html code
+    console.log(this);
+    // console.log(event.target.elements.age);
+    // does not give you the name - gives you the html code
+    console.log(event.target.name);
+    // can't find form data in here
+    console.log(event);
+
+
+    // this will just give you just the value
+    var age = $(event.target.age).serializeArray()[0].value;
+    var name = $(event.target.name).val();
+    console.log($(this).find('#name').val());
+
+    // this will create a string email="inputEmail"
+    var email = $(event.target.email).serialize();
+
+
     var url = $(this).attr("action");
     var formData = $(this).serialize();
-    // console.log(formData);
+
+
+    console.log(formData);
+
     $.post(url, formData, successCallbackReserve).fail(failureCallback);
   });
 });
