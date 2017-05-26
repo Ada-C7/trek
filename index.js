@@ -1,7 +1,13 @@
 var url = "https://trektravel.herokuapp.com/trips";
 
-var failureCallback = function() {
-  $("#errors").html("<h1>AJAX request failed!</h1>");
+var failureCallback = {
+  noTrips: function() {
+              $("#errors").html("<h2>AJAX request failed!</h2>");
+            },
+
+  noReserve: function() {
+                $("#message").html("<h2>Failed to make reservation</h2>");
+              }
 };
 
 var allTrips = function(response){
@@ -28,7 +34,7 @@ var clickHandler = function(){
         $(nextElement).remove();
       } else {
         tripURL = url + "/" + this.id;
-        $.get(tripURL, tripData).fail(failureCallback);
+        $.get(tripURL, tripData).fail(failureCallback.noTrips);
       }
 
 };
@@ -47,13 +53,13 @@ $(document).ready(function() {
     $.post(url, formData, function(response){
       $('#message').html('<p> Reservation Made! </p>');
 
-    });
+    }).fail(failureCallback.noReserve);
   });
 
   // Get the modal
   var modal = document.getElementById('popUpReserve');
 
-    $.get(url, allTrips).fail(failureCallback);
+    $.get(url, allTrips).fail(failureCallback.noTrips);
 
     $('#trips').on('click', 'li.oneTrip', clickHandler);
 

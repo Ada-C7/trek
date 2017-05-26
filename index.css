@@ -41,7 +41,7 @@ body{
   background-color: #eceff1;
   text-align: center;
   color: 263238;
-  width: 50%;
+  width: 70%;
   margin: auto;
 }
 
@@ -67,9 +67,9 @@ h1{
   font-size: 7rem;
   color: #ffc107;
   background-color: #607d8b;
-  margin-top: 50px;
-  margin-bottom: 25px;
+  margin: 50px auto;
   border-radius: 25px;
+  width: 60%;
 }
 
 form {
