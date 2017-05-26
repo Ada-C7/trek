@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 
-h1 {
+h1, h2, h3, body {
   font-family: "Playfair Display";
   color: #6b2e03;
 }
@@ -107,6 +107,13 @@ div#reservationForm{
 
 
 
+div#reservationForm #reserve{
+  border: 1px solid #6b2e03;
+  background-color: blue;
+  margin: 1%;
+  padding: 1%;
+  width: 50%;
+}
 
 .dropbtn {
     background-color: #6b2e03;

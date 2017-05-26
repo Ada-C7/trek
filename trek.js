@@ -9,6 +9,8 @@ $(document).ready(function() {
 
     var tripsTtitle = "Which of these exciting adventures are in your future?";
 
+    tripsData = [];
+    $('#trips').empty();
     $('#trips').append("<h2>"+tripsTtitle+"</h2>");
 
 
@@ -110,6 +112,42 @@ $(document).ready(function() {
 
 
 
+
+var continentHandler = function() {
+
+  var continent = ($(this).html());
+  var continentURL = url + "/continent?query=" + continent;
+  $.get(continentURL, tripsSuccessCallback).fail(continentFailure);
+
+};
+
+
+// var continentSuccess= function(response) {
+//
+//    console.log(response);
+//   // var indivTripTemplate = _.template($("#indiv-trip-template").html());
+//   //
+//   // var generatedHtml = indivTripTemplate({
+//   //   data: response
+//   // });
+//   //
+//   // $('#load-all-trips').hide();
+//   // $('#trips').hide();
+//   // $('#singleTrip').show();
+//   // $('#singleTrip').html($(generatedHtml));
+//
+// };
+
+
+var continentFailure = function() {
+  console.log("Getting trips for did not work");
+  $("#errors").html("<h1>Sorry, we could not retrieve the list of trips to this continent at this time.</h1>");
+};
+
+
+
+
+
   $('#load-all-trips').click(tripsClickHandler);
 
   $('#load-all-trips').click(tripsClickHandler);
@@ -119,6 +157,8 @@ $(document).ready(function() {
   $("#singleTrip").on("click", "button#HideDetails", hideTripHandler);
 
   $("#singleTrip").on("click", "button#reserve", ReserveTripHandler);
+
+  $("[href]").on("click", continentHandler);
 
 
 });
