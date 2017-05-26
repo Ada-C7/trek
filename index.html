@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Vacay!</title>
+  <link rel="stylesheet" href="styles/foundation.css">
+  <link rel="stylesheet" href="styles/foundation.min.css">
+  <link rel="stylesheet" href="styles/app.css">
+</head>
+<body>
+  <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+  <header>
+    <h1>Trip Planner</h1>
+    <button class="button custom" id="load">View all Trips!</button>
+  </header>
+  <main>
+    <section id="errors"></section>
+
+    <section id="print-trips" class="row small-up-2 medium-up-3 large-up-3"></section>
+
+    <script id="trips-template" type="text/template">
+      <section id="style-box" class="column">
+      <section id="box-trips">
+        <h4 class="trip" id=<%= data.id %> >
+          <%- data.name %>
+        </h4>
+      </section>
+      <p>
+        <strong>Continent: </strong><%- data.continent %></br>
+        <strong>Durration: </strong><%- data.weeks %>
+      </p>
+      </section>
+    </script>
+
+    <section id="print-trip-data" class="row"></section>
+    <script id="trip-data" type="text/template">
+      <section class="column small-12 medium-5 large-5">
+        <h2>
+          <%- data.name %>
+        </h2>
+        <p>
+          <strong>Continent: </strong><%- data.continent %></br>
+          <strong>Weeks: </strong><%- data.weeks %></br>
+          <strong>Cost: $</strong><%- data.cost %></br>
+          <strong>About: </strong><%- data.about %>
+        </p>
+      </section>
+      <section class="column small-12 medium-7 large-7" id="add-reservation">
+        <form action="https://trektravel.herokuapp.com/trips/<%= data.id %>/reserve" method="post">
+          <section>
+            <h3>Reservation Form: </h3>
+          </section>
+          <section>
+            <label>Name</label>
+            <input type="text" id="name" name="name"></input>
+          </section>
+          <section>
+            <label>Age</label>
+            <input type="text" id="age" name="age"></input>
+          </section>
+          <section>
+            <label>Email</label>
+            <input type="text" id="email" name="email"></input>
+          </section>
+          <button class="button custom" type="submit">Reserve Trip!</button>
+        </section>
+      </form>
+    </section>
+  </section>
+  </script>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" type="text/javascript"></script>
+  <script src="trek.js" type="text/javascript"></script>
+  </main>
+</body>
+</html>

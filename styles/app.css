@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Handlee");
+main {
+  padding-top: 200px;
+}
+
+#box-trips {
+  border-top: solid;
+  border-top-color: #3C787E;
+}
+h1 {
+  font-family: 'Handlee', cursive;
+}
+h4 {
+  font-family: 'Handlee', cursive;
+}
+h2 {
+  font-family: 'Handlee', cursive;
+}
+
+.button.custom {
+  background-color: #3C787E;
+}
+.button.custom:hover {
+  background-color: black;
+}
+
+header {
+  text-align: center;
+  padding: 1em;
+  background-color: #4A314D;
+  color: white;
+  position: fixed;
+
+  width: 100%;
+  /*Opacity start*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.80;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+  /*Opacity end*/
+}
+
+#errors {
+  text-align: center;
+}
