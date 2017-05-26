@@ -80,22 +80,22 @@ $(document).ready(function() {
 });
 
 // css jquery
-$(function(){
-    $(window).resize(function(e){
-        placeHeader();
-    });
-    placeHeader();
-    // hide it before it's positioned
-    $('header').css('display', 'inline');
-});
-
-function placeHeader() {
-    var windHeight = $(window).height();
-    var footerHeight = $('header').height();
-    var offset = parseInt(windHeight) - parseInt(footerHeight) - 100;
-    // console.log(offset);
-    $('header').css('top', offset);
-}
+// $(function(){
+//     $(window).resize(function(e){
+//         placeHeader();
+//     });
+//     placeHeader();
+//     // hide it before it's positioned
+//     $('header').css('display', 'inline');
+// });
+//
+// function placeHeader() {
+//     var windHeight = $(window).height();
+//     var footerHeight = $('header').height();
+//     var offset = parseInt(windHeight) - parseInt(footerHeight);
+//     // console.log(offset);
+//     $('header').css('top', offset);
+// }
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */

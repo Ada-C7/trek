@@ -3,7 +3,7 @@
 
 /*general*/
 body {
-  background-image: url('trek.jpg');
+  background-image: url('trek1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -31,6 +31,7 @@ a {
   color: white;
   font-size: 2rem;
   cursor: pointer;
+  /*float: right;*/
 }
 
 /*header styles*/
@@ -40,9 +41,9 @@ h1 {
 }
 
 header {
-  position: absolute;
-  display: none;
-  width: 100%;
+  /*position: absolute;
+  display: none;*/
+  /*width: 100%;*/
 }
 
 /*treks styles*/
@@ -58,15 +59,16 @@ header {
 .dropdown {
     /*position: relative;
     display: inline-block;*/
+    /*bottom: 100%;*/
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(70,130,177,0.4);
     min-width: 230px;
     overflow: auto;
-    /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
@@ -77,9 +79,13 @@ header {
     display: block;
 }
 
-.dropdown a:hover {background-color: blue}
+.dropdown a:hover {
+  background-color: rgb(70,130,177);
+}
 
-.show {display:block;}
+.show {
+  display:block;
+}
 
 /*attempt at background gradient overlay, didn't like it*/
 /*div {
