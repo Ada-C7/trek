@@ -28,7 +28,7 @@ var successCallback = function(response) {
     $('#trips').append($(generatedHtml));
 
     var id = tripsData[i]["id"];
-    $(".name[data-id=" + tripsData[i]["id"] + "]").click(function() {
+    $(".name[data-id=" + id + "]").click(function() {
       $(".hello[data-id=" + id + "]").slideToggle("fast");
     });
 
