@@ -108,38 +108,33 @@
 
         <h2><strong class="page-header">narrow your search</strong></h2>
         <form id="continent-filter">
-          <section>
-            <label>Continent</label>
+          <label>Continent</label>
+          <section class="filter-type">
             <select size="1" id="continent-sort" name="continent">
               <option>Africa</option>
               <option>Antarctica</option>
               <option>Asia</option>
+              <option>Australasia</option>
               <option>Europe</option>
               <option>North America</option>
               <option>South America</option>
             </select>
-          </section>
-          <section >
             <button class="button hollow"  type="submit">Search by Continent</button>
           </section>
         </form>
 
         <form id="price-filter">
-          <section>
-            <label>Max Cost</label>
+          <label>Max Cost</label>
+          <section class="filter-type">
             <input type="text" id="max-price" name="budget"></input>
-          </section>
-          <section >
             <button class="button hollow"  type="submit">Search by Cost</button>
           </section>
         </form>
 
         <form id="weeks-filter">
-          <section>
-            <label>Max Duration</label>
+          <label>Max Duration</label>
+          <section class="filter-type">
             <input type="text" id="max-week" name="weeks"></input>
-          </section>
-          <section >
             <button class="button hollow"  type="submit">Search by Weeks</button>
           </section>
         </form>

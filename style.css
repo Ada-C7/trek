@@ -68,6 +68,10 @@ button, p {
   display: inline-block;
 }
 
+.filter-type {
+  display: inline-flex;
+}
+
 #content {
   overflow: scroll;
   min-height: 500px;
