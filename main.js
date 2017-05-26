@@ -3,8 +3,31 @@ var tripsTemplate;
 var urlTrips;
 
 //// form validation functions ////
+var validateName = function(name) {
+  var regex = /^[A-Za-z][-'a-zA-Z]+,?\s[A-Za-z][-'a-zA-Z]{0,100}$/;
+  var result = regex.test(name);
 
-var checkName = function(name) {
+  if (result == false) {
+    alert("please eneter a first and last name");
+  } else { return result; }
+
+};
+
+var validateAge = function(age) {
+  if ( age >= 0 ) {
+    return true;
+  } else {
+    alert("please enter an age");
+    return false;
+  }
+};
+
+var validateEmail = function(email) {
+  var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  var result = regex.test(email);
+  if ( result == false ) {
+    alert("please enter a valid email");
+  } else { return result; }
 };
 
 //// callback functions /////
@@ -40,7 +63,7 @@ var successCallbackTrip = function(response){
 };
 
 var successCallbackReserve = function(response){
-  console.log(response);
+  console.log("callback from reserve: " + response);
   alert('Trip Reserved!');
   $('.reservedMessage').html('<p>You are Reserved for this Trip</p>')
 };
@@ -63,8 +86,7 @@ $(document).ready(function(){
   $('#trips-list').on('click', '.closed', function(event) {
     event.preventDefault();
     // scope/context/boundaries for searching through with selectors
-    var scope = event.target.parent;
-
+    // var scope = event.target.parent;
     var urlTrip = urlTrips + "/" + event.target.dataset.id
     $.get(urlTrip, successCallbackTrip).fail(failureCallback);
   });
@@ -76,31 +98,17 @@ $(document).ready(function(){
   $('#trips-list').on('submit', 'form', function(event) {
     event.preventDefault();
     console.log("your in the submit form function");
-    // this is also the html code
-    console.log(this);
-    // console.log(event.target.elements.age);
-    // does not give you the name - gives you the html code
-    console.log(event.target.name);
-    // can't find form data in here
-    console.log(event);
-
 
     // this will just give you just the value
-    var age = $(event.target.age).serializeArray()[0].value;
     var name = $(event.target.name).val();
-    console.log($(this).find('#name').val());
+    var age = $(this).find('#age').val();
+    var email = $(event.target.email).val();
 
-    // this will create a string email="inputEmail"
-    var email = $(event.target.email).serialize();
-
-
-    var url = $(this).attr("action");
-    var formData = $(this).serialize();
-
-
-    console.log(formData);
-
-    $.post(url, formData, successCallbackReserve).fail(failureCallback);
+    if ( validateName(name) && validateAge(age) && validateEmail(email) ) {
+      var url = $(this).attr("action");
+      var formData = $(this).serialize();
+      $.post(url, formData, successCallbackReserve).fail(failureCallback);
+    }
   });
 });
 
