@@ -9,7 +9,7 @@
     <h1>Trek!</h1>
     <button id="load">See Trips!</button>
     <section id="errors">
-        
+
     </section>
 
     <div id="trips-list"></div>
@@ -45,6 +45,25 @@
             Cost: $ <%- trip.cost %>
         </p>
     </script>
+
+    <div id='message'></div>
+    <form action='https://trektravel.herokuapp.com/trips/1/reserve' method='post'>
+        <section>
+            <label>Name</label>
+            <input type='text' id='name' name='name' />
+        </section>
+        <section>
+            <label>Age</label>
+            <input type='text' id='age' age='age' />
+        </section>
+        <section>
+            <label>email</label>
+            <input type='text' id='email' name='email' />
+        </section>
+        <section class='button'>
+            <button type='submit'>Reserve now!</button>
+        </section>
+    </form>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="trek.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>

@@ -41,6 +41,18 @@ var showClickHandler = function(){
     $('#trips-list').empty();
 };
 
+$('form').submit(function(e){
+    e.preventDefault();
+
+    var url = $(this).attr('action');
+    var formData = $(this).serialize();
+
+    $.post(url, formData, function(response){
+        $('#message').html('Trip reserved!');
+        console.log(response);
+    });
+});
+
 $(document).ready(function(){
     $('#load').click(clickHandler);
 });
