@@ -1,6 +1,5 @@
 
 var url = 'https://trektravel.herokuapp.com/trips';
-var id;
 
 var successCallback = function(response) {
   var listTemplate = _.template($('#list-template').html());
@@ -23,27 +22,31 @@ var detailsSuccessCallback = function(response) {
 
   target.append($(generatedHtml));
 
-  $("#reservation-form").submit(function(e) {
-    e.preventDefault();
-    // console.log($(this).attr("action"));
-    var reserveUrl = $(this).attr("action");
+  $("#reservation-form").submit(reservationHandler);
+};
 
-    var formData = $(this).serialize();
+var reservationHandler = function(e) {
+  e.preventDefault();
+  $("#reservation-form").empty();
 
-    // console.log(reserveUrl);
-    // console.log(formData);
-
-    $.post(reserveUrl, formData, function(response){
-      $("#message").html('<p> Reservation made! </p>');
-
-      // console.log(response);
-    });
-  });
+  var reserveUrl = $(this).attr("action");
+  var formData = $(this).serialize();
+  $.post(reserveUrl, formData, function(response){
+    $("#message").html('<p> Reservation made! </p>');
+  }).fail(reservationFailureCallback);
 };
 
 var failureCallback = function(response) {
-  console.log('did not work');
-  $("#errors").html("<h1>AJAX request failed!</h1>");
+  $(".errors").html("<h3>Sorry, but your AJAX request for all trips failed!</h3>");
+};
+
+var detailsFailureCallback = function(response) {
+  $(".errors").html("<h3>Sorry, but your AJAX request for trip details failed!</h3>");
+};
+
+var reservationFailureCallback = function(response) {
+  $("#trip-details").empty();
+  $(".errors").html("<h3>Sorry, but your reservation failed!</h3>");
 };
 
 var clickHandler = function() {
@@ -54,9 +57,8 @@ var clickHandler = function() {
 
 var detailsClickHandler = function() {
   id = $(this).attr('id');
-  // console.log(id);
   $("#trips").empty();
-  $.get(url + "/" + id, detailsSuccessCallback).fail(failureCallback);
+  $.get(url + "/" + id, detailsSuccessCallback).fail(detailsFailureCallback);
 };
 
 $(document).ready( function() {
