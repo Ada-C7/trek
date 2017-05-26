@@ -35,7 +35,7 @@
   </div>
 
 <script id="new-trip-template" type="text/template">
-  <div id="trip-form" type="text/template">
+  <div class="forms" id="trip-form" type="text/template">
     <form action="https://trektravel.herokuapp.com/trips/"method = "post">
       <section>
         <label>Name</label>
@@ -62,7 +62,7 @@
         <input type="text" id="cost" name="cost"></input>
       </section>
       <section>
-        <button class="button" type="submit">Submit a  Trip</button>
+        <button class="button" type="submit">Submit a Trip</button>
       </section>
     </form>
   </div>
@@ -73,8 +73,8 @@
   <section id="trips"></section>
   <section id="success"></section>
   <section id="errors"></section>
-  <script id="trip-details-template" type="text/template">
-    <section>
+  <script class="column" id="trip-details-template" type="text/template">
+    <section class="center-vertical small-12 medium-12 large-6 columns">
       <h2>
         <%- data.name %>
       </h2>
@@ -91,10 +91,13 @@
         <%- data.about %>
       </p>
       <p>
-        Categories: <%- data.category %>
+        Categories:
+      </p>
+      <p class="label">
+        <%- data.category %>
       </p>
     </section>
-    <div id="form" type="text/template">
+    <div class="forms small-12 medium-12 large-6 columns" id="form" type="text/template">
       <form action="https://trektravel.herokuapp.com/trips/"method = "post" id=<%-data.id%>>
         <!-- id needs to be dynamically added -->
         <section>
@@ -119,7 +122,7 @@
 
 
   <script id="trips-template" type="text/template">
-    <section center-vertical>
+    <section class="center-vertical">
       <li class="column small-12 medium-4 columns trip-tile" id=<%-data.id%>>
         <%- data.name %>
       </li>
