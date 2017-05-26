@@ -86,8 +86,7 @@ function submitTrip() {$('#trip-form').submit(function(e){
 
   $.post(url, formData, function(response){
     $('#success').html('<p> Successfully created a new trip!</p>');
-    // $("#trips").append(response);
-    // console.log("got here too");
+
   })
 
   .fail(function(){
@@ -99,13 +98,9 @@ function submitTrip() {$('#trip-form').submit(function(e){
 
 var getNewTripForm = function() {
   $('#trips').empty();
-  // var target = $('#new-trip-template');
-  // var form = _.template($("#new-trip-template").html());
 
   $('#trips').html($("#new-trip-template").html());
-  // console.log($("#trip-form").html());
-  // $('#trips').append($("#new-trip-template"));
-  // console.log($("#new-trip-template"));
+
   submitTrip();
 };
 
