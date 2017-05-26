@@ -8,16 +8,23 @@
 </head>
 <body>
   <button type="button" name="button" class="button" id="load">Get Trips!</button>
-  <table id="trips">
-    <tr class="trips-main"></tr>
-    <tbody class="trips-body"></tbody>
-  </table>
+  <section id='trip-list'></section>
+
+
+  <!-- Templates -->
+  <script id="trips-template" type="text/template">
+    <a href="#" id="trip-link" ><h1 id=<%- trip.id %>><%- trip.name %></h1></a>
+
+
+    <!-- <tr class="trips-main"></tr>
+    <tbody id="trips-body"></tbody> -->
+    <!-- </table> -->
+  </script>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+  <script type="text/javascript"9 src="trek.js"></script>
 </body>
-<!-- Templates -->
-
-
-<!-- Scripts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
-<script type="text/javascript"9 src="trek.js"></script>
 </html>
