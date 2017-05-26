@@ -9,12 +9,23 @@
   </head>
 
   <body>
-    <h1>Trips</h1>
+    <header>
+      <h1>Trips</h1>
+      <div>
+        <h4>Trips by continent</h4>
+        <button class="button" id="asia" action="https://trektravel.herokuapp.com/trips/continent?query=Asia">
+          Asia
+        </button>
+      </div>
+
+    </header>
+
+    <main class="row">
       <div id='errors'></div>
       <section id='trips-list'></section>
 
         <script id="trips-template" type="text/template">
-          <section class="trip" id=<%- 'trip-' + trip.id %> >
+          <section class="columns large-6 trip" id=<%- 'trip-' + trip.id %> >
             <h3 class='closed' data-id=<%- trip.id %>  id=<%- 'show-hide-id-' + trip.id %> >
               <%- trip.name %>
             </h3>
@@ -43,7 +54,8 @@
               </p>
 
               <div class="reservedMessage"></div>
-              <div>
+
+              <!-- <div> -->
                 <form id=<%- 'form' + trip.id %> method="post" action=<%-"https://trektravel.herokuapp.com/trips/" + trip.id + "/reserve" %> >
                   <section>
                     <label>Name</label>
@@ -63,11 +75,12 @@
                     <button type="submit">Reserve</button>
                   </section>
                 </form>
-              </div>
+              <!-- </div> -->
 
             </div>
           </section>
         </script>
+      </main>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js'></script>

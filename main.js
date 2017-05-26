@@ -35,6 +35,7 @@ var successCallbackTrips = function(response){
   console.log("success");
   console.log(response);
 
+  $('#trips-list').empty();
   for (var i = 0; i < response.length; i++){
     var generateHTML = tripsTemplate({
       trip: response[i]
@@ -69,6 +70,20 @@ var successCallbackReserve = function(response){
   $('#form' + response.id).hide();
 };
 
+// var successCallbackContinent = function(response){
+//   console.log("success");
+//   console.log(response);
+//
+//   for (var i = 0; i < response.length; i++){
+//     var generateHTML = tripsTemplate({
+//       trip: response[i]
+//     });
+//
+//     $('#trips-list').append($(generateHTML));
+//     $('.slidingInfo').hide();
+//   };
+// };
+
 var failureCallback = function() {
   console.log("Didn't work :(");
   $("#errors").html("<h2>Something went wrong - check back later</h2>");
@@ -82,6 +97,11 @@ $(document).ready(function(){
 
   // api request for all trips //
   $.get(urlTrips, successCallbackTrips).fail(failureCallback);
+
+  $('#asia').click(function(event){
+    var url = $(this).attr("action");
+    $.get(url, successCallbackTrips).fail(failureCallback);
+  });
 
   // have to use .on because .get all trips might not be complete before document.ready (asynch issue)
   $('#trips-list').on('click', '.closed', function(event) {
