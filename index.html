@@ -29,8 +29,21 @@
 
       <section class="row">
         <div id="trip-sort" class="small-12 medium-4 column">
-          <h5>Narrow Results by:</h5>
-          <form method="get" id="sort-continent">
+          <h5>Sort Results By:</h5>
+          <form method="get" id="sort-by">
+            <!-- <label>By Legnth:</label> -->
+            <select name="query" id="sort-length">
+              <option value=""></option>
+              <option value="Length">Length</option>
+              <!-- <option value="Long to Short">Long to Short</option> -->
+            </select>
+            <section>
+              <button class="button" type="submit">Sort</button>
+            </section>
+          </form>
+
+          <h5>Narrow Results:</h5>
+          <form method="get" id="narrow-continent">
             <label>Continent:</label>
             <select name="query" id="continent">
               <option value=""></option>
@@ -46,7 +59,7 @@
               <button class="button" type="submit">Search</button>
             </section>
           </form>
-          <form method="get" id="sort-weeks">
+          <form method="get" id="narrow-weeks">
             <label>Maximum number of weeks:</label>
             <select name="query" id="weeks">
               <option value=""></option>
@@ -60,7 +73,7 @@
               <button class="button" type="submit">Search</button>
             </section>
           </form>
-          <form method="get" id="sort-money">
+          <form method="get" id="narrow-money">
             <label>Maximum Cost:</label>
             <input type="text" name="query" value="" id="money">
             <section>

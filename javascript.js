@@ -24,26 +24,44 @@ var generateAllTrips = function(response) {
   var tripArray = response;
   console.log(response);
 
-  // if (tripArray.length === 0) {
-  //   $("#message").html("<p>There are no trips that satisfy this criteria</p>");
-  // }
-  // for (var i = 0; i < tripArray.length; i++) {
-  //   var generatedHtml = tripsTemplate({
-  //     trip: tripArray[i]
-  //   });
-  //   // adds content
-  //   $('#trip-list').append($(generatedHtml));
-  // }
+  if (tripArray.length === 0) {
+    $("#message").html("<p>There are no trips that satisfy this criteria</p>");
+  }
+  for (var i = 0; i < tripArray.length; i++) {
+    var generatedHtml = tripsTemplate({
+      trip: tripArray[i]
+    });
+    // adds content
+    $('#trip-list').append($(generatedHtml));
+  }
 };
 
-var sortByWeeks = function(a,b) {
-  // a is a longer trip
-  if (a.weeks > b.weeks) {
-    return 1;
-  } else if (a.weeks < b.weeks) {
-    return -1;
-  } else {
+var sortByClickHandler = function(event) {
+  event.preventDefault();
+  $.get(allTripsUrl, sortTrips).fail(tripsFail);
+
+  // var sortType = $('#sort-length').find(":selected").text();
+  // var trips = $('#trip-list').children();
+};
+
+var sortTrips = function(response) {
+  var sortTripLength = function(a,b) {
+    if (a.weeks > b.weeks) return 1;
+    if (a.weeks < b.weeks) return -1;
     return 0;
+  };
+
+  var sortedTrips = response.sort(sortTripLength);
+  $('#trip-list').empty();
+
+  var tripsTemplate = _.template($('#trip-template').html());
+
+  for (var i = 0; i < sortedTrips.length; i++) {
+    var generatedHtml = tripsTemplate({
+      trip: sortedTrips[i]
+    });
+    // adds content
+    $('#trip-list').append($(generatedHtml));
   }
 };
 
@@ -57,8 +75,6 @@ var generateSingleTrip = function(response) {
   $('#trip-sort').hide();
   $('#trip-list').hide();
   $('#single-trip').show();
-// add a console.log response to see what it gives me
-// add in if statement to save it if that happens
 
   if (response) {
     // compiles singleTripTemplate
@@ -91,49 +107,45 @@ var generateReservationResponse = function(response) {
   $('#single-trip-top').append('<p class="success">Thank you for signing up!  Your Reservation is Complete!</p>');
 };
 
-var sortContinentClickHandler = function(event) {
+var narrowContinentClickHandler = function(event) {
   event.preventDefault();
-
   var continentData = $('#continent').serialize();
-  var sortUrl = allTripsUrl + "continent?" + continentData;
-  $.get(sortUrl, sortSuccess).fail(sortFail);
+  var narrowUrl = allTripsUrl + "continent?" + continentData;
+  $.get(narrowUrl, narrowSuccess).fail(narrowFail);
 };
 
-var sortWeeksClickHandler = function(event) {
+var narrowWeeksClickHandler = function(event) {
   event.preventDefault();
   var weeksData = $("#weeks").serialize();
-  var sortUrl = allTripsUrl + "weeks?" + weeksData;
-  $.get(sortUrl, sortSuccess).fail(sortFail);
+  var narrowUrl = allTripsUrl + "weeks?" + weeksData;
+  $.get(narrowUrl, narrowSuccess).fail(narrowFail);
 };
 
-var sortMoneyClickHandler = function(event) {
+var narrowMoneyClickHandler = function(event) {
   event.preventDefault();
   var money = $('input:text').val();
    if ($.isNumeric(money)) {
      var moneyData = $("#money").serialize();
-     var sortUrl = allTripsUrl + "budget?" + moneyData;
-     $.get(sortUrl, sortSuccess).fail(sortFail);
+     var narrowUrl = allTripsUrl + "budget?" + moneyData;
+     $.get(narrowUrl, narrowSuccess).fail(narrowFail);
    } else {
      $("#message").html("<p>Please enter a number.</p>");
    }
 };
 
-var sortFail = function() {
+var narrowFail = function() {
   $('#message').html("<p>I'm sorry, something has gone wrong.  Please try again shortly.</p>");
 };
 
-var sortSuccess = function(response) {
+var narrowSuccess = function(response) {
   $('#trip-list').empty();
   $('#message').empty();
-
   $('#continent option').prop('selected', function() {
       return this.defaultSelected;
   });
-
   $('#weeks option').prop('selected', function() {
       return this.defaultSelected;
   });
-
   $('input:text').val('');
 
   // compile trips template
@@ -164,9 +176,11 @@ $(document).ready(function() {
 
   $('#single-trip').on("submit", "#reserve", reserveClickHandler);
 
-  $('#trip-sort').on("submit", '#sort-continent', sortContinentClickHandler);
+  $('#trip-sort').on("submit", '#narrow-continent', narrowContinentClickHandler);
 
-  $('#trip-sort').on("submit", '#sort-weeks', sortWeeksClickHandler);
+  $('#trip-sort').on("submit", '#narrow-weeks', narrowWeeksClickHandler);
 
-  $('#trip-sort').on("submit", '#sort-money', sortMoneyClickHandler);
+  $('#trip-sort').on("submit", '#narrow-money', narrowMoneyClickHandler);
+
+  $('#trip-sort').on("submit", '#sort-by', sortByClickHandler);
 });
