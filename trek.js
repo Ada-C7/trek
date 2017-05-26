@@ -21,13 +21,13 @@ $(document).ready(function() {
   var trip = function(response) { //another callback function
     console.log("Success in the trip function! (indvidual trip info)");
     console.log(response); // shows the api response
-    var tripTemplate = _.template($('#trips-template').html());
+    var tripTemplate = _.template($('#trip-dets').html());
     //here you don't need to iterate because now the response is just one object
       var generatedHtml = tripTemplate ({
         data: response
       });
       console.log("obj id: " + "#trip-" + response.id);
-      $("#trip-" + response.id).replaceWith(generatedHtml); //need to make a specific trip append to the specific name
+      $("#trip-" + response.id).append(generatedHtml); //need to make a specific trip append to the specific name
       $(".flip").click(function() {
         $(".info").slideToggle("slow");
       });

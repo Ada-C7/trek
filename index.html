@@ -23,15 +23,14 @@
           <%- data.name %>
         </h2>
 
-        <div class="test">
-          <div id=<%= "trip-" + data.id %>>
+
+          <!-- <div id=<%= "trip-" + data.id %>>
             <p><strong>Details: </strong> <%- data.about %></p>
             <ul>
             <li><strong>Category: </strong><%- data.category %></li>
             <li><strong>Cost: $</strong><%- data.cost %></li>
             </ul>
-          </div>
-        </div>
+          </div> -->
 
 
         <ul>
@@ -41,31 +40,54 @@
             <%- data.weeks %> weeks</li>
         </ul>
 
-        <form action="https://trektravel.herokuapp.com/trips/1/reserve" method="post">
-          <section>
-            <label>Name</label>
-            <input type="text" id="name" name="name"></input>
-          </section>
-          <section>
-            <label>Age</label>
-            <input type="text" id='age' age="age"></input>
-          </section>
-          <section>
-            <label>Email</label>
-            <input type="text" id="email" email="email"></input>
-          </section>
-          <section class="button">
-            <button type="submit">Reserve Trip!</button>
-          </section>
+
       </script>
     </div>
 
-    <!-- <div id="trip-info">
-      <script id="info-template" type="text/template">
-        <section id=<%- "trip-" + data.id %>>
-          <p> <%- data.about %> </p>
+
+
+
+
+    <script id="trip-dets" type="text/template">
+
+
+      <div id=<%= "trip-" + data.id %>>
+        <p><strong>Details: </strong> <%- data.about %></p>
+        <ul>
+        <li><strong>Category: </strong><%- data.category %></li>
+        <li><strong>Cost: $</strong><%- data.cost %></li>
+        </ul>
+      </div>
+
+      <form action="https://trektravel.herokuapp.com/trips/1/reserve" method="post">
+        <section>
+          <label>Name</label>
+          <input type="text" id="name" name="name"></input>
         </section>
-      </script>
-    </div> -->
+        <section>
+          <label>Age</label>
+          <input type="text" id='age' age="age"></input>
+        </section>
+        <section>
+          <label>Email</label>
+          <input type="text" id="email" email="email"></input>
+        </section>
+        <section class="button">
+          <button type="submit">Reserve Trip!</button>
+        </section>
+
+    </script>
+
+
   </body>
 </html>
+
+
+<!--info I probs wont' need, but just in case keeping it here  -->
+<!-- <div id="trip-info">
+  <script id="info-template" type="text/template">
+    <section id=<%- "trip-" + data.id %>>
+      <p> <%- data.about %> </p>
+    </section>
+  </script>
+</div> -->
