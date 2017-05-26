@@ -15,10 +15,6 @@ $(document).ready(function() {
   });
 
   $("#button").click(tripsClickHandler);
-  // var selectionTemplate = _.template($("#category").html())
-  // var generatedHtml = selectionTemplate({
-  // });
-  // $("#display").append($(generatedHtml));
 
   $(".category-form").submit(function(e){
     e.preventDefault();
@@ -26,11 +22,33 @@ $(document).ready(function() {
     var urlArry = formData.split("=")
     var url = buildUrl(urlArry[0]+"?query="+urlArry[1]);
     $.get(url, tripsSuccessCallback).fail(failureCallback);
-
   });
+
+  $("#create_trip").click(createTripClicHandler);
 });
 
+var createTripClicHandler = function(){
+  $("#display").empty();
+  var createTripTemplate = _.template($("#create-trip-template").html());
+  var generatedHtml = createTripTemplate({
+  });
+  $("#display").append($(generatedHtml));
+  $("#create-trip-form").submit(function(event) {
+    event.preventDefault();
 
+    var url = $(this).attr("action");
+    var formData = $(this).serialize();
+
+    $.post(url, formData, function(response){
+      $('#message').html("<p> New trip is created! </p>");
+    })
+    .fail(function(){
+      $("#message").html("<p> Failed to create a trip!</p>")
+    })
+    $("#display").empty();
+  });
+
+}
 
 var tripsClickHandler = function(){
   $("#display").empty();

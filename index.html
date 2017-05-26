@@ -8,20 +8,21 @@
   <link href="main.css" media="screen" rel="stylesheet" type="text/css">
 
 </head>
-<header>
-  <section>
-    <button class="button" id="home">Home</button>
-  </section>
-  <section>
-    <button class="button" id="button">Show All Trips</button>
-  </section>
 
-  <div id="message"></div>
 
-  <!-- <script id="category" type="text/template"> -->
+<body>
+  <header>
+    <section>
+      <button class="button" id="home">Home</button>
+    </section>
+    <section>
+      <button class="button" id="button">Show All Trips</button>
+    </section>
+
+    <div id="message"></div>
+
     <form class="category-form">
-
-      <section id="budget">Trips by Max Budget
+      <section id="category-budget">Trips by Max Budget
         <select name="budget">
           <option value="500">500</option>
           <option value="1000">1000</option>
@@ -34,10 +35,10 @@
           <button type="submit">Go!</button>
         </section>
       </section>
-  </form>
-  <form class="category-form">
+    </form>
 
-      <section id="weeks">Trips by Max Weeks
+    <form class="category-form">
+      <section id="cateogry-weeks">Trips by Max Weeks
         <select name="weeks">
           <option value="1">1</option>
           <option value="2">2</option>
@@ -47,10 +48,10 @@
           <button type="submit">Go!</button>
         </section>
       </section>
-  </form>
-  <form class="category-form">
+    </form>
 
-      <section id="continent">Trips by Continent
+    <form class="category-form">
+      <section id="category-continent">Trips by Continent
         <select name="continent">
           <option value="Africa">Africa</option>
           <option value="Antarctica">Antarctica</option>
@@ -63,116 +64,142 @@
         <section class="button">
           <button type="submit">Go!</button>
         </section>
-    </section>
-
-
-  </form>
-  <button class="button" id="create_trip">Create New Trip</button>
-  <!-- </script> -->
-
-
-</header>
-
-<body>
-  <section id="display"></section>
-  <script id="trips-template" type="text/template">
-    <section class="trip">
-      <br>
-      <p>
-        <strong> id: </strong>
-        <%- data.id %>
-
-      </p>
-
-      <p>
-        <strong> name: </strong>
-        <%- data.name %>
-
-      </p>
-
-      <p>
-        <strong> continent: </strong>
-        <%- data.continent %>
-      </p>
-
-      <p>
-        <strong> weeks: </strong>
-        <%- data.weeks %>
-      </p>
-      <button class="button success">
-        Detail of Trip <%- data.id %>
-      </button>
-
-    </section>
-  </script>
-
-  <script id="trip-template" type="text/template">
-    <section>
-      <p>
-        <strong> id: </strong>
-        <%- data.id %>
-
-      </p>
-
-      <p>
-        <strong> name: </strong>
-        <%- data.name %>
-
-      </p>
-
-      <p>
-        <strong> continent: </strong>
-        <%- data.continent %>
-      </p>
-
-      <p>
-        <strong> about: </strong>
-        <%- data.about %>
-
-      </p>
-
-      <p>
-        <strong> category: </strong>
-        <%- data.category %>
-
-      </p>
-
-      <p>
-        <strong> weeks: </strong>
-        <%- data.weeks %>
-      </p>
-
-      <p>
-        <strong> cost: </strong>
-        <%- data.cost %>
-      </p>
-    </section>
-
-    <form action="https://trektravel.herokuapp.com/trips/<%-data.id%>/reserve/"  id="reservation-form" method="post">
-      <section>
-        <label>Name</label>
-        <input type="text" id="name" name= "name"></input>
-      </section>
-      <section>
-        <label>Age</label>
-        <input type="text" id="age" age= "age"></input>
-      </section>
-      <section>
-        <label>Email</label>
-        <input type="text" id="email" name= "email"></input>
-      </section>
-      <section class="button">
-        <button type="submit">Reserve the trip!</button>
       </section>
     </form>
-  </script>
+    <button class="button" id="create_trip">Create New Trip</button>
+  </header>
 
+  <main>
+    <section id="display"></section>
+    <script id="create-trip-template" type="text/template">
+      <form id="create-trip-form" action="https://trektravel.herokuapp.com/trips/" method="post">
+        <section>
+          <label>Name</label>
+          <input type="text" id="name" name= "name"></input>
+        </section>
+        <section>
+          <label>Continent</label>
+          <input type="text" id="continent" name= "continent"></input>
+        </section>
+        <section>
+          <label>About</label>
+          <input type="text" id="about" name= "name"></input>
+        </section>
+        <section>
+          <label>Category</label>
+          <input type="text" id="category" name= "category"></input>
+        </section>
+        <section>
+          <label>Weeks</label>
+          <input type="text" id="weeks" name= "weeks"></input>
+        </section>
+        <section>
+          <label>Cost</label>
+          <input type="text" id="cost" name= "cost"></input>
+        </section>
+        <section class="button">
+          <button type="submit">Create a New Trip!</button>
+        </section>
+      </form>
+
+    </script>
+    <script id="trips-template" type="text/template">
+      <section class="trip">
+        <br>
+        <p>
+          <strong> id: </strong>
+          <%- data.id %>
+
+        </p>
+
+        <p>
+          <strong> name: </strong>
+          <%- data.name %>
+
+        </p>
+
+        <p>
+          <strong> continent: </strong>
+          <%- data.continent %>
+        </p>
+
+        <p>
+          <strong> weeks: </strong>
+          <%- data.weeks %>
+        </p>
+        <button class="button success">
+          Detail of Trip <%- data.id %>
+        </button>
+
+      </section>
+    </script>
+
+    <script id="trip-template" type="text/template">
+      <section>
+        <p>
+          <strong> id: </strong>
+          <%- data.id %>
+
+        </p>
+
+        <p>
+          <strong> name: </strong>
+          <%- data.name %>
+
+        </p>
+
+        <p>
+          <strong> continent: </strong>
+          <%- data.continent %>
+        </p>
+
+        <p>
+          <strong> about: </strong>
+          <%- data.about %>
+
+        </p>
+
+        <p>
+          <strong> category: </strong>
+          <%- data.category %>
+
+        </p>
+
+        <p>
+          <strong> weeks: </strong>
+          <%- data.weeks %>
+        </p>
+
+        <p>
+          <strong> cost: </strong>
+          <%- data.cost %>
+        </p>
+      </section>
+
+      <form action="https://trektravel.herokuapp.com/trips/<%-data.id%>/reserve/"  id="reservation-form" method="post">
+        <section>
+          <label>Name</label>
+          <input type="text" id="name" name= "name"></input>
+        </section>
+        <section>
+          <label>Age</label>
+          <input type="text" id="age" age= "age"></input>
+        </section>
+        <section>
+          <label>Email</label>
+          <input type="text" id="email" name= "email"></input>
+        </section>
+        <section class="button">
+          <button type="submit">Reserve the trip!</button>
+        </section>
+      </form>
+    </script>
+  </main>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
   <script src="index.js" type="text/javascript"></script>
   <script src="js/vendor/jquery.js"></script>
   <script src="js/vendor/foundation.min.js"></script>
-  <script>$(document).foundation();
-</script>
+  <script>$(document).foundation();</script>
 </body>
 </html>
