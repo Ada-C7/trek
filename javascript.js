@@ -22,16 +22,28 @@ var generateAllTrips = function(response) {
   var tripsTemplate = _.template($('#trip-template').html());
 
   var tripArray = response;
+  console.log(response);
 
-  if (tripArray.length === 0) {
-    $("#message").html("<p>There are no trips that satisfy this criteria</p>");
-  }
-  for (var i = 0; i < tripArray.length; i++) {
-    var generatedHtml = tripsTemplate({
-      trip: tripArray[i]
-    });
-    // adds content
-    $('#trip-list').append($(generatedHtml));
+  // if (tripArray.length === 0) {
+  //   $("#message").html("<p>There are no trips that satisfy this criteria</p>");
+  // }
+  // for (var i = 0; i < tripArray.length; i++) {
+  //   var generatedHtml = tripsTemplate({
+  //     trip: tripArray[i]
+  //   });
+  //   // adds content
+  //   $('#trip-list').append($(generatedHtml));
+  // }
+};
+
+var sortByWeeks = function(a,b) {
+  // a is a longer trip
+  if (a.weeks > b.weeks) {
+    return 1;
+  } else if (a.weeks < b.weeks) {
+    return -1;
+  } else {
+    return 0;
   }
 };
 

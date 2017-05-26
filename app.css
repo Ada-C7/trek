@@ -38,9 +38,14 @@ h1, h2, h3, h4, h5 {
   font-size: 2em;
 }
 
-div#trip-sort {
+#trip-sort {
   position: sticky;
   top: 0;
+  border: solid 2px #4d4d4d;
+}
+
+#trip-sort h5 {
+  margin-top: 10px;
 }
 
 .trip-spacing {
