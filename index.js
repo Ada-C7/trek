@@ -12,6 +12,9 @@ var successTreksCallback = function(response) {
     });
     $('#treks').append($(genHTML));
   });
+
+  $('button').on('click', '.button', toggleDropdown);
+  $('input').on('keyup', '#myInput', filterFunction);
 };
 
 var successTrekCallback = function(response) {
@@ -72,8 +75,8 @@ $(document).ready(function() {
   $('body').on('click', '#load-treks', getTreks);
 
   $('#treks').on('click', '.load-trek', getTrek);
-  $('button').on('click', '.button', toggleDropdown);
-  $('input').on('keyup', '#myInput', filterFunction);
+  // $('button').on('click', '.button', toggleDropdown);
+  // $('input').on('keyup', '#myInput', filterFunction);
 });
 
 // css jquery
@@ -97,12 +100,10 @@ function placeHeader() {
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function toggleDropdown() {
-  alert('hey hey hey');
  document.getElementById("myDropdown").classList.toggle("show");
 }
 
 function filterFunction() {
-  alert('hey hey hey');
   var input, filter, ul, li, a, i;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();

@@ -10,9 +10,9 @@
       <h1 class="row large-3 end columns">Visit...</h1>
       <div class="row dropdown">
         <h6 id="message"></h6>
-        <button class="button large-3 end columns" id="load-treks"> Where to? </button>
+        <button onclick="toggleDropdown()" class="button large-3 end columns" id="load-treks"> Where to? </button>
         <div id="myDropdown" class="dropdown-content">
-          <input type="text" placeholder="Search" id="myInput" />
+          <input type="text" placeholder="Search" id="myInput" onkeyup="filterFunction()" />
           <ul id="treks"> </ul>
         </div>
       </div>
