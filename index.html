@@ -6,25 +6,30 @@
     <link href="styles.css" media="screen" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <header class-"row" data-sticky-container>
-      <h1 class="large-3 large-offset-1" class="sticky" data-sticky data-stick-to="bottom">Visit...</h1>
-      <button class="button large-2 columns" id="load-treks"> Where to? </button>
+    <header>
+      <h1 class="row large-3 end columns">Visit...</h1>
+      <div class="row dropdown">
+        <h6 id="message"></h6>
+        <button class="button large-3 end columns" id="load-treks"> Where to? </button>
+        <div id="myDropdown" class="dropdown-content">
+          <input type="text" placeholder="Search" id="myInput" />
+          <ul id="treks"> </ul>
+        </div>
+      </div>
     </header>
 
-    <section id="treks">
-    </section>
-    <h2 id="message"></h2>
-
     <script id="trek-list" type="text/template">
-      <h4 class="load-trek" id=<%- trek.id %> ><%- trek.name %></h4>
-      <ul>
+      <li>
+        <a class="load-trek" id=<%- trek.id %> ><%- trek.name %></a>
+      </li>
+      <!-- <ul>
         <li>
           Continent: <%- trek.continent %>
         </li>
         <li>
           Weeks: <%- trek.weeks %>
         </li>
-      </ul>
+      </ul> -->
     </script>
     <script id="show-trek" type="text/template">
       <h2 id="load-trek"><%- trek.name %></h2>
@@ -45,7 +50,7 @@
           Cost: $<%- trek.cost %>
         </li>
       </ul>
-      <form action= <%- "https://trektravel.herokuapp.com/trips/" + trek.id + "/reserve" %> method="post">
+      <form action=<%- "https://trektravel.herokuapp.com/trips/" + trek.id + "/reserve" %> method="post">
         <ul>
           <li>
             <label>Name: </label>
