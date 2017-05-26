@@ -60,68 +60,69 @@
 
     </header>
 
-    <main class="row">
+    <main>
       <div id='errors'></div>
-      <section id='trips-list'></section>
+      <section class="row small-up-1 medium-up-2 large-up-2" id='trips-list'></section>
 
         <script id="trips-template" type="text/template">
-          <section class="columns large-6 trip" id=<%- 'trip-' + trip.id %> >
-            <h3 class='closed' data-id=<%- trip.id %>  id=<%- 'show-hide-id-' + trip.id %> >
-              <%- trip.name %>
-            </h3>
-            <p>
-              <strong>Location: </strong>
-              <%- trip.continent %>
-            </p>
-            <p>
-              <strong>Duration: </strong>
-              <%- trip.weeks %>
-              weeks
-            </p>
-
-            <div class="slidingInfo" id="tripDetails-<%-trip.id %>" >
+          <section class="column column-block trip" id=<%- 'trip-' + trip.id %> >
+            <!-- <div class="column column-block"> -->
+              <h3 class='closed' data-id=<%- trip.id %>  id=<%- 'show-hide-id-' + trip.id %> >
+                <%- trip.name %>
+              </h3>
               <p>
-                <strong>About:</strong>
-                <%- trip.about %>
+                <strong>Location: </strong>
+                <%- trip.continent %>
               </p>
               <p>
-                <strong>Category: </strong>
-                <%- trip.category %>
-              </p>
-              <p>
-                <strong>Cost: $</strong>
-                <%- trip.cost %>
-              </p>
-              <p>
-                <strong>Trip ID: </strong>
-                <%- trip.id %>
+                <strong>Duration: </strong>
+                <%- trip.weeks %>
+                weeks
               </p>
 
-              <div class="reservedMessage"></div>
+              <div class="slidingInfo" id="tripDetails-<%-trip.id %>" >
+                <p>
+                  <strong>About:</strong>
+                  <%- trip.about %>
+                </p>
+                <p>
+                  <strong>Category: </strong>
+                  <%- trip.category %>
+                </p>
+                <p>
+                  <strong>Cost: $</strong>
+                  <%- trip.cost %>
+                </p>
+                <p>
+                  <strong>Trip ID: </strong>
+                  <%- trip.id %>
+                </p>
 
-              <!-- <div> -->
-                <form id=<%- 'form' + trip.id %> method="post" action=<%-"https://trektravel.herokuapp.com/trips/" + trip.id + "/reserve" %> >
-                  <section>
-                    <label>Name</label>
-                    <input type="text" id="name" name="name" required></input>
-                  </section>
-                  <section>
-                    <label>Age</label>
-                    <input type="text" id="age" name="age" required></input>
-                  </section>
+                <div class="reservedMessage"></div>
 
-                  <section>
-                    <label>Email</label>
-                    <input type="text" id="email" name="email" required></input>
-                  </section>
+                <!-- <div> -->
+                  <form id=<%- 'form' + trip.id %> method="post" action=<%-"https://trektravel.herokuapp.com/trips/" + trip.id + "/reserve" %> >
+                    <section>
+                      <label>Name</label>
+                      <input type="text" id="name" name="name" required></input>
+                    </section>
+                    <section>
+                      <label>Age</label>
+                      <input type="text" id="age" name="age" required></input>
+                    </section>
 
-                  <section class="button">
-                    <button type="submit">Reserve</button>
-                  </section>
-                </form>
-              <!-- </div> -->
+                    <section>
+                      <label>Email</label>
+                      <input type="text" id="email" name="email" required></input>
+                    </section>
 
-            </div>
+                    <section class="button">
+                      <button type="submit">Reserve</button>
+                    </section>
+                  </form>
+                </div>
+              </div>
+            <!-- </div> -->
           </section>
         </script>
       </main>

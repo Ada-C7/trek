@@ -2,12 +2,12 @@
   padding: 1%;
 }
 
-.row {
-  max-width: 100%;
-}
+/*.row {*/
+  /*max-width: 100%;*/
+/*}*/
 .trip {
   /*display: inline-block;*/
-  /*margin: 3%;*/
+  padding: 1%;
   border: solid;
   /*display: inline-block;*/
   /*text-align: center;*/
