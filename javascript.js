@@ -46,7 +46,7 @@ var clickHandlerLocale = function(event) {
 };
 
 var clickHandlerReserve = function(event) {
-  alert("It's ME!");
+  
   event.preventDefault();
 
   var url = $(this).attr("action");
