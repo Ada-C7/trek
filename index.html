@@ -14,8 +14,8 @@
   <header>
     <section class = "row">
       <section class = "medium-2 large-2 columns">
-        <button class="button  secondary hollow button" id="load"> All trips </button>
-        <button class="button  secondary hollow button small" id="new-trip-button"> Create new trip </button>
+        <button class="button large secondary hollow button" id="load"> All trips </button>
+        <button class="button medium secondary hollow button small" id="new-trip-button"> Create new trip </button>
       </section>
       <section class = "medium-10 large-10 columns">
       <div id = "message" class = "text-center">
@@ -28,8 +28,8 @@
 <main>
 <div id = "new-trip"> </div>
 
-<div class = "row">
-  <div class = "medium-6 large-6 columns">
+<div  id = "main-row">
+  <div  id = "main-columns">
   <div id="trip"></div>
         <section id = "trip-block" class=" callout" data-closable="slide-out-left">
           <script id="trip-template" type="text/template">
@@ -63,7 +63,7 @@
         </section>
 </div>
 
-<div class = "medium-6 large-6 columns" id ="search-by-continent-div">
+<div  id ="search-by-continent-div">
     <section class = "row" id = "search-by-continent">
       <section class = "medium-3 large-3 columns">
         <p><strong> Search trips by  continent:</strong> </p>
@@ -109,7 +109,7 @@
       <button id = "sort-by-continent-button" type="submit">Sort all by continent  <strong>|</strong> </button>
       <button id = "sort-by-weeks-button" type="submit">Sort all by weeks</button>
     </section>
-    <table id = "trips-table">
+    <table id = "trips-table" class = "large-12 medium-12 columns">
       <thead id = "trips-list-table">
         <tr>
           <th> Trip name </th>

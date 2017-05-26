@@ -6,10 +6,10 @@ header{
   background-color: #E9E6F4;
 }
 #trip:empty{
-   display: none;
+  display: none;
 }
 
-#load:hover{
+#load:hover, #new-trip-button:hover{
   background-color: #832161;
 }
 #search-by-continent{
@@ -59,8 +59,8 @@ table{
 }
 #new-trip-callout{
   width: 50%;
- margin: 0 auto;
- margin-top: 2%;
+  margin: 0 auto;
+  margin-top: 2%;
 }
 
 #sort-by-continent-button, #sort-by-weeks-button{
@@ -72,4 +72,8 @@ table{
   color:#F0EFF4;
   background-color: #DA4167;
   color: white;
+}
+
+#continent-select, #budget-select{
+  width:70%;
 }

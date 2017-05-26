@@ -28,14 +28,13 @@ $(document).ready(function() {
       }
     });
   }); // end of new trip block
-
   checkIfTableEmpty();
   checkIfTripBlockEmpty();
 
   $('#continent-form').change(continentClickHandler);
   $('#budget-form').change(budgetClickHandler);
 }); // end of document ready
-
+// ==========FILTERING TRIPS BLOCK================================
 var continentClickHandler = function(event){
   var continent = $('#continent-select option:selected').text();
   var continent_url = "https://trektravel.herokuapp.com/trips/continent?query=" + continent
@@ -50,12 +49,8 @@ var budgetClickHandler = function(event){
   $.get(budget_url, successTripsCallback).fail(failureCallback);
 };
 
+// ==========ALL TRIPS BLOCK================================
 var allTripsClickHandler = function(event) {
-  // console.log($('#trip').html().innerText);
-  // if ($('#trip').html().innerText == ""){
-  //   console.log("I AM heRE");
-  //   $('#trips-table').addClass('large-12 columns');
-  // }
   $('#trips-list tr').remove();
   $.get(url_all_trip, successTripsCallback).fail(failureCallback);
 };
@@ -74,7 +69,7 @@ var successTripsCallback = function(response) {
   $('#sort-by-continent-button').click(sortTripClickHandler);
   $('#sort-by-weeks-button').click(sortTripClickHandler);
 };
-
+// ==========SINGLE TRIP BLOCK================================
 var tripClickHandler = function(event) {
   var url_trip = "https://trektravel.herokuapp.com/trips/" + this.id;
   $.get(url_trip, successTripCallback).fail(failureCallback);
@@ -108,6 +103,11 @@ var successTripCallback = function(response) {
       $('#reservation-form').hide();
     }
   });
+  if ($('#trip').html() !== ""){
+    $('#main-row').addClass('row');
+    $('#main-columns').addClass('medium-6 large-6 columns');
+    $('#search-by-continent-div').addClass('medium-6 large-6 columns');
+  }
 
 };
 
@@ -116,7 +116,6 @@ var failureCallback = function() {
   console.log("Didn't work :(");
   $("#message").html("<p>AJAX request failed! Check your Internet connection</p>");
 };
-
 
 // ==========START OF SORTING BLOCK=================================
 var sortTripClickHandler = function(event){
@@ -128,7 +127,6 @@ var sortTripClickHandler = function(event){
     $.get(url_all_trip, successSortWeekCallback).fail(failureCallback);
   }
 };
-
 
 var successSortContinentCallback = function(response) {
   $('#trips-list tr').remove();
@@ -180,7 +178,6 @@ var successSortWeekCallback = function(response) {
   $('.see_trip').click(tripClickHandler);
 };
 
-
 var sortBy = function(unsorted_array, param){
   var array_without_nulls = unsorted_array.filter(function(obj) {
     return obj[param] !== null;
@@ -200,9 +197,7 @@ var sortBy = function(unsorted_array, param){
   })
   return array_without_nulls;
 }; // end of sortBy function
-
 // END OF SORTING BLOCK=================================
-
 
 
 // Additional functions to check if table and error box is emty:
@@ -225,18 +220,6 @@ var checkIfTripBlockEmpty = function(){
     $('#trip-block').show();
   }
 };
-
-// var checkIfErrorsEmpty = function(){
-//   if ($('#message').html() == ""){
-//     $('#message').hide();
-//   }
-//   else {
-//     $('#message').show();
-//   }
-// };
-//
-
-
 
 // FORM VALIDATION BLOCK:
 var validateForm = function() {
@@ -261,7 +244,6 @@ var validateForm = function() {
   }
   return true;
 }
-
 
 var validateNewTripForm = function() {
   var name = document.forms["new-trip-form"]["name"].value;
