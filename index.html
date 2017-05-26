@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Trek</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
     <section id="errors"></section>
@@ -20,12 +21,47 @@
           <strong>Weeks:</strong>
           <%- trip.weeks %>
         </p>
-        <div class="hello" data-id="<%- trip.id %>">hello</div>
+      </section>
+    </script>
+    <script id="single-trip-template" type="text/template">
+      <section>
+        <p>
+          <strong>ID:</strong>
+          <%- singleTrip.id %>
+        </p>
+        <p>
+          <strong>Name:</strong>
+          <%- singleTrip.name %>
+        </p>
+        <p>
+          <strong>Destination:</strong>
+          <%- singleTrip.destination %>
+        </p>
+        <p>
+          <strong>Continent:</strong>
+          <%- singleTrip.continent %>
+        </p>
+        <p>
+          <strong>About:</strong>
+          <%- singleTrip.about %>
+        </p>
+        <p>
+          <strong>Category:</strong>
+          <%- singleTrip.category %>
+        </p>
+        <p>
+          <strong>Weeks:</strong>
+          <%- singleTrip.weeks %>
+        </p>
+        <p>
+          <strong>Cost:</strong>
+          <%- singleTrip.cost %>
+        </p>
       </section>
     </script>
 
   <div id="trips"></div>
-
+  <div id="single-trip"></div>
 
 
 

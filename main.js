@@ -1,6 +1,5 @@
-var url = "https://trektravel.herokuapp.com/trips";
+var tripUrl = "https://trektravel.herokuapp.com/trips/";
 
-// What do we want to happen when we get our response?
 var successCallback = function(response) {
   console.log('success!');
   console.log(response);
@@ -30,12 +29,22 @@ var successCallback = function(response) {
     var id = tripsData[i]["id"];
     $(".name[data-id=" + id + "]").click(function() {
       $(".hello[data-id=" + id + "]").slideToggle("fast");
+      $.get((tripUrl + id), successTripCallback).fail(failureCallback);
     });
 
   })
 
+};
 
-
+var successTripCallback = function(response) {
+  console.log('success!');
+  console.log(response);
+  var singleTripData = response;
+  var singleTripTemplate = _.template($('#single-trip-template').html());
+  var singleGeneratedHtml = singleTripTemplate({
+    singleTrip: singleTripData
+  });
+  $('#single-trip').append($(singleGeneratedHtml));
 };
 
 var failureCallback = function() {
@@ -44,7 +53,7 @@ var failureCallback = function() {
 };
 
 var clickHandler = function(event) {
-  $.get(url, successCallback).fail(failureCallback);
+  $.get(tripUrl, successCallback).fail(failureCallback);
 };
 
 $(document).ready(function() {
