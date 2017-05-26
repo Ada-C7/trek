@@ -93,6 +93,18 @@ var sortWeeksClickHandler = function(event) {
   $.get(sortUrl, sortSuccess);
 };
 
+var sortMoneyClickHandler = function(event) {
+  event.preventDefault();
+  var money = $('input:text').val();
+   if ($.isNumeric(money)) {
+     var moneyData = $("#money").serialize();
+     var sortUrl = allTripsUrl + "budget?" + moneyData;
+     $.get(sortUrl, sortSuccess);
+   } else {
+     $("#message").html("<p>Please enter a number.</p>");
+   }
+};
+
 var sortSuccess = function(response) {
   $('#trip-list').empty();
 
@@ -103,6 +115,8 @@ var sortSuccess = function(response) {
   $('#weeks option').prop('selected', function() {
       return this.defaultSelected;
   });
+
+  $('input:text').val('');
 
   // compile trips template
   var tripsTemplate = _.template($('#trip-template').html());
@@ -135,4 +149,6 @@ $(document).ready(function() {
   $('#trip-sort').on("submit", '#sort-continent', sortContinentClickHandler);
 
   $('#trip-sort').on("submit", '#sort-weeks', sortWeeksClickHandler);
+
+  $('#trip-sort').on("submit", '#sort-money', sortMoneyClickHandler);
 });

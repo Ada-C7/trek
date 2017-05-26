@@ -19,7 +19,7 @@
       <div id="trip-sort" class="small-12 medium-6 column">
         <h4>Narrow Results by:</h4>
         <form method="get" id="sort-continent">
-          <label>Continent</label>
+          <label>Continent:</label>
           <select name="query" id="continent">
             <option value=""></option>
             <option value="North America">North America</option>
@@ -45,6 +45,14 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
+          <section>
+            <button class="button" type="submit">Search</button>
+          </section>
+        </form>
+
+        <form method="get" id="sort-money">
+          <label>Maximum Cost:</label>
+          <input type="text" name="query" value="" id="money">
           <section>
             <button class="button" type="submit">Search</button>
           </section>
