@@ -11,7 +11,7 @@ var tripsListCallback = function(response) {
   }
 
   // would do this dynamically but because of the number of fake trips and fake contients, creating this manually
-  var continents = ["Africa", "Asia", "Australasia", "Europe", "South America", "North America", "Antarctica"];
+  var continents = ["Africa", "Asia", "Australasia", "Europe", "South America", "North America", "Antarctica", "All"];
   createContinentFilters(continents);
 
   var maxBudget = 300000;
@@ -68,9 +68,14 @@ var createContinentFilters = function(continentsArray){
 };
 
 var continentFilterClickHandler = function(){
-  url = "https://trektravel.herokuapp.com/trips/continent?query=" + $(this).attr('id');
-  $.get(url,tripsListCallback).fail(failureCallback);
-  $('.clear').empty();
+  if ( $(this).attr('id') == "All"){
+    tripsListClickHandler();
+  }
+  else {
+    url = "https://trektravel.herokuapp.com/trips/continent?query=" + $(this).attr('id');
+    $.get(url,tripsListCallback).fail(failureCallback);
+    $('.clear').empty();
+  }
 };
 
 // BUDGET FILTER
