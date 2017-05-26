@@ -2,35 +2,33 @@ $(document).ready(function() {
   var tripUrl = 'https://trektravel.herokuapp.com/trips/';
 
   var allTrips = function(response) { // callback function
-    console.log("Success!")
-    console.log(response);
-    //new template, new event handler (get request to specific trip) from there it will append the template t the slide thing
+    console.log("Success! in the allTrips function")
+    console.log(response); //showing what the response from the api is in the console
 
-
-    var tripTemplate = _.template($('#trips-template').html());
-    for (var i = 0; i < response.length; i++) {
+    var tripTemplate = _.template($('#trips-template').html()); // the template is connected/generates html in the first trips template
+    for (var i = 0; i < response.length; i++) { //going through the response
       var generatedHtml = tripTemplate ({
-        data: response[i]
+        data: response[i] //so data is each trip info
       });
-      $("#trips-list").append(generatedHtml);
+      $("#trips-list").append(generatedHtml); //generate the html in the trips-template script and pin it to the trips-list div
     }
 
-    $(".flip").click(function() {
-      $(".info").slideToggle("slow");
-    });
+
   };
 
-  var trip = function(response) {
-    console.log("in the trip function!!");
-    console.log(response);
+  var trip = function(response) { //another callback function
+    console.log("Success in the trip function! (indvidual trip info)");
+    console.log(response); // shows the api response
     var tripTemplate = _.template($('#trips-template').html());
-    // for (var i = 0; i < response.length; i++) {
+    //here you don't need to iterate because now the response is just one object
       var generatedHtml = tripTemplate ({
         data: response
       });
       console.log("obj id: " + "#trip-" + response.id);
       $("#trip-" + response.id).replaceWith(generatedHtml); //need to make a specific trip append to the specific name
-
+      $(".flip").click(function() {
+        $(".info").slideToggle("slow");
+      });
 
   };
 
@@ -44,19 +42,15 @@ $(document).ready(function() {
     console.log(event);
     console.log(this);
 
-    var indvTrips = tripUrl + event.target.dataset.id
+    var indvTrips = tripUrl + event.target.dataset.id //this is similar to going into a nested hash or array
+    //go into event, then to target, then to dataset, then get the id.
 
-    $.get(indvTrips, trip) //event is a nasty object
+    $.get(indvTrips, trip) //event is just a nasty large object
   });
-  //
-  // var clickHandler = function() {
-  //   tripInfoURL = tripUrl + data.id
-  //   $.get(tripInfoURL, allTrips)
-  // };
-  //as soon as the document is ready, load the page
+
 
   var failureCallback = function() {
-    console.log("Didn't work");
+    console.log("Didn't work, in the failure callback");
     $("#errors").html("<h1>AJAX request failed!</h1>");
   }
 

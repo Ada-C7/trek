@@ -9,23 +9,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
   </head>
   <body>
+    <section> <!--Would love to figure out how to hide this section after it's clicked -->
+      <h1>See your next Destination</h1>
     <button id="load"> See Trips </button>
+    </section>
+
     <section id="errors"></section>
+
     <div id="trips-list">
       <script id="trips-template" type="text/template">
         <section class="trip" id=<%- "trip-" + data.id %> >
-          <!-- data-id is a special html thing -->
         <h2 class="flip" data-id=<%- data.id %> >
-          <!-- <a href=https://trektravel.herokuapp.com/trips/<%- data.id %> ></a> -->
           <%- data.name %>
         </h2>
-        <!-- <div class="info"> -->
+
           <div id=<%= "trip-" + data.id %>>
-            <p> <%- data.about %> </p>
-            <p> <%- data.category %> </p>
-            <p> <%- data.cost %> </p>
+            <p><strong>Details: </strong> <%- data.about %></p>
+            <p><strong>Category: </strong><%- data.category %></p>
+            <p><strong>Cost: $</strong><%- data.cost %></p>
+
           </div>
-        <!-- </div> -->
+
 
         <ul>
           <li><strong>Continent:</strong>
@@ -37,12 +41,12 @@
       </script>
     </div>
 
-    <div id="trip-info">
+    <!-- <div id="trip-info">
       <script id="info-template" type="text/template">
         <section id=<%- "trip-" + data.id %>>
           <p> <%- data.about %> </p>
         </section>
       </script>
-    </div>
+    </div> -->
   </body>
 </html>
