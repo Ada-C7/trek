@@ -13,3 +13,21 @@ header {
 #trip-info h4 {
   cursor: pointer;
 }
+
+#trip-info ul {
+  margin: 0;
+}
+
+#trip-list {
+  column-count: 2;
+  text-align: center;
+}
+
+#trip-list li {
+  list-style-type: none;
+}
+
+.trip-listing {
+  display: inline-block;
+  width: 100%;
+}

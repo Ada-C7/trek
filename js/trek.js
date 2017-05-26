@@ -3,13 +3,15 @@ var tripListTemplate = _.template($('#trip-list-template').html());
 var tripTemplate = _.template($('#trip-template').html());
 
 var tripListSuccess = function(response) {
-  var tripList = $('<ul></ul>');
+  var tripList = $('<ul id="trip-list"></ul>');
 
   for (i = 0; i < response.length; i++) {
     var generatedHtml = tripListTemplate( {
       data: response[i]
     });
-    tripList.append(generatedHtml);
+    if (response[i].name) {
+      tripList.append(generatedHtml);
+    }
   }
   $('#trip-info').html(tripList);
   $('#errors').empty();
