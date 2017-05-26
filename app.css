@@ -17,7 +17,7 @@ body {
   overflow: auto;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   font-family: 'Special Elite', cursive;
 }
 
@@ -30,6 +30,7 @@ h1, h2, h3, h4 {
   font-size: 3em;
   padding: 30px;
   width: 100%;
+  margin-bottom: 50px;
 }
 
 #opening-message {
@@ -37,14 +38,18 @@ h1, h2, h3, h4 {
   font-size: 2em;
 }
 
+div#trip-sort {
+  position: sticky;
+  top: 0;
+}
+
+.trip-spacing {
+  margin: 0 0px 30px 0px;
+}
+
 #trip-list a h3:hover{
   background-color: #1779BA;
   color: white;
-}
-
-#trip-sort {
-  position: sticky;
-  top: 0;
 }
 
 .small-12.small-centered.column {
