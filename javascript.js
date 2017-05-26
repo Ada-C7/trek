@@ -11,6 +11,7 @@ var tripsFail = function() {
 
 var generateAllTrips = function(response) {
   $('#single-trip').hide();
+  $('#opening-message').hide();
   $('#trip-list').show();
   $('#trip-list').empty();
   $('#trip-sort').show();

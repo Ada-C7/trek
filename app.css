@@ -5,9 +5,9 @@ fonts
 font-family: 'Special Elite', cursive;
 font-family: 'Faster One', cursive;
 */
-div {
+/*div {
   padding: 0;
-}
+}*/
 
 body {
   font-family: 'Special Elite', cursive;
@@ -29,9 +29,12 @@ h1, h2, h3, h4 {
 #load {
   font-size: 3em;
   padding: 30px;
-  position: sticky;
-  top: 0;
   width: 100%;
+}
+
+#opening-message {
+  text-align: center;
+  font-size: 2em;
 }
 
 #trip-list a h3:hover{
@@ -43,11 +46,6 @@ h1, h2, h3, h4 {
   position: sticky;
   top: 0;
 }
-
-/*.trip-list-outline {
-  overflow: scroll;
-  height: 500px;
-}*/
 
 .small-12.small-centered.column {
   padding: 0;

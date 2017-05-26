@@ -10,118 +10,136 @@
 
   <body>
     <div class="row">
-      <div class="small-12 small-centered column">
-        <button class="button" id="load">Show Me Everything</button>
-      </div>
+      <article>
+        <div class="small-12 small-centered column">
+          <button class="button" id="load">Show Me Everything</button>
+        </div>
+        <div class="small-11 small-centered column" id="opening-message">
+          <p>
+            Welcome World Travelers!  Let's find you a trip.  To get started, click on the giant button above.
+          </p>
+        </div>
+      </article>
+
       <div id="message"></div>
-      <div id="trip-list" class='trip-list-outline small-12 medium-6 column'></div>
 
-      <div id="trip-sort" class="small-12 medium-6 column">
-        <h4>Narrow Results by:</h4>
-        <form method="get" id="sort-continent">
-          <label>Continent:</label>
-          <select name="query" id="continent">
-            <option value=""></option>
-            <option value="North America">North America</option>
-            <option value="South America">South America</option>
-            <option value="Asia">Asia</option>
-            <option value="Africa">Africa</option>
-            <option value="Australia">Australia</option>
-            <option value="Europe">Europe</option>
-            <option value="Antarctica">Antarctica</option>
-          </select>
-          <section>
-            <button class="button" type="submit">Search</button>
-          </section>
-        </form>
+      <section>
+        <div id="trip-list" class='trip-list-outline small-12 medium-6 column'></div>
+      </section>
 
-        <form method="get" id="sort-weeks">
-          <label>Maximum number of weeks:</label>
-          <select name="query" id="weeks">
-            <option value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          <section>
-            <button class="button" type="submit">Search</button>
-          </section>
-        </form>
-
-        <form method="get" id="sort-money">
-          <label>Maximum Cost:</label>
-          <input type="text" name="query" value="" id="money">
-          <section>
-            <button class="button" type="submit">Search</button>
-          </section>
-        </form>
-      </div>
-      <!-- Template to use in order to display all trips -->
-      <script id="trip-template" type="text/template">
-        <section>
-          <%= "<a href='#' class='trips'>" %>
-          <h3><data value= <%- trip.id %> >
-            <%-trip.name %>
-          </data></h3>
-          <%= "</a>" %>
-          <p>
-            <strong>Continent:</strong>
-            <%- trip.continent %>
-          </p>
-          <p>
-            <strong>Weeks:</strong>
-            <%- trip.weeks %>
-          </p>
-        </section>
-      </script>
-
-      <div id="single-trip"></div>
-      <!-- Template to display a single trip's info -->
-      <script id="single-trip-template" type="text/template">
-        <section id="single-trip-top">
-          <h2>
-            <%-trip.name %>
-          </h2>
-          <p>
-            <strong>Continent:</strong>
-            <%- trip.continent %>
-          </p>
-          <p>
-            <strong>Weeks:</strong>
-            <%- trip.weeks %>
-          </p>
-          <p>
-            <strong>Category:</strong>
-            <%- trip.category %>
-          </p>
-          <p>
-            <strong>Cost:</strong>
-            <%- trip.cost %>
-          </p>
-          <p>
-            <strong>About:</strong>
-            <%- trip.about %>
-          </p>
-        </section>
-        <section class="form">
-          <h2>Reserve a spot!</h2>
-
-          <form method="post" id="reserve" value= <%- trip.id %>>
-            <label>Name</label>
-            <input type="text" id="name" name="name" required></input>
-            <label>Email</label>
-            <input type="text" id="email" name="email" required></input>
-            <label>Age</label>
-            <input type="text" id="age" name="age"></input>
-          <section>
-            <button class="button" type="submit">Reserve</button>
-          </section>
+      <section>
+        <div id="trip-sort" class="small-12 medium-6 column">
+          <h4>Narrow Results by:</h4>
+          <form method="get" id="sort-continent">
+            <label>Continent:</label>
+            <select name="query" id="continent">
+              <option value=""></option>
+              <option value="North America">North America</option>
+              <option value="South America">South America</option>
+              <option value="Asia">Asia</option>
+              <option value="Africa">Africa</option>
+              <option value="Australia">Australia</option>
+              <option value="Europe">Europe</option>
+              <option value="Antarctica">Antarctica</option>
+            </select>
+            <section>
+              <button class="button" type="submit">Search</button>
+            </section>
           </form>
+          <form method="get" id="sort-weeks">
+            <label>Maximum number of weeks:</label>
+            <select name="query" id="weeks">
+              <option value=""></option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <section>
+              <button class="button" type="submit">Search</button>
+            </section>
+          </form>
+          <form method="get" id="sort-money">
+            <label>Maximum Cost:</label>
+            <input type="text" name="query" value="" id="money">
+            <section>
+              <button class="button" type="submit">Search</button>
+            </section>
+          </form>
+          </div>
+      </section>
 
-        </section>
-      </script>
+      <section>
+        <!-- Template to use in order to display all trips -->
+        <script id="trip-template" type="text/template">
+          <section>
+            <%= "<a href='#' class='trips'>" %>
+            <h3><data value= <%- trip.id %> >
+              <%-trip.name %>
+            </data></h3>
+            <%= "</a>" %>
+            <p>
+              <strong>Continent:</strong>
+              <%- trip.continent %>
+            </p>
+            <p>
+              <strong>Weeks:</strong>
+              <%- trip.weeks %>
+            </p>
+          </section>
+        </script>
+      </section>
+
+      <section>
+        <div id="single-trip"></div>
+      </section>
+
+      <section>
+        <!-- Template to display a single trip's info -->
+        <script id="single-trip-template" type="text/template">
+          <section id="single-trip-top">
+            <h2>
+              <%-trip.name %>
+            </h2>
+            <p>
+              <strong>Continent:</strong>
+              <%- trip.continent %>
+            </p>
+            <p>
+              <strong>Weeks:</strong>
+              <%- trip.weeks %>
+            </p>
+            <p>
+              <strong>Category:</strong>
+              <%- trip.category %>
+            </p>
+            <p>
+              <strong>Cost:</strong>
+              <%- trip.cost %>
+            </p>
+            <p>
+              <strong>About:</strong>
+              <%- trip.about %>
+            </p>
+          </section>
+          <section class="form">
+            <h2>Reserve a spot!</h2>
+            <form method="post" id="reserve" value= <%- trip.id %>>
+              <label>Name</label>
+              <input type="text" id="name" name="name" required></input>
+              <label>Email</label>
+              <input type="text" id="email" name="email" required></input>
+              <label>Age (optional)</label>
+              <input type="text" id="age" name="age"></input>
+            <section>
+              <button class="button" type="submit">Reserve</button>
+            </section>
+            </form>
+          </section>
+        </script>
+      </section>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
