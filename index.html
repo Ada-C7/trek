@@ -26,11 +26,13 @@
         <div class="test">
           <div id=<%= "trip-" + data.id %>>
             <p><strong>Details: </strong> <%- data.about %></p>
-            <p><strong>Category: </strong><%- data.category %></p>
-            <p><strong>Cost: $</strong><%- data.cost %></p>
-
+            <ul>
+            <li><strong>Category: </strong><%- data.category %></li>
+            <li><strong>Cost: $</strong><%- data.cost %></li>
+            </ul>
           </div>
         </div>
+
 
         <ul>
           <li><strong>Continent:</strong>
@@ -38,7 +40,23 @@
           <li><strong>Duration:</strong>
             <%- data.weeks %> weeks</li>
         </ul>
-        </section>
+
+        <form action="https://trektravel.herokuapp.com/trips/1/reserve" method="post">
+          <section>
+            <label>Name</label>
+            <input type="text" id="name" name="name"></input>
+          </section>
+          <section>
+            <label>Age</label>
+            <input type="text" id='age' age="age"></input>
+          </section>
+          <section>
+            <label>Email</label>
+            <input type="text" id="email" email="email"></input>
+          </section>
+          <section class="button">
+            <button type="submit">Reserve Trip!</button>
+          </section>
       </script>
     </div>
 
