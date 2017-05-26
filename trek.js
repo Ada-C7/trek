@@ -26,6 +26,8 @@ var successTripsCallback = function(response) {
 
 var getTrips = function() {
   $('#trips').empty();
+  $('#success').empty();
+  $('#errors').empty();
   $.getJSON(url).success(successTripsCallback).fail(failureCallback);
 };
 
@@ -48,24 +50,27 @@ var successSingleTripCallback = function(response) {
 
 var getTripDetails = function(id) {
   $('#trips').empty();
+  $('#success').empty();
+  $('#errors').empty();
   var url = "https://trektravel.herokuapp.com/trips/" + id;
   $.getJSON(url).success(successSingleTripCallback).fail(failureCallback);
 };
 
 
 // Reserve a trip
-var submitForm = function(){$('form').submit(function(e) {
+var submitForm = function(){$('#reserve-form').submit(function(e) {
   e.preventDefault();
-  var url = $(this).attr("action") + $(this).attr("id") + "/reserve"; // Retrieve the action from the form
+  var url = $(this).attr("action") + $('#hidden-id').html() + "/reserve"; // Retrieve the action from the form
   var formData = $(this).serialize();
 
   $.post(url, formData, function(response){
     $('#success').html('<p> Trip Successfully Reserved! </p>');
+    console.log("reserved");
     // $('#trips').empty();
     $("#trips").append(response);
-    console.log(response);
   })
-    .fail(function(){
+
+  .fail(function(){
     $('#message').html('<p>Reservation Failed</p>');
   });
 });
@@ -73,36 +78,52 @@ var submitForm = function(){$('form').submit(function(e) {
 
 // post a new trip, repetitive
 
-var submitTrip = function(){$('trip-form').submit(function(e) {
-  e.preventDefault();
-  var url = $(this).attr("action");
+// var submitTrip = function(){$('trip-form').submit(function(e) {
+//   e.preventDefault();
+//   var url = $(this).attr("action");
+//
+//   var formData = $(this).serialize();
+//
+//   $.post(url, formData, function(response){
+//     $('#success').html('<p> Trip Successfully Created! </p>');
+//     // $('#trips').empty();
+//     // $("#trips").append(response);
+//     // console.log(response);
+//   })
+//     .fail(function(){
+//     $('#message').html('<p>Trip Creation Failed</p>');
+//   });
+// });
+// };
 
-  var formData = $(this).serialize();
+
+function submitTrip() {$('#trip-form').submit(function(e){
+  e.preventDefault();
+  // var url = $(this).attr("action");
+  var url = "https://trektravel.herokuapp.com/trips/?";
+  console.log(url);
+  var formData = $('#trip-form').serialize();
+  console.log(formData);
 
   $.post(url, formData, function(response){
-    $('#success').html('<p> Trip Successfully Created! </p>');
-    // $('#trips').empty();
-    $("#trips").append(response);
-    console.log(response);
+    $('#success').html('<p> Successfully created a new trip!</p>');
+    // $("#trips").append(response);
+    // console.log("got here too");
   })
-    .fail(function(){
-    $('#message').html('<p>Trip Creation Failed</p>');
+
+  .fail(function(){
+    $('#message').html('<p>New Trip Failed</p>');
   });
 });
-};
+}
+
 
 var getNewTripForm = function() {
   // synonymous with successful callback
   $('#trips').empty();
   console.log("got here");
-  // var target = $('#new-trip-template');
-  // var newTripForm = _.template(target.html());
-  // $('#trips').append($(newTripForm));
-  // submitTrip();
-
-
+  submitTrip();
 };
-
 
 // Trips by Continent
 

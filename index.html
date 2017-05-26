@@ -34,12 +34,6 @@
     <button class="button" id="new-trip"> Create a New Trip </button>
   </div>
 
-<!-- <script id="new-trip-template" type="text/template"> -->
-
-  <!-- </script> -->
-
-
-
   <section id="trips"></section>
   <section id="success"></section>
   <section id="errors"></section>
@@ -69,8 +63,9 @@
               <%- data.category %>
             </p>
           </div>
-          <div class="forms small-12 medium-12 large-6 columns" id="form" type="text/template">
-            <form action="https://trektravel.herokuapp.com/trips/"method = "post" id=<%-data.id%>>
+          <div class="forms small-12 medium-12 large-6 columns"  type="text/template">
+            <form id="reserve-form" action="https://trektravel.herokuapp.com/trips/"method = "post">
+              <div id="hidden-id"><%-data.id%></div>
               <!-- id needs to be dynamically added -->
               <section>
                 <label>Name</label>
@@ -107,8 +102,8 @@
   </script>
 
 
-    <div class="forms center-vertical columns" id="trip-form" type="text/template">
-      <form action="https://trektravel.herokuapp.com/trips/"method = "post">
+    <div class="forms center-vertical columns"  type="text/template">
+      <form id="trip-form" action="https://trektravel.herokuapp.com/trips/"method = "post">
         <div class="small-12 medium-6 large-6 columns">
           <section>
             <label>Name</label>
