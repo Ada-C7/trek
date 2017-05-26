@@ -80,20 +80,11 @@ var generateReservationResponse = function(response) {
 var sortClickHandler = function(event) {
   event.preventDefault();
 
-  var continentData = $('#continent').serialize();
-  var weeksData = $("#weeks").serialize();
-  var sortUrl;
-  if (weeksData !== "query=" && continentData !== "query=") {
-    sortUrl = allTripsUrl + "continent?" + continentData + "&weeks?" + weeksData;
-  } else if (weeksData === "query=") {
-    sortUrl = allTripsUrl + "continent?" + continentData;
-  } else if (continentData === "query=") {
-    sortUrl = allTripsUrl + "weeks?" + weeksData;
-  } else if (weeksData === "query=" && continentData === "query=") {
-     $("#message").html("<p>Please enter a query to narrow search!</p>");
-   }
+  var continentData = $('select').serialize();
+  // var weeksData = $("#weeks").serialize();
+  var sortUrl = allTripsUrl + "continent?" + continentData;
   console.log(sortUrl);
-  $.get(sortUrl, sortSuccess);
+  // $.get(sortUrl, sortSuccess);
 };
 
 var sortSuccess = function(response) {
@@ -126,5 +117,5 @@ $(document).ready(function() {
 
   $('#single-trip').on("submit", "#reserve", reserveClickHandler);
 
-  $('#trip-sort').on("submit", '#sort', sortClickHandler);
+  $('#trip-sort').on("submit", '#sort-continent', sortClickHandler);
 });
