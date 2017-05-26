@@ -33,6 +33,18 @@ $(document).ready(function() {
   };
 
 
+  $("form").submit(function(event) {
+    event.preventDefault();
+
+    var url = $(this).attr("action");
+    var formData = $(this).serialize();
+    console.log(formData)
+
+    $.post(url, formData, function(response){
+      console.log(response);
+    });
+  });
+
   var clickHandler = function() {
     $.get(tripUrl, allTrips) //passing a function around as a variable (to be invoted later.) when the request comes in, that is when it willb e called.
   };
