@@ -3,29 +3,53 @@
 <head>
   <meta charset="utf-8">
   <title></title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script>
+
+  <!-- jQuery -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <!-- Underscore -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script>
+  <!-- Compressed CSS -->
+      <link rel="stylesheet" href="foundation/css/foundation.css" />
+      <link rel="stylesheet" href="foundation/css/app.css" />
+
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" /> -->
+  <!-- Compressed JavaScript -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script> -->
+  <!-- Local js script -->
   <script type="text/javascript" src="index.js"></script>
-
+  <!-- Local Style Sheet -->
+  <link rel="stylesheet" href='trek.css'>
 </head>
+
 <body>
-  <button id = "all-trips"> See All Trips </button>
-  <section id= "trips">
+
+  <section class = "container">
+  <header class = "row heading large-12 small-12">
+
+  </header>
+
+
+      <section  id="please" class = "group">
+        <h4>
+          <button id = "all-trips"> See All Trips </button>
+
+          <script id= "trip-template" type='text/template'>
+            <article class = "columns large-5 small-12">
+              <a  class="tripName"><%= data.name %></a>
+            </article>
+          </script>
+
+        </section>
+
+      </h4>
+      <section id= "single-trip">
+        <script id = "single-trip-template" type='text/template'>
+        <a class="tripDetails"> <%= data.continent %> </a>
+        </script>
+      </section>
   </section>
-
-  <h2>
-    <ul id="please">
-
-      <script id= "trip-template" type='text/template'>
-        <a  class="tripName"><li><%= data.name %></li></a>
-      </script>
-
-    </ul>
-  </h2>
-  <script id = "single-trip">
-  <a class="tripDetails"> <%= data.continent %> </a>
-</script> 
 
 
 </body>
+
 </html>
