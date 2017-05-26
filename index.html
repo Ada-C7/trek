@@ -35,27 +35,27 @@
 
   <script id="trip_detail" type="text/template">
     <ul>
-      <li>Trip id: <%- trip.id %></li>
-      <li>Trip name: <%- trip.name %></li>
-      <li>Trip destination: <%- trip.destination %></li>
-      <li>Trip continent: <%- trip.continent %></li>
-      <li>Trip about: <%- trip.about %></li>
-      <li>Trip category: <%- trip.category %></li>
-      <li>Trip weeks: <%- trip.weeks %></li>
-      <li>Trip cost: $<%- trip.cost %></li>
+      <li><strong>Trip id:</strong> <%- trip.id %></li>
+      <li><strong>Trip name:</strong> <%- trip.name %></li>
+      <li><strong>Trip destination:</strong> <%- trip.destination %></li>
+      <li><strong>Trip continent:</strong> <%- trip.continent %></li>
+      <li><strong>Trip about:</strong> <%- trip.about %></li>
+      <li><strong>Trip category:</strong> <%- trip.category %></li>
+      <li><strong>Trip weeks:</strong> <%- trip.weeks %></li>
+      <li><strong>Trip cost:</strong> $<%- trip.cost %></li>
     </ul>
     <form  id="reservation-form" action="" method="post" data-trip-id="<%- trip.id%>">
       <div class="small-4 small-left columns">
         <section>
-          <label>Name</label>
+          <label><strong>Name</strong></label>
           <input type="text" id="name" name="name"></input>
         </section>
         <section>
-          <label>Age</label>
+          <label><strong>Age</strong></label>
           <input type="text" id="age" name="age"></input>
         </section>
         <section>
-          <label>Email</label>
+          <label><strong>Email</strong></label>
           <input type="text" id="email" name="email"></input>
         </section>
 
