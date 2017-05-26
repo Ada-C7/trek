@@ -27,6 +27,7 @@ $(document).ready(function() {
         data: response
       });
       console.log("obj id: " + "#trip-" + response.id);
+      
       $("#trip-" + response.id).append(generatedHtml); //need to make a specific trip append to the specific name
       $(".flip").click(function() {
         $(".info").slideToggle("slow");
