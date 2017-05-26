@@ -1,0 +1,135 @@
+body {
+  background-color: #4663c9;
+}
+
+/*------------------
+typography
+-------------------*/
+h3, h4, p, label, button {
+  font-family: 'Oswald', sans-serif;
+  color: #ffffff;
+  font-weight: 400;
+}
+h4, p {
+  font-weight: 300;
+}
+
+h1, h2 {
+  font-family: 'Barrio', cursive;
+  color: #ffffff;
+}
+h1 {
+  font-size: 2.6em;
+}
+h2 {
+  font-size: 1.8em;
+}
+/*---------------------
+header & nav
+----------------------*/
+header {
+  margin-left: 10px;
+}
+header h1 {
+  margin-bottom: 0px;
+}
+header h3 {
+  font-weight: 300;
+}
+nav {
+  margin: 5px;
+}
+/*---------------------
+messages
+----------------------*/
+#message h4 {
+  color: #ce4848;
+  font-weight: 400;
+}
+/*---------------------
+trip list
+----------------------*/
+.trip {
+  text-align: center;
+}
+.imageFrame {
+  border-radius: 20%;
+  overflow: hidden;
+  margin: 5px;
+}
+/*---------------------
+single trip
+----------------------*/
+.tripTitle {
+  font-family: 'Barrio', cursive;
+}
+.tripDetails {
+  text-align: center;
+  padding: 5px;
+}
+.tripDescription, .reservationForm {
+  padding: 5px;
+}
+
+/*---------------------
+buttons
+----------------------*/
+.button {
+  background-color: #77a5ef;
+}
+
+  .button-rounded-hover {
+  border: 0;
+  border-radius: 5000px;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  transition: all 0.35s ease;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+}
+
+.button-rounded-hover:before {
+  opacity: 0;
+  content: "";
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  border-radius: inherit;
+  background-color: #fefefe;
+  transition: all 0.3s;
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.button-rounded-hover:after {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  border: 5px solid #115b8d;
+  content: '';
+  border-radius: inherit;
+}
+
+.button-rounded-hover:hover,
+.button-rounded-hover:focus {
+  /*background-color: #115b8d;*/
+  background-color: #77a5ef;
+
+}
+
+.button-rounded-hover:hover:before,
+.button-rounded-hover:focus:before {
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
+  opacity: 0.25;
+}
