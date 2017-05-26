@@ -10,7 +10,9 @@ $(document).ready(function() {
       var generatedHtml = tripTemplate ({
         data: response[i] //so data is each trip info
       });
+
       $("#trips-list").append(generatedHtml); //generate the html in the trips-template script and pin it to the trips-list div
+      $("#test").hide();
     }
 
 
