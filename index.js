@@ -7,6 +7,7 @@ var hideItem = function (itemId, targetId){
 
 $(document).ready(function() {
   var tripTemplate = _.template($('#trip-template').html());
+  var aTripTemplate = _.template($('#single-trip-template').html());
 
   var successCallback = function (response) {
     var allTrips = [],
@@ -25,17 +26,12 @@ $(document).ready(function() {
       var aTrip = tripTemplate({
         data: allTrips[j]
       });
-      linkId = '#details' + j,
-      nameId = '#trip' + j ;
-      previousLink = '#details' + j - 1
+      linkId = 'details' + j,
+      nameId = 'trip' + j;
 
 
-      $('#please').append(aTrip)
-      // if ($('a.tripName').attr('id')){console.log("hit");}
-      // else {
-        // $('a.tripDetails').not([name = previousLink]).attr("id", linkId) //.attr("class", "anchorLink");
+      $('#please').append(aTrip);
 
-      // }
       $('a.tripName:last').attr("id", nameId).attr("href",linkId);
       console.log(linkId);
 
