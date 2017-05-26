@@ -1,11 +1,35 @@
+
 var buildUrl = function(option){
   return "https://trektravel.herokuapp.com/trips/" + option;
 };
 
+var categoryBuildUrl = function(option){
+  return "https://trektravel.herokuapp.com/trips/" + option;
+};
+
+
 
 $(document).ready(function() {
+  $("#home").click(function() {
+    window.location.reload(true);
+  });
+
   $("#button").click(tripsClickHandler);
+  // var selectionTemplate = _.template($("#category").html())
+  // var generatedHtml = selectionTemplate({
+  // });
+  // $("#display").append($(generatedHtml));
+
+  $(".category-form").submit(function(e){
+    e.preventDefault();
+    var formData = $(this).serialize();
+    var urlArry = formData.split("=")
+    var url = buildUrl(urlArry[0]+"?query="+urlArry[1]);
+    $.get(url, tripsSuccessCallback).fail(failureCallback);
+
+  });
 });
+
 
 
 var tripsClickHandler = function(){
@@ -16,6 +40,8 @@ var tripsClickHandler = function(){
 }
 
 var tripsSuccessCallback = function(response){
+  // $(".category-form").hide();
+  $('#message').empty();
   var tripsTemplate = _.template($("#trips-template").html());
   console.log(response[0]);
   for (var i = 0; i < response.length; i++) {
@@ -36,14 +62,27 @@ var tripsSuccessCallback = function(response){
 
 
 var tripSuccessCallback = function(response){
-  // console.log(response.id);
   var tripTemplate = _.template($("#trip-template").html());
   var generatedHtml = tripTemplate({
     data: response
   });
-  // console.log("here");
   $("#display").empty();
   $("#display").append($(generatedHtml));
+
+  $("#reservation-form").submit(function(event) {
+    event.preventDefault();
+
+    var url = $(this).attr("action");
+    var formData = $(this).serialize();
+
+    $.post(url, formData, function(response){
+      $('#message').html("<p> Reservation made! </p>");
+    })
+    .fail(function(){
+      $("#message").html("<p> Failed to make a reservation!</p>")
+    })
+  });
+
 }
 
 var failureCallback = function() {
