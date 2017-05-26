@@ -134,7 +134,7 @@ var filterTripsFormClickHandler = function() {
 // accessible upon a refresh
 
 $(document).ready(function() {
-  $('#get-trips').click(indexClickHandler);
+  $('#get-trips').unbind(indexClickHandler).click(indexClickHandler);
   $('#new-trip').click(newTripClickHandler);
   $('#filter-trips').click(filterTripsFormClickHandler);
 });
