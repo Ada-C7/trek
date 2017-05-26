@@ -45,30 +45,33 @@
       <p><%- trip.about %></p>
     </div>
     <button id="all-trips-button" class="button"> Back to All Trips </button>
-    <button id="display-form" data-trip-id="<%- trip.id %>" class="button"> Book Trip </button>
+    <button id="display-form-button" data-trip-id="<%- trip.id %>" class="button"> Book Trip </button>
   </script>
 
   <script id="display-form-template" type="text/template">
-    <form action="https://petdibs.herokuapp.com/pets" method="post">
-      <section>
-        <label>Name</label>
-        <input type="text" id="name" name="name"></input>
-      </section>
-
-      <section>
-        <label>Age</label>
-        <input type="text" id="age" name="age"></input>
-      </section>
-
-      <section>
-        <label>Email Address</label>
-        <input type="text" id="email" name="email"></input>
-      </section>
-
-      <section class="button">
-        <button type="submit">Reserve Now</button>
-      </section>
+    <form method="post">
+      <div class="row">
+        <div class="medium-6 columns">
+          <label>Name
+            <input type="text" id="name" name="name">
+          </label>
+        </div>
+        <div class="medium-6 columns">
+          <label>Age
+            <input type="text" id="age" name="name">
+          </label>
+        </div>
+        <div class="medium-6 columns">
+          <label>Email
+            <input type="text" id="email" name="name">
+          </label>
+        </div>
+        <div class="input-group-button">
+          <input type="submit" class="button" value="Reserve Trip" id="submit-trip-reservation">
+        </div>
+      </div>
     </form>
+    <div id='#reservation-message'></div>
   </script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.js"

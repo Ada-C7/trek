@@ -7,19 +7,6 @@ var displayFormTemplate;
 
 $('#trip-list').hide();
 
-var singleTripCallback = function(response) {
-  console.log("Success!");
-  console.log(response);
-  $('#trip-list').hide();
-  $('#load').hide();
-  var generatedHTML = singleTripTemplate({
-    trip: response
-  });
-  $('#single-trip-detail').html(generatedHTML);
-  $('#all-trips-button').click(clickHandler);
-  $('#display-form').click(displayFormHandler);
-};
-
 var successCallback = function(response) {
   console.log("Success!");
   console.log(response);
@@ -33,6 +20,24 @@ var successCallback = function(response) {
     $('#trip-list tbody').append(generatedHTML);
   }
   $('.trip-details').click(tripDetailHandler);
+};
+
+var singleTripCallback = function(response) {
+  console.log("Success!");
+  console.log(response);
+  $('#trip-list').hide();
+  $('#load').hide();
+  var generatedHTML = singleTripTemplate({
+    trip: response
+  });
+  $('#single-trip-detail').html(generatedHTML);
+  $('#all-trips-button').click(clickHandler);
+  $('#display-form-button').click(displayFormHandler);
+};
+
+var bookTripCallback = function(response){
+  console.log(response);
+  $('#reservation-message').html('<p> Trip Reserved! </p>');
 };
 
 var failureCallback = function() {
@@ -51,10 +56,18 @@ var tripDetailHandler = function(event){
 };
 
 var displayFormHandler = function(event){
-  // var tripID = $(this).attr("data-trip-id");
   var generatedHTML = displayFormTemplate({});
   $('#display-form').html(generatedHTML);
+  // $('#all-trips-button').click(clickHandler);
+  $('#display-form-button').hide();
+  $('#submit-trip-reservation').click(bookTripHandler);
 };
+
+var bookTripHandler = function(event){
+  var tripID = $(this).attr("data-trip-id");
+  var submitURL = url + tripID + "/reserve"
+  var formData = $(this).serialize();
+  $.post(submitURL, formData, bookTripCallback)};
 
 $(document).ready(function() {
   tripTemplate = _.template($('#trip-template').html());
