@@ -55,12 +55,12 @@ var reserveClickHandler = function(e) {
 
   $.post(url, formData, reserveSuccess).fail(function() {
     console.log('AJAX failed to book trip');
-    $('#reserve-message').html('Unable to book trip.');
+    $('#reserve-message').html('Error: Trip NOT reserved.');
   });
 };
 
 $(document).ready(function() {
   $('#load-trips').click(tripListClickHandler);
-  $('#trip-info').on('click', 'h4', tripClickHandler);
+  $('#trip-info').on('click', 'ul a', tripClickHandler);
   $('#trip-info').on('click', '#reserve-button', reserveClickHandler);
 });

@@ -1,4 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Fondamento');
+
+body {
+  background-color: #fcf7fc;
+  background-image: url('../images/foggy-birds.png');
+  /*image from https://www.transparenttextures.com/*/
+}
+
+header {
+  text-align: center;
+}
+
 #trip-info h4 {
   cursor: pointer;
-  color: blue;
 }
