@@ -9,7 +9,10 @@ var tripsListCallback = function(response) {
     });
    $('#trips-list tbody').append($(newTripRow));
   }
-  $('.trip-details-btn').click(tripDetailsClickHandler);
+
+  // would do this dynamically but because of the number of fake trips and fake contients, creating this manually
+  var continents = ["Africa", "Asia", "Australasia", "Europe", "South America", "North America", "Antarctica"];
+  createContinentFilters(continents);
 };
 
 var tripsListClickHandler = function() {
@@ -26,7 +29,7 @@ var tripDetailsCallback = function(response) {
       trip: response
     });
    $('#trip-details').append($(tripDetails));
-  };
+ };
 
 var tripDetailsClickHandler = function() {
   url = "https://trektravel.herokuapp.com/trips/" + $(this).attr('id');
@@ -37,17 +40,37 @@ var tripDetailsClickHandler = function() {
 // RESERVE TRIP
 
 var reservationCallback = function(){
+  $('.clear-form').empty();
   $("#messages").html("<h3>Reservation complete!</h3>");
-  console.log(response);
 };
 
-var reservationClickHandler = function(){
-  $('form').submit(e);
+var reservationClickHandler = function(e) {
     e.preventDefault();
-    var url = $(this).attr("action");
-    var formData = $(this).serialize();
+    var url = $('form').attr("action");
+    var formData = $('form').serialize();
     $.post(url, formData, reservationCallback).fail(failureCallback);
-  };
+};
+
+// CONTINENT FILTER
+var createContinentFilters = function(continentsArray){
+  console.log(continentsArray);
+  var continentFilterTemplate = _.template($('#continent-filter-template').html());
+  for ( i = 0; i < continentsArray.length; i++){
+    var newContinentFilter = continentFilterTemplate({
+      continent: continentsArray[i]
+    });
+    console.log(continentsArray[i]);
+   $('#trip-filters').append($(newContinentFilter));
+  }
+};
+
+var continentFilterCallback = function(){
+};
+
+var continentFilterClickHandler = function(){
+
+};
+
 
 // FAIL
 
@@ -60,4 +83,7 @@ var failureCallback = function() {
 
 $(document).ready(function() {
   $('#list-trips-btn').click(tripsListClickHandler);
+  $('body').on('click', '#reserve', reservationClickHandler);
+  $('body').on('click', '.trip-details-btn', tripDetailsClickHandler);
+  $('body').on('click', '.continent-filter', continentFilterClickHandler);
 });

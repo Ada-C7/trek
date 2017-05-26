@@ -14,6 +14,8 @@
 
     <!-- Trips List -->
     <section id="trips-list">
+      <section id="trip-filters">
+      </section>
       <table>
         <thead>
           <tr class="clear">
@@ -36,6 +38,13 @@
       </tr>
     </script>
 
+    <!-- Continent Filter Template -->
+    <script id="continent-filter-template" type="text/template">
+      <ul class="clear">
+        <li class="continent-filter"><%= continent %></li>
+      </ul>
+    </script>
+
     <!-- Trip Details Template-->
     <script id="trip-details-template" type="text/template">
       <section>
@@ -46,14 +55,14 @@
       </section>
       <section id="reserve-trip">
         <h3>Reserve this Trek!</h3>
-        <form action="https://trektravel.herokuapp.com/trips/<%= trip.id %>/reserve" method="post">
+        <form action="https://trektravel.herokuapp.com/trips/<%- trip.id %>/reserve" method="post">
           <label>Name</label>
-          <input type="text" id="name" name="name"></input>
+          <input type="text" id="name" name="name" class="clear-form"></input>
           <label>Age</label>
-          <input type="text" id="age" name="age"></input>
+          <input type="text" id="age" name="age" class="clear-form"></input>
           <label>Email</label>
-          <input type="text" id="email" name="email"></input>
-          <button type="submit">Reserve</button>
+          <input type="text" id="email" name="email" class="clear-form"></input>
+          <button type="submit" id="reserve">Reserve</button>
         </form>
       </section>
     </script>
