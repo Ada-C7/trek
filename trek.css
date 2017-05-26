@@ -1,15 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+
+h1 {
+  font-family: "Playfair Display";
+  color: #6b2e03;
+}
 
 
-body{
-  /*background-image:url(./sunset.jpg);
+
+
+#load-all-trips{
+margin-left: 40%;
+}
+
+
+body {
+  display: block;
+  position: relative;
+  min-height: 675px;
+}
+
+/*body{
+  background-image:url(./sunset.jpg);
   background-position: center;
-  background-repeat: no-repeat;*/
-  /*background-size: cover;*/
-  /*margin-top:5.6rem;
-  padding-bottom:3rem;*/
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top:3rem;
+  padding-bottom:3rem;
   background-color: #f7d9b6;
   font-family: Times;
+}*/
+
+body::after {
+  content: "";
+  background: url(./sunset.jpg) no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: .7;
+  display: block;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
+
+
+
+
+
+
+.button {
+  background-color: #6b2e03;
+  /*border-radius: 10%;*/
+
+}
+
+.button:hover, .button:focus {
+  background-color: #af4e08;
+  color: #fefefe;
+}
+
 
 h1{
   text-align: center;
@@ -17,11 +68,29 @@ h1{
 
 .oneTrip{
   border: 1px solid #6b2e03;
-  background-color: #fae9d6;
+
+  background-color: rgba(250, 233, 214, 0.76);
+  /*background-color: #fae9d6;*/
   margin: 1%;
   padding: 1%;
   display: inline-block;
 }
+
+/*.oneTrip{
+display:inline-block;
+  position: relative;
+  left:3%;
+  width: auto;
+  height: 200px;
+  margin: 3% 2%;
+  border: 2px solid #6b2e03;
+  background-color: #fae9d6;
+  border-radius: 15%;
+  text-align: center;
+  padding: 2%;
+  vertical-align: top;
+];*/
+
 
 div#reservationForm{
   margin:0;
@@ -35,3 +104,50 @@ div#reservationForm{
   padding: 1%;
   width: 50%;
 }
+
+
+
+
+.dropbtn {
+    background-color: #6b2e03;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.button.dropbtn{
+  margin-bottom: 0;
+};
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #af4e08;

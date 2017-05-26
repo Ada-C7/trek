@@ -7,9 +7,9 @@ $(document).ready(function() {
 
   var tripsSuccessCallback = function(response) {
 
-  var tripsTtitle = "Which of these exciting adventures are in your future?";
+    var tripsTtitle = "Which of these exciting adventures are in your future?";
 
-  $('#trips').append("<h2>"+tripsTtitle+"</h2>");
+    $('#trips').append("<h2>"+tripsTtitle+"</h2>");
 
 
     for (var i = 0; i < response.length; i++) {
@@ -24,7 +24,7 @@ $(document).ready(function() {
       var generatedHtml = tripsListTemplate({
         data: tripsData[j]
       });
-      $('#trips').append($(generatedHtml));
+      $('#trips').append(generatedHtml);
     }
   };
 
@@ -50,60 +50,75 @@ $(document).ready(function() {
       data: response
     });
 
-  $('#load-all-trips').hide();
-  $('#trips').hide();
-  $('#singleTrip').show();
-  $('#singleTrip').html($(generatedHtml));
+    $('#load-all-trips').hide();
+    $('#trips').hide();
+    $('#singleTrip').show();
+    $('#singleTrip').html($(generatedHtml));
 
   };
 
 
 
 
-var singleTripFailure = function(){
-  console.log("Getting an individual trip did not work");
-  // $("#single-trip-errors").html("<h1>Sorry, we could not retrieve this trip at this time.</h1>");
-};
+  var singleTripFailure = function(){
+    console.log("Getting an individual trip did not work");
+    // $("#single-trip-errors").html("<h1>Sorry, we could not retrieve this trip at this time.</h1>");
+  };
 
-var singleTripHandler = function(event){
-  tripURL = url + "/" + $(this).attr("data-tripID");
-  $.get(tripURL, singleTripSuccess).fail(singleTripFailure);
-};
+  var singleTripHandler = function(event){
+    tripURL = url + "/" + $(this).attr("data-tripID");
+    $.get(tripURL, singleTripSuccess).fail(singleTripFailure);
+  };
 
-var hideTripHandler = function(event){
-  $('#singleTrip').hide();
-  $('#trips').show();
-  console.log("Uh-oh");
-};
+  var hideTripHandler = function(event){
+    $('#singleTrip').hide();
+    $('#trips').show();
+    console.log("Uh-oh");
+  };
 
-var ReserveTripHandler = function(event){
-  console.log("Reserving A spot");
+  var ReserveTripHandler = function(event){
+    console.log("Reserving A spot");
 
-  reserveTripURL = url + "/" + $(this).attr("data-tripID")+ "/" + "reserve";
+    var tripID = $(this).attr("data-tripID");
+    var reserveTripURL = url + "/" + tripID + "/" + "reserve";
+
+    var reservationTemplate = _.template($("#reservation-template").html());
+
+    var generatedHtml = reservationTemplate({
+      url: reserveTripURL,
+      tripID: tripID
+    });
+
+    $('div#reservationForm').html(generatedHtml);
+
+    $('#form-'+tripID).submit(function(event) {
+      event.preventDefault();
+      var postURL = $(this).attr("action");
+      var formData = $(this).serialize();
+      $.post(postURL, formData, reserveSuccess);
+      console.log("submit step 1");
+    });
+
+  };
 
 
-  var reservationTemplate = _.template($("#reservation-template").html());
 
-  var generatedHtml = reservationTemplate({
-    data: reserveTripURL
-  });
-
- $('div#reservationForm').html(generatedHtml);
-
-};
+  var reserveSuccess = function(event){
+    $('div#reservationForm').html("Congratulations. You have booked this trip!");
+    console.log("submit step 2");
+  };
 
 
 
+  $('#load-all-trips').click(tripsClickHandler);
 
+  $('#load-all-trips').click(tripsClickHandler);
 
+  $("#trips").on("click", "button#ShowDetails", singleTripHandler);
 
-$('#load-all-trips').click(tripsClickHandler);
+  $("#singleTrip").on("click", "button#HideDetails", hideTripHandler);
 
-$("#trips").on("click", "button#ShowDetails", singleTripHandler);
-
-$("#singleTrip").on("click", "button#HideDetails", hideTripHandler);
-
-$("#singleTrip").on("click", "button#reserve", ReserveTripHandler);
+  $("#singleTrip").on("click", "button#reserve", ReserveTripHandler);
 
 
 });

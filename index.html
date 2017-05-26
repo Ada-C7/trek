@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 
-  <!-- <link href="foundation.css" media="screen" rel="stylesheet" type="text/css"> -->
+  <link href="foundation.css" media="screen" rel="stylesheet" type="text/css">
   <link href="trek.css" media="screen" rel="stylesheet" type="text/css">
   <title>Trekkin'</title>
 
@@ -16,10 +16,45 @@
 </head>
 <body>
 
-  <h1>Thinking about taking a journey...</h1>
+  <h1>Thinking about taking a journey?</h1>
 
   <button class="button" id="load-all-trips"> Show All Trips </button>
   <section id="errors"></section>
+
+
+  <div class="dropdown by-continent">
+
+    <button class="button dropbtn" id="trips-by-continent"> Search by continent </button>
+    <div class="dropdown-content">
+      <a href="#">Africa</a>
+      <a href="#">Antarctica</a>
+      <a href="#">Asia</a>
+      <a href="#">Australasia</a>
+      <a href="#">Europe</a>
+      <a href="#">North America</a>
+      <a href="#">South America</a>
+    </div>
+  </div>
+
+  <!-- <form id="continent-filter">
+            <section>
+              <select size="1" id="continent-sort" name="continent">
+                <option>Africa</option>
+                <option>Antarctica</option>
+                <option>Asia</option>
+                <option>Europe</option>
+                <option>Australasia</option>
+                <option>North America</option>
+                <option>South America</option>
+              </select>
+            </section>
+            <section >
+              <button class="button hollow"  type="submit">Search by Continent</button>
+            </section>
+          </form> -->
+
+
+
 
 
   <div id="trips"></div>
@@ -94,7 +129,7 @@
 
   <script id="reservation-template" type="text/template">
 
-    <form action="<%- data %>" method="post">
+    <form id="form-<%- tripID%>" action="<%- url %>" method="post">
       <section>
         <label>Name: </label>
         <input type="text" id="name" name="name"></input>
@@ -110,8 +145,8 @@
         <input type="text" id="email" name="email"></input>
       </section>
 
-      <section class="button">
-        <button type="submit">Make Reservation</button>
+      <section>
+        <button  class="button" type="submit">Make Reservation</button>
       </section>
     </form>
 
