@@ -7,6 +7,7 @@ var allTripClickHandler = function(event) {
 
 var allSuccessCallback = function(response) {
   $('#print-trip-data').empty();
+  $('#print-trips').empty();
   $('#print-trips').show();
 
   var tripsTemplate = _.template($('#trips-template').html());

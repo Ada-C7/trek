@@ -40,3 +40,7 @@ header {
   opacity: 0.8;
   /*Opacity end*/
 }
+
+#errors {
+  text-align: center;
+}
