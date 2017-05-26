@@ -1,8 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Barrio');
+
+
 /*#trip-info-indv {
   display: none;
 }*/
 
-.thumbnail {
-  border: 2px solid black;
+* {
+  font-family: 'Barrio', cursive;
+}
+
+h1 {
   text-align: center;
 }
+
+button #load {
+  margin: auto;
+  /*align: center;*/
+  /*display: inline;*/
+}
+
+.thumbnail {
+  /*border: 2px solid black;*/
+  text-align: center;
+  background-color: gray;
+  /*height: 250px;*/
+  border-radius: 20px;
+  /*margin: 20px;*/
+  /*padding: 5%;*/
+}
+
+.tiles {
+  /*border: 2px solid black;*/
+  /*text-align: center;
+  background-color: gray;
+  height: 250px;
+  border-radius: 20px;*/
+  margin: 20px;
+  height: 300px;
+  /*padding: 5%;*/
+}
+
+/*#trip-list {
+  border: 2px solid black;
+  text-align: center;
+  background-color: gray;
+}*/

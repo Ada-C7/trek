@@ -24,26 +24,7 @@ var successCallbackTrip = function(response) {
 
   })
 
-  // $("#trip-info-indv").empty();
   $("#trip-info-indv").html($(generatedHtml));
-
-  // $("form").submit(function(e) {
-  //
-  //   e.preventDefault();
-  //
-  //   var url = $(this).attr("action");
-  //   var formData = $(this).serialize();
-  //
-  //   console.log(formData);  //gives us back a string
-  //
-  //   $.post(url, formData, function(response){
-  //     $("#message").html("<p>Reservation Confirmed!</p>");
-  //
-  //     console.log(response);
-  //   }).fail(function(){
-  //     $("#message").html("<p>Reservation Did Not Go Through</p>");
-  //   });
-  // });
 
   $("#trip-info-indv").show();
 };
@@ -60,7 +41,12 @@ var clickHandler = function() {
 var clickHandlerTrip = function(event){
   var id = $(this).attr("data-tripid");
   var tripUrl = url + "/" + id;
+  // $('#element').foundation('open');
   $.get(tripUrl, successCallbackTrip).fail(failureCallback);
+};
+
+var clickHandlerCloseModal = function(event) {
+  $("#trip-info-indv").hide();
 };
 
 var makeReservation = function(event){
@@ -89,23 +75,9 @@ $("#trip-list").on("click", "button#seeTrip", clickHandlerTrip);
 
 $("#trip-info-indv").on("submit", "form", makeReservation);
 
-// $("form").submit(function(e) {
-//
-//   e.preventDefault();
-//
-//   var url = $(this).attr("action");
-//   var formData = $(this).serialize();
-//
-//   console.log(formData);  //gives us back a string
-//
-//   $.post(url, formData, function(response){
-//     $("#message").html("<p>Reservation Confirmed!</p>");
-//
-//     console.log(response);
-//   }).fail(function(){
-//     $("#message").html("<p>Reservation Did Not Go Through</p>");
-//   });
-// });
+// $("#exampleModal1").foundation('close');
+
+$("#trip-info-indv").on("click", ".close-button", clickHandlerCloseModal);
 
 
 });
