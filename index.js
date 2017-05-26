@@ -26,6 +26,7 @@ var displayOneTrip = function(response) {
   $('#display').empty();
   response["days"] = response.weeks * 7;
   response["cost"] = response.cost.toFixed(2);
+  response["image"] = chooseImage();
   var generatedHtml = showTripTemplate({
     data: response
   });
@@ -38,7 +39,7 @@ var reserveTrip = function(event) {
   var url = $(this).attr("action");
   var formData = $(this).serialize();
   $.post(url, formData, function(response) {
-    $("#message").html("<p>Trip successfully reserved with confirmation #" + response.id + "</p>");
+    $("#message").html("<h4>Trip successfully reserved with confirmation #" + response.id + "</h4>");
   }).fail(failureCallback);
 };
 
