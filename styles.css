@@ -1,5 +1,55 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.css');
+@import url('https://fonts.googleapis.com/css?family=Khand|Bungee');
 
-.load-trek {
-  color: #30B882;
+/*general*/
+body {
+  background-image: url('trek.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   width: 100% !important;
+  position: absolute;
+  color: white;
 }
+
+/*attempt at gradient overlay, didn't like it*/
+/*div {
+  background: rgba(0, 0, 0, 0.4);
+  background: linear-gradient(to top, white, rgba(0, 0, 0, 0.4));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   width: 100% !important;
+  position: relative;
+}*/
+
+body, h2, h4, button {
+  font-family: 'Khand', sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+.button {
+  color: white;
+}
+
+/*header styles*/
+h1 {
+  font-family: 'Bungee', cursive;
+  font-size: 5rem;
+}
+
+header {
+  /*padding-top: 35%;
+  padding-left: 10%;*/
+}
+
+/*treks styles*/
