@@ -1,10 +1,30 @@
-var indexCallback = function(response) {
-  if (notFound(response)) {
-    return;
-  }
-  console.log("Loaded trips!");
-  console.log(response);
+// helpers
 
+var notFound = function(response) {
+  if (response === undefined) {
+    $("#errors").append("Sorry, no trips found matching your search.");
+    return true;
+  }
+};
+
+var emptyStuff = function() {
+  $("#errors").empty();
+  $("#content").empty();
+};
+
+var getForm = function(target, template) {
+  emptyStuff();
+  var formTarget = $('#' + target);
+  var formTemplate = _.template($('#' + template).html());
+  var formHTML = formTemplate({});
+  formTarget.append(formHTML);
+};
+
+
+// callbacks
+
+var indexCallback = function(response) {
+  if (notFound(response)) { return; }
   var target = $('#content');
   var allTripsTemplate = _.template($('#all-trips-template').html());
   for (var i = 0; i < response.length; i++) {
@@ -14,23 +34,12 @@ var indexCallback = function(response) {
     target.append($(allTripsHTML));
   }
   $('.get-trip').click(tripClickHandler);
-
-};
-
-var notFound = function(response) {
-  if (response === undefined) {
-    $("#errors").append("Sorry, no trips found matching your search.");
-    return true;
-  }
 };
 
 var tripCallback = function(response) {
   if (notFound(response)) {
     return;
   }
-  console.log("Loaded a single trip!");
-  console.log(response);
-
   var target = $('#content');
   var singleTripTemplate = _.template($('#single-trip-template').html());
   var oneTripHTML = singleTripTemplate({
@@ -41,9 +50,6 @@ var tripCallback = function(response) {
 };
 
 var joinCallback = function(response) {
-  console.log("joined a trip!");
-  console.log(response);
-
   var target = $('#successful-sign-up');
   var joinTripTemplate = _.template($('#join-trip-template').html());
   var joinTripHTML = joinTripTemplate({
@@ -53,9 +59,6 @@ var joinCallback = function(response) {
 };
 
 var newTripCallback = function(response) {
-  console.log("created a trip!");
-  console.log(response);
-
   var target = $('#errors');
   var createTripTemplate = _.template($('#create-trip-template').html());
   var createTripHTML = createTripTemplate({
@@ -65,14 +68,15 @@ var newTripCallback = function(response) {
 };
 
 var failureCallback = function(response) {
-  console.log("Failed to get anything. Wooo....");
   $("#errors").html("Sorry, something went wrong! Please try again shortly.");
   console.log(response);
 };
 
+
+// click handlers
+
 var indexClickHandler = function() {
-  $("#errors").empty();
-  $("#content").empty();
+  emptyStuff();
   var url = "https://trektravel.herokuapp.com/trips";
   $.get(url, indexCallback).fail(failureCallback);
 };
@@ -80,131 +84,58 @@ var indexClickHandler = function() {
 var joinClickHandler = function(event) {
   $("#errors").empty();
   event.preventDefault();
-  console.log("clicked join!");
   $("#successful-sign-up").empty();
   var data = $(this).serialize();
-  console.log(data);
   var reserveBaseUrl = "https://trektravel.herokuapp.com/trips/";
   var reserveUrl = reserveBaseUrl + $('#join-id').html() + "/reserve";
   $.post(reserveUrl, data, joinCallback).fail(failureCallback);
 };
 
 var tripClickHandler = function() {
-  console.log("clicked on a trip");
-  $("#errors").empty();
-  $("#content").empty();
+  emptyStuff();
   var indexBaseUrl = "https://trektravel.herokuapp.com/trips/";
   var indexUrl = indexBaseUrl + $(this).attr('id');
   $.get(indexUrl, tripCallback).fail(failureCallback);
 };
 
-var continentClickHandler = function(event) {
+var filterClickHandler = function(event) {
   event.preventDefault();
-  // console.log(event);
-  console.log("filtering trips by continent");
-  $("#errors").empty();
-  $("#content").empty();
-  var continent = $("#continent-sort option:selected").text();
-  var continentBaseUrl = "https://trektravel.herokuapp.com/trips/continent?query=";
-  var continentUrl = continentBaseUrl + continent;
-  $.get(continentUrl, indexCallback).fail(failureCallback);
-};
-
-var priceClickHandler = function(event) {
-  event.preventDefault();
-  // console.log(event);
-  console.log("filtering trips by price");
-  $("#errors").empty();
-  $("#content").empty();
-  var data = $("#price-filter").serialize();
-  var price = data.replace("price=", "");
-  console.log(price);
-  var priceBaseUrl = "https://trektravel.herokuapp.com/trips/budget?query=";
-  var priceUrl = priceBaseUrl + price;
-  $.get(priceUrl, indexCallback).fail(failureCallback);
-};
-
-var weekClickHandler = function(event) {
-  event.preventDefault();
-  // console.log(event);
-  console.log("filtering trips by weeks");
-  $("#errors").empty();
-  $("#content").empty();
-  var data = $("#weeks-filter").serialize();
-  var week = data.replace("week=", "");
-  console.log(week);
-  var weekBaseUrl = "https://trektravel.herokuapp.com/trips/weeks?query=";
-  var weekUrl = weekBaseUrl + week;
-  $.get(weekUrl, indexCallback).fail(failureCallback);
+  emptyStuff();
+  var data = $(this).serialize();
+  datArray = data.split("=");
+  var key = datArray[0];
+  var value = datArray[1];
+  var filterUrl = "https://trektravel.herokuapp.com/trips/" + key + "?query=" + value;
+  $.get(filterUrl, indexCallback).fail(failureCallback);
 };
 
 var createTripClickHandler = function(event) {
   $("#errors").empty();
   event.preventDefault();
-  console.log("clicked create trip!");
   $("#successful-new-trip-create").empty();
   var data = $(this).serialize();
-  console.log(data);
-  // var newTripUrl = "https://trektravel.herokuapp.com/trips/new";
   var newTripUrl = "https://trektravel.herokuapp.com/trips/";
-
   $.post(newTripUrl, data, newTripCallback).fail(failureCallback);
 };
 
+
 var newTripClickHandler = function() {
-  $("#errors").empty();
-  $("#content").empty();
-  console.log("clicked new trip!");
-  var target = $('#content');
-  var newTripTemplate = _.template($('#new-trip-template').html());
-  var newTripHTML = newTripTemplate({});
-  target.append(newTripHTML);
+  getForm("content", "new-trip-template");
   $('#new-trip-form').submit(createTripClickHandler);
 };
 
-var filterTripsClickHandler = function(event) {
-  $("#errors").empty();
-  event.preventDefault();
-  console.log("submitted filter trips form!");
-  $("#content").empty();
-  var data = $(this).serialize();
-  console.log(data);
-  var params;
-  params = data.split("&");
-  var cont, wks, prc;
-  for (var i = 0; i < params.length; i++) {
-    params[i] = params[i].split("=");
-  }
-  console.log(params);
-
-  cont = params[0][1];
-  wks = params[1][1];
-  prc = params[2][1];
-  console.log(cont, wks, prc);
-
-  var filterTripsUrl = "https://trektravel.herokuapp.com/trips/continent?query=" + cont + "&weeks?query=" + wks + "&price?query=" + prc;
-  console.log(filterTripsUrl);
-  $.get(filterTripsUrl, indexCallback).fail(failureCallback);
-};
-
 var filterTripsFormClickHandler = function() {
-  $("#errors").empty();
-  $("#content").empty();
-  console.log("clicked filter trips!");
-  var target = $('#content');
-  var filterTripsTemplate = _.template($('#filter-trips-template').html());
-  var filterTripsHTML = filterTripsTemplate({});
-  target.append(filterTripsHTML);
-  $('#trip-filters-form').submit(filterTripsClickHandler);
+  getForm("content", "filter-trips-template");
+  $('#continent-filter').submit(filterClickHandler);
+  $('#price-filter').submit(filterClickHandler);
+  $('#weeks-filter').submit(filterClickHandler);
 };
 
+
+// accessible upon a refresh
 
 $(document).ready(function() {
   $('#get-trips').click(indexClickHandler);
-  // $('#continent-filter').submit(continentClickHandler);
-  // $('#price-filter').submit(priceClickHandler);
-  // $('#weeks-filter').submit(weekClickHandler);
   $('#new-trip').click(newTripClickHandler);
   $('#filter-trips').click(filterTripsFormClickHandler);
-
 });

@@ -16,40 +16,6 @@
         <button id="get-trips" class="button hollow">Get All Trips</button>
         <button id="new-trip" class="button hollow">New Trip</button>
         <button id="filter-trips" class="button hollow">Filter Trips</button>
-        <!-- <form id="continent-filter">
-          <section>
-            <select size="1" id="continent-sort" name="continent">
-              <option>Africa</option>
-              <option>Antarctica</option>
-              <option>Asia</option>
-              <option>Europe</option>
-              <option>North America</option>
-              <option>South America</option>
-            </select>
-          </section>
-          <section >
-            <button class="button hollow"  type="submit">Search by Continent</button>
-          </section>
-        </form>
-
-        <form id="price-filter">
-          <section>
-            <input type="text" id="max-price" name="price"></input>
-          </section>
-          <section >
-            <button class="button hollow"  type="submit">Search by Max Price</button>
-          </section>
-        </form>
-
-        <form id="weeks-filter">
-          <section>
-            <input type="text" id="max-week" name="week"></input>
-          </section>
-          <section >
-            <button class="button hollow"  type="submit">Search by Max Weeks</button>
-          </section>
-        </form> -->
-
       </section>
     </header>
     <section id="errors">
@@ -130,15 +96,14 @@
       </article>
     </script>
 
-    <!-- template for filter trips form -->
+    <!-- template for filter trips forms -->
     <script id="filter-trips-template">
       <section class="columns small-6">
 
         <h2><strong>Narrow your search...</strong></h2>
-        <form id="trip-filters-form">
+        <form id="continent-filter">
           <section>
             <label>Continent</label>
-
             <select size="1" id="continent-sort" name="continent">
               <option>Africa</option>
               <option>Antarctica</option>
@@ -148,18 +113,30 @@
               <option>South America</option>
             </select>
           </section>
+          <section >
+            <button class="button hollow"  type="submit">Search by Continent</button>
+          </section>
+        </form>
+
+        <form id="price-filter">
           <section>
             <label>Max Cost</label>
-            <input type="text" id="max-price" name="cost"></input>
+            <input type="text" id="max-price" name="budget"></input>
           </section>
+          <section >
+            <button class="button hollow"  type="submit">Search by Cost</button>
+          </section>
+        </form>
+
+        <form id="weeks-filter">
           <section>
-            <label>Max Weeks</label>
+            <label>Max Duration</label>
             <input type="text" id="max-week" name="weeks"></input>
           </section>
           <section >
-            <button class="button hollow"  type="submit">Search for trips</button>
+            <button class="button hollow"  type="submit">Search by Weeks</button>
           </section>
-        </form>
+        </form> -->
         </section>
 
     </script>
