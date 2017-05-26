@@ -16,7 +16,7 @@ var validateAge = function(age) {
   if ( age >= 0 ) {
     return true;
   } else {
-    alert("please enter an age");
+    alert("Please enter an number for age");
     return false;
   }
 };
@@ -25,7 +25,7 @@ var validateEmail = function(email) {
   var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   var result = regex.test(email);
   if ( result == false ) {
-    alert("please enter a valid email");
+    alert("please enter a complete email address");
   } else { return result; }
 };
 
@@ -70,20 +70,6 @@ var successCallbackReserve = function(response){
   $('#form' + response.id).hide();
 };
 
-// var successCallbackContinent = function(response){
-//   console.log("success");
-//   console.log(response);
-//
-//   for (var i = 0; i < response.length; i++){
-//     var generateHTML = tripsTemplate({
-//       trip: response[i]
-//     });
-//
-//     $('#trips-list').append($(generateHTML));
-//     $('.slidingInfo').hide();
-//   };
-// };
-
 var failureCallback = function() {
   console.log("Didn't work :(");
   $("#errors").html("<h2>Something went wrong - check back later</h2>");
@@ -102,12 +88,6 @@ $(document).ready(function(){
     var url = urlTrips + $(this).attr("action");
     $.get(url, successCallbackTrips).fail(failureCallback);
   });
-
-  // $('button.budget').click(function(event){
-  //   var url = urlTrips + $(this).attr("action");
-  //   console.log(url);
-  //   $.get(url, successCallbackTrips).fail(failureCallback);
-  // });
 
   // have to use .on because .get all trips might not be complete before document.ready (asynch issue)
   $('#trips-list').on('click', '.closed', function(event) {
