@@ -2,23 +2,42 @@ var baseURL = " https://trektravel.herokuapp.com/trips";
 
 $(document).ready(function(){
   $("#load").on('click', clickAllTrips);
-  $(".trips-list").on('click', "tr", function()
+  $(".trips-list").on('click', "td", function()
     {
       var id = $(this).attr("id");
       console.log(id);
       clickShowTrip(id);
     }  );
+
+  $('select').change(function()
+    { var continent = $("select option:selected").text();
+      console.log("Continent: " + continent);
+      clickContinentTrips(continent);
+  });
 });
 
 
+var clickContinentTrips = function(continent) {
+  $("#show-trip").empty();
+  $("#messages").empty();
+  $("#continent").empty();
+  $("#continent").append(continent);
+  var continentURL = baseURL + "/continent?query=" + continent;
+  //https://trektravel.herokuapp.com/trips/continent?query=Asia
+  $.get(continentURL, successAllTrips).fail(failureCallback);
+  $('select').prop('selectedIndex',0);
+
+};
+
 var clickAllTrips = function(){
+    $("#continent").empty();
     $("#show-trip").empty();
     $("#messages").empty();
     $.get(baseURL, successAllTrips).fail(failureCallback);
   };
 
 var clickShowTrip = function(tripID) {
-
+  $("#continent").empty();
   var showTripURL = baseURL + "/" + tripID;
   $.get(showTripURL, successShowTrip).fail(failureCallback);
 };
@@ -54,7 +73,7 @@ var successShowTrip = function(response) {
         $('#messages').html('<p> Trip reserved! </p>');
         console.log(response);
       }).fail(function(){
-        $("#message").html("<p>Faliure!</p>");
+        $("#message").html("<p>Failure!</p>");
       });
   });
 };

@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>TREK</title>
+  <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
   <link rel="stylesheet" href="css/foundation.css">
   <link rel="stylesheet" href="css/app.css">
 </head>
@@ -12,10 +13,28 @@
     <h1>Trek</h1>
   </header>
 
-  <button class="button" id="load"> Travel! </button>
-  <button class="button" id="new-trip">New Trip</button>
+  <nav>
+    <button class="button" id="load">All Trips</button>
+    <select class="button dropdown" name="location">
+        <option selected hidden>Location</option>
+        <option id="africa">Africa</option>
+        <option id="antarctica">Antarctica</option>
+        <option id="asia">Asia</option>
+        <option id="australasia">Australasia</option>
+        <option id="europe">Europe</option>
+        <option id="north-america">North America</option>
+        <option id="south-america">South America</option>
+    </select>
+    <button class ="button" id="new-trip">New Trip</button>
+  </nav>
+
+
+
+
+
     <section id="messages"></section>
   <section class="trips-list">
+    <h3 id="continent"></h3>
     <table>
       <thead id="trips-list-header"></thead>
       <tbody id="trips-list-body"></tbody>
@@ -31,8 +50,8 @@
   </script>
 
   <script id="trips-list-template" type="text/template">
-    <tr id=<%- data.id%> >
-      <td> <%- data.name %></td>
+    <tr>
+      <td id=<%- data.id%> ><a href="#"><%- data.name %></a> </td>
       <td> <%- data.continent %></td>
       <td> <%- data.weeks %></td>
     </tr>
@@ -65,6 +84,29 @@
               </section>
             </form>
         </section>
+
+<form action="https://trektravel.herokuapp.com/trips/" method="post" >
+  <div class="row">
+    <div class="large-8 medium-6 small-12 columns" >
+      <label>Name
+        <input type="text" id="name" name="name" placeholder="large-12.columns" /></input>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-4 columns">
+      <label>Input Label
+        <input type="text" placeholder="large-4.columns" />
+      </label>
+    </div>
+    <div class="large-4 columns">
+      <label>Input Label
+        <input type="text" placeholder="large-4.columns" />
+      </label>
+    </div>
+  </div>
+</form>
+
     </script>
 
 

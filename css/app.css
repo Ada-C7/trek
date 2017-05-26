@@ -8,7 +8,9 @@ th {
 
 .button {
   background-color: #700859;
+  max-width: 100px;
 }
+
 
 .button:hover, .button:focus {
   background-color: #F012BE;
@@ -16,4 +18,5 @@ th {
 
 h1, h2, h3, h4, h5, h6 {
   color: #0F0571;
+  font-family: 'Russo One', sans-serif;
 }
