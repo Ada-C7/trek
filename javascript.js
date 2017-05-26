@@ -20,6 +20,10 @@ var generateAllTrips = function(response) {
   var tripsTemplate = _.template($('#trip-template').html());
 
   var tripArray = response;
+
+  if (tripArray.length === 0) {
+    $("#message").html("<p>There are no trips that satisfy this criteria</p>");
+  }
   for (var i = 0; i < tripArray.length; i++) {
     var generatedHtml = tripsTemplate({
       trip: tripArray[i]
@@ -75,8 +79,20 @@ var generateReservationResponse = function(response) {
 
 var sortClickHandler = function(event) {
   event.preventDefault();
-  var formData = $("select").serialize();
-  var sortUrl = allTripsUrl + "continent?" + formData;
+
+  var continentData = $('#continent').serialize();
+  var weeksData = $("#weeks").serialize();
+  var sortUrl;
+  if (weeksData !== "query=" && continentData !== "query=") {
+    sortUrl = allTripsUrl + "continent?" + continentData + "&weeks?" + weeksData;
+  } else if (weeksData === "query=") {
+    sortUrl = allTripsUrl + "continent?" + continentData;
+  } else if (continentData === "query=") {
+    sortUrl = allTripsUrl + "weeks?" + weeksData;
+  } else if (weeksData === "query=" && continentData === "query=") {
+     $("#message").html("<p>Please enter a query to narrow search!</p>");
+   }
+  console.log(sortUrl);
   $.get(sortUrl, sortSuccess);
 };
 
@@ -88,6 +104,9 @@ var sortSuccess = function(response) {
   var tripsTemplate = _.template($('#trip-template').html());
 
   var tripArray = response;
+  if (tripArray.length === 0) {
+    $("#trip-list").append("<p>There are no trips that satisfy this criteria</p>");
+  }
   for (var i = 0; i < tripArray.length; i++) {
     var generatedHtml = tripsTemplate({
       trip: tripArray[i]

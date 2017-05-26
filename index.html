@@ -17,9 +17,10 @@
       <div id="trip-list" class='trip-list-outline small-12 medium-6 column'></div>
       <div id="trip-sort" class="small-12 medium-6 column">
         <h4>Narrow Results by:</h4>
-        <form method="get" id="sort">
+        <form method="get" id="sort-continent">
           <label>Continent</label>
-          <select name="query">
+          <select name="query" id="continent">
+            <option value=""></option>
             <option value="North America">North America</option>
             <option value="South America">South America</option>
             <option value="Asia">Asia</option>
@@ -28,18 +29,23 @@
             <option value="Europe">Europe</option>
             <option value="Antarctica">Antarctica</option>
           </select>
-          <select name="query">
-            <option value="North America">North America</option>
-            <option value="South America">South America</option>
-            <option value="Asia">Asia</option>
-            <option value="Africa">Africa</option>
-            <option value="Australia">Australia</option>
-            <option value="Europe">Europe</option>
-            <option value="Antarctica">Antarctica</option>
+          <section>
+            <button class="button" type="submit">Search</button>
+          </section>
+        </form>
+        <form method="get" id="sort-weeks">
+          <label>Maximum number of weeks:</label>
+          <select name="query" id="weeks">
+            <option value=""></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
           </select>
-        <section>
-          <button class="button" type="submit">Search</button>
-        </section>
+          <section>
+            <button class="button" type="submit">Search</button>
+          </section>
         </form>
       </div>
       <!-- Template to use in order to display all trips -->
