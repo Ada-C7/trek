@@ -1,7 +1,13 @@
 body {
-  background-color: orange;
+  background-image: url("img/a.jpeg");
+  background-size: 180%;
 }
 
 li{
   list-style-type: none;
+}
+
+.img {
+  text-align: center;
+  padding-bottom: 5%;
 }
