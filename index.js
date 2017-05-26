@@ -2,18 +2,14 @@ var buildUrl = function() {
   return "https://trektravel.herokuapp.com/trips";
 };
 
-// var tripsTemplate = null;
-
-var successCallback = function(response) {
+var allTripsCallback = function(response) {
   console.log("Success!");
   console.log(response);
 
-  // console.log($('#trips'));
-
-  // var tripsTemplate = _.template($('#trips-template').html());
-  // var trips = [];
   $("#trips-list").empty();
   $("#trip").empty();
+
+  var tripsTemplate = _.template($('#trips-template').html());
   for (var i = 0; i < response.length; i++) {
 
     var generatedHtml = tripsTemplate({
@@ -21,13 +17,9 @@ var successCallback = function(response) {
     });
 
     $('#trips-list').append($(generatedHtml));
-    // var name = response[i].name;
-    // $('#trips-template').append("<h1>" + name + "</h1>");
   }
 
-  // var selector =
   $(".individual-trip").click(clickHandler2);
-
 };
 
 var tripCallback = function(response) {
@@ -37,13 +29,11 @@ var tripCallback = function(response) {
   $("#trips-list").empty();
   $("#trip").empty();
 
+  var tripTemplate = _.template($('#trip-template').html());
   var generatedHtml = tripTemplate({
     data: response
   });
   $('#trip').append($(generatedHtml));
-
-
-
 
   $('form').submit(function(e) {
     // By default, the form will attempt to do it's own local POST so we want to prevent that default behavior
@@ -53,10 +43,10 @@ var tripCallback = function(response) {
     var formData = $(this).serialize();
 
     $.post(url, formData, function(response){
-      $('#reserve-form').html('<p> Trip reserved! </p>');
-
-      // What do we get in the response?
+      $('#reserve-form').html('<p> Trip reserved for ' + this.name + '! </p>');
       console.log(response);
+    }).fail(function() {
+      $("#errors").html('<p>Reservation failed! Please check you have filled out all fields</p>');
     });
   });
 };
@@ -67,28 +57,16 @@ var failureCallback = function() {
 };
 
 var clickHandler2 = function() {
-  // console.log(clickHandler2);
-
   var url2 = "https://trektravel.herokuapp.com/trips/" + this.id;
   $.get(url2, tripCallback).fail(failureCallback);
 };
 
-var clickHandler = function() {
-  $.get(url, successCallback).fail(failureCallback);
-
-  // $('.trip-name').click(clickHandler2);
+var tripsClickHandler = function() {
+  $.get(url, allTripsCallback).fail(failureCallback);
 };
-
 
 $(document).ready(function() {
   url = buildUrl();
 
-  $('#load').click(clickHandler);
-
-
-  tripsTemplate = _.template($('#trips-template').html());
-  tripTemplate = _.template($('#trip-template').html());
-
-  // var tripsTemplate = _.template($('#trips-template').html());
-
+  $('#load').click(tripsClickHandler);
 });

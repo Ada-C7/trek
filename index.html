@@ -2,16 +2,17 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <link rel="stylesheet" href="styles/foundation.css">
+  <title>Treeeekkkkk</title>
 </head>
 <body>
   <section id="errors">
 
   </section>
   <section id="message">
-    
+
   </section>
-  <button id="load"> Fetch! </button>
+  <button class="button" id="load"> Take me away! </button>
   <div id="trips-list"></div>
   <script id="trips-template" type="text/template">
     <section class="individual-trip" id="<%- data.id %>">
@@ -30,19 +31,16 @@
   </script>
 
 
-  <div id="trip"></div>
+  <div id="trip" class="row"></div>
 
     <script id="trip-template" type="text/template">
-      <section>
+      <section class="column large-6 small-12">
         <h1 class="trip-name">
           <%- data.name %> - TripID: <%- data.id %>
         </h1>
         <h3>
           <%- data.continent %>
         </h3>
-        <p>
-          Description: <%- data.about %>
-        </p>
         <h3>
           Weeks: <%- data.weeks %>
         </h3>
@@ -52,8 +50,13 @@
         <h3>
           Price: <%- data.cost %>
         </h3>
+        <p>
+          <%- data.about %>
+        </p>
+
       </section>
-      <section id="reserve-form">
+      <section class="column large-5 small-12" id="reserve-form">
+        <h2>Reserve this trip!</h2>
         <form action="https://trektravel.herokuapp.com/trips/<%- data.id %>/reserve" method="post">
           <section>
             <label>Name</label>
@@ -68,9 +71,7 @@
             <input type="text" id="email" name="email"></input>
           </section>
 
-          <section class="button">
-            <button type="submit">Reserve Trip</button>
-          </section>
+            <button class="button" type="submit">Reserve Trip</button>
         </form>
     </section>
     </script>
