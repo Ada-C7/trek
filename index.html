@@ -23,7 +23,17 @@
       <ul>
         <li>
           <% var weeks = (data.weeks == 1) ? "week" : "weeks" %>
-          Travel to <%- data.continent %> for <%- data.weeks + " " + weeks %>!
+          <%
+            var travelMessage = "Travel"
+            if (data.continent) {
+              travelMessage += " to " + data.continent
+            }
+            if (data.weeks) {
+              travelMessage += " for " + data.weeks + " " + weeks
+            }
+            travelMessage += "!"
+          %>
+          <%- travelMessage %>
         </li>
       </ul>
     </li>
