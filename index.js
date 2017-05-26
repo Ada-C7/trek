@@ -1,7 +1,6 @@
 // TRIP LIST
 
 var tripsListCallback = function(response) {
-  console.log(response);
   $('#trips-list thead tr').append("<th>Name</th><th>Number of Weeks</th>");
   var tripsListTemplate = _.template($('#trips-list-template').html());
   for ( i = 0; i < response.length; i++){
@@ -14,6 +13,9 @@ var tripsListCallback = function(response) {
   // would do this dynamically but because of the number of fake trips and fake contients, creating this manually
   var continents = ["Africa", "Asia", "Australasia", "Europe", "South America", "North America", "Antarctica"];
   createContinentFilters(continents);
+
+  var maxBudget = 300000;
+  createBudgetFilter(maxBudget);
 };
 
 var tripsListClickHandler = function() {
@@ -53,28 +55,36 @@ var reservationClickHandler = function(e) {
 };
 
 // CONTINENT FILTER
+
 var createContinentFilters = function(continentsArray){
-  // may need to create template for header to avoid duplicate. Add clear class
   $('#trip-filters').append("<h4>Filter by Contient<h4>");
   var continentFilterTemplate = _.template($('#continent-filter-template').html());
   for ( i = 0; i < continentsArray.length; i++){
     var newContinentFilter = continentFilterTemplate({
       continent: continentsArray[i]
     });
-    console.log(continentsArray[i]);
    $('#trip-filters').append($(newContinentFilter));
   }
 };
 
-// var continentFilterCallback = function(){
-//   console.log("In the continent filter callback! wooo");
-// };
-
 var continentFilterClickHandler = function(){
-  console.log($(this));
   url = "https://trektravel.herokuapp.com/trips/continent?query=" + $(this).attr('id');
   $.get(url,tripsListCallback).fail(failureCallback);
   $('.clear').empty();
+};
+
+// BUDGET FILTER
+
+var createBudgetFilter = function(maxBudget){
+  $('#trip-filters').append("<h4>Filter by Budget<h4>");
+  var budgetFilterTemplate = _.template($('#budget-filter-template').html());
+  var newBudgetFilter = budgetFilterTemplate({
+    maxBudget: maxBudget
+  });
+  $('#trip-filters').append($(newBudgetFilter));
+};
+
+var budgetFilterClickHandler = function(){
 };
 
 
