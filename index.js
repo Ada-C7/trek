@@ -27,84 +27,120 @@ var loadDocument = function() {
       tripInfoClickDirector(event);
     }
   });
-};
+
+  $('#trip-list').on('click', '#make-res', function(event) {
+
+    $('form').submit(function(event) {
+      event.preventDefault();
+
+      var url = $(this).attr("action");
+      var id = event.target.parentElement.id;
+
+      url += id;
+      url += "/reserve";
+
+      var formData = $(this).serialize();
+
+      $.post(url, formData, function(response){
+        $('#message').html('<p> Enjoy your trip! </p>');
+        console.log(response);
+      }).fail(function(){
+        $('#message').html('<p>Can not make reservation.</p>');
+      });
+
+    });
+
+    });
+  };
 
 
-// Click director for trip information
+  // Click director for trip information
 
-var tripInfoClickDirector = function(event) {
-  var uniqueId = event.target.parentElement.id;
+  var tripInfoClickDirector = function(event) {
+    var uniqueId = event.target.parentElement.id;
 
-  var individualTripUrl = url + "/" + uniqueId;
-  var response = $.get(individualTripUrl, tripInfoSucessCallback).fail(failureCallback);
-};
-
-
-// Callbacks
-
-// Trip list success callback
-var tripListSuccessCallback = function(response) {
-  console.log("Successful request for list of trips.");
-  console.log(response);
-
-  generateList(response);
-};
-
-// Individual Trip Information success callback
-var tripInfoSucessCallback =  function(response) {
-  console.log("Successful request for trip information. (Trip Name: " + response.name + ")");
-  console.log(response);
-
-  generateTripInfo(response);
-
-};
-
-// Generic failure callback
-var failureCallback = function() {
-  console.log("Something went wrong.");
-  $("#errors").html("<h1> AJAX request failed. </h1>");
-};
+    var individualTripUrl = url + "/" + uniqueId;
+    var response = $.get(individualTripUrl, tripInfoSucessCallback).fail(failureCallback);
+  };
 
 
-// Template generation functions
+  // Callbacks
 
-// Trip List template generator function
-var generateList = function(response) {
-  var tripTemplate = _.template($('#trip-item-template').html());
+  // Trip list success callback
+  var tripListSuccessCallback = function(response) {
+    console.log("Successful request for list of trips.");
+    console.log(response);
 
-  for (var i = 0; i < response.length; i++) {
+    generateList(response);
+  };
+
+  // Individual Trip Information success callback
+  var tripInfoSucessCallback =  function(response) {
+    console.log("Successful request for trip information. (Trip Name: " + response.name + ")");
+    console.log(response);
+
+    generateTripInfo(response);
+
+  };
+
+  // Generic failure callback
+  var failureCallback = function() {
+    console.log("Something went wrong.");
+    $("#errors").html("<h1> AJAX request failed. </h1>");
+  };
+
+
+  // Template generation functions
+
+  // Trip List template generator function
+  var generateList = function(response) {
+    var tripTemplate = _.template($('#trip-item-template').html());
+
+    for (var i = 0; i < response.length; i++) {
+      var generatedHtml = tripTemplate(
+        {
+          data: response[i]
+        }
+      );
+      $('#trip-list').append($(generatedHtml));
+    }
+  };
+
+  // Individual Trip Information template generator function
+  var generateTripInfo = function(response) {
+    var tripTemplate = _.template($('#trip-info-template').html());
     var generatedHtml = tripTemplate(
       {
-        data: response[i]
+        data: response
       }
     );
-    $('#trip-list').append($(generatedHtml));
-  }
-};
+    var idSelection = '#' + response.id;
 
-// Individual Trip Information template generator function
-var generateTripInfo = function(response) {
-  var tripTemplate = _.template($('#trip-info-template').html());
-  var generatedHtml = tripTemplate(
-    {
-      data: response
-    }
-  );
-  var idSelection = '#' + response.id;
-
-  $(idSelection).append($(generatedHtml));
-};
+    $(idSelection).append($(generatedHtml));
+  };
 
 
-// Toggle logic function
+  // Toggle logic function
 
-var toggleTripInfo = function(id) {
-  var idSelection = '#' + id;
+  var toggleTripInfo = function(id) {
+    var idSelection = '#' + id;
 
-  $('.trip-info', idSelection).toggle();
-  $('form', idSelection).toggle();
-  $('.submit', idSelection).toggle();
-};
+    $('.trip-info', idSelection).toggle();
+    $('form', idSelection).toggle();
+    $('.submit', idSelection).toggle();
+  };
 
 
-$(document).ready(loadDocument());
+  $(document).ready(loadDocument());
+
+  // Form submission function
+
+  //   var formSubmit = function(event) {
+  //   event.preventDefault();
+  //
+  //   var url = $(this).attr("action");
+  //   var id = event.target.parentElement.id;
+  //
+  //   url += id;
+  //   url += "/reserve";
+  // };
