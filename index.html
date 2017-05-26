@@ -21,7 +21,43 @@
 
     <div id="message"></div>
 
-    <form class="category-form">
+    <section class="dropdown category" >
+      <button class="dropbtn">Trips by Max Budget</button>
+      <div class="dropdown-content">
+        <a href="#" data-category="budget">500</a>
+        <a href="#" data-category="budget">1000</a>
+        <a href="#" data-category="budget">1500</a>
+        <a href="#" data-category="budget">2000</a>
+        <a href="#" data-category="budget">2500</a>
+        <a href="#" data-category="budget">3000</a>
+        <a href="#" data-category="budget">3500</a>
+        <a href="#" data-category="budget">4000</a>
+      </div>
+    </section>
+
+    <section class="dropdown category" >
+      <button class="dropbtn">Trips by Max Weeks</button>
+      <div class="dropdown-content">
+        <a href="#" data-category="weeks">1</a>
+        <a href="#" data-category="weeks">2</a>
+        <a href="#" data-category="weeks">3</a>
+      </div>
+    </section>
+
+    <section class="dropdown category" >
+      <button class="dropbtn">Trips by Continent</button>
+      <div class="dropdown-content" id="category-continent">
+        <a href="#" data-category="continent">Africa</a>
+        <a href="#" data-category="continent">Antarctica</a>
+        <a href="#" data-category="continent">Asia</a>
+        <a href="#" data-category="continent">Australia</a>
+        <a href="#" data-category="continent">Europe</a>
+        <a href="#" data-category="continent">North America</a>
+        <a href="#" data-category="continent">South America</a>
+      </div>
+    </section>
+
+    <!-- <form class="category-form">
       <section id="category-budget">Trips by Max Budget
         <select name="budget">
           <option value="500">500</option>
@@ -65,7 +101,7 @@
           <button type="submit">Go!</button>
         </section>
       </section>
-    </form>
+    </form> -->
     <button class="button" id="create_trip">Create New Trip</button>
   </header>
 

@@ -3,12 +3,6 @@ var buildUrl = function(option){
   return "https://trektravel.herokuapp.com/trips/" + option;
 };
 
-var categoryBuildUrl = function(option){
-  return "https://trektravel.herokuapp.com/trips/" + option;
-};
-
-
-
 $(document).ready(function() {
   $("#home").click(function() {
     window.location.reload(true);
@@ -16,16 +10,70 @@ $(document).ready(function() {
 
   $("#button").click(tripsClickHandler);
 
-  $(".category-form").submit(function(e){
-    e.preventDefault();
-    var formData = $(this).serialize();
-    var urlArry = formData.split("=")
-    var url = buildUrl(urlArry[0]+"?query="+urlArry[1]);
-    $.get(url, tripsSuccessCallback).fail(failureCallback);
-  });
+  // $(".category-form").submit(function(e){
+  //   e.preventDefault();
+  //   var formData = $(this).serialize();
+  //   var urlArry = formData.split("=")
+  //   var url = buildUrl(urlArry[0]+"?query="+urlArry[1]);
+  //   $.get(url, tripsSuccessCallback).fail(failureCallback);
+  // });
+//
+// ---------------------------------------------
+//
+//
+// /////============= Using Form instead of Dropdown menu================
+// // $(".category-form").submit(function(e){
+// //   e.preventDefault();
+// //   var formData = $(this).serialize();
+// //   var urlArry = formData.split("=")
+// //   var url = buildUrl(urlArry[0]+"?query="+urlArry[1]);
+// //   $.get(url, tripsSuccessCallback).fail(failureCallback);
+// // });
+// /////==================================================================
+//
+// $(".dropdown-item").on("click", function(){
+//   console.log(this);
+//   var category = $(this).attr("data-category");
+//   if (category == "budget"){
+//     var url = "budget?query=" + $(this).html();
+//     console.log(url);
+//   } else if (category == "weeks"){
+//     var url = "weeks?query=" + $(this).html();
+//   } else {
+//     var url = "continent?query=" + $(this).html();
+//   }
+//   categoryClickHandler(url);
+// });
+//
+// });
+//
+// var categoryClickHandler = function(url){
+// console.log(buildUrl(url));
+// // $.get(url, tripsSuccessCallback).fail(failureCallback);
+// }
+//
 
-  $("#create_trip").click(createTripClicHandler);
+// -----------------------------------------------
+
+  $("#category-budget [href]").on("click", function(){
+    console.log(this);
+    var url = "budget?query=" + $(this).html();
+    categoryClickHandler(url);
 });
+
+
+  // $("#category-budget [href]").click(categoryClickHandler)
+  $("#category-weeks [href]").click(categoryClickHandler)
+  $("#category-continent [href]").click(categoryClickHandler)
+
+  // $("[href]").click(categoryClickHandler)
+  // $(".dropdown-content").on("click", "href", categoryClickHandler);
+});
+
+var categoryClickHandler = function(url){
+  console.log(buildUrl(url));
+  // $.get(url, tripsSuccessCallback).fail(failureCallback);
+}
 
 var createTripClicHandler = function(){
   $("#display").empty();
