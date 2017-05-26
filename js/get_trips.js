@@ -3,7 +3,7 @@ $(document).ready(function() {
   var listAllTrips = function(response) {
     response.forEach(function (each_trip) {
       //make rows with using trip template
-      console.log(response)
+      // console.log(response)
       var tripHtml = tripTemplate({trip: each_trip}); //passing the whole trip obhect
       $("#trip_table").append($(tripHtml));
     }); //3
