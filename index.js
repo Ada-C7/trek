@@ -37,7 +37,7 @@ var successSignUpCallback = function() {
 
 var failureCallback = function() {
   console.log("Didn't work :(");
-  $("#message").html("<h1>AJAX request failed!</h1>");
+  $("#message").html("AJAX request failed!");
 };
 
 var alwaysCallback = function() {
@@ -64,7 +64,7 @@ var getTrek = function(event) {
 
 var signUp = function(event) {
   event.preventDefault();
-  var url = $(this).attr("action") + "XJMAKSD";
+  var url = $(this).attr("action");
   // console.log(url);
   var formData = $(this).serialize();
   // console.log(formData);
@@ -75,6 +75,7 @@ $(document).ready(function() {
   $('body').on('click', '#load-treks', getTreks);
 
   $('#treks').on('click', '.load-trek', getTrek);
+  
   // $('button').on('click', '.button', toggleDropdown);
   // $('input').on('keyup', '#myInput', filterFunction);
 });

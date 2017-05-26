@@ -15,7 +15,7 @@ body {
   color: white;
 }
 
-body, h2, h4, button {
+body, h2, h4, h6, button {
   font-family: 'Khand', sans-serif;
 }
 
@@ -47,7 +47,7 @@ header {
 }
 
 /*treks styles*/
-#myInput {
+/*#myInput {
     border-box: box-sizing;
     background-position: 14px 12px;
     background-repeat: no-repeat;
@@ -85,7 +85,7 @@ header {
 
 .show {
   display:block;
-}
+}*/
 
 /*attempt at background gradient overlay, didn't like it*/
 /*div {
