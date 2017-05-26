@@ -9,40 +9,66 @@
 
 var url = "https://trektravel.herokuapp.com/trips";
 
-// Click Director
 
-var clickDirector = function(event) {
+// loadDocument function
 
-  var uniqueId = event.target.id;
+var loadDocument = function() {
+  // Passed in tripListClickDirector as anonymous function.
+  $('#load').click(function(event) {
+    $.get(url, tripListSuccessCallback).fail(failureCallback);
+  });
 
-  if (uniqueId === "load") {
-    $.get(url, successCallback).fail(failureCallback);
-  } else {
-    var individualTripUrl = url + "/" + uniqueId;
-    var response = $.get(individualTripUrl, successCallback).fail(failureCallback);
-  }
+  $('#trip-list').on('click', '.trip-name', function(event) {
+    var id = event.target.parentElement.id;
+
+    if ($('#' + id).find('ul').length > 0) {
+      toggleTripInfo(id);
+    } else {
+      tripInfoClickDirector(event);
+    }
+  });
 };
+
+
+// Click director for trip information
+
+var tripInfoClickDirector = function(event) {
+  var uniqueId = event.target.parentElement.id;
+
+  var individualTripUrl = url + "/" + uniqueId;
+  var response = $.get(individualTripUrl, tripInfoSucessCallback).fail(failureCallback);
+};
+
 
 // Callbacks
 
-var successCallback = function(response) {
-  console.log("Successful request.");
+// Trip list success callback
+var tripListSuccessCallback = function(response) {
+  console.log("Successful request for list of trips.");
   console.log(response);
 
-  if (response.length > 1) {
-    generateList(response);
-  } else {
-    generateTripInfo(response);
-  }
+  generateList(response);
 };
 
+// Individual Trip Information success callback
+var tripInfoSucessCallback =  function(response) {
+  console.log("Successful request for trip information. (Trip Name: " + response.name + ")");
+  console.log(response);
+
+  generateTripInfo(response);
+
+};
+
+// Generic failure callback
 var failureCallback = function() {
   console.log("Something went wrong.");
   $("#errors").html("<h1> AJAX request failed. </h1>");
 };
 
-// Template functions
 
+// Template generation functions
+
+// Trip List template generator function
 var generateList = function(response) {
   var tripTemplate = _.template($('#trip-item-template').html());
 
@@ -56,6 +82,7 @@ var generateList = function(response) {
   }
 };
 
+// Individual Trip Information template generator function
 var generateTripInfo = function(response) {
   var tripTemplate = _.template($('#trip-info-template').html());
   var generatedHtml = tripTemplate(
@@ -63,20 +90,21 @@ var generateTripInfo = function(response) {
       data: response
     }
   );
-
   var idSelection = '#' + response.id;
 
-  if ($(idSelection).find('ul').length > 0) {
-    $('.trip-info', idSelection).remove();
-  } else {
-    $(idSelection).append($(generatedHtml));
-  }
+  $(idSelection).append($(generatedHtml));
 };
 
-$(document).ready(function() {
-  $('#load').click(clickDirector);
 
-  $('#trip-list').on('click', '.show-info', function(event) {
-    clickDirector(event);
-  });
-});
+// Toggle logic function
+
+var toggleTripInfo = function(id) {
+  var idSelection = '#' + id;
+
+  $('.trip-info', idSelection).toggle();
+  $('form', idSelection).toggle();
+  $('.submit', idSelection).toggle();
+};
+
+
+$(document).ready(loadDocument());

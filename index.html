@@ -3,9 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title></title>
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
-  <script src="index.js" type="text/javascript"></script>
+
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,6 +11,9 @@
   <button id="load"> Find Trips </button>
   <div id="trip-list"></div>
 
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
+  <script src="index.js" type="text/javascript"></script>
 </body>
 </html>
 
@@ -20,13 +21,15 @@
 <script id="trip-item-template" type="text/template">
   <section class="show-info">
     <div id=<%- data.id %>>
+      <span class='trip-name'>
       <%- data.id + " " + data.name %>
+      </span>
     </div>
   </section>
 </script>
 
 <script id="trip-info-template" type="text/template">
-  <ul class="trip-info" id=<%- data.id %>>
+  <ul class="trip-info">
     <li><%- data.id %></li>
     <li><%- data.name %></li>
     <li><%- data.continent %></li>
