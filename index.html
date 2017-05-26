@@ -14,7 +14,7 @@
 
     <!-- Trips List -->
     <section id="trips-list">
-      <section id="trip-filters">
+      <section id="trip-filters" class="clear">
       </section>
       <table>
         <thead>
@@ -40,9 +40,7 @@
 
     <!-- Continent Filter Template -->
     <script id="continent-filter-template" type="text/template">
-      <ul class="clear">
-        <li class="continent-filter"><%= continent %></li>
-      </ul>
+      <button id="<%= continent %>" class="hollow button secondary continent-filter"><%= continent %></button>
     </script>
 
     <!-- Trip Details Template-->
