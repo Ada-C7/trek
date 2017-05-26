@@ -20,10 +20,16 @@
     </header>
     <section id="errors">
     </section>
-    <div id="opaque">
+    <div>
       <section id="content">
+        <h2 id="subtitle">hold on tight!</h2>
       </section>
     </div>
+    <footer>
+      <p id="attribution">
+        an Ada Cohort 7 project by Aurora Anderson
+      </p>
+    </footer>
 
 
     <!-- template for the individual trip view -->
@@ -136,18 +142,20 @@
           <section >
             <button class="button hollow"  type="submit">Search by Weeks</button>
           </section>
-        </form> -->
+        </form>
         </section>
 
     </script>
 
     <!-- template for the new trip view -->
     <script id="new-trip-template" type="text/javascript">
-      <article class="columns small-6">
+      <article class="columns small-12">
         <h2>
           <strong>Add a new trip!</strong>
         </h2>
         <form id="new-trip-form">
+          <section class="columns medium-6">
+
           <section>
             <label>Name</label>
             <input type="text" id="name" name="name"></input>
@@ -168,6 +176,10 @@
             <label>About</label>
             <textarea type="text" id="about" name="about"></textarea>
           </section>
+          </section>
+
+          <section class="columns medium-6">
+
           <section>
             <label>Category</label>
             <select size="1" id="category" name="category">
@@ -187,6 +199,8 @@
             <label>Cost</label>
             <input type="text" id="cost" name="cost"></input>
           </section>
+          </section>
+
           <section class="button hollow" id="add-new-trip">
             <button type="submit">Create Trip</button>
           </section>

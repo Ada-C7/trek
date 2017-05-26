@@ -118,7 +118,6 @@ var createTripClickHandler = function(event) {
   $.post(newTripUrl, data, newTripCallback).fail(failureCallback);
 };
 
-
 var newTripClickHandler = function() {
   getForm("content", "new-trip-template");
   $('#new-trip-form').submit(createTripClickHandler);
