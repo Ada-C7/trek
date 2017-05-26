@@ -15,7 +15,7 @@ var generateAllTrips = function(response) {
   $('#trip-sort').show();
   $('#trip-list').addClass('.trip-list-outline');
   $("#message").empty();
-
+  $("sort-weeks").val(""); // NEED TO FIGURE THIS OUT!!
   // compiles tripTemplate
   var tripsTemplate = _.template($('#trip-template').html());
 
@@ -77,14 +77,19 @@ var generateReservationResponse = function(response) {
   $('#single-trip-top').append('<p class="success">Thank you for signing up!  Your Reservation is Complete!</p>');
 };
 
-var sortClickHandler = function(event) {
+var sortContinentClickHandler = function(event) {
   event.preventDefault();
 
-  var continentData = $('select').serialize();
-  // var weeksData = $("#weeks").serialize();
+  var continentData = $('#continent').serialize();
   var sortUrl = allTripsUrl + "continent?" + continentData;
-  console.log(sortUrl);
-  // $.get(sortUrl, sortSuccess);
+  $.get(sortUrl, sortSuccess);
+};
+
+var sortWeeksClickHandler = function(event) {
+  event.preventDefault();
+  var weeksData = $("#weeks").serialize();
+  var sortUrl = allTripsUrl + "weeks?" + weeksData;
+  $.get(sortUrl, sortSuccess);
 };
 
 var sortSuccess = function(response) {
@@ -95,16 +100,18 @@ var sortSuccess = function(response) {
   var tripsTemplate = _.template($('#trip-template').html());
 
   var tripArray = response;
-  if (tripArray.length === 0) {
+  if (tripArray === undefined ) {
     $("#trip-list").append("<p>There are no trips that satisfy this criteria</p>");
+  } else {
+    for (var i = 0; i < tripArray.length; i++) {
+      var generatedHtml = tripsTemplate({
+        trip: tripArray[i]
+      });
+      // adds content
+      $('#trip-list').append($(generatedHtml));
+    }
   }
-  for (var i = 0; i < tripArray.length; i++) {
-    var generatedHtml = tripsTemplate({
-      trip: tripArray[i]
-    });
-    // adds content
-    $('#trip-list').append($(generatedHtml));
-  }
+
 };
 
 
@@ -117,5 +124,7 @@ $(document).ready(function() {
 
   $('#single-trip').on("submit", "#reserve", reserveClickHandler);
 
-  $('#trip-sort').on("submit", '#sort-continent', sortClickHandler);
+  $('#trip-sort').on("submit", '#sort-continent', sortContinentClickHandler);
+
+  $('#trip-sort').on("submit", '#sort-weeks', sortWeeksClickHandler);
 });
