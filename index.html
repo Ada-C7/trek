@@ -14,13 +14,28 @@
 
   <!-- Templates -->
   <script id="trips-template" type="text/template">
-    <a href="#" id="trip-link" ><h1 id=<%- trip.id %>><%- trip.name %></h1></a>
+    <a href="#" class="trip-link" id=<%- trip.id %>><h1><%- trip.name %></h1></a>
+  </script>
 
-<script id='trips-show-template' type="text/template"></script>
+<script id='trips-show-template' type="text/template">
+<h2><%- trip.name %></h2>
+<h2>About</h2>
+<p><%- trip.about %></p>
+<h2>Trip Number</h2>
+<p> <%- trip.id %></p>
+<h2>Location</h2>
+<p>< <%- trip.continent %></p>
+<h2>Category</h2>
+<p><%- trip.category %></p>
+<h2>Duration</h2>
+<p> <%- trip.weeks %></p>
+<h2>Money</h2>
+<p> <%- trip.cost %></p>
+</script>
     <!-- <tr class="trips-main"></tr>
     <tbody id="trips-body"></tbody> -->
     <!-- </table> -->
-  </script>
+
 
   <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
