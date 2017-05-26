@@ -12,12 +12,13 @@
   <body>
     <section id="errors"></section>
     <button class="button row" id="load-trips"> Show all trips! </button>
+
     <ul id="trips"></ul>
 
     <div class="popup-backdrop" id="popup">
       <article class="popup">
           <a id="close-popup" href="#">X</a>
-          <section id="popup-content"></section>
+          <div id="popup-content"></div>
           <!-- <a id="close-popup" class="popup-close">x</a> -->
           <button class="button" id="reserve-spot">Reserve Spot</button>
           <form action="https://trektravel.herokuapp.com/trips/1/reserve" method="post">
@@ -33,5 +34,44 @@
           </form>
       </article>
     </div>
+
+
+    <script id="trip-list-template" type="text/template">
+      <li id=<%- trip.id %>>
+        <h4>
+          <%- trip.name %>
+        </h4>
+        <p>
+          Destination: <%- trip.continent %>
+        </p>
+        <p>
+          Duration: <%- trip.weeks %> weeks
+        </p>
+      </li>
+    </script>
+
+    <script id="single-trip-template" type="text/template">
+      <section id=<%- trip.id %>>
+        <h2>
+          <%- trip.name %>
+        </h2>
+        <p>
+          Trek ID: <%- trip.id %>
+        </p>
+        <p>
+          Destination: <%- trip.continent %>
+        </p>
+        <p>
+          Duration: <%- trip.weeks %> weeks
+        </p>
+        <p>
+          Cost: $<%- trip.cost %>
+        </p>
+        <p>
+          <%- trip.about %>
+        </p>
+      </section>
+    </script>
+
   </body>
 </html>

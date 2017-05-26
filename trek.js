@@ -1,11 +1,13 @@
 const BASE_URL = "https://trektravel.herokuapp.com/trips/";
+var tripsTemplate; // do not use before running $(document).ready
+var tripTemplate;
 
 var successTripsCallback = function(response) {
-  // console.log(response);
-
-  var trips = $('#trips');
   response.forEach(function(trip) {
-    trips.append("<li id=" + trip['id'] + ">" + trip['name'] + "</li>");
+    var tripsHtml = tripsTemplate({
+      trip: trip
+    });
+    $('#trips').append($(tripsHtml));
   });
 };
 
@@ -18,11 +20,20 @@ var successTripsCallback = function(response) {
 // }
 
 var successTripInfoCallback = function(response) {
+  var tripHtml = tripTemplate({
+    trip: response
+  });
+
   console.log(response);
-  var id = response['id'];
-  var target = $('#popup-content');
-  target.empty();
-  target.append("<h2>" + response['name'] + "</h2>" + "<p class='about'>" + response['about'] + "</p>");
+
+  var trip = $('#popup-content');
+  trip.empty() // clear any trip info from previous popup window
+  trip.append($(tripHtml));
+  // console.log(response);
+  // var id = response['id'];
+  // var target = $('#popup-content');
+  // target.empty();
+  // target.append("<h2>" + response['name'] + "</h2>" + "<p class='about'>" + response['about'] + "</p>");
   popupHandler();
 }
 
@@ -56,14 +67,9 @@ var popupHandler = function() {
 };
 
 $(document).ready(function() {
-  // $("form").hide();
-
-  // $("#reserve-spot").click(function(){
-  //   // $("form").toggle();
-  //   $("form").show();
-  //   $("#reserve-spot").hide();
-  //
-  // });
+  // Complies template to display all trips and a single trip
+  tripsTemplate = _.template($('#trip-list-template').html());
+  tripTemplate = _.template($('#single-trip-template').html());
 
   $('#load-trips').click(clickHandler);
 
