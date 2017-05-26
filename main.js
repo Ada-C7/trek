@@ -98,16 +98,16 @@ $(document).ready(function(){
   // api request for all trips //
   $.get(urlTrips, successCallbackTrips).fail(failureCallback);
 
-  $('button.continent').click(function(event){
-    var url = $(this).attr("action");
+  $('button.query').click(function(event){
+    var url = urlTrips + $(this).attr("action");
     $.get(url, successCallbackTrips).fail(failureCallback);
   });
 
-  $('button.budget').click(function(event){
-    var url = urlTrips + $(this).attr("action");
-    console.log(url);
-    $.get(url, successCallbackTrips).fail(failureCallback);
-  });
+  // $('button.budget').click(function(event){
+  //   var url = urlTrips + $(this).attr("action");
+  //   console.log(url);
+  //   $.get(url, successCallbackTrips).fail(failureCallback);
+  // });
 
   // have to use .on because .get all trips might not be complete before document.ready (asynch issue)
   $('#trips-list').on('click', '.closed', function(event) {
