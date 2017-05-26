@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TrekkingPole</title>
+      <link href="foundation.css" media="screen" rel="stylesheet" type="text/css"/>
+      <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="">
+
+    <header class="row">
+      <section class="row">
+        <h1 class="columns small-12" id="header-title">TrekkingPole</h1>
+      </section>
+      <section class="top-nav">
+        <button id="get-trips" class="button hollow">Get All Trips</button>
+        <button id="filter-trips" class="button hollow">Filter Trips</button>
+        <button id="new-trip" class="button hollow">New Trip</button>
+      </section>
+    </header>
+    <section id="errors">
+    </section>
+    <div>
+      <section id="content">
+        <h2 id="subtitle">hold on tight!</h2>
+      </section>
+    </div>
+    <footer>
+      <p id="attribution">
+        an <a href="https://www.adadevelopersacademy.org">Ada</a> Cohort 7 project by <a href="https://www.github.com/auroralemieux">Aurora Anderson</a>
+      </p>
+    </footer>
+
+
+    <!-- template for the individual trip view -->
+    <script id="single-trip-template" type="text/javascript">
+      <article class="columns small-12 medium-12 large-9">
+        <h2>
+          <strong class="page-header"><%- thisTrip.name %></strong>
+        </h2>
+        <p>
+          <strong>Description: </strong>
+          <%- thisTrip.about %>
+        </p>
+        <p>
+          <strong>Duration: </strong>
+          <%- thisTrip.weeks %> weeks
+        </p>
+        <p>
+          <strong>Cost: </strong>
+          $<%- thisTrip.cost %>
+        </p>
+        <p>
+          <strong>World Region: </strong>
+          <%- thisTrip.continent %>
+        </p>
+        <p>
+          <strong>Category: </strong>
+          <%- thisTrip.category %>
+        </p>
+      </article>
+      <article class="columns small-12 medium-12 large-3">
+        <h2>
+          <strong class="page-header">Join the Trek!</strong>
+        </h2>
+        <form id="join-form">
+          <section>
+            <label>Name</label>
+            <input type="text" id="name" name="name"></input>
+          </section>
+          <section>
+            <label>Age</label>
+            <input type="text" id="age" name="age"></input>
+          </section>
+          <section>
+            <label>Email</label>
+            <input type="text" id="email" name="email"></input>
+          </section>
+          <section  id="sign-up">
+            <button class="button hollow" type="submit">Sign Up!</button>
+            <p class="hidden" id="join-id"> <%- thisTrip.id %> </p>
+          </section>
+        </form>
+        <section id="successful-sign-up">
+        </section>
+      </article>
+    </script>
+
+
+    <!-- template for the main index view -->
+    <script id="all-trips-template" type="text/javascript">
+
+      <article class="trip columns small-12 medium-4 large-3">
+        <h5>
+          <a class="get-trip" id=<%- trip.id %> ><%- trip.name %></a>
+        </h5>
+        <p>
+          <strong>Duration: </strong>
+          <%- trip.weeks %> <% if (trip.weeks > 1) { %>
+            weeks <%  } else { %> week <% } %>
+        </p>
+      </article>
+    </script>
+
+    <!-- template for filter trips forms -->
+    <script id="filter-trips-template">
+      <section class="filter-form columns small-12">
+
+        <form class="filter-form" id="continent-filter">
+          <h3 class="page-header">Continent</h3>
+          <section class="filter-type">
+            <select size="1" id="continent-sort" name="continent">
+              <option>Africa</option>
+              <option>Antarctica</option>
+              <option>Asia</option>
+              <option>Australasia</option>
+              <option>Europe</option>
+              <option>North America</option>
+              <option>South America</option>
+            </select>
+            <button class="button hollow"  type="submit">Search by Continent</button>
+          </section>
+        </form>
+
+        <form class="filter-form" id="price-filter">
+          <h3 class="page-header">Max Cost</h3>
+          <section class="filter-type">
+            <input type="text" id="max-price" name="budget"></input>
+            <button class="button hollow"  type="submit">Search by Cost</button>
+          </section>
+        </form>
+
+        <form class="filter-form" id="weeks-filter">
+          <h3 class="page-header">Max Duration</h3>
+          <section class="filter-type">
+            <input type="text" id="max-week" name="weeks"></input>
+            <button class="button hollow"  type="submit">Search by Weeks</button>
+          </section>
+        </form>
+        </section>
+
+    </script>
+
+    <!-- template for the new trip view -->
+    <script id="new-trip-template" type="text/javascript">
+      <article class="columns small-12">
+        <h2 class="page-header">
+          add a new trip
+        </h2>
+        <form id="new-trip-form">
+          <section class="columns medium-6">
+
+          <section>
+            <label>Name</label>
+            <input type="text" id="name" name="name"></input>
+          </section>
+          <section>
+            <label>Continent</label>
+            <select size="1" id="continent-new" name="continent">
+              <option>Africa</option>
+              <option>Antarctica</option>
+              <option>Asia</option>
+              <option>Australasia</option>
+              <option>Europe</option>
+              <option>North America</option>
+              <option>South America</option>
+            </select>
+          </section>
+          <section>
+            <label>About</label>
+            <textarea type="text" id="about" name="about"></textarea>
+          </section>
+          </section>
+
+          <section class="columns medium-6">
+
+          <section>
+            <label>Category</label>
+            <select size="1" id="category" name="category">
+              <option>everything</option>
+              <option>historical</option>
+              <option>entertainment</option>
+              <option>culture</option>
+              <option>nature</option>
+              <option>adventure</option>
+            </select>
+          </section>
+          <section>
+            <label>Weeks</label>
+            <input type="text" id="weeks" name="weeks"></input>
+          </section>
+          <section>
+            <label>Cost</label>
+            <input type="text" id="cost" name="cost"></input>
+          </section>
+          </section>
+
+          <section class="button hollow" id="add-new-trip">
+            <button type="submit">Create Trip</button>
+          </section>
+        </form>
+        <section id="successful-new-trip-create">
+        </section>
+      </article>
+    </script>
+
+
+    <!-- template for join trip -->
+    <script id="join-trip-template" type="text/javascript">
+      <article class="joined">
+        <p>Successfully signed up for
+          <%- joined.name %>!
+        </p>
+      </article>
+    </script>
+
+    <!-- template for create trip -->
+    <script id="create-trip-template" type="text/javascript">
+      <article class="created">
+        <p>Successfully created new trip
+          <%- newTrip.name %>!
+        </p>
+      </article>
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" type="text/javascript"></script>
+    <script src="trek.js" type="text/javascript"></script>
+
+  </body>
+</html>

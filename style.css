@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Antic|IM+Fell+English+SC|Kurale');
+@import url('https://fonts.googleapis.com/css?family=Allura|La+Belle+Aurore|Nothing+You+Could+Do|Petit+Formal+Script');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Comfortaa";
+}
+
+body {
+  display: block;
+  position: relative;
+  min-height: 675px;
+}
+
+body::after {
+  content: "";
+  background: url("http://www.environmentandsociety.org/sites/default/files/styles/popup/public/wegener-expedition2-walk_0.jpg?itok=u9iamiKA") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: .5;
+  display: block;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+#header-title {
+  font-family: "IM Fell English SC";
+}
+
+#header-title, #errors {
+  text-align: center;
+}
+
+#subtitle {
+  font-family: "La Belle Aurore";
+  text-align: center;
+  margin-top: 100px;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+.page-header {
+  font-family: "La Belle Aurore";
+  text-align: center;
+  margin-top: 20px;
+}
+
+button, p {
+  font-family: "Antic";
+}
+
+.hidden {
+  display: none;
+}
+
+.top-nav {
+  display: block;
+  text-align: center;
+}
+
+.top-nav button {
+  display: inline-block;
+}
+
+.filter-type {
+  display: inline-flex;
+  text-align: center;
+}
+
+.filter-form {
+  display: block;
+  text-align: center;
+}
+
+.filter-form button {
+  width: 175px;
+  margin-left: 20px;
+}
+
+.filter-form select, .filter-form input {
+  width: 300px;
+}
+
+#narrow-search {
+  margin: 25px 35px 0;
+}
+
+#content {
+  overflow: scroll;
+  min-height: 500px;
+}
+
+#attribution {
+  font-size: .75em;
+  text-align: center;
+  margin-bottom: 10px;
+}
