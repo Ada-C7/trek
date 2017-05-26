@@ -60,11 +60,8 @@ $(document).ready(function() {
       $('form').submit(function(e){
         e.preventDefault();
         var url = $(this).attr("action");
-        var formData = $(this).serialize().split('&');
-        for(var i = 0; i < formData.length; i++) {
-          formData[i] = formData[i].replace("%3F", "?");
-        }
-        formData = formData.join('&');
+        var formData = $(this).serialize();
+        formData = formData.replace("%3F", "?");
         $('#trips').empty();
         $.get(url + formData, successCallback);
       });
