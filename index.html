@@ -104,11 +104,10 @@
 
     <!-- template for filter trips forms -->
     <script id="filter-trips-template">
-      <section class="columns small-6">
+      <section class="filter-form columns small-12">
 
-        <h2><strong class="page-header">narrow your search</strong></h2>
-        <form id="continent-filter">
-          <label>Continent</label>
+        <form class="filter-form" id="continent-filter">
+          <h3 class="page-header">Continent</h3>
           <section class="filter-type">
             <select size="1" id="continent-sort" name="continent">
               <option>Africa</option>
@@ -123,16 +122,16 @@
           </section>
         </form>
 
-        <form id="price-filter">
-          <label>Max Cost</label>
+        <form class="filter-form" id="price-filter">
+          <h3 class="page-header">Max Cost</h3>
           <section class="filter-type">
             <input type="text" id="max-price" name="budget"></input>
             <button class="button hollow"  type="submit">Search by Cost</button>
           </section>
         </form>
 
-        <form id="weeks-filter">
-          <label>Max Duration</label>
+        <form class="filter-form" id="weeks-filter">
+          <h3 class="page-header">Max Duration</h3>
           <section class="filter-type">
             <input type="text" id="max-week" name="weeks"></input>
             <button class="button hollow"  type="submit">Search by Weeks</button>
@@ -145,8 +144,8 @@
     <!-- template for the new trip view -->
     <script id="new-trip-template" type="text/javascript">
       <article class="columns small-12">
-        <h2>
-          <strong class="page-header">add a new trip</strong>
+        <h2 class="page-header">
+          add a new trip
         </h2>
         <form id="new-trip-form">
           <section class="columns medium-6">

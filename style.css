@@ -49,6 +49,7 @@ h1 {
 .page-header {
   font-family: "La Belle Aurore";
   text-align: center;
+  margin-top: 20px;
 }
 
 button, p {
@@ -70,6 +71,25 @@ button, p {
 
 .filter-type {
   display: inline-flex;
+  text-align: center;
+}
+
+.filter-form {
+  display: block;
+  text-align: center;
+}
+
+.filter-form button {
+  width: 175px;
+  margin-left: 20px;
+}
+
+.filter-form select, .filter-form input {
+  width: 300px;
+}
+
+#narrow-search {
+  margin: 25px 35px 0;
 }
 
 #content {
