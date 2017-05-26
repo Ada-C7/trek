@@ -4,8 +4,11 @@
     <meta charset="utf-8">
     <title>Ground Trek</title>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="js/vendor/modernizr.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
     <script src="index.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+
 </head>
 
 <body>
@@ -37,8 +40,6 @@
                 <strong>Category:</strong>
                 <%- trip.category %>
             </p>
-
-            <button id="myBtn">Make Reservation</button>
             </section>
     </script>
 
@@ -47,7 +48,8 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <div id="message"></div>
-            <form action="https://trektravel.herokuapp.com/trips/1/reserve" method="post">
+            <form id='reserveForm' method="post">
+                <input type='hidden' id='trip_id' name='trip_id'>
                 <section>
                     <label>Name</label>
                     <input type="text" id="name" name="name"></input>
@@ -67,6 +69,14 @@
             </form>
         </div>
     </div>
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/fastclick.js"></script>
+    <script src="js/foundation.min.js"></script>
+
+    <script>
+        $(document).foundation();
+    </script>
 
 </body>
 
