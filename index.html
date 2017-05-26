@@ -45,22 +45,25 @@
       <li>Trip cost: $<%- trip.cost %></li>
     </ul>
     <form  id="reservation-form" action="" method="post" data-trip-id="<%- trip.id%>">
-      <section>
-        <label>Name</label>
-        <input type="text" id="name" name="name"></input>
-      </section>
-      <section>
-        <label>Age</label>
-        <input type="text" id="age" name="age"></input>
-      </section>
-      <section>
-        <label>Email</label>
-        <input type="text" id="email" name="email"></input>
-      </section>
-      <section class="button">
-        <button class="reservation" type="submit">Reserve a trip</button>
-      </section>
-    </form>
+      <div class="small-4 small-left columns">
+        <section>
+          <label>Name</label>
+          <input type="text" id="name" name="name"></input>
+        </section>
+        <section>
+          <label>Age</label>
+          <input type="text" id="age" name="age"></input>
+        </section>
+        <section>
+          <label>Email</label>
+          <input type="text" id="email" name="email"></input>
+        </section>
+
+        <section class="button">
+          <button class="reservation" type="submit">Reserve a trip</button>
+        </section>
+      </form>
+    </div>
   </script>
   <section id="trip_details"></section>
 
