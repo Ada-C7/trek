@@ -2,14 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Trips</title>
+    <title>Tripster</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script type="text/javascript" src="trek.js"></script>
   </head>
   <body>
-    <h1>Trips</h1>
-    <button id="get-trips">Get Trips</button>
+    <h1>Tripster</h1>
+    <button class="button hollow" id="get-trips">Get Trips</button>
 
     <main>
       <p id="alert"></p>
@@ -35,13 +37,13 @@
 
       <h3>Reserve a Spot!</h3>
       <form action=<%- url %> method="post">
-        Name:<br />
-        <input type="text" name="name" /><br />
-        Age:<br />
-        <input type="text" name="age" /><br />
-        Email:<br />
-        <input type="text" name="email" /><br />
-        <input type="submit" value="Submit" />
+        Name:
+        <input type="text" name="name" />
+        Age:
+        <input type="text" name="age" />
+        Email:
+        <input type="text" name="email" />
+        <input class="button hollow" type="submit" value="Submit" />
       </form>
     </script>
 
