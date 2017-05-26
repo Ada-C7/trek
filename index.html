@@ -74,49 +74,55 @@
   <section id="success"></section>
   <section id="errors"></section>
   <script class="column" id="trip-details-template" type="text/template">
-    <section class="center-vertical small-12 medium-12 large-6 columns">
+    <section class="center-vertical small-12 medium-12 large-12 columns">
       <h2>
         <%- data.name %>
       </h2>
-      <p>
-        <%- data.continent %>
-      </p>
-      <p>
-        $<%- data.cost %>
-      </p>
-      <p>
-        <%- data.weeks %> weeks
-      </p>
-      <p>
-        <%- data.about %>
-      </p>
-      <p>
-        Categories:
-      </p>
-      <p class="label">
-        <%- data.category %>
-      </p>
+        <p>
+          <%- data.continent %>
+        </p>
+        <p>
+          $<%- data.cost %>
+        </p>
+        <p>
+          <%- data.weeks %> weeks
+        </p>
+        <div class="columns">
+          <div class="small-12 medium-12 large-6 columns">
+            <p>
+              <%- data.about %>
+            </p>
+            <p>
+              Categories:
+            </p>
+            <p class="label">
+              <%- data.category %>
+            </p>
+          </div>
+          <div class="forms small-12 medium-12 large-6 columns" id="form" type="text/template">
+            <form action="https://trektravel.herokuapp.com/trips/"method = "post" id=<%-data.id%>>
+              <!-- id needs to be dynamically added -->
+              <section>
+                <label>Name</label>
+                <input type="text" id="name" name="name"></input>
+              </section>
+              <section>
+                <label>Age</label>
+                <input type="text" id="age" name="age"></input>
+              </section>
+              <section>
+                <label>Email</label>
+                <input type="text" id="email" name="email"></input>
+              </section>
+              <section>
+                <button class="button" type="submit">Reserve Trip</button>
+              </section>
+            </form>
+          </div>
+        </div>
+
     </section>
-    <div class="forms small-12 medium-12 large-6 columns" id="form" type="text/template">
-      <form action="https://trektravel.herokuapp.com/trips/"method = "post" id=<%-data.id%>>
-        <!-- id needs to be dynamically added -->
-        <section>
-          <label>Name</label>
-          <input type="text" id="name" name="name"></input>
-        </section>
-        <section>
-          <label>Age</label>
-          <input type="text" id="age" name="age"></input>
-        </section>
-        <section>
-          <label>Email</label>
-          <input type="text" id="email" name="email"></input>
-        </section>
-        <section>
-          <button class="button" type="submit">Reserve Trip</button>
-        </section>
-      </form>
-    </div>
+
   </script>
 
 
