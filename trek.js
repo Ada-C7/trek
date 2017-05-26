@@ -76,27 +76,6 @@ var submitForm = function(){$('#reserve-form').submit(function(e) {
 });
 };
 
-// post a new trip, repetitive
-
-// var submitTrip = function(){$('trip-form').submit(function(e) {
-//   e.preventDefault();
-//   var url = $(this).attr("action");
-//
-//   var formData = $(this).serialize();
-//
-//   $.post(url, formData, function(response){
-//     $('#success').html('<p> Trip Successfully Created! </p>');
-//     // $('#trips').empty();
-//     // $("#trips").append(response);
-//     // console.log(response);
-//   })
-//     .fail(function(){
-//     $('#message').html('<p>Trip Creation Failed</p>');
-//   });
-// });
-// };
-
-
 function submitTrip() {$('#trip-form').submit(function(e){
   e.preventDefault();
   // var url = $(this).attr("action");
@@ -119,9 +98,14 @@ function submitTrip() {$('#trip-form').submit(function(e){
 
 
 var getNewTripForm = function() {
-  // synonymous with successful callback
   $('#trips').empty();
-  console.log("got here");
+  // var target = $('#new-trip-template');
+  // var form = _.template($("#new-trip-template").html());
+
+  $('#trips').html($("#new-trip-template").html());
+  // console.log($("#trip-form").html());
+  // $('#trips').append($("#new-trip-template"));
+  // console.log($("#new-trip-template"));
   submitTrip();
 };
 
