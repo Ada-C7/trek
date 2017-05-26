@@ -26,7 +26,7 @@ $(document).ready(function() {
   };
 
   var successCallback = function(response) {
-    if(response.length === 0) {
+    if(response === undefined) {
       $('#trips').append('<p>No Trips Were Found</p>');
     } else {
         for (var i = 0; i < response.length; i++) {
@@ -59,7 +59,6 @@ $(document).ready(function() {
       $('#trips').append($(generatedHTML));
       $('form').submit(function(e){
         e.preventDefault();
-
         var url = $(this).attr("action");
         var formData = $(this).serialize().split('&');
         for(var i = 0; i < formData.length; i++) {
