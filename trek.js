@@ -57,7 +57,6 @@ var getTripDetails = function(id) {
 var submitForm = function(){$('form').submit(function(e) {
   e.preventDefault();
   var url = $(this).attr("action") + $(this).attr("id") + "/reserve"; // Retrieve the action from the form
-
   var formData = $(this).serialize();
 
   $.post(url, formData, function(response){
@@ -92,13 +91,14 @@ var submitTrip = function(){$('trip-form').submit(function(e) {
 });
 };
 
-var getNewTripForm = function(id) {
+var getNewTripForm = function() {
+  // synonymous with successful callback
   $('#trips').empty();
-
-  var target = $('#new-trip-template');
-  var newTripForm = _.template(target.html());
-  $('#trips').append($(newTripForm));
-  submitTrip();
+  console.log("got here");
+  // var target = $('#new-trip-template');
+  // var newTripForm = _.template(target.html());
+  // $('#trips').append($(newTripForm));
+  // submitTrip();
 
 
 };
@@ -112,7 +112,6 @@ var getTripsByContinent = function(id) {
   $('#trips').empty();
   $.getJSON(continentURL).success(successTripsCallback).fail(failureCallback);
 };
-
 
 
 $(document).ready(function() {
