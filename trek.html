@@ -4,13 +4,21 @@
     <meta charset="utf-8">
     <title>Trips</title>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
     <script src="trek.js" type="text/javascript"></script>
   </head>
+
   <body>
     <section id='errors'></section>
     <button id='load'>Trips</button>
     <ul id='listTrips'> </ul>
+    <script id="infoTrip" type="text/template">
+      <section>
+        <h2>
+          <strong><%- data.name %></strong>
+        </h2>
+      </section>
+    </script>
 
   </body>
 </html>
