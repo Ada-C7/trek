@@ -84,14 +84,14 @@ var sortContinentClickHandler = function(event) {
 
   var continentData = $('#continent').serialize();
   var sortUrl = allTripsUrl + "continent?" + continentData;
-  $.get(sortUrl, sortSuccess);
+  $.get(sortUrl, sortSuccess).fail(sortFail);
 };
 
 var sortWeeksClickHandler = function(event) {
   event.preventDefault();
   var weeksData = $("#weeks").serialize();
   var sortUrl = allTripsUrl + "weeks?" + weeksData;
-  $.get(sortUrl, sortSuccess);
+  $.get(sortUrl, sortSuccess).fail(sortFail);
 };
 
 var sortMoneyClickHandler = function(event) {
@@ -100,14 +100,19 @@ var sortMoneyClickHandler = function(event) {
    if ($.isNumeric(money)) {
      var moneyData = $("#money").serialize();
      var sortUrl = allTripsUrl + "budget?" + moneyData;
-     $.get(sortUrl, sortSuccess);
+     $.get(sortUrl, sortSuccess).fail(sortFail);
    } else {
      $("#message").html("<p>Please enter a number.</p>");
    }
 };
 
+var sortFail = function() {
+  $('#message').html("<p>I'm sorry, something has gone wrong.  Please try again shortly.</p>");
+};
+
 var sortSuccess = function(response) {
   $('#trip-list').empty();
+  $('#message').empty();
 
   $('#continent option').prop('selected', function() {
       return this.defaultSelected;
