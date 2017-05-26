@@ -28,7 +28,7 @@ var successCallback = function(response) {
 
     var id = tripsData[i]["id"];
     $(".name[data-id=" + id + "]").click(function() {
-      $(".hello[data-id=" + id + "]").slideToggle("fast");
+      $("#single-trip[data-id=" + id + "]").slideToggle("fast");
       $.get((tripUrl + id), successTripCallback).fail(failureCallback);
     });
 
