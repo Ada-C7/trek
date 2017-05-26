@@ -46,19 +46,16 @@
         </p>
         <p>Category: <%- data.category %> </p>
         <p>Cost: $<%- data.cost %> </p>
-        <div id= <%-"message" + data.id%>></div>
+        <div class="message" id= <%-"message" + data.id%>></div>
         <div class="small-4">
           <form id= <%- "form" + data.id %> action= <%-"https://trektravel.herokuapp.com/trips/" + data.id + "/reserve" %> method="post" >
             <section>
-              <label>Name</label>
+              <label for="name">Name</label>
+              <!-- debug this "for" thing to include the data id as the name -->
               <input type="text" id="name" name="name"></input>
             </section>
             <section>
-              <label>Age</label>
-              <input type="text" id="age" name="age"></input>
-            </section>
-            <section>
-              <label>Email</label>
+              <label for="email">Email</label>
               <input type="text" id="email" name="email"></input>
             </section>
             <section class="button">

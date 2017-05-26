@@ -50,6 +50,7 @@ $(document).ready(function() {
 
 
   $('#trek-list').on('click', '.unopened', function(event) {
+    console.log(event);
     clickHandler(event.target.dataset.id);
   });
 
