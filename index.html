@@ -11,6 +11,7 @@
       <button id="load">Get All Trips!</button>
     </section>
     <div class="errors"></div>
+
     <div id="trips"></div>
     <script id="list-template" type="text/template">
       <section>
@@ -40,9 +41,9 @@
         <p><strong>About:</strong> <%- data.about %></p>
       </section>
 
-      <div id="reservation-form"></div>
         <h3>Make a reservation!</h3>
-          <form id="form" action="https://trektravel.herokuapp.com/trips" method="post">
+        <div id="message"></div>
+          <form id="reservation-form" action="https://trektravel.herokuapp.com/trips/<%- data.id %>/reserve" method="post">
             <section>
               <label>Name</label>
               <input type="text" id="name" name="name"></input><br>
@@ -55,11 +56,8 @@
               <label>Age</label>
               <input type="text" id="age" name="age"></input>
             </section>
-            
-            <section class="button">
-              <button type="submit">Reserve</button>
-            </section>
-            <input id="reservation" type="button" value="Submit">
+              <button class="button" type="submit">Reserve</button>
+            <!-- <input id="reservation" type="button" value="Submit"> -->
           </form>
       </section>
     </script>
