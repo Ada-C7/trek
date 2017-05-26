@@ -13,6 +13,13 @@ var successCallback = function(response) {
     $("#trips").append($(generatedHtml));
   }
 
+
+};
+
+var tripDetailCallback = function(response) {
+  console.log("Success");
+  console.log(response);
+
   tripsDetailTemplate = _.template($('#trips-detail-template').html());
 
 };
@@ -30,6 +37,8 @@ var clickHandlerDetails = function(event) {
   // clear the "All Trips" list
   $("#trips").empty();
   // make API call for specific id (id passed from button)
+
+  $.get(url + '/' + this.id, tripDetailCallback).fail(failureCallback)
   // render template
   console.log("hi");
 };
@@ -44,9 +53,8 @@ $(document).ready(function() {
   $('#load').click(clickHandler);
 
 
-  $('.button.trip-detail').click(clickHandlerDetails);
+  // $('.button.trip-detail').click(clickHandlerDetails);
 
-  // trying to select class
   $("body").on('click', ".button.trip-detail", clickHandlerDetails);
 
   // $(document).ready(function() {
