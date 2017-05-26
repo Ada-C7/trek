@@ -1,10 +1,13 @@
-// $(document).foundation();
+// taking advantage of hositing?
 var tripsTemplate;
 var urlTrips;
 
-// var checkName = function(name) {
+//// form validation functions ////
 
-// };
+var checkName = function(name) {
+};
+
+//// callback functions /////
 
 var successCallbackTrips = function(response){
   console.log("success");
@@ -47,6 +50,8 @@ var failureCallback = function() {
   $("#errors").html("<h2>Something went wrong - check back later</h2>");
 };
 
+//// click handler functions /////
+
 $(document).ready(function(){
   tripsTemplate = _.template($('#trips-template').html());
   var urlTrips = "https://trektravel.herokuapp.com/trips";
@@ -65,7 +70,6 @@ $(document).ready(function(){
   });
 
   $('#trips-list').on('click', '.open', function(event){
-
     $('#tripDetails-' + event.target.dataset.id ).slideToggle();
   });
 
@@ -75,7 +79,6 @@ $(document).ready(function(){
     var url = $(this).attr("action");
     var formData = $(this).serialize();
     // console.log(formData);
-
     $.post(url, formData, successCallbackReserve).fail(failureCallback);
   });
 });

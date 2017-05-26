@@ -47,16 +47,16 @@
                 <form id=<%- 'form' + trip.id %> method="post" action=<%-"https://trektravel.herokuapp.com/trips/" + trip.id + "/reserve" %> >
                   <section>
                     <label>Name</label>
-                    <input type="text" id="name" name="name"></input>
+                    <input type="text" id="name" name="name" required></input>
                   </section>
                   <section>
                     <label>Age</label>
-                    <input type="text" id="age" name="age"></input>
+                    <input type="text" id="age" name="age" required></input>
                   </section>
 
                   <section>
                     <label>Email</label>
-                    <input type="text" id="email" name="email"></input>
+                    <input type="text" id="email" name="email" required></input>
                   </section>
 
                   <section class="button">
@@ -81,7 +81,5 @@
     <script>
       $(document).foundation();
     </script> -->
-
-
   </body>
 </html>

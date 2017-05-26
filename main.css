@@ -9,21 +9,24 @@
 }
 
 h1 {
-  text-align: center;
+  background-color: aliceblue;
   margin: 0;
   margin-top: 2%;
   padding: 0;
-  
+  text-align: center;
 }
 
 h3 {
   color: blue;
-  border-bottom: solid;
+  background-color: lightgrey;
+  /*border-bottom: solid;*/
+  font-weight: bold;
   text-align: center;
 }
 
 h3:hover {
-  color:red;
+  color:purple;
+  background-color: Whitesmoke;
 }
 
 .reservedMessage {
