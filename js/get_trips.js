@@ -6,6 +6,7 @@ $(document).ready(function() {
       // console.log(response)
       var tripHtml = tripTemplate({trip: each_trip}); //passing the whole trip obhect
       $("#trip_table").append($(tripHtml));
+      $("#trip_details").html("");
     }); //3
   };
     var failureListTrips = function() {
@@ -20,5 +21,5 @@ $(document).ready(function() {
 
     var tripTemplate = _.template($('#trips').html());
     $('#load').click(getAllTrips); //1
-
+    $('#load').trigger("click");
   });
