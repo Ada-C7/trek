@@ -42,12 +42,12 @@ $(document).ready(function() {
   tripsTemplate = _.template($('#trips-item-template').html());
 
   $('#load').click(clickHandler);
+
+
   $('.button.trip-detail').click(clickHandlerDetails);
 
   // trying to select class
-  // $(".button.trip-detail").on('click', function(){
-  //  console.log("yo");
-});
+  $("body").on('click', ".button.trip-detail", clickHandlerDetails);
 
   // $(document).ready(function() {
   //   tripsDetailTemplate = _.template($('#trips-detail-template').html());
