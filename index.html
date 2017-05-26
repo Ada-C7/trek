@@ -7,16 +7,19 @@
     <link rel="stylesheet" href="css/app.css">
     <title></title>
   </head>
-  <body>
-    <h1>Welcome to Trek</h1>
-    <button id="load" class="button">See All Trips</button>
-    <section id="errors"></section>
-    <section id="message"></section>
+    <header>
 
+      <h1>Welcome to Trek</h1>
+      <button id="load" class="button">See All Trips</button>
+      <section id="errors"></section>
+      <section id="message"></section>
+    </header>
+  <body>
     <div id="trip-list"></div>
     <script id="trek-list-template" type="text/template">
       <div class="small-12 columns medium-6 columns end large-4 columns end">
       <section class="trip-block">
+
         <h4>
           <a href= "#" class="trek-link" data-trip-id= "<%- data.id %>"><%- data.name %></a>
         </h4>

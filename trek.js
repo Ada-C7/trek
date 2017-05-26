@@ -3,12 +3,12 @@
 url = "https://trektravel.herokuapp.com/trips";
 
 var clickHandler = function(event) {
-  $.get(url, successCallback);
+  $.get(url, successCallback).fail(failureCallback);
  };
 
 var localeClickHandler = function(event) {
   tripUrl = url + "/" + $(this).data().tripId;
- $.get(tripUrl, localeSuccessCallback);
+ $.get(tripUrl, localeSuccessCallback).fail(failureCallback);
   };
 
 var formClickHandler = function(e) {
@@ -17,7 +17,7 @@ var formClickHandler = function(e) {
   var formData = $("form").serialize();
     $.post(url, formData, function(e){
     $('#message').html('<p> Trip Reserved! </p>');
-    });
+  }).fail(failureCallback);
     $("form").trigger("reset");
 };
 

@@ -1,12 +1,36 @@
 .trip-block {
-  background-color: lightgrey;
+  background-color: white;
   border-style: solid;
   border-color: lightblue;
-  height: 10em;
+  height: 200px;
   text-align: center;
   margin: 1em;
 }
 
-body {
+html {
+  display: block;
   background-color: white;
+  background-image: url("../blue.jpg");
+  /*position: fixed;*/
+  /*padding-top: 300px;*/
+
+}
+
+body {
+
+display: block;
+}
+
+header {
+  width: 100%;
+  display: block;
+  background-color: white;
+  /*position: fixed;*/
+}
+
+
+
+
+.destination-photo {
+  height: 40px;
 }
