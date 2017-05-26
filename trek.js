@@ -33,6 +33,18 @@ var showCallback = function(info){
     });
     $('#show-list').append($(individualTrip));
 
+
+    $('form').submit(function(e){
+        e.preventDefault();
+
+        var url = $(this).attr('action');
+        var formData = $(this).serialize();
+
+        $.post(url, formData, function(response){
+            $('#reserve-form').html('Trip reserved!');
+            console.log(response);
+        });
+    });
 };
 
 var showClickHandler = function(){
@@ -40,18 +52,6 @@ var showClickHandler = function(){
     $.get(showUrl, showCallback).fail(failureCallback);
     $('#trips-list').empty();
 };
-
-$('form').submit(function(e){
-    e.preventDefault();
-
-    var url = $(this).attr('action');
-    var formData = $(this).serialize();
-
-    $.post(url, formData, function(response){
-        $('#message').html('Trip reserved!');
-        console.log(response);
-    });
-});
 
 $(document).ready(function(){
     $('#load').click(clickHandler);
