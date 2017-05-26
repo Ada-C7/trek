@@ -21,13 +21,15 @@
 <script id="trip-item-template" type="text/template">
   <section class="show-info">
     <div id=<%- data.id %>>
+      <span class='trip-name'>
       <%- data.id + " " + data.name %>
+      </span>
     </div>
   </section>
 </script>
 
 <script id="trip-info-template" type="text/template">
-  <ul class="trip-info" id=<%- data.id %>>
+  <ul class="trip-info">
     <li><%- data.id %></li>
     <li><%- data.name %></li>
     <li><%- data.continent %></li>
@@ -36,11 +38,4 @@
     <li><%- data.weeks %></li>
     <li><%- data.cost %></li>
   </ul>
-  <form action="https://trektravel.herokuapp.com/trips" method="post">
-    <div id="message"></div>
-    <section>
-      <label>Name</label>
-      <input type="text" id="name" name="name"></input>
-    </form>
-  </section>
 </script>
