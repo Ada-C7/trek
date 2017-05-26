@@ -11,8 +11,8 @@
   <body>
     <h1>Trips</h1>
       <div id='errors'></div>
+      <section id='trips-list'></section>
 
-      <div id='trips-list'>
         <script id="trips-template" type="text/template">
           <section class="trip" id=<%- 'trip-' + trip.id %> >
             <h3 class='closed' data-id=<%- trip.id %>  id=<%- 'show-hide-id-' + trip.id %> >
@@ -68,7 +68,6 @@
             </div>
           </section>
         </script>
-      </div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js'></script>

@@ -4,13 +4,12 @@ var urlTrips;
 
 //// form validation functions ////
 var validateName = function(name) {
-  var regex = /^[A-Za-z][-'a-zA-Z]+,?\s[A-Za-z][-'a-zA-Z]{0,100}$/;
+  var regex = /^[A-Za-z][-'a-zA-Z]{0,100}$/;
   var result = regex.test(name);
 
   if (result == false) {
     alert("please eneter a first and last name");
   } else { return result; }
-
 };
 
 var validateAge = function(age) {
@@ -65,7 +64,9 @@ var successCallbackTrip = function(response){
 var successCallbackReserve = function(response){
   console.log("callback from reserve: " + response);
   alert('Trip Reserved!');
+
   $('.reservedMessage').html('<p>You are Reserved for this Trip</p>')
+  $('#form' + response.id).hide();
 };
 
 var failureCallback = function() {
