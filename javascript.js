@@ -12,6 +12,7 @@ var tripsFail = function() {
 var generateAllTrips = function(response) {
   $('#single-trip').hide();
   $('#trip-list').show();
+  $('#trip-list').empty();
   $('#trip-sort').show();
   $('#trip-list').addClass('.trip-list-outline');
   $("#message").empty();
@@ -94,7 +95,14 @@ var sortWeeksClickHandler = function(event) {
 
 var sortSuccess = function(response) {
   $('#trip-list').empty();
-  console.log(response);
+
+  $('#continent option').prop('selected', function() {
+      return this.defaultSelected;
+  });
+
+  $('#weeks option').prop('selected', function() {
+      return this.defaultSelected;
+  });
 
   // compile trips template
   var tripsTemplate = _.template($('#trip-template').html());
