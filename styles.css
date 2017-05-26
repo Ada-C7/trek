@@ -1,0 +1,68 @@
+@import url(
+  'https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1-rc1/css/foundation.css');
+
+  @import url(
+    "https://fonts.googleapis.com/css?family=Oswald");
+
+
+  body {
+    position: relative;
+    display: inline-block;
+    background-image:    url('http://geology.com/world/world-map-of-cities-at-night.jpg');
+    width: 100%;
+    height: 30em;
+    z-index: -1;
+    top: 5.5em;
+    padding: 30px;
+  }
+
+  table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 10px solid   #323087;
+    margin-bottom: 3rem;
+    opacity: 0.8;
+  }
+
+
+  tr {
+    background-color: #fbefb8;
+    color: #323087;
+  }
+
+  #vacations{
+    padding: 100px;
+    margin: auto;
+  }
+
+  /*.load{
+    border: 1px solid blue;
+    color: #fbefb8;
+    background-color: #323087;
+    padding: 5px;
+    font-family: impact;
+    font-size: 16px;
+  }*/
+
+  header{
+    top: 0px;
+    z-index: 1;
+    position: fixed;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-content: center;
+    text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;
+    font-family: impact;
+    background-color: #323087;
+    color: #fbefb8;
+  }
+
+  h1{
+    font-family: impact;
+  }
+  h2{
+    font-family: Oswald;
+    color: #fbefb8;
+  }

@@ -1,12 +1,10 @@
 var url = 'https://trektravel.herokuapp.com/trips/';
 
-
-
 var singleCallback = function (trekData){
   var trekTemplate = _.template($('#detailed-trip-template').html());
-  
+
   generatedHtml = trekTemplate({  data: trekData});
-  $('#trip_info').append($(generatedHtml));
+  $('#vacations').replaceWith($(generatedHtml));
 };
 
 var failureCallback = function () {
