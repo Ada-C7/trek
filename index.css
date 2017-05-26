@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Outline');
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -33,4 +35,53 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+body{
+  background-color: #eceff1;
+  text-align: center;
+  color: 263238;
+  width: 50%;
+  margin: auto;
+}
+
+ul{
+  list-style: none;
+}
+
+.oneTrip {
+  border-bottom: 2px solid #37474f;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.reserveBtn {
+  border: 2px solid #ffb300;
+  background-color: #ffb300;
+  margin: 20px;
+  padding: 5px;
+}
+
+h1{
+  font-family: 'Bungee Outline';
+  font-size: 7rem;
+  color: #ffc107;
+  background-color: #607d8b;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  border-radius: 25px;
+}
+
+form {
+  text-align: left;
+}
+
+.overlay {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:10;
+    pointer-events:none
 }

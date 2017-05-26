@@ -1,7 +1,6 @@
 var url = "https://trektravel.herokuapp.com/trips";
 
 var failureCallback = function() {
-  console.log("Didn't work :(");
   $("#errors").html("<h1>AJAX request failed!</h1>");
 };
 
@@ -21,10 +20,6 @@ var tripData = function(response){
       var target = 'li#' + response['id'];
 
       $(target).after($(generatedHtml))
-
-
-    console.log($('section#' + response['id']));
-    console.log($(sectionTarget).html());
 };
 
 var clickHandler = function(){
@@ -33,8 +28,6 @@ var clickHandler = function(){
         $(nextElement).remove();
       } else {
         tripURL = url + "/" + this.id;
-        console.log(this);
-
         $.get(tripURL, tripData).fail(failureCallback);
       }
 
@@ -42,6 +35,7 @@ var clickHandler = function(){
 
 $(document).ready(function() {
   tripTemplate = _.template($('#trip-template').html());
+
 
   $('form').submit(function(e) {
     // By default, the form will attempt to do it's own local POST so we want to prevent that default behavior
@@ -53,8 +47,6 @@ $(document).ready(function() {
     $.post(url, formData, function(response){
       $('#message').html('<p> Reservation Made! </p>');
 
-      // What do we get in the response?
-      console.log(response);
     });
   });
 
@@ -71,9 +63,6 @@ $(document).ready(function() {
         modal.style.display = "block";
         document.getElementById("reserveForm").action = "https://trektravel.herokuapp.com/trips/" + this.id + "/reserve";
         document.getElementById("trip_id").value = this.id.replace(/\D/g,'');
-        console.log($('#trip_id').val());
-        // console.log($('#reserveForm').val());
-        // $('form').form.elements["trip_id"].value = $('.reserveBtn').id;
     });
 
     // When the user clicks on <span> (x), close the modal
@@ -81,11 +70,4 @@ $(document).ready(function() {
         modal.style.display = "none";
     });
 
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.click = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-    };
 });
