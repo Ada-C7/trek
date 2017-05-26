@@ -28,8 +28,9 @@ var successCallback = function(response) {
 
     var id = tripsData[i]["id"];
     $(".name[data-id=" + id + "]").click(function() {
-      $("#single-trip[data-id=" + id + "]").slideToggle("fast");
+      console.log("clicked on a trip");
       $.get((tripUrl + id), successTripCallback).fail(failureCallback);
+      console.log("got");
     });
 
   })
@@ -44,7 +45,7 @@ var successTripCallback = function(response) {
   var singleGeneratedHtml = singleTripTemplate({
     singleTrip: singleTripData
   });
-  $('#single-trip').append($(singleGeneratedHtml));
+  $('#single-trip').html($(singleGeneratedHtml));
 };
 
 var failureCallback = function() {

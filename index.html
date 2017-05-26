@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Trek</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.css" integrity="sha256-HvCeSydJNzoSMx62rwDrqUqNt+qU6Uet2Lmqm9+Jg3Y=" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
@@ -13,7 +14,6 @@
         <h2 class="name" data-id="<%- trip.id %>">
           <%- trip.name %>
         </h2>
-        <div id="single-trip" data-id="<%- trip.id %>"></div>
         <p>
           <strong>Continent:</strong>
           <%- trip.continent %>
@@ -61,7 +61,8 @@
       </section>
     </script>
 
-  <div id="trips"></div>
+  <div id="trips" class="columns medium-6 small-12"></div>
+  <div id="single-trip" data-id="<%- trip.id %>" class="columns medium-6 small-12"></div>
 
 
 
