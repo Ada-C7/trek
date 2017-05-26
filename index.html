@@ -3,14 +3,44 @@
 <head>
   <meta charset="utf-8">
   <title>Lazy Traveler</title>
+  <link rel="stylesheet" href="css/foundation.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/foundation.css" />
+
 </head>
 <body class="row">
   <main>
     <section class="small-12 medium-4 large-4 columns" id="trips">
       <h1 >Welcome, Lazy Travelers</h1>
-      <button class="button" id="load">See Trips</button>
+      <button class="button" id="load">See All Trips</button>
+      <button class="button" id="show-filter">See Filters</button>
+      <button class="button" id="hide-filter">Hide Filters</button>
+
+      <div id="filter">
+        <form action="https://trektravel.herokuapp.com/trips/" method="get" id="continent-filter">
+          <label for="continent">Search by Continent</label>
+          <div class="share">
+            <input type="text" name="continent" placeholder="Africa" required="required"></input>
+            <button class="button">Go!</button>
+          </div>
+        </form>
+
+        <form action="https://trektravel.herokuapp.com/trips/" method="get" id="week-filter">
+          <label for="maximum-weeks">Search by Weeks</label>
+          <div class="share">
+            <input type="number" name="weeks" min="1" max="20" placeholder= "1" required="required"></input>
+            <button class="button">Go!</button>
+          </div>
+        </form>
+
+        <form action="https://trektravel.herokuapp.com/trips/" method="get" id="budget-filter">
+          <label for="maximun-budget">Search by Budget (USD)</label>
+          <div class="share">
+            <input type="text"  name="budget" placeholder="999.99" required="required"></input>
+            <button class="button">Go!</button>
+          </div>
+        </form>
+      </div>
+
     </section>
 
     <section class="small-12 medium-4 large-4 columns">
@@ -71,16 +101,16 @@
       <div id="message"></div>
       <form action="https://trektravel.herokuapp.com/trips/" method="post" id="reserveForm">
         <section>
-          <label>Name</label>
-          <input type="text" id="name" name="name"></input>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required="required"></input>
         </section>
         <section>
-          <label>Age</label>
-          <input type="text" id="age" name="age"></input>
+          <label for="age">Age</label>
+          <input type="text" id="age" name="age" required="required"></input>
         </section>
         <section>
-          <label>Email</label>
-          <input type="text" id="email" name="email"></input>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required="required"></input>
         </section>
 
         <section>

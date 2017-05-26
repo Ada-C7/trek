@@ -4,9 +4,17 @@
 }
 
 main {
-  margin-top: 10%;
+  margin: 10%, 20%;
 }
 
-* {
-  font-size: 0.8rem;
+h1, h2, h3, h4 {
+  font-size: 1.7em;
+}
+
+.share {
+  display: inline-flex;
+}
+
+.share>input {
+  width:150px;
 }
