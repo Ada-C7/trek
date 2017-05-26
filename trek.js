@@ -1,6 +1,7 @@
 const BASE_URL = "https://trektravel.herokuapp.com/trips/";
 var tripsTemplate; // do not use before running $(document).ready
 var tripTemplate;
+var formTemplate;
 
 var successTripsCallback = function(response) {
   response.forEach(function(trip) {
@@ -11,96 +12,91 @@ var successTripsCallback = function(response) {
   });
 };
 
-// var successTripInfoCallback = function(response) {
-//   console.log(response);
-//   var id = response['id'];
-//   var trip = $('#' + id);
-//   trip.append("<p>" + response['about'] + "</p>");
-//   popupHandler();
-// }
-
 var successTripInfoCallback = function(response) {
   var tripHtml = tripTemplate({
     trip: response
   });
-
-  console.log(response);
-
-  var trip = $('#popup-content');
-  trip.empty() // clear any trip info from previous popup window
-  trip.append($(tripHtml));
-  // console.log(response);
-  // var id = response['id'];
-  // var target = $('#popup-content');
-  // target.empty();
-  // target.append("<h2>" + response['name'] + "</h2>" + "<p class='about'>" + response['about'] + "</p>");
+  var trip = $('#trip-info');
+  trip.html($(tripHtml));
   popupHandler();
-}
-
-var failureCallback = function() {
-  console.log("Unable to process request.");
-  $('#errors').html("<h1>Ajax request failed!</h1>")
 };
 
-var clickHandler = function() {
+var successReservationCallback = function() {
+  $('#popup').fadeOut(500);
+  $('#message').html('<h3> Spot reserved! </h3>');
+};
+
+var failureCallback = function() {
+  console.log("Ajax request failed!");
+  $('#message').html("<h3>Unable to process request at this time.</h3>")
+};
+
+var tripsClickHandler = function() {
   $.get(BASE_URL, successTripsCallback).fail(failureCallback);
 };
 
-var popupHandler = function() {
-  $('#popup').fadeIn(500);
-
-  $("form").hide();
-  $("#reserve-spot").show();
-
-  $("#reserve-spot").click(function(){
-    // $("form").toggle();
-    $("form").show();
-    $("#reserve-spot").hide();
-
-  });
-
-  // close popup window
-  $('#close-popup').on('click', function(event)  {
-      event.preventDefault();
-      $('#popup').fadeOut(500);
-  });
+var tripClickHandler = function() {
+  var id = $(this).attr("id");
+  var url = BASE_URL + id
+  $.get(url, successTripInfoCallback).fail(failureCallback);
 };
+
+var popup = {
+  open: function() {
+    $('#popup').fadeIn(500);
+    $("form").empty();
+    $("#reserve-spot").show();
+  },
+  close: function() {
+    event.preventDefault();
+    $('#popup').fadeOut(500);
+  }
+};
+
+var popupHandler = function() {
+  popup.open();
+
+  // Loads form to reserve a spot when the 'reserve-spot' button is clicked
+  $("#reserve-spot").click(formHandler.display);
+  $('form').submit(formHandler.submit);
+
+  $('#close-popup').click(popup.close);
+};
+
+var formHandler = {
+  display: function() {
+    var formHtml = formTemplate({});
+    $('form').html($(formHtml));
+    $("#reserve-spot").hide();
+  },
+  submit: function() {
+    event.preventDefault();
+    var id = $('#trip-info section').attr("id");
+    var url = BASE_URL + id + $(this).attr("action");
+    var formData = $(this).serialize();
+
+    $.post(url, formData, successReservationCallback).fail(failureCallback);
+  }
+};
+
+// var submitFormHandler = function() {
+//     event.preventDefault();
+//     var id = $('#trip-info section').attr("id");
+//     var url = BASE_URL + id + $(this).attr("action");
+//     var formData = $(this).serialize();
+//
+//     $.post(url, formData, successReservationCallback).fail(failureCallback);
+// };
 
 $(document).ready(function() {
   // Complies template to display all trips and a single trip
   tripsTemplate = _.template($('#trip-list-template').html());
   tripTemplate = _.template($('#single-trip-template').html());
+  formTemplate = _.template($('#reserve-spot-template').html());
 
-  $('#load-trips').click(clickHandler);
+  $('#load-trips').click(tripsClickHandler);
 
-  $('#trips').on('click', 'li', function() {
-      var id = $(this).attr("id");
-      var url = BASE_URL + id
-      $.get(url, successTripInfoCallback).fail(failureCallback);
-  });
-
-  $('form').submit(function(event) {
-    event.preventDefault();
-    var url = $(this).attr("action");
-    var formData = $(this).serialize();
-
-    $.post(url, formData, function(response) {
-      $('#popup').fadeOut(500);
-      $('#errors').html('<h3> Spot reserved! </h3>');
-      console.log(response);
-    }).fail(function() { $('#errors').html('<h3> Unable to reserve spot at this time. </h3>')})
-  });
-
-  // $('#popup-link').on('click', function(event)  {
-  //     event.preventDefault();
-  //     $('#popup').fadeIn(500);
-  //
-  // });
-  //
-  // // close popup window
-  // $('#close-popup').on('click', function(event)  {
-  //     event.preventDefault();
-  //     $('#popup').fadeOut(500);
-  // });
+  // Loads individual trip info when that trip is clicked
+  $('#trips').on('click', 'li', tripClickHandler);
 
 });
