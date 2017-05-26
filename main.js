@@ -98,7 +98,7 @@ $(document).ready(function(){
   // api request for all trips //
   $.get(urlTrips, successCallbackTrips).fail(failureCallback);
 
-  $('#asia').click(function(event){
+  $('button.continent').click(function(event){
     var url = $(this).attr("action");
     $.get(url, successCallbackTrips).fail(failureCallback);
   });
