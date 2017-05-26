@@ -15,20 +15,6 @@ body {
   color: white;
 }
 
-/*attempt at gradient overlay, didn't like it*/
-/*div {
-  background: rgba(0, 0, 0, 0.4);
-  background: linear-gradient(to top, white, rgba(0, 0, 0, 0.4));
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-   -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-   width: 100% !important;
-  position: relative;
-}*/
-
 body, h2, h4, button {
   font-family: 'Khand', sans-serif;
 }
@@ -39,6 +25,7 @@ ul {
 
 .button {
   color: white;
+  font-size: 2rem;
 }
 
 /*header styles*/
@@ -48,8 +35,25 @@ h1 {
 }
 
 header {
-  /*padding-top: 35%;
-  padding-left: 10%;*/
+  position: absolute;
+  display: none;
 }
 
 /*treks styles*/
+
+
+
+
+/*attempt at gradient overlay, didn't like it*/
+/*div {
+background: rgba(0, 0, 0, 0.4);
+background: linear-gradient(to top, white, rgba(0, 0, 0, 0.4));
+background-repeat: no-repeat;
+background-size: cover;
+background-attachment: fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+width: 100% !important;
+position: relative;
+}*/

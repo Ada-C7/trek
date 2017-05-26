@@ -61,7 +61,7 @@ var getTrek = function(event) {
 
 var signUp = function(event) {
   event.preventDefault();
-  var url = $(this).attr("action");
+  var url = $(this).attr("action") + "XJMAKSD";
   // console.log(url);
   var formData = $(this).serialize();
   // console.log(formData);
@@ -73,3 +73,20 @@ $(document).ready(function() {
 
   $('#treks').on('click', '.load-trek', getTrek);
 });
+
+// css jquery
+$(function(){
+    $(window).resize(function(e){
+        placeHeader();
+    });
+    placeHeader();
+    // hide it before it's positioned
+    $('header').css('display', 'inline');
+});
+
+function placeHeader() {
+    var windHeight = $(window).height();
+    var footerHeight = $('header').height();
+    var offset = parseInt(windHeight) - parseInt(footerHeight);
+    $('header').css('top', offset);
+}
