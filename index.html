@@ -9,7 +9,10 @@
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-  <script src="trek.js" type="text/javascript"></script>
+  <!-- <script src="js/trek.js" type="text/javascript"></script> -->
+  <script src="js/get_trips.js" type="text/javascript"></script>
+  <script src="js/trip.js" type="text/javascript"></script>
+  <script src="js/reserve.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -41,26 +44,26 @@
       <li>Trip weeks: <%- trip.weeks %></li>
       <li>Trip cost: $<%- trip.cost %></li>
     </ul>
-      <form  id="reservation-form" action="" method="post" data-trip-id="<%- trip.id%>">
-        <section>
-          <label>Name</label>
-          <input type="text" id="name" name="name"></input>
-        </section>
-        <section>
-          <label>Age</label>
-          <input type="text" id="age" name="age"></input>
-        </section>
-        <section>
-          <label>Email</label>
-          <input type="text" id="email" name="email"></input>
-        </section>
-        <section class="button">
-          <button class="reservation" type="submit">Reserve a trip</button>
-        </section>
-      </form>
-    </script>
-    <section id="trip_details"></section>
+    <form  id="reservation-form" action="" method="post" data-trip-id="<%- trip.id%>">
+      <section>
+        <label>Name</label>
+        <input type="text" id="name" name="name"></input>
+      </section>
+      <section>
+        <label>Age</label>
+        <input type="text" id="age" name="age"></input>
+      </section>
+      <section>
+        <label>Email</label>
+        <input type="text" id="email" name="email"></input>
+      </section>
+      <section class="button">
+        <button class="reservation" type="submit">Reserve a trip</button>
+      </section>
+    </form>
+  </script>
+  <section id="trip_details"></section>
 
 
-  </body>
-  </html>
+</body>
+</html>

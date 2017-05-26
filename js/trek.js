@@ -60,9 +60,8 @@ $(document).ready(function() {
 
   var tripTemplate = _.template($('#trips').html());
   $('#load').click(clickHandler);
+  
+  var tripIdTemplate = _.template($('#trip_detail').html());
   $('#trip_table').on('click', '.id_td', clickonId);
   $('#trip_table').on('click', '.detail', clickonDetail);
-
-  var tripIdTemplate = _.template($('#trip_detail').html());
-
 });
