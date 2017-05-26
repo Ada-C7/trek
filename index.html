@@ -1,34 +1,36 @@
 
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset="utf-8">
     <title>Trek</title>
+    <link href="foundation.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="stylesheets.css">
   </head>
 
   <body>
     <h1>Trek</h1>
+    <a></a>
 
     <section id="errors"></section>
-    <button id="load"> All Trips </button>
-    <ul id="trips"></ul>
+    <button id="load" class="button"> All Trips </button>
+    <section id="index-page" class="row" data-equalizer="trips"></section>
     <section id="show-page"></section>
 
     <!-- underscore TEMPLATE: show all trips -->
     <script id="index-trip-template" type="text/template">
       <section>
-        <h2><%- data.name %></h2>
+        <div class="columns medium-3" data-equalizer-watch="trips">
+          <div class="card">
+            <h3><%- data.name %></h3>
 
-        <p>
-          <strong>Location:</strong> <%- data.continent %>
-        </p>
+            <p>
+               <%- data.weeks %> weeks in <%- data.continent %>
+            </p>
 
-        <p>
-          <strong>Duration:</strong> <%- data.weeks %> weeks
-        </p>
-
-        <button class="show"><%- data.id %></button>
+            <button class="button show"><%- data.id %></button>
+          </div>
+        </div>
       </section>
     </script>
 
@@ -71,15 +73,15 @@
           <input id="email" name="email" type="text"/>
 
           <section class="button">
-            <button id="submit" type="submit">Submit</button>
+            <button id="submit" type="submit" class="button">Submit</button>
           </section>
         </form>
 
       </section>
     </script>
 
-    <script src="jquery.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
-    <script src="index.js" type="text/javascript"></script>
+    <script src="jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>

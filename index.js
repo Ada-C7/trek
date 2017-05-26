@@ -1,3 +1,5 @@
+// single-page app with jQuery + AJAX
+
 var baseUrl = "https://trektravel.herokuapp.com/trips";
 
 //TODO: use $().remove instead of .toggle
@@ -19,14 +21,16 @@ var indexCallback = function(response) {
   // loop to create template for each trip object
   for (var i = 0; i < tripsData.length; i ++) {
     var index_template = tripTemplate( { data: tripsData[i] }); //rename
-    $('#trips').append(index_template);
+    // console.log(tripsData[i].id);
+    // $('#index-page div').data("id", tripsData[i].id);
+    $('#index-page').append(index_template);
   }
 
   $(".show").click(function(event) {
     var show_url = "";
     show_url = baseUrl + "/" + this.innerHTML.toString(); // id of trip
     $.get(show_url, showCallback).fail(failureCallback);
-    $("#trips").toggle(false);
+    $("#index-page").toggle(false);
   });
 
   // SHOW each trip--id grabbed from button html
@@ -46,12 +50,11 @@ var indexCallback = function(response) {
 //***********************ONCE DOM IS READY************************
 
 $(document).ready(function() {
-
-  $("#trips").toggle(false); //to turn trips 'off' on load
+  $("#index-page").toggle(false); //to turn trips 'off' on load
 
   $("#load").click(function(event) {
     $.get(baseUrl, indexCallback).fail(failureCallback);
-    $("#trips").toggle();
+    $("#index-page").toggle();
   });
 
   $('#show-page').on("submit", "form", (function(event) {
