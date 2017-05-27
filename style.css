@@ -3,43 +3,32 @@ p, h2, h3, button {
   font-family: 'Cormorant Garamond', serif;
 }
 
+.w {
+  font-size: 1500%;
+  color: #62c4d6;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+#bon-voyage {
+  width: 35%;
+  text-align: center;
+}
+
+.submit-button {
+  text-align: center;
+  width: 30%;
+  padding-top: 2%;
+}
+
+.form-box {
+  border-style: groove;
+}
 div {
   font-family: 'Cormorant Garamond', serif;
   text-align: center;
-}
-
-.w {
-  font-size: 1500%;
-}
-
-
-h1 {
-  font-family: 'Cormorant Garamond', serif;
-  text-align: center;
-}
-
-
-/*.button {
-  text-align: center;
-  width: 40px;
-
-}*/
-
-#bon-voyage {
-  width: 60px;
-}
-
-/*submit, .button {
-  text-align: center;
-  width: 30%;
-}*/
-
-.w-color-block {
-  /*display: inline;*/
-  background-color: #7db558;
-  align-self: center;
-  width: 200px;
-  height: 600px;
-  /*border-style: hidden;*/
-  border-radius: 1px;
 }
