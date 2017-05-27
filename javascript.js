@@ -1,6 +1,6 @@
 var failureCallback = function() {
   console.log("Didn't work :(");
-  $("#errors").html("<h1>AJAX request failed!</h1>");
+  $("#errors").html("<h2>AJAX request failed!</h2>");
 };
 
 var successCallback = function(response) {
@@ -46,7 +46,7 @@ var clickHandlerLocale = function(event) {
 };
 
 var clickHandlerReserve = function(event) {
-  
+
   event.preventDefault();
 
   var url = $(this).attr("action");

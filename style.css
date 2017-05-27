@@ -4,7 +4,6 @@
 
 body {
   background-image: url('dawn-landscape-mountains-nature.jpg');
-  /*background-image: url('landscape-animal-mountain-top.jpg');*/
   background-repeat:repeat-x;
   background-attachment:fixed;
   background-position: left top;
@@ -22,4 +21,8 @@ h1 {
 
 h2 {
   font-family: 'Rancho', cursive;
+}
+
+#message {
+  color: white;
 }
