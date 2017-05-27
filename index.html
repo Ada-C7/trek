@@ -6,9 +6,9 @@
   <link href="style.css" media="screen" rel="stylesheet" type="text/css">
 </head>
 <body>
-  
+
   <header>
-    <h1> Trek Trek Treks!</h1>
+    <h1> Trek Trek Treks</h1>
   </header>
 
   <main>
@@ -52,7 +52,7 @@
           <%- trek.about %>
         </p>
         <p>
-          <strong>How many weeks:</strong>
+          <strong>Trek length:</strong>
           <%- trek.weeks %>
         </p>
         <p>
@@ -61,7 +61,7 @@
         </p>
         <p>
           <strong>Cost:</strong>
-          <%- trek.cost %>
+          <%- "$" + trek.cost %>
         </p>
       </section>
       <form action=<%- "https://trektravel.herokuapp.com/trips/" + trek.id + "/reserve" %> method="post">

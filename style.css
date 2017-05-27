@@ -1,10 +1,6 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.css');
 
-@import url('https://fonts.googleapis.com/css?family=Ranchers|Rancho');
-
-/*.button {
-  background-color: blue;
-}*/
+@import url('https://fonts.googleapis.com/css?family=Ranchers|Rancho|Raleway');
 
 body {
   background-image: url('dawn-landscape-mountains-nature.jpg');
