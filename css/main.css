@@ -1,0 +1,59 @@
+/*body {
+  text-align: center;
+}*/
+
+#header {
+  text-align:center;
+  font-family: 'Scope One', serif;
+}
+#header h1 {
+  font-family: 'Monoton', cursive;
+  font-size: 5.0em;
+}
+
+body {
+   background-image: url("../assets/bg.jpeg");
+   background-size:  cover;
+   background-attachment: fixed;                 /* <------ */
+   background-repeat: no-repeat;
+   background-position: center center;
+}
+
+.trips {
+  height:300px;
+  width:300px;
+  text-align:center;
+  vertical-align: middle;
+  background-color: rgba(255,255,255, 0.75);
+  font-family: 'Scope One', serif;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.trips h2 {
+  font-family: 'Amatic SC', cursive;
+}
+
+
+.trips:hover {
+  opacity:1.0;
+}
+
+
+#trip {
+  background-color: rgba(255,255,255, 0.75);
+  font-family: 'Scope One', serif;
+}
+
+#trip h2 {
+  font-family: 'Amatic SC', cursive;
+}
+
+#filter-form {
+  background-color: rgba(255,255,255, 0.75);
+  padding: 2%;
+}
+
+#filter-form h2 {
+  font-family: 'Amatic SC', cursive;
+}
