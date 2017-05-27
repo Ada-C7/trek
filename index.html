@@ -12,16 +12,18 @@
 
     </section>
 
-    <div id="trips-list"></div>
+    <div id="trips-list" class='row'></div>
     <script id='trips-template' type='text/template'>
         <section class='each-trip' id='<%= trip.id %>' >
-            <h2>
-                <%- trip.name %>
-                <!-- <%- trip.id %> -->
-            </h2>
-            <p>
-                <%- trip.continent %> for <%- trip.weeks %> weeks
-            </p>
+            <div class='small-6 medium-4 column'>
+                <h2>
+                    <%- trip.name %>
+                    <!-- <%- trip.id %> -->
+                </h2>
+                <p>
+                    <%- trip.continent %> for <%- trip.weeks %> weeks
+                </p>
+            </div>
         </section>
     </script>
     <div id='show-list'></div>

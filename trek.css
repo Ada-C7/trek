@@ -1,11 +1,7 @@
-#whole-page {
+#trips-list {
     background-color: honeydew;
 }
 
-#trip-details {
-    background-color: mistyrose;
-}
-
-#reserve-details {
-    background-color: linen;
+.each-trip {
+    background-color: cadetblue;
 }
