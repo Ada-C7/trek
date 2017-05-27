@@ -21,7 +21,15 @@ var tripDetailCallback = function(response) {
   console.log(response);
   var generatedHtml = tripsDetailTemplate({trip: response});
 $('.vacationDetails').append($(generatedHtml));
+
+  // $("#hideTrip").hide();
+
 };
+
+function hideTripDetails() {
+  // $("#hideTrip").hide();
+  $(".vacationDetails").hide();
+}
 
 var failureCallback = function() {
   console.log("Nope");
@@ -42,6 +50,10 @@ var clickHandlerDetails = function(event) {
   console.log("hi");
 };
 
+
+// Not sure if I need a click handler for the hide button?
+
+
 // to get around scope
 var tripsTemplate;
 var tripsdetailTemplate;
@@ -60,4 +72,7 @@ $(document).ready(function() {
   // $(document).ready(function() {
   //   tripsDetailTemplate = _.template($('#trips-detail-template').html());
   // });
+
+
+
 });
