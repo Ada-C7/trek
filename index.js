@@ -16,19 +16,19 @@ var successCallbackTrek = function (response) {
   var generatedHtml = trekTemplateOne({
     data: response
   });
-  $('#' + response.id).removeClass('unopened').addClass('opened');
+  $('#' + response.id + ' h4').removeClass('unopened').addClass('opened');
   $('#' + response.id).append($(generatedHtml));
 
-  $('#form' + response.id).submit(function(e) {
+  $('#' + response.id + ' form').submit(function(e) {
     e.preventDefault();
     var url = $(this).attr("action");
     var formData = $(this).serialize();
     $.post(url, formData, function(response){
-      $('#message' + response.id).html('<p>  Trip Reserved! </p>');
-      $('#form' + response.id).hide();
+      $('#' + response.id + ' .message').html('<p>  Trip Reserved! </p>');
+      $('#' + response.id + ' form').hide();
     })
     .fail(function(){
-      $('#message').html('<p> Trip Reservation Failed </p>');
+      $('#' + response.id + '.message').html('<p> Trip Reservation Failed </p>');
     });
   });
 }
@@ -50,11 +50,13 @@ $(document).ready(function() {
 
 
   $('#trek-list').on('click', '.unopened', function(event) {
-    console.log(event);
+
     clickHandler(event.target.dataset.id);
   });
 
   $('#trek-list').on('click', '.opened', function(event){
-    $('#about' + event.target.dataset.id).toggle();
+    console.log(event.target.dataset.id);
+
+   $('#' + event.target.dataset.id + ' section.about').toggle();
   });
 });

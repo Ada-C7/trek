@@ -23,8 +23,8 @@
 
   <script id="trek-template" type="text/template">
     <div class="trek">
-      <section class="unopened" id= <%-data.id %> >
-        <h4 data-id= <%- data.id %> >
+      <section id= <%-data.id %> >
+        <h4 class="unopened" data-id= <%- data.id %> >
           <%- data.name %>
         </h4>
         <p>
@@ -39,19 +39,17 @@
 
 
   <script id="test-template" type="text/template">
-    <div class="template">
-      <section id= <%- "about" + data.id %> >
+      <section class="about">
         <p><strong> about: </strong>
           <%- data.about %>
         </p>
         <p>Category: <%- data.category %> </p>
         <p>Cost: $<%- data.cost %> </p>
-        <div class="message" id= <%-"message" + data.id%>></div>
+        <div class="message" ></div>
         <div class="small-4">
-          <form id= <%- "form" + data.id %> action= <%-"https://trektravel.herokuapp.com/trips/" + data.id + "/reserve" %> method="post" >
+          <form action= <%-"https://trektravel.herokuapp.com/trips/" + data.id + "/reserve" %> method="post" >
             <section>
               <label for="name">Name</label>
-              <!-- debug this "for" thing to include the data id as the name -->
               <input type="text" id="name" name="name"></input>
             </section>
             <section>
@@ -64,7 +62,6 @@
           </form>
         </div>
       </section>
-    </div>
   </script>
 </body>
 </html>

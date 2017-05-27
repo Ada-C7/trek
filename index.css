@@ -1,17 +1,11 @@
 header {
   max-width: 100%;
   background-color: black;
-  /*position: fixed;*/
-  /*top: 0px*/
 }
 
 header h4 {
   color: white;
   text-align: center;
-}
-
-form {
-
 }
 
 section h4 {
@@ -20,10 +14,6 @@ section h4 {
 
 section h4:hover {
   color: #4BB0BF;
-}
-
-.template {
-  /*padding: 20px;*/
 }
 
 .trek {
