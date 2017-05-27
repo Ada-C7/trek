@@ -1,0 +1,45 @@
+
+p, h2, h3, button {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+div {
+  font-family: 'Cormorant Garamond', serif;
+  text-align: center;
+}
+
+.w {
+  font-size: 1500%;
+}
+
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  text-align: center;
+}
+
+
+/*.button {
+  text-align: center;
+  width: 40px;
+
+}*/
+
+#bon-voyage {
+  width: 60px;
+}
+
+/*submit, .button {
+  text-align: center;
+  width: 30%;
+}*/
+
+.w-color-block {
+  /*display: inline;*/
+  background-color: #7db558;
+  align-self: center;
+  width: 200px;
+  height: 600px;
+  /*border-style: hidden;*/
+  border-radius: 1px;
+}
