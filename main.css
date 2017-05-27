@@ -2,13 +2,16 @@
   padding: 1%;
 }
 
-/*.row {*/
-  /*max-width: 100%;*/
-/*}*/
+.row {
+  max-width: 100%;
+  margin: 2%;
+}
+
 .trip {
   /*display: inline-block;*/
   padding: 1%;
-  border: solid;
+  /*margin: 1%;*/
+  /*border: solid;*/
   /*display: inline-block;*/
   /*text-align: center;*/
   /*padding: 1%*/

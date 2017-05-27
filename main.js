@@ -56,9 +56,6 @@ var successCallbackTrip = function(response){
 
   $('#trip-' + response.id).replaceWith($(generateHTML));
   $('#show-hide-id-' + response.id).removeClass('closed').addClass('open');
-  // where did $$ come from and it only works if you have $$
-  //- it appears to let you only grab the current element - comes from the browser - can only use with cool browsers (chrome, safari, firefox)
-  // $$('.slidingInfo').slideDown("slow");
   $('#tripDetails-' + response.id).slideDown("slow");
 };
 
@@ -89,11 +86,8 @@ $(document).ready(function(){
     $.get(url, successCallbackTrips).fail(failureCallback);
   });
 
-  // have to use .on because .get all trips might not be complete before document.ready (asynch issue)
   $('#trips-list').on('click', '.closed', function(event) {
     event.preventDefault();
-    // scope/context/boundaries for searching through with selectors
-    // var scope = event.target.parent;
     var urlTrip = urlTrips + "/" + event.target.dataset.id
     $.get(urlTrip, successCallbackTrip).fail(failureCallback);
   });
@@ -106,7 +100,7 @@ $(document).ready(function(){
     event.preventDefault();
     console.log("your in the submit form function");
 
-    // this will just give you just the value
+    // this will just give you just the input of the form
     var name = $(event.target.name).val();
     var age = $(this).find('#age').val();
     var email = $(event.target.email).val();
@@ -118,7 +112,3 @@ $(document).ready(function(){
     }
   });
 });
-
-// add validations for forms
-// add background color on header - make sure it appears cickable
-// add custom searches// - drop down menus with budject, weeks, and contitent
