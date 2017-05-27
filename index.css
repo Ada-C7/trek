@@ -1,0 +1,26 @@
+header {
+  max-width: 100%;
+  background-color: black;
+}
+
+header h4 {
+  color: white;
+  text-align: center;
+}
+
+section h4 {
+  text-decoration: underline;
+}
+
+section h4:hover {
+  color: #4BB0BF;
+}
+
+.trek {
+  padding: 40px;
+}
+
+.message {
+  font-size: 1.5em;
+  color: #4BB0BF;
+}
