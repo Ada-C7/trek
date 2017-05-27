@@ -6,6 +6,10 @@ $(document).ready(function() {
 
   var url = 'https://trektravel.herokuapp.com/trips';
 
+  var failCallback = function() {
+    $('#trips').append('<h3>There was an error handling your request</h3>');
+
+  }
   var singleTripCallback = function(response) {
     var generatedHTML = tripTemplate({
       trip: response
@@ -21,13 +25,13 @@ $(document).ready(function() {
       $.post(url, formData, function(response){
         $('#message').html('<p> You have reserved this trip </p>');
         console.log(response);
-      });
+      }).fail(failCallback);
     });
   };
 
   var successCallback = function(response) {
     if(response === undefined) {
-      $('#trips').append('<p>No Trips Were Found</p>');
+      $('#trips').append('<h3>No Trips Were Found</h3>');
     } else {
         for (var i = 0; i < response.length; i++) {
           var generatedHTML = tripsTemplate({
@@ -39,7 +43,7 @@ $(document).ready(function() {
         $('a').on("click", function() {
           var id = $(this).parent().parent().attr('id');
           $("#trips").empty();
-          $.get(url + "/" + id, singleTripCallback);
+          $.get(url + "/" + id, singleTripCallback).fail(failCallback);
         });
       }
 
@@ -63,7 +67,7 @@ $(document).ready(function() {
         var formData = $(this).serialize();
         formData = formData.replace("%3F", "?");
         $('#trips').empty();
-        $.get(url + formData, successCallback);
+        $.get(url + formData, successCallback).fail(failCallback);
       });
   });
 
