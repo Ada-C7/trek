@@ -39,6 +39,14 @@
         <li>$<%- trip['cost'] %></li>
       </ul>
       <button id="hideTrip" class="button" onclick="hideTripDetails()">Hide Trip Details</button>
+      <button id="reserve" class="button" onclick="reserve()">Reserve</button>
+      <form class="reserveForm">
+        Name:<br>
+        <input type="text" name="name"><br>
+        Email:<br>
+        <input type="text" name="email">
+        <input type="submit" value="Submit">
+      </form>
     </div>
   </script>
 

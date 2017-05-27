@@ -22,13 +22,17 @@ var tripDetailCallback = function(response) {
   var generatedHtml = tripsDetailTemplate({trip: response});
 $('.vacationDetails').append($(generatedHtml));
 
-  // $("#hideTrip").hide();
+  $(".reserveForm").hide();
 
 };
 
 function hideTripDetails() {
   // $("#hideTrip").hide();
   $(".vacationDetails").hide();
+}
+
+function reserve() {
+  $(".reserveForm").show();
 }
 
 var failureCallback = function() {
