@@ -1,0 +1,79 @@
+body{
+  font-family: 'Lora', serif;
+}
+header{
+  padding-top: 4%;
+  background-color: #E9E6F4;
+}
+#trip:empty{
+  display: none;
+}
+
+#load:hover, #new-trip-button:hover{
+  background-color: #832161;
+}
+#search-by-continent{
+  padding-top: 3%;
+}
+
+#trip{
+  background-color: #9B75A8;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+#trip h3{
+  color: white;
+}
+
+#sort-button:hover{
+  color: green;
+}
+#trip form{
+  width:75%;
+  margin: auto;
+}
+#trip form .button{
+  background-color: white;
+}
+
+main{
+  margin-left: 1%;
+  margin-right: 1%;
+}
+table{
+  width: 100%;
+}
+.see_trip:hover {
+  background-color: #3D2645;
+  color: #F0EFF4;
+}
+
+#message{
+  background-color: #F0EFF4;
+  color:#3D2645;
+  font-size: 120%;
+}
+
+#message:empty{
+  display:none;
+}
+#new-trip-callout{
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+
+#sort-by-continent-button, #sort-by-weeks-button{
+  color:#DA4167;
+  font-size: 120%;
+}
+
+#sort-by-continent-button:hover, #sort-by-weeks-button:hover{
+  color:#F0EFF4;
+  background-color: #DA4167;
+  color: white;
+}
+
+#continent-select, #budget-select{
+  width:70%;
+}
