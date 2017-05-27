@@ -13,7 +13,8 @@
   <body>
 
     <header>
-      <button class="button" id="load_list"> To Trips </button>
+      <h2>GO FOR IT!</h2>
+      <button class="button" id="load_list"> All Trips </button>
     </header>
 
     <main>
@@ -41,10 +42,10 @@
 
 <script id="list_head_template" type="text/template">
         <tr>
-          <th> Trip #</th>
-          <th> Destination</th>
-          <th> Continent</th>
-          <th> Duration <br />(weeks)</th>
+          <th>Trip # <br /><button data-sort = 'trip_sort' class = "sort_button button tiny"> < > </button> </th>
+          <th>Destination<br /> <button data-sort = 'destination_sort' class = "sort_button button tiny"> < > </button> </th>
+          <th>Continent<br /> <button data-sort = 'continent_sort' class = "sort_button button tiny"> < > </button> </th>
+          <th>Duration <br /> (weeks)<br /> <button data-sort = 'duration_sort' class = "sort_button button tiny"> < > </button> </th>
         </tr>
 </script>
 
@@ -52,10 +53,10 @@
         <tr>
           <td><%- data.id%></td>
           <td><%- data.name%></td>
-          <td><%- data.continent%></td>
+          <td><a class = 'query continent' data-query = '<%- data.continent%>'> <%- data.continent%>  </a></td>
           <td><%- data.weeks %></td>
           <td>
-            <button class="button trip tiny" id= 'getTrip'  data-tripid = <%- data.id%> >Info for trip <%- data.id%></button>
+            <button class="trip_button button tiny" id= 'getTrip'  data-tripid = <%- data.id%> >Info for trip <%- data.id%></button>
           </td>
         </tr>
 </script>
@@ -64,8 +65,9 @@
 <script id="trip_template" type="text/template">
 
   <section class = "row large-up-12 columns">
-    <div>
-      <h3>Trip <%- data.id%>: <%- data.name%>, <%- data.continent%></h3>
+    <div class = 'trip_headline'>
+      <h3>Trip <%- data.id%>: <%- data.name%>,  </h3>
+      <h3><a class = 'query continent' data-query = '<%- data.continent%>'> <%- data.continent%>  </a></h3>
     </div>
   </section>
 
@@ -83,8 +85,9 @@
 
       <div id = 'form1'>
         <p>
-          Make a reservation and go for it!
+          Make a reservation and ...
         </p>
+
         <form action = <%- url%> method="post">
           <section>
             <label>Name</label>
@@ -99,9 +102,10 @@
             <input type="text" id="email" name="email"></input>
           </section>
           <section>
-            <button class="button expanded success" type="submit" id= 'makeReservation'> go for it :) </button>
+            <button class="button expanded success" type="submit" id= 'makeReservation'> ...go for it :) </button>
           </section>
         </form>
+
       </div>
 
     </div>
