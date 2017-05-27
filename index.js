@@ -19,9 +19,8 @@ var successCallback = function(response) {
 var tripDetailCallback = function(response) {
   console.log("Success");
   console.log(response);
-
-  tripsDetailTemplate = _.template($('#trips-detail-template').html());
-
+  var generatedHtml = tripsDetailTemplate({trip: response});
+$('.vacationDetails').append($(generatedHtml));
 };
 
 var failureCallback = function() {
@@ -35,7 +34,7 @@ var clickHandler = function(event) {
 
 var clickHandlerDetails = function(event) {
   // clear the "All Trips" list
-  $("#trips").empty();
+  // $("#trips").empty();
   // make API call for specific id (id passed from button)
 
   $.get(url + '/' + this.id, tripDetailCallback).fail(failureCallback)
@@ -49,6 +48,7 @@ var tripsdetailTemplate;
 
 $(document).ready(function() {
   tripsTemplate = _.template($('#trips-item-template').html());
+  tripsDetailTemplate = _.template($('#trips-detail-template').html());
 
   $('#load').click(clickHandler);
 
