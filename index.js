@@ -51,12 +51,12 @@ $(document).ready(function() {
 
   $('#trek-list').on('click', '.unopened', function(event) {
 
-    clickHandler(event.target.dataset.id);
+    clickHandler(event.target.parentElement.id);
   });
 
   $('#trek-list').on('click', '.opened', function(event){
-    console.log(event.target.dataset.id);
+    // console.log(event.target.parentElement.id);
 
-   $('#' + event.target.dataset.id + ' section.about').toggle();
+   $('#' + event.target.parentElement.id + ' section.about').toggle();
   });
 });
