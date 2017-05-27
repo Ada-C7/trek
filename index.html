@@ -33,7 +33,11 @@
       <h3><%- trip['name'] %></h3>
       <h4><%- trip['continent'] %></h4>
       <p><%- trip['about'] %></p>
-      <!-- add button to hide -->
+      <ul class="deets">
+        <li><%- trip['weeks'] %> weeks</li>
+        <li><%- trip['category'] %></li>
+        <li>$<%- trip['cost'] %></li>
+      </ul>
       <button id="hideTrip" class="button" onclick="hideTripDetails()">Hide Trip Details</button>
     </div>
   </script>
