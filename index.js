@@ -14,23 +14,22 @@ var url = "https://trektravel.herokuapp.com/trips";
 
 var loadDocument = function() {
   // Passed in tripListClickDirector as anonymous function.
-  $('#load').click(function(event) {
+  $('#find-trips').click(function(event) {
     $.get(url, tripListSuccessCallback).fail(failureCallback);
   });
 
   $('#trip-list').on('click', '.trip-name', function(event) {
-    var id = event.target.parentElement.id;
+    var parentElement = event.target.parentElement;
+    var id = parentElement.id;
 
-    if ($('#' + id).find('ul').length > 0) {
-      toggleTripInfo(id);
+    if ($(parentElement).find('ul').length > 0) {
+      toggleTripInfo(parentElement);
     } else {
-      tripInfoClickDirector(event);
+      tripInfoClickDirector(id);
     }
   });
 
-  $('#trip-list').on('click', '#make-res', function(event) {
-
-    $('form').submit(function(event) {
+  $('#trip-list').on('submit', 'form', function(event) {
       event.preventDefault();
 
       var url = $(this).attr("action");
@@ -49,18 +48,14 @@ var loadDocument = function() {
       });
 
     });
-
-    });
   };
 
 
   // Click director for trip information
 
-  var tripInfoClickDirector = function(event) {
-    var uniqueId = event.target.parentElement.id;
-
-    var individualTripUrl = url + "/" + uniqueId;
-    var response = $.get(individualTripUrl, tripInfoSucessCallback).fail(failureCallback);
+  var tripInfoClickDirector = function(id) {
+    var individualTripUrl = url + "/" + id;
+    var response = $.get(individualTripUrl, tripInfoSuccessCallback).fail(failureCallback);
   };
 
 
@@ -75,7 +70,7 @@ var loadDocument = function() {
   };
 
   // Individual Trip Information success callback
-  var tripInfoSucessCallback =  function(response) {
+  var tripInfoSuccessCallback =  function(response) {
     console.log("Successful request for trip information. (Trip Name: " + response.name + ")");
     console.log(response);
 
@@ -123,24 +118,9 @@ var loadDocument = function() {
   // Toggle logic function
 
   var toggleTripInfo = function(id) {
-    var idSelection = '#' + id;
-
-    $('.trip-info', idSelection).toggle();
-    $('form', idSelection).toggle();
-    $('.submit', idSelection).toggle();
+    $('.trip-info', id).toggle();
+    $('form', id).toggle();
   };
 
 
   $(document).ready(loadDocument());
-
-  // Form submission function
-
-  //   var formSubmit = function(event) {
-  //   event.preventDefault();
-  //
-  //   var url = $(this).attr("action");
-  //   var id = event.target.parentElement.id;
-  //
-  //   url += id;
-  //   url += "/reserve";
-  // };
