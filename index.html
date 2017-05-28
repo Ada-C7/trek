@@ -7,12 +7,12 @@
   </head>
   <body>
     <header>
-      <h1 class="row large-3 end columns">Visit...</h1>
+      <!-- <h1 class="row large-3 end columns">Visit...</h1> -->
       <div class="row dropdown">
         <h6 id="message"></h6>
-        <button onclick="toggleDropdown()" class="button large-centered columns" id="load-treks"> Where to? </button>
-        <div id="myDropdown" class="dropdown-content large-centered  columns">
-          <input type="text" placeholder="Search" id="myInput" onkeyup="filterFunction()" />
+        <button class="row button info large-3-centered columns" id="load-treks"> VISIT... </button>
+        <div id="myDropdown" class="dropdown-content row large-3-centered columns">
+          <input type="text" placeholder="Search" id="myInput" />
           <ul id="treks"> </ul>
         </div>
       </div>
@@ -61,15 +61,15 @@
       <form action=<%- "https://trektravel.herokuapp.com/trips/" + trek.id + "/reserve" %> method="post">
         <ul>
           <li>
-            <label>Name: </label>
+            <label>NAME: </label>
             <input type="text" id="name" name="name" /></input>
           </li>
           <li>
-            <label>Email: </label>
+            <label>EMAIL: </label>
             <input type="text" id="email" name="email" /></input>
           </li>
           <li>
-            <button class="button" type="submit">Sign me up!</button>
+            <button class="button" type="submit">SIGN ME UP!</button>
           </li>
         </ul>
     </form>
@@ -78,4 +78,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
     <script src="index.js" type="text/javascript"></script>
   </body>
+  <footer>
+    <p>
+      TREKS MIX © BRENNA DARROCH, 2017.
+    </p>
+  </footer>
 </html>

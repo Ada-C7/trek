@@ -1,9 +1,9 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.css');
-@import url('https://fonts.googleapis.com/css?family=Khand|Bungee');
+@import url('https://fonts.googleapis.com/css?family=Marvel|Bungee');
 
 /*general*/
 body {
-  background-image: url('trek1.jpg');
+  background-image: url('trek1.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -15,9 +15,10 @@ body {
   color: white;
 }
 
-body, h2, h4, h6, button {
-  font-family: 'Khand', sans-serif;
+body, h2, h4, h6 {
+  font-family: 'Marvel', sans-serif;
 }
+
 
 ul {
   list-style: none;
@@ -29,21 +30,19 @@ a {
 
 .button {
   color: white;
-  font-size: 2rem;
   cursor: pointer;
-  /*float: right;*/
 }
 
 /*header styles*/
-h1 {
+.button {
   font-family: 'Bungee', cursive;
   font-size: 5rem;
 }
 
-header {
-  /*position: absolute;
-  display: none;*/
-  /*width: 100%;*/
+footer {
+  position: absolute;
+  display: none;
+  padding-left: 20px;
 }
 
 /*treks styles*/
@@ -57,9 +56,9 @@ header {
 }
 
 .dropdown {
-    /*position: relative;
-    display: inline-block;*/
-    /*bottom: 100%;*/
+    position: relative;
+    display: inline-block;
+    bottom: 100%;
 }
 
 .dropdown-content {
@@ -85,7 +84,7 @@ header {
 
 .show {
   display:block;
-}*/
+}
 
 /*attempt at background gradient overlay, didn't like it*/
 /*div {

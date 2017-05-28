@@ -75,28 +75,28 @@ $(document).ready(function() {
   $('body').on('click', '#load-treks', getTreks);
 
   $('#treks').on('click', '.load-trek', getTrek);
-  
-  // $('button').on('click', '.button', toggleDropdown);
-  // $('input').on('keyup', '#myInput', filterFunction);
+
+  $('.dropdown').on('click', '.button', toggleDropdown);
+  $('.dropdown-content').on('keyup', '#myInput', filterFunction);
 });
 
 // css jquery
-// $(function(){
-//     $(window).resize(function(e){
-//         placeHeader();
-//     });
-//     placeHeader();
-//     // hide it before it's positioned
-//     $('header').css('display', 'inline');
-// });
-//
-// function placeHeader() {
-//     var windHeight = $(window).height();
-//     var footerHeight = $('header').height();
-//     var offset = parseInt(windHeight) - parseInt(footerHeight);
-//     // console.log(offset);
-//     $('header').css('top', offset);
-// }
+$(function(){
+    $(window).resize(function(e){
+        placeFoooter();
+    });
+    placeFoooter();
+    // hide it before it's positioned
+    $('footer').css('display', 'inline');
+});
+
+function placeFoooter() {
+    var windHeight = $(window).height();
+    var footerHeight = $('footer').height();
+    var offset = parseInt(windHeight) - parseInt(footerHeight);
+    // console.log(offset);
+    $('footer').css('top', offset);
+}
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
