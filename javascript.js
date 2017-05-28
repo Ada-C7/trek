@@ -55,8 +55,12 @@ var clickHandlerReserve = function(event) {
   $.post(url, formData, successLocaleReserved).fail(failureCallback);
 };
 
+var homeHandler = function() {
+  window.location.replace("file:///Users/jou-jousun/ada/javascript/trek/index.html");
+};
+
 $(document).ready(function() {
   $('#load').click(clickHandler);
   $('#trips').on('click', '#oneTrek', clickHandlerLocale);
-
+  $('#title').click(homeHandler);
 });
