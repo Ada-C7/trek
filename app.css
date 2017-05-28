@@ -30,7 +30,7 @@ h1, h2, h3, h4, h5 {
   font-size: 3em;
   padding: 30px;
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 #opening-message {
@@ -38,14 +38,19 @@ h1, h2, h3, h4, h5 {
   font-size: 2em;
 }
 
-#trip-sort {
+#trip-narrow {
   position: sticky;
   top: 0;
   border: solid 2px #4d4d4d;
 }
 
-#trip-sort h5 {
+#trip-narrow h5 {
   margin-top: 10px;
+}
+
+#trip-sort {
+  /*border-bottom: solid 2px #4d4d4d;*/
+  margin-bottom: 20px;
 }
 
 .trip-spacing {

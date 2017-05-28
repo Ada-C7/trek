@@ -15,15 +15,14 @@ var generateAllTrips = function(response) {
   $('#trip-list').show();
   $('#trip-list').empty();
   $('#trip-sort').show();
+  $('#trip-narrow').show();
   $('#trip-list').addClass('.trip-list-outline');
   $("#message").empty();
-  $("sort-weeks").val(""); // NEED TO FIGURE THIS OUT!!
+  $("#sort-length").val("");
   // compiles tripTemplate
   var tripsTemplate = _.template($('#trip-template').html());
 
   var tripArray = response;
-  console.log(response);
-
   if (tripArray.length === 0) {
     $("#message").html("<p>There are no trips that satisfy this criteria</p>");
   }
@@ -38,24 +37,24 @@ var generateAllTrips = function(response) {
 
 var sortByClickHandler = function(event) {
   event.preventDefault();
-  $.get(allTripsUrl, sortTrips).fail(tripsFail);
-
-  // var sortType = $('#sort-length').find(":selected").text();
-  // var trips = $('#trip-list').children();
+  var sortType = $('#sort-length').find(":selected").text();
+  if (sortType == "Length: Short to Long") {
+    $.get(allTripsUrl, sortShortToLongTrips).fail(tripsFail);
+  } else if (sortType == "Length: Long to Short" ) {
+    $.get(allTripsUrl, sortLongToShortTrips).fail(tripsFail);
+  }
 };
 
-var sortTrips = function(response) {
-  var sortTripLength = function(a,b) {
+var sortShortToLongTrips = function(response) {
+  $('#trip-list').empty();
+  $("#sort-length").val("");
+  var shortToLong = function(a,b) {
     if (a.weeks > b.weeks) return 1;
     if (a.weeks < b.weeks) return -1;
     return 0;
   };
-
-  var sortedTrips = response.sort(sortTripLength);
-  $('#trip-list').empty();
-
+  var sortedTrips = response.sort(shortToLong);
   var tripsTemplate = _.template($('#trip-template').html());
-
   for (var i = 0; i < sortedTrips.length; i++) {
     var generatedHtml = tripsTemplate({
       trip: sortedTrips[i]
@@ -64,6 +63,26 @@ var sortTrips = function(response) {
     $('#trip-list').append($(generatedHtml));
   }
 };
+
+var sortLongToShortTrips = function(response) {
+  $('#trip-list').empty();
+  $("#sort-length").val("");
+  var longToShort = function(a,b) {
+    if (a.weeks > b.weeks) return -1;
+    if (a.weeks < b.weeks) return 1;
+    return 0;
+  };
+  var sortedTrips = response.sort(longToShort);
+  var tripsTemplate = _.template($('#trip-template').html());
+  for (var i = 0; i < sortedTrips.length; i++) {
+    var generatedHtml = tripsTemplate({
+      trip: sortedTrips[i]
+    });
+    // adds content
+    $('#trip-list').append($(generatedHtml));
+  }
+};
+
 
 var singleTripClickHandler = function(event) {
   var id = event.target.getAttribute('value');
@@ -74,6 +93,7 @@ var singleTripClickHandler = function(event) {
 var generateSingleTrip = function(response) {
   $('#trip-sort').hide();
   $('#trip-list').hide();
+  $('#trip-narrow').hide();
   $('#single-trip').show();
 
   if (response) {
@@ -138,8 +158,8 @@ var narrowFail = function() {
 };
 
 var narrowSuccess = function(response) {
-  $('#trip-list').empty();
   $('#message').empty();
+  $('#trip-list').empty();
   $('#continent option').prop('selected', function() {
       return this.defaultSelected;
   });
@@ -163,12 +183,12 @@ var narrowSuccess = function(response) {
       $('#trip-list').append($(generatedHtml));
     }
   }
-
 };
 
 
 $(document).ready(function() {
   $('#trip-sort').hide();
+  $('#trip-narrow').hide();
 
   $('#load').click(tripsClickHandler);
 
@@ -176,11 +196,11 @@ $(document).ready(function() {
 
   $('#single-trip').on("submit", "#reserve", reserveClickHandler);
 
-  $('#trip-sort').on("submit", '#narrow-continent', narrowContinentClickHandler);
+  $('#trip-narrow').on("submit", '#narrow-continent', narrowContinentClickHandler);
 
-  $('#trip-sort').on("submit", '#narrow-weeks', narrowWeeksClickHandler);
+  $('#trip-narrow').on("submit", '#narrow-weeks', narrowWeeksClickHandler);
 
-  $('#trip-sort').on("submit", '#narrow-money', narrowMoneyClickHandler);
+  $('#trip-narrow').on("submit", '#narrow-money', narrowMoneyClickHandler);
 
   $('#trip-sort').on("submit", '#sort-by', sortByClickHandler);
 });

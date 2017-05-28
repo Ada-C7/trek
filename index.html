@@ -21,6 +21,21 @@
         </div>
       </article>
 
+      <div id="trip-sort" class="small-12 column">
+        <h5>Sort Trips By:</h5>
+        <form method="get" id="sort-by">
+          <!-- <label>By Legnth:</label> -->
+          <select name="query" id="sort-length">
+            <option value=""></option>
+            <option value="Short">Length: Short to Long</option>
+            <option value="Long">Length: Long to Short</option>
+          </select>
+          <section>
+            <button class="button" type="submit">Sort</button>
+          </section>
+        </form>
+      </div>
+
       <div id="message"></div>
 
       <section>
@@ -28,23 +43,12 @@
       </section>
 
       <section class="row">
-        <div id="trip-sort" class="small-12 medium-4 column">
-          <h5>Sort Results By:</h5>
-          <form method="get" id="sort-by">
-            <!-- <label>By Legnth:</label> -->
-            <select name="query" id="sort-length">
-              <option value=""></option>
-              <option value="Length">Length</option>
-              <!-- <option value="Long to Short">Long to Short</option> -->
-            </select>
-            <section>
-              <button class="button" type="submit">Sort</button>
-            </section>
-          </form>
 
-          <h5>Narrow Results:</h5>
+
+        <div id="trip-narrow" class="small-12 medium-4 column">
+          <h5>Only See Trips:</h5>
           <form method="get" id="narrow-continent">
-            <label>Continent:</label>
+            <label>On Continent:</label>
             <select name="query" id="continent">
               <option value=""></option>
               <option value="North America">North America</option>
@@ -60,7 +64,7 @@
             </section>
           </form>
           <form method="get" id="narrow-weeks">
-            <label>Maximum number of weeks:</label>
+            <label>With Maximum Number of Weeks:</label>
             <select name="query" id="weeks">
               <option value=""></option>
               <option value="1">1</option>
@@ -74,13 +78,14 @@
             </section>
           </form>
           <form method="get" id="narrow-money">
-            <label>Maximum Cost:</label>
+            <label>With a Maximum Cost:</label>
             <input type="text" name="query" value="" id="money">
             <section>
               <button class="button" type="submit">Search</button>
             </section>
           </form>
-          </div>
+        </div>
+
         </section>
 
       <section>
