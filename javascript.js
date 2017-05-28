@@ -83,7 +83,6 @@ var sortLongToShortTrips = function(response) {
   }
 };
 
-
 var singleTripClickHandler = function(event) {
   var id = event.target.getAttribute('value');
   var singleTripUrl = allTripsUrl + id;
@@ -115,7 +114,10 @@ var reserveClickHandler = function(event) {
   var id = event.target.getAttribute('value');
   var postUrl = allTripsUrl + id + '/' + 'reserve';
   var formData = $(this).serialize();
+  var name = $('#name').val();
+  var email = $('#email').val();
   $.post(postUrl, formData, generateReservationResponse).fail(postFail);
+  $('#single-trip-top').append('name: ' + name + ", email: " + email);
 };
 
 var postFail = function() {
@@ -124,7 +126,7 @@ var postFail = function() {
 
 var generateReservationResponse = function(response) {
   $('input').val("");
-  $('#single-trip-top').append('<p class="success">Thank you for signing up!  Your Reservation is Complete!</p>');
+  $('#single-trip-top').append('<p class="success">Thank you for signing up!  Your Reservation is Complete.</p>');
 };
 
 var narrowContinentClickHandler = function(event) {
