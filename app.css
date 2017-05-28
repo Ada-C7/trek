@@ -1,0 +1,67 @@
+
+/*All Page Elements*/
+/*
+fonts
+font-family: 'Special Elite', cursive;
+font-family: 'Faster One', cursive;
+*/
+/*div {
+  padding: 0;
+}*/
+
+body {
+  font-family: 'Special Elite', cursive;
+  font-size: 18px;
+  color: #4d4d4d;
+  margin: 10px 10%;
+  overflow: auto;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Special Elite', cursive;
+}
+
+.button {
+  font-family: 'Faster One', cursive;
+  font-size: 1.2em;
+}
+
+#load {
+  font-size: 3em;
+  padding: 30px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#opening-message {
+  text-align: center;
+  font-size: 2em;
+}
+
+#trip-narrow {
+  position: sticky;
+  top: 0;
+  border: solid 2px #4d4d4d;
+}
+
+#trip-narrow h5 {
+  margin-top: 10px;
+}
+
+#trip-sort {
+  /*border-bottom: solid 2px #4d4d4d;*/
+  margin-bottom: 20px;
+}
+
+.trip-spacing {
+  margin: 0 0px 30px 0px;
+}
+
+#trip-list a h3:hover{
+  background-color: #1779BA;
+  color: white;
+}
+
+.small-12.small-centered.column {
+  padding: 0;
+}
