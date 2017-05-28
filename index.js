@@ -14,97 +14,107 @@ var url = "https://trektravel.herokuapp.com/trips";
 
 var loadDocument = function() {
   // Passed in tripListClickDirector as anonymous function.
-  $('#load').click(function(event) {
+  $('#find-trips').click(function(event) {
     $.get(url, tripListSuccessCallback).fail(failureCallback);
   });
 
   $('#trip-list').on('click', '.trip-name', function(event) {
-    var id = event.target.parentElement.id;
+    var parentElement = event.target.parentElement;
+    var id = parentElement.id;
 
-    if ($('#' + id).find('ul').length > 0) {
-      toggleTripInfo(id);
+    if ($(parentElement).find('ul').length > 0) {
+      toggleTripInfo(parentElement);
     } else {
-      tripInfoClickDirector(event);
+      var individualTripUrl = url + "/" + id;
+      var response = $.get(individualTripUrl, tripInfoSuccessCallback).fail(failureCallback);
     }
   });
-};
+
+  $('#trip-list').on('submit', 'form', function(event) {
+      event.preventDefault();
+
+      var url = $(this).attr("action");
+      var id = event.target.parentElement.id;
+
+      url += id;
+      url += "/reserve";
+
+      var formData = $(this).serialize();
+
+      $.post(url, formData, function(response) {
+        var parentElement = event.target.parentElement;
+        $('#message', parentElement).html('<p> Enjoy your trip! </p>');
+        console.log(response);
+      }).fail(function(){
+        $('#message', parentElement).html('<p>Can not make reservation.</p>');
+      });
+
+    });
+  };
 
 
-// Click director for trip information
+  // Callbacks
 
-var tripInfoClickDirector = function(event) {
-  var uniqueId = event.target.parentElement.id;
+  // Trip list success callback
+  var tripListSuccessCallback = function(response) {
+    console.log("Successful request for list of trips.");
+    console.log(response);
 
-  var individualTripUrl = url + "/" + uniqueId;
-  var response = $.get(individualTripUrl, tripInfoSucessCallback).fail(failureCallback);
-};
+    generateList(response);
+  };
 
+  // Individual Trip Information success callback
+  var tripInfoSuccessCallback =  function(response) {
+    console.log("Successful request for trip information. (Trip Name: " + response.name + ")");
+    console.log(response);
 
-// Callbacks
+    generateTripInfo(response);
 
-// Trip list success callback
-var tripListSuccessCallback = function(response) {
-  console.log("Successful request for list of trips.");
-  console.log(response);
+  };
 
-  generateList(response);
-};
-
-// Individual Trip Information success callback
-var tripInfoSucessCallback =  function(response) {
-  console.log("Successful request for trip information. (Trip Name: " + response.name + ")");
-  console.log(response);
-
-  generateTripInfo(response);
-
-};
-
-// Generic failure callback
-var failureCallback = function() {
-  console.log("Something went wrong.");
-  $("#errors").html("<h1> AJAX request failed. </h1>");
-};
+  // Generic failure callback
+  var failureCallback = function() {
+    console.log("Something went wrong.");
+    $("#errors").html("<h1> AJAX request failed. </h1>");
+  };
 
 
-// Template generation functions
+  // Template generation functions
 
-// Trip List template generator function
-var generateList = function(response) {
-  var tripTemplate = _.template($('#trip-item-template').html());
+  // Trip List template generator function
+  var generateList = function(response) {
+    var tripTemplate = _.template($('#trip-item-template').html());
 
-  for (var i = 0; i < response.length; i++) {
+    for (var i = 0; i < response.length; i++) {
+      var generatedHtml = tripTemplate(
+        {
+          data: response[i]
+        }
+      );
+      $('#trip-list').append($(generatedHtml));
+    }
+  };
+
+  // Individual Trip Information template generator function
+  var generateTripInfo = function(response) {
+    var tripTemplate = _.template($('#trip-info-template').html());
     var generatedHtml = tripTemplate(
       {
-        data: response[i]
+        data: response
       }
     );
-    $('#trip-list').append($(generatedHtml));
-  }
-};
+    var idSelection = '#' + response.id;
 
-// Individual Trip Information template generator function
-var generateTripInfo = function(response) {
-  var tripTemplate = _.template($('#trip-info-template').html());
-  var generatedHtml = tripTemplate(
-    {
-      data: response
-    }
-  );
-  var idSelection = '#' + response.id;
-
-  $(idSelection).append($(generatedHtml));
-};
+    $(idSelection).append($(generatedHtml));
+  };
 
 
-// Toggle logic function
+  // Toggle logic function
 
-var toggleTripInfo = function(id) {
-  var idSelection = '#' + id;
-
-  $('.trip-info', idSelection).toggle();
-  $('form', idSelection).toggle();
-  $('.submit', idSelection).toggle();
-};
+  var toggleTripInfo = function(id) {
+    $('.trip-info', id).toggle();
+    $('form', id).toggle();
+  };
 
 
-$(document).ready(loadDocument());
+  $(document).ready(loadDocument());
