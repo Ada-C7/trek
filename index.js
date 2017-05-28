@@ -12,6 +12,9 @@ var successTreksCallback = function(response) {
     });
     $('#treks').append($(genHTML));
   });
+
+  // $('button').on('click', 'h1', toggleDropdown);
+  // $('input').on('keyup', '#myInput', filterFunction);
 };
 
 var successTrekCallback = function(response) {
@@ -29,12 +32,12 @@ var successTrekCallback = function(response) {
 };
 
 var successSignUpCallback = function() {
-  $('#message').html("<p> You've signed up! </p>");
+  $('#message').html("You've signed up!");
 };
 
 var failureCallback = function() {
   console.log("Didn't work :(");
-  $("#message").html("<h1>AJAX request failed!</h1>");
+  $("#message").html("AJAX request failed!");
 };
 
 var alwaysCallback = function() {
@@ -45,7 +48,7 @@ var getTreks = function(event) {
   var target = $('#treks');
   target.empty();
 
-  var url = BASEURL;
+  var url = BASEURL; // test failure: "http://bla"
   $.get(url, successTreksCallback).fail(failureCallback).always(alwaysCallback);
 };
 
@@ -55,16 +58,13 @@ var getTrek = function(event) {
 
   var id = $(this).attr("id");
   var url = BASEURL + id;
-  // console.log(url);
   $.get(url, successTrekCallback).fail(failureCallback).always(alwaysCallback);
 };
 
 var signUp = function(event) {
   event.preventDefault();
-  var url = $(this).attr("action") + "XJMAKSD";
-  // console.log(url);
+  var url = $(this).attr("action");
   var formData = $(this).serialize();
-  // console.log(formData);
   $.post(url, formData, successSignUpCallback).fail(failureCallback).always(alwaysCallback);
 };
 
@@ -72,21 +72,46 @@ $(document).ready(function() {
   $('body').on('click', '#load-treks', getTreks);
 
   $('#treks').on('click', '.load-trek', getTrek);
+
+  $('.dropdown').on('click', 'h1', toggleDropdown);
+  $('.dropdown-content').on('keyup', '#myInput', filterFunction);
 });
 
 // css jquery
 $(function(){
     $(window).resize(function(e){
-        placeHeader();
+        placeFoooter();
     });
-    placeHeader();
+    placeFoooter();
     // hide it before it's positioned
-    $('header').css('display', 'inline');
+    $('footer').css('display', 'inline');
 });
 
-function placeHeader() {
+function placeFoooter() {
     var windHeight = $(window).height();
-    var footerHeight = $('header').height();
+    var footerHeight = $('footer').height();
     var offset = parseInt(windHeight) - parseInt(footerHeight);
-    $('header').css('top', offset);
+    // console.log(offset);
+    $('footer').css('top', offset);
+}
+
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function toggleDropdown() {
+ document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+      if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+          a[i].style.display = "";
+      } else {
+          a[i].style.display = "none";
+      }
+  }
 }

@@ -1,9 +1,9 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.css');
-@import url('https://fonts.googleapis.com/css?family=Khand|Bungee');
+@import url('https://fonts.googleapis.com/css?family=Marvel|Bungee');
 
-/*general*/
+/*general styles*/
 body {
-  background-image: url('trek.jpg');
+  background-image: url('trek1.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -15,36 +15,81 @@ body {
   color: white;
 }
 
-body, h2, h4, button {
-  font-family: 'Khand', sans-serif;
+body, h2, h4, h6 {
+  font-family: 'Marvel', sans-serif;
 }
 
 ul {
   list-style: none;
 }
 
-.button {
+a, label {
   color: white;
-  font-size: 2rem;
 }
 
-/*header styles*/
+/*header & footer styles*/
 h1 {
   font-family: 'Bungee', cursive;
-  font-size: 5rem;
+  font-size: 10rem;
 }
 
-header {
+h1:hover {
+  cursor: pointer;
+}
+
+footer {
   position: absolute;
   display: none;
+  padding-left: 20px;
 }
 
-/*treks styles*/
+/*dropdown menu styles*/
+header ul {
+  max-height: 400px;
+  overflow: auto;
+}
+
+#myInput {
+    border-box: box-sizing;
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 20px;
+    border: none;
+}
+
+.dropdown-content {
+    display: none;
+    /*position: absolute;*/
+    background-color: rgba(79, 187, 234, 0.4);
+    min-width: 230px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover, #trek:hover {
+  background-color: rgb(79, 187, 234);
+}
+
+.show {
+  display:block;
+}
+
+/*trek styles*/
+#trek form {
+  padding-top: 50px;
+}
 
 
-
-
-/*attempt at gradient overlay, didn't like it*/
+/*attempt at background gradient overlay, didn't like it*/
 /*div {
 background: rgba(0, 0, 0, 0.4);
 background: linear-gradient(to top, white, rgba(0, 0, 0, 0.4));
