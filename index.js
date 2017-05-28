@@ -25,7 +25,8 @@ var loadDocument = function() {
     if ($(parentElement).find('ul').length > 0) {
       toggleTripInfo(parentElement);
     } else {
-      tripInfoClickDirector(id);
+      var individualTripUrl = url + "/" + id;
+      var response = $.get(individualTripUrl, tripInfoSuccessCallback).fail(failureCallback);
     }
   });
 
@@ -40,22 +41,15 @@ var loadDocument = function() {
 
       var formData = $(this).serialize();
 
-      $.post(url, formData, function(response){
-        $('#message').html('<p> Enjoy your trip! </p>');
+      $.post(url, formData, function(response) {
+        var parentElement = event.target.parentElement;
+        $('#message', parentElement).html('<p> Enjoy your trip! </p>');
         console.log(response);
       }).fail(function(){
-        $('#message').html('<p>Can not make reservation.</p>');
+        $('#message', parentElement).html('<p>Can not make reservation.</p>');
       });
 
     });
-  };
-
-
-  // Click director for trip information
-
-  var tripInfoClickDirector = function(id) {
-    var individualTripUrl = url + "/" + id;
-    var response = $.get(individualTripUrl, tripInfoSuccessCallback).fail(failureCallback);
   };
 
 
