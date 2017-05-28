@@ -14,17 +14,12 @@ var indexCallback = function(response) {
   console.log("Success!");
   console.log(response);
 
-  var tripsData = response;
+  var tripsTemplate = _.template($('#index-trip-template').html());
+  var all_trips = tripsTemplate({
+    trips: response
+  });
 
-  var tripTemplate = _.template($('#index-trip-template').html());
-
-  // loop to create template for each trip object
-  for (var i = 0; i < tripsData.length; i ++) {
-    var index_template = tripTemplate( { data: tripsData[i] }); //rename
-    // console.log(tripsData[i].id);
-    // $('#index-page div').data("id", tripsData[i].id);
-    $('#index-page').append(index_template);
-  }
+  $('#index-page').append(all_trips);
 
   $(".show").click(function(event) {
     var show_url = "";

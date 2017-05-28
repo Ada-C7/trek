@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Trek</title>
     <link href="foundation.css" media="screen" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="stylesheets.css">
+    <link rel="stylesheet" href="stylesheet.css">
   </head>
 
   <body>
@@ -14,27 +14,30 @@
 
     <section id="errors"></section>
     <button id="load" class="button"> All Trips </button>
-    <section id="index-page" class="row" data-equalizer="trips"></section>
+    <section id="index-page"></section>
     <section id="show-page"></section>
 
-    <!-- underscore TEMPLATE: show all trips -->
+    <!-- UNDERSCORE TEMPLATES -->
+
+    <!-- INDEX: to show all trips -->
     <script id="index-trip-template" type="text/template">
-      <section>
-        <div class="columns medium-3" data-equalizer-watch="trips">
-          <div class="card">
-            <h3><%- data.name %></h3>
-
-            <p>
-               <%- data.weeks %> weeks in <%- data.continent %>
-            </p>
-
-            <button class="button show"><%- data.id %></button>
+      <div id="all-trips" data-equalizer="trips">
+        <% for (var i = 0; i < trips.length; i ++) { %>
+          <div class="card columns medium-4" data-equalizer-watch="trips" id=<%- trips[i].id %> >
+            <a href="">
+            <div class="card-divider">
+              <h4><%- trips[i].name %></h4>
+            </div>
+            <div class="card-section">
+              <p><%- trips[i].weeks %> week(s) in <%- trips[i].continent %></p>
+            </div
+            </a>
           </div>
-        </div>
-      </section>
+        <% } %>
+      </div>
     </script>
 
-    <!-- underscore TEMPLATE: show each trips -->
+    <!-- SHOW: to show each trip w/reservation -->
     <script id="show-trip-template" type="text/template">
       <section>
         <h2><%- data.name %></h2>
@@ -64,7 +67,8 @@
         </p>
 
         <div id="form-message"></div>
-        <form action="https://trektravel.herokuapp.com/trips/2/reserve" method="post">
+        <!-- to reserve a spot -->
+        <form action="https://trektravel.herokuapp.com/trips/1/reserve" method="post">
 
           <label>Name:</label>
           <input id="name" name="name" type="text"/>
