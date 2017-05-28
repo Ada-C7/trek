@@ -10,15 +10,20 @@ header {
   text-align: center;
 }
 
-#trip-info h4 {
-  cursor: pointer;
+:focus {
+  outline: #bea8be auto 5px;
 }
 
-#trip-info ul {
+.button {
+  border-radius: 5px;
+}
+
+#trip-list ul {
   margin: 0;
 }
 
 #trip-list {
+  margin: 0;
   column-count: 2;
   text-align: center;
 }
@@ -30,4 +35,21 @@ header {
 .trip-listing {
   display: inline-block;
   width: 100%;
+  margin-bottom: 3%;
+}
+
+.errors {
+  color: red;
+}
+
+#errors, #reserve-message {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+
+@media print, screen and (max-width: 40em) {
+  #trip-list {
+    column-count: 1;
+  }
 }

@@ -29,8 +29,8 @@ var tripSuccess = function(response) {
 var reserveSuccess = function() {
   console.log('Trip booked');
   $('#reserve-trip-form').trigger('reset');
-  $('#reserve-message').html('Trip booked!');
-  $('#errors').clear();
+  $('#reserve-message').html('Trip booked!').removeClass("errors");
+  $('#errors').empty();
 };
 
 var tripListClickHandler = function() {
@@ -40,7 +40,8 @@ var tripListClickHandler = function() {
   });
 };
 
-var tripClickHandler = function() {
+var tripClickHandler = function(e) {
+  e.preventDefault();
   var trip = $(this).attr('id');
   var tripId = trip.substr(4, trip.length-1);
 
@@ -54,10 +55,15 @@ var reserveClickHandler = function(e) {
   e.preventDefault();
   var url = $('#reserve-trip-form').attr('action');
   var formData = $('#reserve-trip-form').serialize();
+  var requiredFields = $('#reserve-trip-form [required]');
 
+  if ($('#name').val() === "" || $('#email').val() === "" || $('#age').val() === "") {
+    $('#reserve-message').html('All fields are required').addClass('errors');
+    return;
+  }
   $.post(url, formData, reserveSuccess).fail(function() {
     console.log('AJAX failed to book trip');
-    $('#reserve-message').html('Error: Trip NOT reserved.');
+    $('#reserve-message').html('Error: Trip NOT reserved.').addClass('errors');
   });
 };
 
