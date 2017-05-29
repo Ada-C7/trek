@@ -10,30 +10,32 @@
 
   <body>
     <h1>Trek</h1>
-    <a></a>
-
     <section id="errors"></section>
-    <button id="load" class="button"> All Trips </button>
+
+    <button id="load-button" class="button"> All Trips </button>
+    <button id="new-button" class="button"> Add a Trip </button>
+
     <section id="index-page"></section>
+    <section id="new-page"></section>
     <section id="show-page"></section>
 
-    <!-- UNDERSCORE TEMPLATES -->
+  <!-- _____UNDERSCORE TEMPLATES______ -->
 
     <!-- INDEX: to show all trips -->
     <script id="index-trip-template" type="text/template">
       <div id="all-trips" class="row">
-        <% for (var i = 0; i < trips.length; i ++) { %>
+      <% for (var i = 0; i < trips.length; i ++) { %>
         <a href="" data-id=<%- trips[i].id %>>
           <div class="card columns medium-4">
             <div class="card-divider">
-                <h4><%- trips[i].name %></h4>
+              <h4><%- trips[i].name %></h4>
             </div>
             <div class="card-section">
               <p><%- trips[i].weeks %> week(s) in <%- trips[i].continent %></p>
             </div>
           </div>
         </a>
-        <% } %>
+      <% } %>
       </div>
     </script>
 
@@ -42,32 +44,16 @@
       <section>
         <h2><%- data.name %></h2>
 
-        <p>
-          <strong>Location:</strong> <%- data.continent %>
-        </p>
+        <p><strong>Location:</strong> <%- data.continent %></p>
+        <p><strong>Duration:</strong> <%- data.weeks %> weeks</p>
+        <p><strong>Cost:</strong> $<%- data.cost %></p>
+        <p><strong>About:</strong> <%- data.about %></p>
+        <p><strong>Category:</strong> <%- data.category %></p>
 
-        <p>
-          <strong>Duration:</strong> <%- data.weeks %> weeks
-        </p>
-
-        <p>
-          <strong>Cost:</strong> $<%- data.cost %>
-        </p>
-
-        <p>
-          <strong>About:</strong> <%- data.about %>
-        </p>
-
-        <p>
-          <strong>Category:</strong> <%- data.category %>
-        </p>
-
-        <p>
-          (ID #00<%- data.id %>)
-        </p>
+        <p>(ID #00<%- data.id %>)</p>
 
         <div id="form-message"></div>
-        <!-- to reserve a spot -->
+        <!-- form to reserve a spot -->
         <form action="https://trektravel.herokuapp.com/trips/1/reserve" method="post">
 
           <label>Name:</label>
@@ -76,12 +62,27 @@
           <label>Email:</label>
           <input id="email" name="email" type="text"/>
 
-          <section class="button">
-            <button id="submit" type="submit" class="button">Submit</button>
-          </section>
+          <button id="submit" type"submit" class="button">Submit</button>
         </form>
-
       </section>
+    </script>
+
+    <!-- NEW: form to create a new trip -->
+    <script id="new-trip-template" type="text/template">
+        <div id="new-message"></div>
+        <form action="https://trektravel.herokuapp.com/trips" method="post">
+
+          <label>Name:</label>
+          <input id="trip-name" name="name" type="text"/>
+
+          <label>Continent:</label>
+          <input id="continent" name="continent" type="text"/>
+
+          <label>Weeks:</label>
+          <input id="weeks" name="weeks" type="text"/>
+
+          <button id="create-new" type"submit" class="button">Submit</button>
+        </form>
     </script>
 
     <script src="jquery.js"></script>
