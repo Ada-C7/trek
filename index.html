@@ -3,6 +3,8 @@
      <head>
           <meta charset='utf-8'>
           <title>Wanderlustful</title>
+           <link rel="stylesheet" href="css/foundation.css">
+           <link rel="stylesheet" href="css/style.css">
      </head>
 
      <body>
@@ -12,6 +14,30 @@
                     <button class='wander'> Wander </button>
                     <button id='share'> Share Your Own Wanderlust </button>
                </nav>
+               <details class='secondary'>
+                    <summary><button id='continent'> Wander by Continent </button></summary>
+                    <button id='africa' class='small'> Africa </button>
+                    <button id='antarctica' class='small'> Antarctica </button>
+                    <button id='asia' class='small'> Asia </button>
+                    <button id='australia' class='small'> Australia </button>
+                    <button id='europe' class='small'> Europe </button>
+                    <button id='northAmerica' class='small'> North America </button>
+                    <button id='southAmerica' class='small'> South America </button>
+               </details>
+               <details class='secondary'>
+                    <summary><button id='time'> Wander by Time </button></summary>
+                    <button id='oneWeek' class='small'> One Week </button>
+                    <button id='twoWeeks' class='small'> Two Weeks </button>
+                    <button id='threeWeeks' class='small'> Three Weeks or More </button>
+               </details>
+               <details class='secondary'>
+                    <summary><button id='budget'> Wander by Budget </button></summary>
+                    <button id='oneThousand' class='small'> $1 - $1999 </button>
+                    <button id='twoThousand' class='small'> $2000 - $2999 </button>
+                    <button id='threeThousand' class='small'> $3000 or More </button>
+
+               </details>
+
           </header>
 
           <main>
@@ -21,10 +47,15 @@
 
                <section id='tripForm'>
                     <script id='trip-form-template' type='text/template'>
-                         <form action='https://trektravel.herokuapp.com/trips' method='post'
+                         <form action='https://trektravel.herokuapp.com/trips' method='post'>
                               <section>
                                    <label>Name</label>
                                    <input type='text' id='name' name='name'></input>
+                              </section>
+
+                              <section>
+                                   <label>Continent</label>
+                                   <input type='text' id='continent' name='continent'></input>
                               </section>
 
                               <section>
@@ -59,8 +90,14 @@
                     <script id='trip-template' type='text/template'>
                          <article id='<%- trip.id %>'>
                               <p> Name: <%- trip.name %> </p>
+                              <p> Destination: <%- trip.destination %> </p>
+                              <p> Continent: <%- trip.continent %> </p>
                               <p> About: <%- trip.about %> </p>
                               <p> Category: <%- trip.category %> </p>
+                              <p> Weeks: <%- trip.weeks %> </p>
+                              <p> Cost: <%- trip.cost %> </p>
+
+
 
                               <button id='reserve'> Reserve Your Wanderlust </button>
                               <button class='wander'> Back to All Wanderlust </button>

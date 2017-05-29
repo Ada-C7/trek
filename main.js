@@ -26,35 +26,56 @@ $(document).ready(function() {
           $( '#tripForm' ).empty();
           $( '#reservationForm' ).empty();
           $( 'article' ).remove();
-
+          $('.secondary').hide();
      };
 
      // **************
      // GET ALL TRIPS
      // **************
 
+     var option = '';
+     var options = {
+          'africa': 'Africa',
+          'antarctica': 'Antarctica',
+          'asia': 'Asia',
+          'australia': 'Australia',
+          'europe': 'Europe',
+          'northAmerica': 'North America',
+          'southAmerica': 'South America',
+     };
+
      var url = 'https://trektravel.herokuapp.com/trips/';
 
-     var successTrips = function( response ) {
+     var successTrips = function( response ) {;
           clearPage();
+          $('.secondary').show( 'fast');
           response.reverse();
           for ( var i = 0; i < response.length; i++ ) {
-               response[i]['reference'] = url + response[i].id;
-               var generatedHtml = tripsTemplate({
-                    trip: response[i]
-               });
-          $( '#trips' ).append($( generatedHtml ));
+               if ( response[i].continent == options[option] )  {
+                    response[i]['reference'] = url + response[i].id;
+                    var generatedHtml = tripsTemplate({
+                         trip: response[i]
+                    });
+               $( '#trips' ).append($( generatedHtml ));
+               }
           }
-          return successTrips;
+          $( '#trips' ).prepend('<h1>' + options[option] + '</h1>');
      };
 
      var failureTrips = function() {
        $( '#errors' ).html( '<h1> Mayday! Mayday! Trips failed to load. </h1>' );
      };
 
-     var getAllTrips = function( event ) {
+     var getAllTrips = function( option ) {
           $.get( url, successTrips ).fail( failureTrips );
      };
+
+     // Filter Trips
+     $( '.secondary' ).hide();
+     $( '.secondary' ).click( function( event ){
+          event.preventDefault();
+     });
+
 
      // **************
      // GET A TRIP
@@ -74,7 +95,9 @@ $(document).ready(function() {
        $( '#errors').html( '<h1> Mayday! Mayday! Trip failed to load! </h1>' );
      };
 
+     // **************
      // ADD A TRIP
+     // **************
 
      var addTrip = function( event ) {
           clearPage();
@@ -133,6 +156,31 @@ $(document).ready(function() {
      // All Trips
      $( 'body' ).on( 'click', '.wander', function() {
           getAllTrips();
+     });
+
+     // Filter Trips
+
+     $( 'summary' ).click(function( event ) {
+          summary = '#' + $( event.target ).attr( 'id' )
+          $( 'header' ).on( 'click', summary, function() {
+               $( 'details' ).attr('open', false);
+               $( this ).closest( 'details' ).attr('open', true);
+          });
+     });
+
+     $( 'details'  ).click(function( event ) {
+          option = $( event.target ).attr( 'id' )
+
+          switch (true) {
+               case option == 'continent':
+                    break;
+               case option == 'time':
+                    break;
+               case option == 'budget':
+                    break;
+               default:
+                    getAllTrips(option);
+          }
      });
 
      // A Trip
