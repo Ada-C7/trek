@@ -25,16 +25,27 @@
     <script id="index-trip-template" type="text/template">
       <div id="all-trips" class="row">
       <% for (var i = 0; i < trips.length; i ++) { %>
-        <a href="" data-id=<%- trips[i].id %>>
-          <div class="card columns medium-4">
-            <div class="card-divider">
-              <h4><%- trips[i].name %></h4>
+        <% if (trips[i].name !== null && trips[i].name !== "") { %>
+          <a href="" data-id=<%- trips[i].id %>>
+            <div class="card columns medium-4">
+              <div class="card-divider">
+                <h4><%- trips[i].name %></h4>
+              </div>
+              <div class="card-section">
+                <% if (trips[i].weeks !== null && trips[i].weeks !== 0) { %>
+                  <p><%- trips[i].weeks %> week(s)
+                <% } else { %>
+                  <p>trip to
+                <% } %>
+                <% if (trips[i].continent !== null && trips[i].continent !== "") { %>
+                  in <%- trips[i].continent %></p>
+                <% } else { %>
+                  a mysterious destination</p>
+                <% } %>
+              </div>
             </div>
-            <div class="card-section">
-              <p><%- trips[i].weeks %> week(s) in <%- trips[i].continent %></p>
-            </div>
-          </div>
-        </a>
+          </a>
+        <% } %>
       <% } %>
       </div>
     </script>

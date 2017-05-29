@@ -8,7 +8,10 @@ var failureCallback = function() {
 // INDEX ~ callback for all trips + template
 var indexCallback = function(response) {
   console.log("Success!");
-  console.log(response);
+
+  for ( var j = 0; j < response.length; j ++ ) {
+    console.log(response[j]);
+  }
 
   var tripsTemplate = _.template($('#index-trip-template').html());
   var all_trips = tripsTemplate({
