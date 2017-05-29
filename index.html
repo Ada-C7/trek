@@ -17,18 +17,18 @@
   <section id="errors"></section>
 
   <!-- load all trips -->
-  <div id="all-trips" class="row small-up-1 medium-up-1 large-up-3"></div>
+  <div id="all-trips" class="columns medium-6 small-12"></div>
   <script id="all-trips-template" type="text/template">
-    <section id="trip-block" class="column">
+    <section id="trip-block">
       <!-- Display results (name, continent, weeks) -->
-      <a><h2 id="<%- allData.id %>"><%- allData.name %></h2></a>
+      <a href=<%- allData.id %>><h2 id="singleLoad"><%- allData.name %></h2></a>
       <p id="continent"><%- allData.continent %></p>
       <p><%- allData.weeks %> week(s)</p>
     </section>
   </script>
 
   <!-- load specific trip -->
-  <div id="single-trip"></div>
+  <div id="single-trip" class="columns medium-6 small-12"></div>
   <script id="single-trip-template" type="text/template">
     <section>
       <h2><%- name %></h2>

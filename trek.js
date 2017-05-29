@@ -33,7 +33,7 @@ var successSingleCallback = function(event) {
     var generatedSingleHTML = singleTemplate({
       singleData: event[i]
     });
-    target.append($(generatedSingleHTML));
+    target.html(generatedSingleHTML);
   }
 };
 
@@ -41,9 +41,8 @@ var failureSingleCallback = function() {
   $('#errors').html('<h2>Apologies, it appears this trip info is not available right now. </h2>');
 };
 
-var singleClickHandler = function(event) {
-  console.log("WE HERE");
-  var id = event.target.id;
+var singleClickHandler = function() {
+  var id = 1;
   var singleURL = url + "/" + id;
   $.get(singleURL, successSingleCallback).fail(failureSingleCallback);
 };
@@ -51,7 +50,7 @@ var singleClickHandler = function(event) {
 /*****Execute above code on Click******/
 $(document).ready(function() {
   $('#allLoad').click(clickHandler);
-  $('#all-trips').on('click', '<%- allData.id %>', singleClickHandler);
+  $('#singleLoad').on('click', '#single-trip', singleClickHandler);
 });
 
 /* would like some error handling to get rid of the ugly
