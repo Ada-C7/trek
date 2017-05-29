@@ -1,18 +1,19 @@
 var baseUrl = "https://trektravel.herokuapp.com/";
 var clearPage = function () {
-  $('#alert').empty();
-  $('#trip-list').empty();
-  $('#trip-details').empty();
+  $('main').empty();
+  $('main').show();
 };
 
 $(document).ready(function () {
+  $('main').hide();
+
   var tripListTemplate = _.template($('#trip-list-template').html());
   var showTripTemplate = _.template($('#show-trip-template').html());
 
   var tripsCallback = function (response) {
     clearPage();
     var generatedHtml = tripListTemplate({ trips: response });
-    $('#trip-list').html(generatedHtml);
+    $('main').append(generatedHtml);
   };
 
   var tripCallback = function (response) {
@@ -22,11 +23,11 @@ $(document).ready(function () {
       trip: response,
       url: reservationUrl
     });
-    $('#trip-details').html(generatedHtml);
+    $('main').append(generatedHtml);
   };
 
   var failCallback = function (response) {
-    $('#alert').html("<p>AJAX Request Failed!</p>");
+    $('main').prepend("<p id='callout alert'>AJAX Request Failed!</p>");
   };
 
   $('#get-trips').click(function() {
@@ -34,19 +35,19 @@ $(document).ready(function () {
     $.get(url, tripsCallback).fail(failCallback);
   });
 
-  $('#trip-list').on('click', 'a', function () {
+  $('main').on('click', '#trip-list a', function () {
     var url = baseUrl + "trips/" + $(this).attr('id');
     $.get(url, tripCallback).fail(failCallback);
   });
 
-  $('#trip-details').on('click', "input[type='submit']", function(e) {
+  $('main').on('click', "#trip-details input[type='submit']", function(e) {
     e.preventDefault();
 
     var url = $('form').attr('action');
     var formData = $('form').serialize();
 
     $.post(url, formData, function (response) {
-      $("<p>Reserved Successfully!</p>").insertAfter('h3');
+      $("<p class='callout success'>Reserved Successfully!</p>").insertAfter('h3');
     }).fail(failCallback);
   });
 });

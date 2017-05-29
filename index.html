@@ -15,38 +15,38 @@
       <button class="button hollow" id="get-trips">Get Trips</button>
     </header>
 
-    <main>
-      <p id="alert"></p>
-      <ul id="trip-list"></ul>
-      <article id="trip-details"></article>
-    </main>
+    <main></main>
 
     <script id="trip-list-template" type="text/template">
-      <% for (var i = 0; i < trips.length; i++) { %>
-        <li><a href="#" id=<%- trips[i].id %>><%- trips[i].name %></a></li>
-      <% } %>
+      <ul id="trip-list">
+        <% for (var i = 0; i < trips.length; i++) { %>
+          <li><a href="#" id=<%- trips[i].id %>><%- trips[i].name %></a></li>
+        <% } %>
+      </ul>
     </script>
 
     <script id="show-trip-template" type="text/template">
-      <h2><%- trip.name %></h2>
-      <ul>
-        <li><strong>Category</strong>: <%- trip.category %></li>
-        <li><strong>Continent</strong>: <%- trip.continent %></li>
-        <li><strong>Duration</strong>: <%- trip.weeks %> weeks</li>
-        <li><strong>Cost</strong>: $<%- trip.cost %></li>
-        <li><%- trip.about %></li>
-      </ul>
+      <article id="trip-details">
+        <h2><%- trip.name %></h2>
+        <ul>
+          <li><strong>Category</strong>: <%- trip.category %></li>
+          <li><strong>Continent</strong>: <%- trip.continent %></li>
+          <li><strong>Duration</strong>: <%- trip.weeks %> weeks</li>
+          <li><strong>Cost</strong>: $<%- trip.cost %></li>
+          <li><%- trip.about %></li>
+        </ul>
 
-      <h3>Reserve a Spot!</h3>
-      <form action=<%- url %> method="post">
-        Name:
-        <input type="text" name="name" />
-        Age:
-        <input type="text" name="age" />
-        Email:
-        <input type="text" name="email" />
-        <input class="button hollow" type="submit" value="Submit" />
-      </form>
+        <h3>Reserve a Spot!</h3>
+        <form action=<%- url %> method="post">
+          Name:
+          <input type="text" name="name" />
+          Age:
+          <input type="text" name="age" />
+          Email:
+          <input type="text" name="email" />
+          <input class="button hollow" type="submit" value="Submit" />
+        </form>
+      </article>
     </script>
 
   </body>
