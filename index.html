@@ -35,121 +35,109 @@
     </div>
   </div>
 
-  <!-- <form id="continent-filter">
-            <section>
-              <select size="1" id="continent-sort" name="continent">
-                <option>Africa</option>
-                <option>Antarctica</option>
-                <option>Asia</option>
-                <option>Europe</option>
-                <option>Australasia</option>
-                <option>North America</option>
-                <option>South America</option>
-              </select>
-            </section>
-            <section >
-              <button class="button hollow"  type="submit">Search by Continent</button>
-            </section>
-          </form> -->
 
 
 
 
 
-  <div id="trips"></div>
 
-  <script id="trips-list-template" type="text/template">
-    <section>
+<div id="trips">
+<ul class="row small-up-2 medium-up-3 large-up-4" data-equalize>  </ul>
+</div>
 
-      <div class="oneTrip">
-        <h3>
-          <%- data.name %>
-        </h3>
+<script id="trips-list-template" type="text/template">
 
-        <!-- <p>Continent:
-          <%- data.continent %>
-        </p>
-        <p>
+        <li  class="column ">
+          <div data-equalizer-watch class="oneTrip">
+
+
+            <h3>
+              <%- data.name %>
+            </h3>
+
+            <!-- <p>Continent:
+            <%- data.continent %>
+          </p>
+          <p>
           Weeks:
           <%- data.weeks%>
         </p> -->
         <button class="button" id="ShowDetails" data-tripID="<%- data.id%>"> Learn More </button>
+    </div>
+    </li>
+</script>
 
-      </div>
-    </section>
-  </script>
+<div id="singleTrip"></div>
 
-  <div id="singleTrip"></div>
+<script id="indiv-trip-template" type="text/template">
+  <section>
+    <h3>
+      <%- data.name.toUpperCase() %>
+    </h3>
 
-  <script id="indiv-trip-template" type="text/template">
+    <div id=reservationForm>
+      <button class="button" id="reserve" data-tripID="<%- data.id%>"> RESERVE YOUR SPOT!</button>
+    </div>
+
+
+    <p>Continent:
+      <%- data.continent %>
+    </p>
+
+    <p>
+      Length:
+      <%- data.weeks%> weeks
+
+    </p>
+
+    <p>
+      Cost: $<%- Number(data.cost).toFixed(2) %>
+    </p>
+    <p>Category:
+      <%- data.category.charAt(0).toUpperCase() + data.category.slice(1)%>
+    </p>
+
+    <p>Trip ID:
+      <%- data.id %>
+    </p>
+
+    <h4>
+      The Journey:</h4>
+      <p>
+        <%- data.about %>
+      </p>
+
+
+      <button class="button" id="HideDetails"> Back to Trips List</button>
+    </div>
+  </section>
+</script>
+
+
+<script id="reservation-template" type="text/template">
+
+  <form id="form-<%- tripID%>" action="<%- url %>" method="post">
     <section>
-      <h3>
-        <%- data.name.toUpperCase() %>
-      </h3>
-
-      <div id=reservationForm>
-        <button class="button" id="reserve" data-tripID="<%- data.id%>"> RESERVE YOUR SPOT!</button>
-      </div>
-
-
-      <p>Continent:
-        <%- data.continent %>
-      </p>
-
-      <p>
-        Length:
-        <%- data.weeks%> weeks
-
-      </p>
-
-      <p>
-        Cost: $<%- Number(data.cost).toFixed(2) %>
-      </p>
-      <p>Category:
-        <%- data.category.charAt(0).toUpperCase() + data.category.slice(1)%>
-      </p>
-
-      <p>Trip ID:
-        <%- data.id %>
-      </p>
-
-      <h4>
-        The Journey:</h4>
-        <p>
-          <%- data.about %>
-        </p>
-
-
-        <button class="button" id="HideDetails"> Back to Trips List</button>
-      </div>
+      <label>Name: </label>
+      <input type="text" id="name" name="name"></input>
     </section>
-  </script>
 
+    <section>
+      <label>Age: </label>
+      <input type="text" id="age" name="age"></input>
+    </section>
 
-  <script id="reservation-template" type="text/template">
+    <section>
+      <label>Email: </label>
+      <input type="text" id="email" name="email"></input>
+    </section>
 
-    <form id="form-<%- tripID%>" action="<%- url %>" method="post">
-      <section>
-        <label>Name: </label>
-        <input type="text" id="name" name="name"></input>
-      </section>
+    <section>
+      <button  class="button" type="submit">Make Reservation</button>
+    </section>
+  </form>
 
-      <section>
-        <label>Age: </label>
-        <input type="text" id="age" name="age"></input>
-      </section>
-
-      <section>
-        <label>Email: </label>
-        <input type="text" id="email" name="email"></input>
-      </section>
-
-      <section>
-        <button  class="button" type="submit">Make Reservation</button>
-      </section>
-    </form>
-
-  </script>
+</script>
 
 
 

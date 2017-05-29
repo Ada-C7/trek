@@ -10,8 +10,10 @@ $(document).ready(function() {
     var tripsTtitle = "Which of these exciting adventures are in your future?";
 
     tripsData = [];
-    $('#trips').empty();
-    $('#trips').append("<h2>"+tripsTtitle+"</h2>");
+    $('#trips ul').empty();
+    $('#trips > h2').remove();
+
+    $('#trips').prepend("<h2>"+tripsTtitle+"</h2>");
 
 
     for (var i = 0; i < response.length; i++) {
@@ -26,8 +28,9 @@ $(document).ready(function() {
       var generatedHtml = tripsListTemplate({
         data: tripsData[j]
       });
-      $('#trips').append(generatedHtml);
+      $('#trips ul').append(generatedHtml);
     }
+      matchHeight();
   };
 
 
@@ -53,6 +56,7 @@ $(document).ready(function() {
     });
 
     $('#load-all-trips').hide();
+    $('div.by-continent').hide();
     $('#trips').hide();
     $('#singleTrip').show();
     $('#singleTrip').html($(generatedHtml));
@@ -74,8 +78,9 @@ $(document).ready(function() {
 
   var hideTripHandler = function(event){
     $('#singleTrip').hide();
+    $('#load-all-trips').show();
+    $('div.by-continent').show();
     $('#trips').show();
-    console.log("Uh-oh");
   };
 
   var ReserveTripHandler = function(event){
@@ -122,21 +127,6 @@ var continentHandler = function() {
 };
 
 
-// var continentSuccess= function(response) {
-//
-//    console.log(response);
-//   // var indivTripTemplate = _.template($("#indiv-trip-template").html());
-//   //
-//   // var generatedHtml = indivTripTemplate({
-//   //   data: response
-//   // });
-//   //
-//   // $('#load-all-trips').hide();
-//   // $('#trips').hide();
-//   // $('#singleTrip').show();
-//   // $('#singleTrip').html($(generatedHtml));
-//
-// };
 
 
 var continentFailure = function() {
@@ -159,6 +149,25 @@ var continentFailure = function() {
   $("#singleTrip").on("click", "button#reserve", ReserveTripHandler);
 
   $("[href]").on("click", continentHandler);
+
+
+
+  var matchHeight = function(){
+      $("[data-equalize]").each(function() {
+
+
+        var parentRow = $(this),
+            childrenCols = $(this).find("[data-equalizer-watch]"),
+            childHeights = childrenCols.map(function(){ return $(this).height(); }).get(),
+            tallestChild = Math.max.apply(Math, childHeights);
+
+
+        console.log("Matching the heights");
+        console.log(tallestChild);
+        childrenCols.css('height', tallestChild);
+
+      });
+    };
 
 
 });
