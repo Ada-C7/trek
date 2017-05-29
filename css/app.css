@@ -1,0 +1,22 @@
+body {
+  padding-left: 2%;
+}
+
+th {
+  text-align: left;
+}
+
+.button, .button:focus {
+  background-color: #700859;
+  max-width: 100px;
+}
+
+
+.button:hover {
+  background-color: #F012BE;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0F0571;
+  font-family: 'Russo One', sans-serif;
+}
