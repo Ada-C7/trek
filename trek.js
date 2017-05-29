@@ -24,33 +24,10 @@ var clickHandler = function() {
 };
 
 /*****Return Single Trip Info******/
-var singleTemplate = _.template($('#single-trip-template').html());
-
-var successSingleCallback = function(event) {
-  var target = $('#single-trip');
-
-  for (var i = 0; i < event.length; i++) {
-    var generatedSingleHTML = singleTemplate({
-      singleData: event[i]
-    });
-    target.html(generatedSingleHTML);
-  }
-};
-
-var failureSingleCallback = function() {
-  $('#errors').html('<h2>Apologies, it appears this trip info is not available right now. </h2>');
-};
-
-var singleClickHandler = function() {
-  var id = 1;
-  var singleURL = url + "/" + id;
-  $.get(singleURL, successSingleCallback).fail(failureSingleCallback);
-};
 
 /*****Execute above code on Click******/
 $(document).ready(function() {
   $('#allLoad').click(clickHandler);
-  $('#singleLoad').on('click', '#single-trip', singleClickHandler);
 });
 
 /* would like some error handling to get rid of the ugly

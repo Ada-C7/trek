@@ -19,10 +19,10 @@
   <!-- load all trips -->
   <div id="all-trips" class="columns medium-6 small-12"></div>
   <script id="all-trips-template" type="text/template">
-    <section id="trip-block">
+    <section>
       <!-- Display results (name, continent, weeks) -->
-      <a href=<%- allData.id %>><h2 id="singleLoad"><%- allData.name %></h2></a>
-      <p id="continent"><%- allData.continent %></p>
+      <a href=<%- allData.id %>><h2><%- allData.name %></h2></a>
+      <p><%- allData.continent %></p>
       <p><%- allData.weeks %> week(s)</p>
     </section>
   </script>
