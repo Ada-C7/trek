@@ -26,10 +26,13 @@ var tripSuccess = function(response) {
   $('#errors').empty();
 };
 
-var reserveSuccess = function() {
-  console.log('Trip booked');
-  $('#reserve-trip-form').trigger('reset');
-  $('#reserve-message').html('Trip booked!').removeClass("errors");
+var formSuccess = function() {
+  var tripAction = $('form .button').attr('id');
+  tripAction = tripAction.substring(0, tripAction.length - 7);
+
+  console.log('Trip ' + tripAction + 'd.');
+  $('form').trigger('reset');
+  $('#form-message').html('Trip ' + tripAction + 'd!').removeClass("errors");
   $('#errors').empty();
 };
 
@@ -38,6 +41,13 @@ var tripListClickHandler = function() {
     console.log('AJAX failed to load.');
     $('#errors').html('Couldn\'t load trips.');
   });
+};
+
+var newTripClickHandler = function() {
+  var newTripTemplate = _.template($('#new-trip-template').html());
+
+  $('#trip-info').html(newTripTemplate);
+  $('#errors').empty();
 };
 
 var tripClickHandler = function(e) {
@@ -51,24 +61,23 @@ var tripClickHandler = function(e) {
   });
 };
 
-var reserveClickHandler = function(e) {
+var formClickHandler = function(e) {
   e.preventDefault();
-  var url = $('#reserve-trip-form').attr('action');
-  var formData = $('#reserve-trip-form').serialize();
-  var requiredFields = $('#reserve-trip-form [required]');
+  var url = $(this).attr('action');
+  var formData = $(this).serialize();
+  var tripAction = $('form .button').attr('id');
+  tripAction = tripAction.substring(0, tripAction.length - 7);
+  console.log(tripAction);
 
-  if ($('#name').val() === "" || $('#email').val() === "" || $('#age').val() === "") {
-    $('#reserve-message').html('All fields are required').addClass('errors');
-    return;
-  }
-  $.post(url, formData, reserveSuccess).fail(function() {
-    console.log('AJAX failed to book trip');
-    $('#reserve-message').html('Error: Trip NOT reserved.').addClass('errors');
+  $.post(url, formData, formSuccess).fail(function() {
+    console.log('AJAX failed to ' + tripAction + ' trip.');
+    $('#form-message').html('Error: Trip NOT ' + tripAction + 'd.').addClass('errors');
   });
 };
 
 $(document).ready(function() {
   $('#load-trips').click(tripListClickHandler);
+  $('#new-trip').click(newTripClickHandler);
   $('#trip-info').on('click', 'ul a', tripClickHandler);
-  $('#trip-info').on('click', '#reserve-button', reserveClickHandler);
+  $('#trip-info').on('submit', 'form', formClickHandler);
 });

@@ -3,11 +3,16 @@
 body {
   background-color: #fcf7fc;
   background-image: url('../images/foggy-birds.png');
+  padding: 1%;
   /*image from https://www.transparenttextures.com/*/
 }
 
 header {
   text-align: center;
+}
+
+header .button {
+  width: 140px;
 }
 
 :focus {
@@ -42,7 +47,7 @@ header {
   color: red;
 }
 
-#errors, #reserve-message {
+#errors, #form-message {
   font-size: 1.5em;
   text-align: center;
 }
