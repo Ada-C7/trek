@@ -114,5 +114,4 @@ $(document).ready(function() {
     this.reset();
     return false;
   }));
-
 });
