@@ -37,3 +37,11 @@
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
+
+.button {
+    margin-right: 5px;
+}
+
+.button button {
+    color: white;
+}

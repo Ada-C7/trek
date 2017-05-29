@@ -19,7 +19,8 @@
       <button class="button" id="button">Show All Trips</button>
     </section>
 
-    <div id="message"></div>
+    <button class="button" id="create_trip">Create New Trip</button>
+
 
     <section class="dropdown category" >
       <button class="dropbtn">Trips by Max Budget</button>
@@ -102,11 +103,16 @@
         </section>
       </section>
     </form> -->
-    <button class="button" id="create_trip">Create New Trip</button>
+
+    <div id="message"></div>
+
   </header>
 
   <main>
+    <section id="options"></section>
     <section id="display"></section>
+
+    </section>
     <script id="create-trip-template" type="text/template">
       <form id="create-trip-form" action="https://trektravel.herokuapp.com/trips/" method="post">
         <section>
@@ -141,6 +147,7 @@
     </script>
     <script id="trips-template" type="text/template">
       <section class="trip">
+
         <br>
         <p>
           <strong> id: </strong>
@@ -163,6 +170,14 @@
           <strong> weeks: </strong>
           <%- data.weeks %>
         </p>
+
+        <p>
+          <% if (data.cost != null){ %>
+          <strong> cost: </strong>
+          <%- data.cost %>
+          <% } %>
+        </p>
+
         <button class="button success">
           Detail of Trip <%- data.id %>
         </button>
