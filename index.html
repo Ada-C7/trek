@@ -13,11 +13,23 @@
   <body>
 
     <header>
-      <h2>GO FOR IT!</h2>
-      <button class="button" id="load_list"> All Trips </button>
+      <section class = 'row' >
+        <h2>GO FOR IT!</h2>
+      </section>
+      <section class = 'row' >
+        <div class = 'large-4 columns'>
+          <button class="button" id="load_list"> All Trips </button>
+        </div>
+        <div class = 'large-8 columns'>
+        </div>
+      </section>
+
+
     </header>
 
-    <main>
+    <main class = 'row'>
+
+
 
       <table id = 'view_list'>
         <thead id = 'list_head_of_trips'>
@@ -49,6 +61,9 @@
         </tr>
 </script>
 
+
+
+
 <script id="list_template" type="text/template">
         <tr>
           <td><%- data.id%></td>
@@ -56,10 +71,11 @@
           <td><a class = 'query continent' data-query = '<%- data.continent%>'> <%- data.continent%>  </a></td>
           <td><%- data.weeks %></td>
           <td>
-            <button class="trip_button button tiny" id= 'getTrip'  data-tripid = <%- data.id%> >Info for trip <%- data.id%></button>
+            <button class="trip_button button tiny" id= 'getTrip'  data-tripid = <%- data.id%> >Go for trip <%- data.id%>!</button>
           </td>
         </tr>
 </script>
+
 
 
 <script id="trip_template" type="text/template">
@@ -83,12 +99,11 @@
         <p id = 'message'></p>
       </div>
 
-      <div id = 'form1'>
+      <div id = 'form1_div'>
         <p>
           Make a reservation and ...
         </p>
-
-        <form action = <%- url%> method="post">
+        <form id = 'form1' action = <%- url%> method="post">
           <section>
             <label>Name</label>
             <input type="text" id="name" name="name"></input>
@@ -105,11 +120,8 @@
             <button class="button expanded success" type="submit" id= 'makeReservation'> ...go for it :) </button>
           </section>
         </form>
-
       </div>
-
     </div>
-
 
     <div class = "large-7 columns">
       <article>
