@@ -6,13 +6,13 @@ th {
   text-align: left;
 }
 
-.button {
+.button, .button:focus {
   background-color: #700859;
   max-width: 100px;
 }
 
 
-.button:hover, .button:focus {
+.button:hover {
   background-color: #F012BE;
 }
 
