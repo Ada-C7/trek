@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="page-bg"> </div>
+  <section id="errors"></section>
+  <div class="row">
+    <div class="small-3 small-centered column">
+      <button id="find-trips" class="button secondary large"> Adventure Awaits </button>
+    </div>
+  </div>
+  <div class="row">
+    <div id="trip-list" class="small-6 large-9 small-centered column"></div>
+  </div>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
+  <script src="index.js" type="text/javascript"></script>
+</body>
+</html>
+
+<!-- Trip List Template -->
+<script id="trip-item-template" type="text/template">
+  <section class="show-info">
+    <div id=<%- data.id %>>
+      <% if (data.name) { %>
+        <span class="small-3 large-3 small-centered column trip-name">
+          <%- data.name %>
+        </span>
+        <% } %>
+      </section>
+    </div>
+  </script>
+
+  <!-- Trip Information and Form Template -->
+  <script id="trip-info-template" type="text/template">
+    <div>
+      <ul class="trip-info">
+        <li><%- data.id %></li>
+        <li><%- data.name %></li>
+        <li><%- data.continent %></li>
+        <li><%- data.about %></li>
+        <li><%- data.category %></li>
+        <li><%- data.weeks %></li>
+        <li><%- data.cost %></li>
+      </ul>
+      <form action="https://trektravel.herokuapp.com/trips/" method="post">
+        <section>
+          <div id="message"></div>
+          <label>Name</label>
+          <input type="text" id="name" name="name"></input>
+        </section>
+        <label>Email</label>
+        <input type="text" id="email" name="email"></input>
+        <section>
+          <button id="make-res" type="submit" class="button secondary">Make Reservation</button>
+        </section>
+      </form>
+    </div>
+  </script>
+</script>
