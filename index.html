@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/app.css">
+  <title>Trip Finder</title>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <script src="trek.js" type="text/javascript"></script>
+  <div id="trip-details"></div>
+  <script id="all-trips-template" type="text/template">
+    <div class="transbox">
+      <div class="large-6 large-centered-columns">
+        <section class="trip-index" id ="trip-index-<%-data.id%>">
+          <p>
+            <strong>Destination: </strong>
+            <%- data.name %>
+          </p>
+          <p>
+            <strong>Continent: </strong>
+            <%- data.continent %>
+          </p>
+          <p>
+            <strong>Weeks: </strong>
+            <%- data.weeks %>
+          </p>
+        </section>
+      </div>
+    </div>
+  </script>
+
+  <script id="details-template" type="text/template">
+    <section class="individual-trip">
+      <h2>Trip details</h2>
+      <p>
+        <strong>Destination: </strong>
+        <%- data.name %>
+      </p>
+      <p>
+        <strong>Continent: </strong>
+        <%- data.continent %>
+      </p>
+      <p>
+        <strong>Description: </strong>
+        <%- data.about %>
+      </p>
+      <p>
+        <strong>Weeks: </strong>
+        <%- data.weeks %>
+      </p>
+      <p>
+        <strong>Price: $</strong>
+        <%- data.cost %>
+      </p>
+      <div id="message"></div>
+      <div id="name-form">
+        <div class="small-4 small-centered columns">
+          <form id="reserve-form" action="https://trektravel.herokuapp.com/trips/<%-data.id%>/reserve" method="post">
+            <section>
+              <label>Reserve this trip! </label>
+              <input type="text" id="name" name="name" placeholder="Name"></input>
+              <input type="text" id="email" name="email" placeholder="Email"></input>
+            </section>
+            <input class="button" id="reserve" type="submit"></input>
+          </form>
+        </div>
+      </div>
+    </section>
+  </script>
+
+</head>
+<body>
+  <section id="errors"></section>
+  <div class="load-button">
+    <div class="small-6 small-centered text-center columns"></div>
+    <button class="button" id="load" type="submit">View all trips!</button>
+    <div id="trips-list"></div>
+  </div>
+</body>
+</html>

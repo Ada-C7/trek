@@ -1,0 +1,46 @@
+body {
+  background-color: #074F57;
+  font-size: 20px;
+}
+
+.load-button {
+  text-align: center;
+  margin: 20px;
+}
+
+
+.trip-index {
+  color: #074F57;
+  text-align: left;
+  margin: 15px;
+}
+
+.transbox {
+  margin: 30px;
+  background-color: #E2D1C5;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  color: #074F57;
+}
+
+.transbox:hover {
+  opacity: 0.9;
+  filter: alpha(opaacity=90);
+}
+
+h2 {
+  text-align: center;
+}
+
+.individual-trip {
+  color: #E2D1C5;
+  margin: 15px;
+  border-style: ridge;
+  padding: 10px;
+}
+
+#name-form, label {
+  font-size: 25px;
+  color: #E2D1C5;
+  text-align: center;
+}
