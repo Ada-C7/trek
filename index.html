@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link href="trek.css" media="screen" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/app.css">
-    <title></title>
-  </head>
-    <header>
+<head>
+  <meta charset="utf-8">
+  <link href="trek.css" media="screen" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/app.css">
+  <title></title>
+</head>
+<header>
 
-      <h1>Welcome to Trek</h1>
-      <!-- <button id="continent" class="button">See Asia Trips</button> -->
+  <h1>Welcome to Trek</h1>
+  <p>
+    <button id="load" class="button">See All Trips</button>
+    <button id="budget" class="button">Select Budget</button>
+    <button id="continent" class="button">Select Continent</button>
 
 
-      <select style="width: 280px" id="continent" name="Continent">
-        <option selected="">See All</option>
-        <option>Africa</option>
-        <option>Antarctica</option>
-        <option>Asia</option>
-        <option>Australia</option>
-        <option>Europe</option>
-        <option>North America</option>
-        <option>South America</option>
-      </select>
+    <form id="budgetDrop" style="display:none;">
+      <input id="budgetField" type="number" name="maxbudget" min="0" step="250" placeholder="Enter Max Budget">
+      <button id="submitBudget" class="button">Search</button>
+    </form>
 
-      <button id="load" class="button">See Trips</button>
+    <form id="continentDrop" style="display:none;">
+      <fieldset>
+        <input type="radio" name="continent" value="Africa"  /> Africa
+        <input type="radio" name="continent" value="Antartica" /> Antarctica
+        <input type="radio" name="continent" value="Asia" /> Asia
+        <input type="radio" name="continent" value="Australia" /> Australia
+        <input type="radio" name="continent" value="Europe" /> Europe
+        <input type="radio" name="continent" value="North America" /> North America
+        <input type="radio" name="continent" value="South America" /> South America
+        <p>
+          <button id="submitContinent" class="button">Search</button>
+        </p>
+      </fieldset>
+    </form>
+  </p>
 
-      <section id="errors"></section>
-      <section id="message"></section>
-    </header>
-  <body>
-    <div id="trip-list"></div>
-    <script id="trek-list-template" type="text/template">
-      <div class="small-12 columns medium-6 columns end large-4 columns end">
+  <section id="errors"></section>
+  <section id="message"></section>
+</header>
+<body>
+  <div id="trip-list"></div>
+  <script id="trek-list-template" type="text/template">
+    <div class="small-12 columns medium-6 columns end large-4 columns end">
       <section class="trip-block">
-
         <h4>
           <a href= "#" class="trek-link" data-trip-id= "<%- data.id %>"><%- data.name %></a>
         </h4>
@@ -47,11 +57,11 @@
         </p>
       </section>
     </div>
-    </script>
+  </script>
 
-    <script id="trek-detail-template" type="text/template">
-      <div class="row">
-        <div class="small-12 large-8 columns">
+  <script id="trek-detail-template" type="text/template">
+    <div class="row">
+      <div class="small-12 large-8 columns">
         <h2>
           <%- data.name %>
         </h2>
@@ -73,8 +83,9 @@
           <%- data.about %>
         </p>
       </div>
+
       <div class="small-12 large-4 columns">
-        <form action="https://trektravel.herokuapp.com/trips/<%-data.id %>/reserve" method="post">
+        <form id="reserveForm" action="https://trektravel.herokuapp.com/trips/<%-data.id %>/reserve" method="post">
           <section>
             <h2>Reserve this Trip</h2>
             <label>Name</label>
@@ -93,14 +104,12 @@
           </section>
         </form>
       </div>
-      </div>
+    </div>
+  </script>
 
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  <script type="text/javascript" src="trek.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 
-    </script>
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="trek.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-
-  </body>
+</body>
 </html>

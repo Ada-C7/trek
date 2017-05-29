@@ -27,6 +27,7 @@ header {
   height: 40px;
 }
 
-#load {
-  margin-top: 15px;
+
+form {
+  display: inline-block;
 }
