@@ -1,0 +1,32 @@
+html {
+  background-image: url('../images/kauai.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+header {
+  color: white;
+  text-align: center;
+}
+
+header .button.hollow {
+  border-color: white;
+  color: white;
+}
+
+header .button.hollow:hover {
+  border-color: #102c3d;
+  color: #102c3d;
+}
+
+body {
+  background-color: inherit;
+}
+
+main {
+  background-color: white;
+  margin: 4rem;
+  margin-top: 0;
+  border-radius: 5px;
+  padding: 2rem;
+}
