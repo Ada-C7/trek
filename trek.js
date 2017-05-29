@@ -4,13 +4,12 @@ var url= "https://trektravel.herokuapp.com/trips";
 var allTemplate = _.template($('#all-trips-template').html());
 
 var successCallback = function(event) {
-  var target = $('#all-trips');
-
   for (var i = 0; i < event.length; i++) {
     var generatedHTML = allTemplate({
       allData: event[i]
     });
-    target.append($(generatedHTML));
+    $("#all-trips").append(generatedHTML);
+    // Why do I get different output when I use .append vs. .html?
   }
 };
 
@@ -19,16 +18,15 @@ var failureCallback = function() {
 };
 
 var clickHandler = function() {
-  alert($(this).attr("id")); // returns allLoad
   $.get(url, successCallback).fail(failureCallback);
 };
 
 /*****Return Single Trip Info******/
+// var singleTemplate = _.template($('single-trip-template').html());
+
+
 
 /*****Execute above code on Click******/
 $(document).ready(function() {
   $('#allLoad').click(clickHandler);
 });
-
-/* would like some error handling to get rid of the ugly
-responses.*/
