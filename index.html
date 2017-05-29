@@ -44,10 +44,18 @@
     <section class="small-12 medium-6 columns">
       <h2><%- data.name %> (Trip #<%-data.id %>)</h2>
       <ul>
-        <li><strong>Continent:</strong> <%- data.continent %></li>
-        <li><strong>Cost:</strong> $<%- data.cost %></li>
-        <li><strong>Number of weeks:</strong> <%- data.weeks %></li>
-        <li><strong>Category:</strong> <%- data.category %></li>
+        <% if (data.continent) { %>
+          <li><strong>Continent:</strong> <%- data.continent %></li>
+        <% } %>
+        <% if (data.cost) { %>
+          <li><strong>Cost:</strong> $<%- data.cost %></li>
+        <% } %>
+        <% if (data.weeks) { %>
+          <li><strong>Number of weeks:</strong> <%- data.weeks %></li>
+        <% } %>
+        <% if (data.category) {%>
+          <li><strong>Category:</strong> <%- data.category %></li>
+        <% } %>
       </ul>
       <p><%- data.about %></p>
     </section>
@@ -67,7 +75,7 @@
   </script>
 
   <script id="new-trip-template" type="text/template">
-    <section class="small-12">
+    <section id="trip-creation" class="small-12">
       <h2>Create New Trip</h2>
       <form id="new-trip-form" action="https://trektravel.herokuapp.com/trips/" method="post">
         <label for="name">Trip Name:</label>

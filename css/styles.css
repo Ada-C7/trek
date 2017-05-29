@@ -43,6 +43,11 @@ header .button {
   margin-bottom: 3%;
 }
 
+#trip-creation {
+  max-width: 800px;
+  margin: auto;
+}
+
 .errors {
   color: red;
 }
