@@ -39,15 +39,27 @@ $(document).ready(function() {
       data: response
     });
     $("#" + id).append($(generatedHTML));
+
+    $('form').submit(function(event){
+      event.preventDefault();
+
+      var url = $(this).attr("action");
+      var formData = $(this).serialize();
+
+      $.post(url, formData, successReservation)
+    });
   };
 
   var clickShowInfoHandler = function(event){
     var tripId = event.currentTarget.dataset.id;
-
-
     $.get('https://trektravel.herokuapp.com/trips/' + tripId, successSingleTrip);
-
   };
+
+  var successReservation = function(response){
+    $('#message').html('<p> Success! </p>');
+  }
+
+
 
   $('#load').click(clickButtonHandler);
   // $('.more-info').click(clickShowInfoHandler);

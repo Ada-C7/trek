@@ -15,10 +15,23 @@
       </div>
     </li>
   </script>
+
   <script id='one-trip-template' type="text/template">
     <div>
       <p> <%- data.continent %></p>
     </div>
+
+    <div id="message"></div>
+    <form action="https://trektravel.herokuapp.com/trips/" + '<%- data.id %>' + "/reserve" method="post">
+      <section>
+        <label>Name</label>
+        <input type="text" id="name" name="name"></input>
+      </section>
+
+      <section class="button">
+        <button type="submit">Reserve</button>
+      </section>
+    </form>
   </script>
 </head>
 
@@ -34,14 +47,14 @@
     <ul id="showInfo"></ul>
 
 
-      <!-- <script id="trips-template" type="text/template">
+    <!-- <script id="trips-template" type="text/template">
 
 
-      <section id='showInfo'>
-      <h2>
-      <strong><%- data.name %></strong>
-    </h2>
-  </section>
+    <section id='showInfo'>
+    <h2>
+    <strong><%- data.name %></strong>
+  </h2>
+</section>
 </script> -->
 </main>
 
