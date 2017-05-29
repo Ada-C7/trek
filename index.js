@@ -13,16 +13,23 @@ var indexClickHandler = function(){
 
 
 var indexSuccessCallback = function(response){
-  // TODO find a way to clear show info if index button is pressed again
+
   $('#trip-index').empty();
 
 
   var tripIndexTemplate = _.template($('#trip-index-template').html());
 
   for(var i=0;i<response.length;i++){
-    var generatedHtml = tripIndexTemplate({
-      trip: response[i],
-    });
+    // validate data
+    if(response[i] && response[i].name && response[i].continent){
+      // validate data
+      if(response[i].name.length > 5 && response[i].weeks > 0 && response[i].continent.length > 3){
+
+      var generatedHtml = tripIndexTemplate({
+        trip: response[i],
+      });
+    } 
+  }
     $('#trip-index').append(generatedHtml);
   }
   $('#trip-index').on('click', '#trip-link', showClickHandler);
@@ -65,7 +72,7 @@ var showSuccessCallback = function(response){
 // ####################### Reservation ####################### //
 
 
-// this needs to bind to something that exists on the page at the time of the initial load
+
 
 $('#trip-index').on('click', 'button', function(e) {
 
