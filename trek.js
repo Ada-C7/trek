@@ -1,4 +1,4 @@
-var baseUrl = "https://trektravel.herokuapp.com/";
+var baseUrl = "https://trektravel.herokuapp.com/trips/";
 var clearPage = function () {
   $('main').empty();
   $('main').show();
@@ -18,7 +18,7 @@ $(document).ready(function () {
 
   var tripCallback = function (response) {
     clearPage();
-    var reservationUrl = baseUrl + "trips/" + response.id + "/reserve";
+    var reservationUrl = baseUrl + response.id + "/reserve";
     var generatedHtml = showTripTemplate({
       trip: response,
       url: reservationUrl
@@ -31,12 +31,12 @@ $(document).ready(function () {
   };
 
   $('#get-trips').click(function() {
-    var url = baseUrl + "trips";
+    var url = baseUrl;
     $.get(url, tripsCallback).fail(failCallback);
   });
 
   $('main').on('click', '#trip-list a', function () {
-    var url = baseUrl + "trips/" + $(this).attr('id');
+    var url = baseUrl + $(this).attr('id');
     $.get(url, tripCallback).fail(failCallback);
   });
 

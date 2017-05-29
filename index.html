@@ -10,42 +10,46 @@
     <script type="text/javascript" src="trek.js"></script>
   </head>
   <body>
-    <header>
+    <header class="page-header row">
       <h1>Tripster</h1>
       <button class="button hollow" id="get-trips">Get Trips</button>
     </header>
 
-    <main></main>
+    <main class="row"></main>
 
     <script id="trip-list-template" type="text/template">
-      <ul id="trip-list">
+      <article id="trip-list">
         <% for (var i = 0; i < trips.length; i++) { %>
-          <li><a href="#" id=<%- trips[i].id %>><%- trips[i].name %></a></li>
+          <h3><a href="#" id=<%- trips[i].id %>><%- trips[i].name %></a></h3>
         <% } %>
-      </ul>
+      </article>
     </script>
 
     <script id="show-trip-template" type="text/template">
-      <article id="trip-details">
-        <h2><%- trip.name %></h2>
-        <ul>
-          <li><strong>Category</strong>: <%- trip.category %></li>
-          <li><strong>Continent</strong>: <%- trip.continent %></li>
-          <li><strong>Duration</strong>: <%- trip.weeks %> weeks</li>
-          <li><strong>Cost</strong>: $<%- trip.cost %></li>
-          <li><%- trip.about %></li>
-        </ul>
+      <article>
+        <section class="columns large-7">
+          <h2><%- trip.name %></h2>
+          <ul>
+            <li><strong>Category</strong>: <%- trip.category %></li>
+            <li><strong>Continent</strong>: <%- trip.continent %></li>
+            <li><strong>Duration</strong>: <%- trip.weeks %> weeks</li>
+            <li><strong>Cost</strong>: $<%- trip.cost %></li>
+          </ul>
+          <p><%- trip.about %></p>
+        </section>
 
-        <h3>Reserve a Spot!</h3>
-        <form action=<%- url %> method="post">
-          Name:
-          <input type="text" name="name" />
-          Age:
-          <input type="text" name="age" />
-          Email:
-          <input type="text" name="email" />
-          <input class="button hollow" type="submit" value="Submit" />
-        </form>
+        <section class="columns large-4">
+          <h3>Reserve a Spot!</h3>
+          <form action=<%- url %> method="post">
+            Name:
+            <input type="text" name="name" />
+            Age:
+            <input type="text" name="age" />
+            Email:
+            <input type="text" name="email" />
+            <input class="button hollow" type="submit" value="Submit" />
+          </form>
+        </section>
       </article>
     </script>
 
