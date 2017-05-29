@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link href="foundation.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="index.css" media="screen" rel="stylesheet" type="text/css">
+
+  <script src="js/vendor/modernizr.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Barrio|Montserrat+Subrayada" rel="stylesheet">
+</head>
+<title></title>
+</head>
+<body>
+  <div class="small-6 small-centered text-center columns">
+    <button id="load" class="button"> See Trips </button>
+  </div>
+  <h3 class="text-center" id="trip-header"> All Trips </h3>
+  <table id="trip-list" class="small-6 small-centered text-center columns">
+
+    <tbody>
+    </tbody>
+  </table>
+
+  <section id='single-trip-detail' class="small-8 small-centered text-justify columns">
+  </section>
+
+  <section id='display-form'>
+  </section>
+
+
+  <script id="trip-template" type="text/template">
+    <tr>
+      <td><%- trip.continent %></td>
+      <td><%- trip.name %></td>
+      <td><button data-trip-id="<%-trip.id %>" class="button trip-details"> Learn More </button></td>
+    </tr>
+  </script>
+
+  <script id="single-trip-template" type="text/template">
+    <div>
+      <h3 class="text-center"><%- trip.name %></h3>
+<h4 id='reservation-message' class="text-center"></h4>
+      <table id="details-table" class="small-6 small-centered text-justify columns">
+        <tbody>
+        <tr>
+          <td>Continent: <br> <%- trip.continent %></td>
+          <td>Length: <br> <%- trip.weeks %> Weeks</td>
+          <td>Cost: <br> $<%- trip.cost %></td>
+          <td>Category: <br> <%- trip.category %></td>
+        </tr>
+      </tbody>
+      </table>
+      <p><%- trip.about %></p>
+    </div>
+    <button id="all-trips-button" class="button"> Back to All Trips </button>
+    <button id="display-form-button" data-reservation-id="<%- trip.id %>" class="button"> Book Trip </button>
+  </script>
+
+  <script id="display-form-template" type="text/template">
+
+    <form action="https://trektravel.herokuapp.com/trips/<%- id %>/reserve" method="post" class="small-8 small-centered columns">
+      <h4 class="text-center"> Registration Form </h4>
+      <div class="row">
+        <div class="medium-6 columns">
+          <label>Name
+            <input type="text" id="name" name="name">
+          </label>
+        </div>
+        <div class="medium-6 columns">
+          <label>Age
+            <input type="text" id="age" name="age">
+          </label>
+        </div>
+        <div class="medium-6 columns">
+          <label>Email
+            <input type="text" id="email" name="email">
+          </label>
+        </div>
+        <div class="input-group-button">
+          <input type="submit" class="button submit-trip-reservation" value="Reserve Trip" >
+        </div>
+      </div>
+    </form>
+
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
+  <script src="main.js" type="text/javascript"></script>
+</body>
+</html>

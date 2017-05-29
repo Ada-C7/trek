@@ -1,0 +1,57 @@
+body {
+  background-image: url("http://www.orangesmile.com/ru/foto/oceans/indian-ocean.jpg");
+}
+
+#load {
+  margin-top: 45%;
+  background-color: yellow;
+  color: grey;
+  font-size: 2em;
+  font-family: 'Barrio', cursive;
+}
+
+table {
+  font-family: 'Barrio', cursive;
+}
+
+h3 {
+  font-family: 'Barrio', cursive;
+}
+
+h4 {
+  font-family: 'Barrio', cursive;
+}
+
+#trip-list {
+  background-color: yellow;
+  padding: 15px;
+}
+
+#single-trip-detail {
+  background-color: #CAFF42;
+}
+
+#details-table {
+  background: yellow;
+  padding: 15px;
+}
+
+.button.submit-trip-reservation {
+  margin-left: 15%;
+  margin-top: 6%;
+  font-family: 'Montserrat Subrayada', sans-serif;
+  font-size: 2em;
+}
+
+form {
+  margin-top: 3em;
+  background: yellow;
+  padding: 1em;
+  font-family: 'Montserrat Subrayada', sans-serif;
+}
+
+#reservation-message {
+  font-family: 'Montserrat Subrayada', sans-serif;
+  color: orange;
+  background-color: purple;
+}
