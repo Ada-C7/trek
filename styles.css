@@ -19,10 +19,21 @@
 
 .show-info {
   font-size: 2vw;
+  text-align: center;
   float: center;
   display: inline-block;
   padding: 5%;
+  margin: 3%;
+}
 
+li {
+  list-style: none;
+  float: center;
+  display: inline-block;
+}
+
+ul {
+  font-size: 1vw;
 }
 
 .page-bg {
