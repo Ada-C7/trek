@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset='utf-8'>
+          <title>Wanderlustful</title>
+           <link rel="stylesheet" href="css/foundation.css">
+           <link rel="stylesheet" href="css/style.css">
+     </head>
+
+     <body>
+          <header>
+               <nav>
+                    <a id='reload' href=''>Wanderlustful</a>
+                    <button class='wander'> Wander </button>
+                    <button id='share'> Share Your Own Wanderlust </button>
+               </nav>
+               <details class='secondary'>
+                    <summary><button id='continent'> Wander by Continent </button></summary>
+                    <button id='africa' class='small'> Africa </button>
+                    <button id='antarctica' class='small'> Antarctica </button>
+                    <button id='asia' class='small'> Asia </button>
+                    <button id='australia' class='small'> Australia </button>
+                    <button id='europe' class='small'> Europe </button>
+                    <button id='northAmerica' class='small'> North America </button>
+                    <button id='southAmerica' class='small'> South America </button>
+               </details>
+               <details class='secondary'>
+                    <summary><button id='time'> Wander by Time </button></summary>
+                    <button id='oneWeek' class='small'> One Week </button>
+                    <button id='twoWeeks' class='small'> Two Weeks </button>
+                    <button id='threeWeeks' class='small'> Three Weeks or More </button>
+               </details>
+               <details class='secondary'>
+                    <summary><button id='budget'> Wander by Budget </button></summary>
+                    <button id='oneThousand' class='small'> $1 - $1999 </button>
+                    <button id='twoThousand' class='small'> $2000 - $2999 </button>
+                    <button id='threeThousand' class='small'> $3000 or More </button>
+
+               </details>
+
+          </header>
+
+          <main>
+               <section id='errors'></section>
+
+               <section id='messages'></section>
+
+               <section id='tripForm'>
+                    <script id='trip-form-template' type='text/template'>
+                         <form action='https://trektravel.herokuapp.com/trips' method='post'>
+                              <section>
+                                   <label>Name</label>
+                                   <input type='text' id='name' name='name'></input>
+                              </section>
+
+                              <section>
+                                   <label>Continent</label>
+                                   <input type='text' id='continent' name='continent'></input>
+                              </section>
+
+                              <section>
+                                   <label>About</label>
+                                   <input type='textarea' id='about' name='about'></input>
+                              </section>
+                              <section>
+                                   <label>Weeks</label>
+                                   <input type='text' id='weeks' name='weeks'></input>
+                              </section>
+                              <section>
+                                   <label>Cost</label>
+                                   <input type='text' id='cost' name='cost'></input>
+                              </section>
+
+                              <section class='button'>
+                                   <button type='submit'>Add</button>
+                              </section>
+                         </form>
+                    </script>
+               </section>
+
+               <section>
+                    <ul id='trips'>
+                         <script id='trips-template' type='text/template'>
+                                   <li>Trip: <a href= '<%- trip.reference %>'> <%- trip.name %> </a></li>
+                         </script>
+                    </ul>
+               </section>
+
+               <section id='trip'>
+                    <script id='trip-template' type='text/template'>
+                         <article id='<%- trip.id %>'>
+                              <p> Name: <%- trip.name %> </p>
+                              <p> Destination: <%- trip.destination %> </p>
+                              <p> Continent: <%- trip.continent %> </p>
+                              <p> About: <%- trip.about %> </p>
+                              <p> Category: <%- trip.category %> </p>
+                              <p> Weeks: <%- trip.weeks %> </p>
+                              <p> Cost: <%- trip.cost %> </p>
+
+
+
+                              <button id='reserve'> Reserve Your Wanderlust </button>
+                              <button class='wander'> Back to All Wanderlust </button>
+                         </article>
+                    </script>
+                    <section id='reservationForm'>
+                         <script id='reservation-form-template' type='text/template'>
+                              <form action='/' method='post'>
+                                   <section>
+                                        <label>Name</label>
+                                        <input type='text' id='name' name='name'></input>
+                                   </section>
+                                   <section>
+                                        <label>Age</label>
+                                        <input type='text' id='age' name='age'></input>
+                                   </section>
+                                   <section>
+                                        <label>Email</label>
+                                        <input type='textarea' id='email' name='email'></input>
+                                   </section>
+                                   <section class='button'>
+                                        <button id='make' type='submit'> Reserve </button>
+                                        <button id='cancel'> Cancel </button>
+                                   </section>
+                              </form>
+                         </script>
+                    </section>
+
+               </section>
+          </main>
+
+          <footer></footer>
+
+          <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+          <script src="main.js" type="text/javascript"></script>
+     </body>
+</html>
