@@ -12,6 +12,8 @@ var listOfTrips = null;
 
 var sortBy = null;
 
+var
+
 // HELPER functions ****************************************
 
 var showPage = function(page){
@@ -79,6 +81,7 @@ var sortStrings = function(list, by, asc){
   return sorted;
 };
 
+
 var toggleAsc = function(by){
   if (ascending[by] === false || ascending[by] === null){
     ascending[by] = true
@@ -86,6 +89,7 @@ var toggleAsc = function(by){
     ascending[by] = false
   };
 };
+
 
 var resetAscending = function() {
   ascending = {
@@ -102,6 +106,10 @@ var resetAscending = function() {
 
 // CALLBACKS functions ****************************************
 
+var failureCallback = function() {
+  console.log("Didn't work :(");
+  $("#errors").html("<h1>AJAX request failed!</h1>");
+};
 
 
 var successCallbackList = function(response) {
@@ -157,10 +165,7 @@ var successCallbackTrip= function(response){
 };
 
 
-var failureCallback = function() {
-  console.log("Didn't work :(");
-  $("#errors").html("<h1>AJAX request failed!</h1>");
-};
+
 
 
 
@@ -169,22 +174,8 @@ var failureCallback = function() {
 var clickHandlerList = function(event) {
   listOfTrips = null;
   resetAscending();
-  $.get(urlBasic, successCallbackList).fail(failureCallback);
-};
-
-
-var clickHandlerSort = function(event) {
-  console.log('In the clickHandlerSortfunction: ');
-  console.log(ascending);
-  sortBy = $(this).attr('data-sort');
-  successCallbackList(listOfTrips);
-  // $.get(urlBasic, successCallbackList).fail(failureCallback);
-};
-
-var clickHandlerTrip = function(event) {
-  var id = $(this).attr('data-tripid');
-  var url = urlBasic + '/' + id;
-  $.get(url, successCallbackTrip).fail(failureCallback);
+  var url = urlBasic
+  $.get(url, successCallbackList).fail(failureCallback);
 };
 
 var clickHandlerQuery = function(event) {
@@ -199,14 +190,34 @@ var clickHandlerQuery = function(event) {
   $.get(url, successCallbackList).fail(failureCallback);
 };
 
+
+var clickHandlerSort = function(event) {
+  console.log('In the clickHandlerSortfunction: ');
+  console.log(ascending);
+  sortBy = $(this).attr('data-sort');
+  successCallbackList(listOfTrips);
+  // $.get(urlBasic, successCallbackList).fail(failureCallback);
+};
+
+
+var clickHandlerTrip = function(event) {
+  var id = $(this).attr('data-tripid');
+  console.log('In clickHandlerTrip');
+  var url = urlBasic + '/' + id;
+  $.get(url, successCallbackTrip).fail(failureCallback);
+};
+
+
 var makeReservation = function(event) {
   event.preventDefault();  /// VERY IMPORTANT TO INCLUDE // By default, the form will attempt to do it's own local POST so we want to prevent that default behavior
   var url = $(this).attr("action"); // Retrieve the action from the form
   var formData = $(this).serialize();
-  console.log(formData);
+  console.log( 'This is the formData:' + formData);
+  var x = document.getElementById("form1");
+  console.log( 'This is x:' + x.elements[2].value);
   $.post(url, formData, function(response){
     $('#message').html('<p> You have a reservation! </p>');
-    document.getElementById("form1").style.display = "none";
+    document.getElementById("form1_div").style.display = "none";
     console.log(response);
   }).fail(function(){
     $('#message').html('<p>Reservation Failed</p>');
@@ -215,14 +226,11 @@ var makeReservation = function(event) {
 
 
 
-
-
-
-
-// DOCUMENT-READY functions ****************************************
+// DOCUMENT-READY  ****************************************
 
 $(document).ready(function() {
   $('#load_list').click(clickHandlerList);
+
 
   $('#list_of_trips').on('click', 'a.query', clickHandlerQuery);
   $('#trip').on('click', 'a.query', clickHandlerQuery);
