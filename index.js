@@ -1,31 +1,43 @@
 // single-page app with jQuery + AJAX
 
-var baseUrl = "https://trektravel.herokuapp.com/trips";
+//***********************ONCE DOM IS READY************************s
+$(document).ready(function() {
 
-//TODO: use $().remove instead of .toggle
+  var baseUrl = "https://trektravel.herokuapp.com/trips";
+  //TODO: use $().remove instead of .toggle
 
-var failureCallback = function() {
-  console.log("Fail :(");
-  $("#errors").html("<h1>Your AJAX request failed!</h1>");
-};
+  var failureCallback = function() {
+    console.log("Fail :(");
+    $("#errors").html("<h1>Your AJAX request failed!</h1>");
+  };
 
-// INDEX all trips--from Trek API
-var indexCallback = function(response) {
-  console.log("Success!");
-  console.log(response);
+  // INDEX all trips--from Trek API
+  var indexCallback = function(response) {
+    console.log("Success!");
+    console.log(response);
 
-  var tripsTemplate = _.template($('#index-trip-template').html());
-  var all_trips = tripsTemplate({
-    trips: response
-  });
+    var tripsTemplate = _.template($('#index-trip-template').html());
+    var all_trips = tripsTemplate({
+      trips: response
+    });
 
-  $('#index-page').append(all_trips);
+    $('#index-page').append(all_trips);
 
-  $(".show").click(function(event) {
-    var show_url = "";
-    show_url = baseUrl + "/" + this.innerHTML.toString(); // id of trip
-    $.get(show_url, showCallback).fail(failureCallback);
-    $("#index-page").toggle(false);
+    // $(".show").click(function(event) {
+    //   var show_url = "";
+    //   show_url = baseUrl + "/" + this.innerHTML.toString(); // id of trip
+    //   $.get(show_url, showCallback).fail(failureCallback);
+    //   $("#index-page").toggle(false);
+    // });
+  };
+
+  $("#index-page").on("click", "a", function(event) {
+    console.log("success");
+    event.preventDefault();
+    var tripId = $(this).data().id;
+    var showUrl = baseUrl + "/" + tripId.toString();
+    console.log(showUrl);
+    $.get(showUrl, showCallback).fail(failureCallback);
   });
 
   // SHOW each trip--id grabbed from button html
@@ -40,11 +52,7 @@ var indexCallback = function(response) {
     $('#show-page').html(showHtml);
     $('#show-page').data("id", response.id); // attach trip id to show page
   };
-};
 
-//***********************ONCE DOM IS READY************************
-
-$(document).ready(function() {
   $("#index-page").toggle(false); //to turn trips 'off' on load
 
   $("#load").click(function(event) {
@@ -52,22 +60,29 @@ $(document).ready(function() {
     $("#index-page").toggle();
   });
 
-  $('#show-page').on("submit", "form", (function(event) {
-    event.preventDefault();
-    console.log("in submit form");
-    // console.log($('#show-page').data().id); //shows 1
-    var tripId = $('#show-page').data().id;
-    var reserveUrl = baseUrl + "/" + tripId.toString() + "/reserve";
-    console.log(reserveUrl);
+  // $('#show-page').on("submit", "form", (function(event) {
+  //   event.preventDefault();
+  //   console.log("in submit form");
+  //   // console.log($('#show-page').data().id); //shows 1
+  //   var tripId = $('#show-page').data().id;
+  //   var reserveUrl = baseUrl + "/" + tripId.toString() + "/reserve";
+  //   console.log(reserveUrl);
+  //
+  //   var formData = $(this).serialize();
+  //   console.log(formData);
+  //
+  //   $.post(reserveUrl, formData, function(response) {
+  //     console.log("success!");
+  //     alert("Reservation added!");
+  //   });
+  //   this.reset();
+  //   return false;
+  // }));
 
-    var formData = $(this).serialize();
-    console.log(formData);
+  // $('#show-page').on("onclick", "a", (function(event) {
+  //   event.preventDefault();
+  //   console.log("Success!");
+  //   console.log(event);
+  // }));
 
-    $.post(reserveUrl, formData, function(response) {
-      console.log("success!");
-      alert("Reservation added!");
-    });
-    this.reset();
-    return false;
-  }));
 });

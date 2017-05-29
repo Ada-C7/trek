@@ -21,18 +21,18 @@
 
     <!-- INDEX: to show all trips -->
     <script id="index-trip-template" type="text/template">
-      <div id="all-trips" data-equalizer="trips">
+      <div id="all-trips" class="row">
         <% for (var i = 0; i < trips.length; i ++) { %>
-          <div class="card columns medium-4" data-equalizer-watch="trips" id=<%- trips[i].id %> >
-            <a href="">
+        <a href="" data-id=<%- trips[i].id %>>
+          <div class="card columns medium-4">
             <div class="card-divider">
-              <h4><%- trips[i].name %></h4>
+                <h4><%- trips[i].name %></h4>
             </div>
             <div class="card-section">
               <p><%- trips[i].weeks %> week(s) in <%- trips[i].continent %></p>
-            </div
-            </a>
+            </div>
           </div>
+        </a>
         <% } %>
       </div>
     </script>
