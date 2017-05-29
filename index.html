@@ -21,7 +21,7 @@
 
                <section id='tripForm'>
                     <script id='trip-form-template' type='text/template'>
-                         <form action='https://trektravel.herokuapp.com/trips' method='post' class=tripForm>
+                         <form action='https://trektravel.herokuapp.com/trips' method='post'
                               <section>
                                    <label>Name</label>
                                    <input type='text' id='name' name='name'></input>
@@ -47,7 +47,6 @@
                     </script>
                </section>
 
-
                <section>
                     <ul id='trips'>
                          <script id='trips-template' type='text/template'>
@@ -69,26 +68,27 @@
                     </script>
                     <section id='reservationForm'>
                          <script id='reservation-form-template' type='text/template'>
-                              <form action="http://google.ca" method='post'>
+                              <form action='/' method='post'>
                                    <section>
                                         <label>Name</label>
-                                        <input type="text" id="name" name="name"></input>
+                                        <input type='text' id='name' name='name'></input>
                                    </section>
                                    <section>
                                         <label>Age</label>
-                                        <input type="text" id="age" name="age"></input>
+                                        <input type='text' id='age' name='age'></input>
                                    </section>
                                    <section>
                                         <label>Email</label>
-                                        <input type="textarea" id="email" name="email"></input>
+                                        <input type='textarea' id='email' name='email'></input>
                                    </section>
-                                   <section class="button">
-                                        <button type="submit"> Reserve </button>
-                                        <button type="submit"> Cancel </button>
+                                   <section class='button'>
+                                        <button id='make' type='submit'> Reserve </button>
+                                        <button id='cancel'> Cancel </button>
                                    </section>
                               </form>
                          </script>
                     </section>
+
                </section>
           </main>
 

@@ -23,9 +23,10 @@ $(document).ready(function() {
      // Clear Page
      var clearPage = function() {
           $( '#trips' ).empty();
-          $( '#trip' ).empty();
           $( '#tripForm' ).empty();
           $( '#reservationForm' ).empty();
+          $( 'article' ).remove();
+
      };
 
      // **************
@@ -66,7 +67,7 @@ $(document).ready(function() {
           var generatedHtml = tripTemplate({
                trip: response
           });
-          $( '#trip' ).append($( generatedHtml ));
+          $( generatedHtml ).prependTo( '#trip' );
      };
 
      var failureTrip = function() {
@@ -77,45 +78,48 @@ $(document).ready(function() {
 
      var addTrip = function( event ) {
           clearPage();
-          var generatedHtml = tripFormTemplate({
-          });
+          var generatedHtml = tripFormTemplate();
           $(' #tripForm ').append($( generatedHtml ));
-     }
+     };
 
      $( '#tripForm' ).on('submit', 'form', function( event ) {
           event.preventDefault();
-          var url = $( this ).attr( 'action' );
+          var url = $( this ).attr('action');
           var formData = $( this ).serialize();
 
           $.post( url, formData, function( response ) {
+               $( '#messages' ).html( 'Your Wanderlust, '+ $( '#name' ).val() + ', has been added!' ).fadeOut( 9000 );
                getAllTrips();
-               $( '#messages' ).html( 'Your trip, '+ $( '#name' ).val() + ', has been added!' ).fadeOut( 9000 );
-          });
+
+          })
 
           .fail( function () {
-               $( '#messages' ).html( '<p> Oops. Adding your trip failed. </p>' );
+               $( '#messages' ).html( '<p> Oops. Adding your trip failed. </p>' ).fadeOut( 9000 );
           });
      });
+
 
      // ADD A RESERVATION
 
      var addReservation = function( event ) {
-          var generatedHtml = reservationFormTemplate({
-          });
-          $(' #trip ').append($( generatedHtml ));
+          var generatedHtml = reservationFormTemplate();
+          $( '#reservationForm' ).append($( generatedHtml ));
      }
 
-     // $( '#test' ).on( 'click', '#reserve', function() {
-     //      if( !confirm( 'Are you sure that you want to submit the form' ) )
-     //              event.preventDefault();
+     $( '#reservationForm' ).on('submit', 'form', function( event ) {
+          event.preventDefault();
+           $( 'form' ).attr('action', 'https://trektravel.herokuapp.com/trips/' + $('article').attr('id') + '/reserve')
+           var url = $( this ).attr('action');
+           var formData = $( this ).serialize();
 
-          // var url = $(this).attr('action', 'https://trektravel.herokuapp.com/trips/10/reserve');
-          // var formData = $( this ).serialize();
-          //
-          // $.post(url, formData, function(response){
-          //      $('#message').html('<p> Reservation added!</p>');
-          // });
-     // });
+          $.post( url, formData, function( response ) {
+               $( '#messages' ).html( 'Thanks, ' + $( '#name' ).val() + '! Your reservation has been recorded!' ).fadeOut( 9000 );
+          })
+
+          .fail( function () {
+               $( '#messages' ).html( '<p> Oops. Adding your trip failed. </p>' ).fadeOut( 9000 );
+          });
+     });
 
      // **************
      // CLICK HANDLERS
@@ -132,7 +136,7 @@ $(document).ready(function() {
      });
 
      // A Trip
-     $( '#trips' ).on( 'click', 'a', function(event) {
+     $( '#trips' ).on( 'click', 'a', function( event ) {
                href = $( this ).attr( 'href' );
                event.preventDefault();
                $.get( href, successTrip );
@@ -144,5 +148,10 @@ $(document).ready(function() {
      // Add a Reservation
      $( '#trip' ).on( 'click', '#reserve', function() {
           addReservation();
+     });
+
+     // Cancel Reservation
+     $( '#trip' ).on( 'click', '#cancel', function() {
+          $( 'form' ).empty();
      });
 });
