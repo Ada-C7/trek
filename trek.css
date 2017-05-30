@@ -29,9 +29,12 @@ li, h1, h3, h4 {
   margin: 0 170px 180px 0;
 }
 
+ul.vacation, .vacationDetails, .trip-detail, label {
+  color: white;
+}
+
 ul.vacation {
   background-color: rgba(0, 0, 0, 0.75);
-  color: white;
   list-style: none;
   font-size: 1.5em;
   padding: 25px;
@@ -50,11 +53,6 @@ ul.vacation li:nth-child(n+2) {
 
 .vacationDetails {
   background-color: rgba(0, 0, 0, 0.75);
-  color: white;
-}
-
-.trip-detail {
-  color: white;
 }
 
 .trip-detail:hover {
