@@ -13,6 +13,8 @@ var successCallback = function(response) {
     $("#trips").append($(generatedHtml));
   }
 
+  $('#load').hide();
+
 
 };
 
@@ -23,7 +25,6 @@ var tripDetailCallback = function(response) {
 $('.vacationDetails').empty().show().append($(generatedHtml));
 
   $(".reserveForm").hide();
-
 
     $('.reserveForm').submit(function(e) {
       e.preventDefault();
@@ -59,7 +60,7 @@ var failureCallback = function() {
 };
 
 var clickHandler = function(event) {
-  $.get(url, successCallback).fail(failureCallback)
+  $.get(url, successCallback).fail(failureCallback);
 };
 
 var clickHandlerDetails = function(event) {
