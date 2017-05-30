@@ -1,4 +1,29 @@
+body {
+  background-image: url("../croatia1.jpg");
+  background-position: center;
+}
+
+#site-title {
+  color: white;
+}
+
 .each-card {
   border-radius: 1rem;
   margin-left: 1rem;
+}
+
+#index-button {
+  margin-bottom: 0;
+}
+
+#new-button {
+  margin-bottom: 0;
+}
+
+#budget-button {
+  margin-bottom: 0;
+}
+
+#query {
+  margin-bottom: 0;
 }

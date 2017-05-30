@@ -1,6 +1,7 @@
 // single-page app with jQuery + AJAX
 
-var failureCallback = function() {
+var failureCallback = function(response) {
+  console.log(response);
   console.log("Fail :(");
   $("#errors").html("<h1>Your AJAX request failed!</h1>");
 };
@@ -90,7 +91,7 @@ $(document).ready(function() {
       console.log("success!");
       alert("Reservation added!");
       console.log("Form submitted!");
-    });
+    }).fail(failureCallback);
 
     this.reset();
     return false;
@@ -120,7 +121,7 @@ $(document).ready(function() {
       console.log("success!");
       alert("New trip added");
       console.log("Trip added!");
-    });
+    }).fail(failureCallback);
 
     this.reset();
     return false;
