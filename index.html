@@ -4,16 +4,23 @@
     <meta charset="utf-8">
     <title>Trek</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="trek.css"/>
   </head>
   <body>
 
     <!-- All Pages -->
-    <section id="messages"></section>
-    <h1 id="list-trips-btn">Trek</h1>
+    <section id="messages" class="row"></section>
+    <h1 class="list-trips-btn"><i class="material-icons md-48">filter_hdr</i>Trek</h1>
+
+    <section id="homepage" class="row clear">
+      <img src="https://unsplash.it/500/500?image=1057/?blur" alt="">
+      <button class="list-trips-btn hollow button secondary continent-filter">Find Your Trek</button>
+    </section>
 
     <!-- Trips List -->
-    <section id="trips-list">
+    <section id="trips-list" class="row">
       <section id="trip-filters" class="clear">
       </section>
       <table>
@@ -70,7 +77,7 @@
           <input type="text" id="age" name="age" class="clear-form"></input>
           <label>Email</label>
           <input type="text" id="email" name="email" class="clear-form"></input>
-          <button type="submit" id="reserve">Reserve</button>
+          <button type="submit" id="reserve" class="hollow button secondary">Reserve</button>
         </form>
       </section>
     </script>

@@ -103,8 +103,11 @@ var failureCallback = function() {
 // DOCUMENT READY
 
 $(document).ready(function() {
-  $('#list-trips-btn').click(tripsListClickHandler);
+  $('.list-trips-btn').click(tripsListClickHandler);
   $('body').on('click', '#reserve', reservationClickHandler);
   $('body').on('click', '.trip-details-btn', tripDetailsClickHandler);
   $('body').on('click', '.continent-filter', continentFilterClickHandler);
 });
+
+var width = $( window ).width();
+var height = $( window ).height();
