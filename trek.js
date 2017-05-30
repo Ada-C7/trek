@@ -17,7 +17,6 @@ var successCallback = function(response) {
 var successCallbackTrip = function(response) {
   console.log("Success! for indiv trip");
   console.log(response);
-  //add code here
   var indivTripTemplate = _.template($("#trip_template").html());
   var generatedHtml = indivTripTemplate({
     trip: response
@@ -41,7 +40,6 @@ var clickHandler = function() {
 var clickHandlerTrip = function(event){
   var id = $(this).attr("data-tripid");
   var tripUrl = url + "/" + id;
-  // $('#element').foundation('open');
   $.get(tripUrl, successCallbackTrip).fail(failureCallback);
 };
 
@@ -74,8 +72,6 @@ $("#load").click(clickHandler);
 $("#trip-list").on("click", "button#seeTrip", clickHandlerTrip);
 
 $("#trip-info-indv").on("submit", "form", makeReservation);
-
-// $("#exampleModal1").foundation('close');
 
 $("#trip-info-indv").on("click", ".close-button", clickHandlerCloseModal);
 
