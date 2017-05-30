@@ -29,8 +29,8 @@ var successCallbackTrip = function(response) {
 };
 
 var failureCallback = function() {
-  console.log("Didn't work :( ");
-  $("errors").html("<h1>AJAX request failed!</h1>");
+  console.log("Didn't work");
+  $("#errors").html("<h1>API request failed!</h1>");
 };
 
 var clickHandler = function() {
