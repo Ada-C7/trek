@@ -1,0 +1,33 @@
+.trip-block {
+  background-color: white;
+  border-style: solid;
+  border-color: lightblue;
+  height: 200px;
+  text-align: center;
+  margin: 1em;
+}
+
+html {
+  display: block;
+  background-color: white;
+  background-image: url("../blue.jpg");
+  }
+
+body {
+  display: block;
+}
+
+header {
+  width: 100%;
+  display: block;
+  background-color: white;
+}
+
+.destination-photo {
+  height: 40px;
+}
+
+
+form {
+  display: inline-block;
+}
