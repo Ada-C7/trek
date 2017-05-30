@@ -2,10 +2,27 @@
     padding: 5px;
     text-align: center;
     background-color: #e5eecc;
-    border: solid 1px #c3c3c3;
+    /*border: solid 1px #c3c3c3;*/
 }
 
 .info {
     padding: 50px;
     display: none;
+}
+
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 80px;
+  color: #595D7F;
+}
+
+h2 {
+  font-family: 'Permanent Marker', cursive;
+  color: #137F7E;
+}
+
+p, ul, form {
+  font-family: 'Open Sans', sans-serif;
+  color: #595D7F;
+
 }

@@ -23,15 +23,15 @@ $(document).ready(function() {
     console.log(response); // shows the api response
     var tripTemplate = _.template($('#trip-dets').html());
     //here you don't need to iterate because now the response is just one object
-      var generatedHtml = tripTemplate ({
-        data: response
-      });
-      console.log("obj id: " + "#trip-" + response.id);
+    var generatedHtml = tripTemplate ({
+      data: response
+    });
+    console.log("obj id: " + "#trip-" + response.id);
 
-      $("#trip-" + response.id).append(generatedHtml); //need to make a specific trip append to the specific name
-      $(".flip").click(function() {
-        $(".info").slideToggle("slow");
-      });
+    $("#trip-" + response.id).append(generatedHtml); //need to make a specific trip append to the specific name
+    $(".flip").click(function() {
+      $(".info").slideToggle("slow");
+    });
 
   };
 
@@ -68,9 +68,6 @@ $(document).ready(function() {
     console.log("Didn't work, in the failure callback");
     $("#errors").html("<h1>AJAX request failed!</h1>");
   }
-
-
-
 
   $('#load').click(clickHandler);
 });

@@ -4,6 +4,11 @@
     <meta charset="utf-8">
     <title></title>
      <link rel="stylesheet" type="text/css" href="styles.css">
+       <link rel="stylesheet" href="css/foundation.css">
+       <script src="/js/foundation.min.js"></script>
+     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="trek.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
@@ -11,8 +16,8 @@
   </head>
   <body>
     <section> <!--Would love to figure out how to hide this section after it's clicked -->
-      <h1>See your next Destination</h1>
-    <button id="load"> See Trips </button>
+      <h1>Travel Treks</h1>
+    <button id="load"> Let's Trek! </button>
     </section>
 
     <section id="errors"></section>
@@ -24,24 +29,12 @@
           <%- data.name %>
         </h2>
 
-
-          <!-- <div id=<%= "trip-" + data.id %>>
-            <p><strong>Details: </strong> <%- data.about %></p>
-            <ul>
-            <li><strong>Category: </strong><%- data.category %></li>
-            <li><strong>Cost: $</strong><%- data.cost %></li>
-            </ul>
-          </div> -->
-
-
         <ul>
           <li><strong>Continent:</strong>
           <%- data.continent %></li>
           <li><strong>Duration:</strong>
             <%- data.weeks %> weeks</li>
         </ul>
-
-
       </script>
     </div>
 
