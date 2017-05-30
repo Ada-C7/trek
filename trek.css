@@ -11,6 +11,9 @@ body {
   background-attachment: fixed;
 }
 
+li, h1, h3, h4 {
+  font-family:  'Oxygen', sans-serif;
+}
 .title {
   color: rgba(250, 250, 250, 0.5);
   /*font-family: 'Shrikhand', cursive;*/
@@ -31,42 +34,64 @@ body {
   position: fixed;
   bottom: 0;
   right: 0;
+  margin: 0 170px 180px 0;
 }
 
 #trips {
   bottom: 0;
-  /*background-color: #ff324e;*/
+  /*background-color: rgba(250, 250, 250, 0.9);*/
 
 }
 
 ul.vacation {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
   color: white;
   list-style: none;
-  font-family: 'Oxygen', sans-serif;
+  /*font-family: 'Oxygen', sans-serif;*/
   font-size: 1.5em;
   padding: 25px;
+}
 
+ul.vacation li:first-child {
+  font-stretch: expanded;
+}
+
+ul.vacation li:nth-child(n+2) {
+  font-size: 0.75em;
+  display: inline-block;
+  margin-right: 20px;
+  color: #42f4e2;
 }
 
 .vacationDetails {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
   color: white;
 }
 
-.button, .trip-detail {
-  background-color: black;
+.trip-detail {
+  color: white;
 }
 
-.button:hover {
+.trip-detail:hover {
+  color: #ff6d81;
+}
+
+.button, .button:visited {
   background-color: #ff324e;
 }
 
-ul.deets {
-  color: blue;
+.button:hover {
+  background-color: #ff6d81;
 }
 
+
 ul.deets li {
+  color: #42f4e2;
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 90px;
+}
+
+ul.deets li:nth-child(3) {
+  color: #ff6d81;
+  font-weight: bold;
 }

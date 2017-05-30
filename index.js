@@ -89,7 +89,7 @@ $(document).ready(function() {
 
   // $('.button.trip-detail').click(clickHandlerDetails);
 
-  $("body").on('click', ".button.trip-detail", clickHandlerDetails);
+  $("body").on('click', ".trip-detail", clickHandlerDetails);
 
   // $(document).ready(function() {
   //   tripsDetailTemplate = _.template($('#trips-detail-template').html());
