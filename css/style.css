@@ -112,8 +112,14 @@ margin-bottom: 0;
 }
 
 #reserve {
-  margin: 4.6% 0;
+  margin: 6% 0;
   background-color: yellow;
   padding-bottom: 2%;
   text-align: center;
+}
+
+#errors {
+  margin-top: 20%;
+  background-color: black;
+  color: white;
 }
