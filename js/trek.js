@@ -15,7 +15,7 @@ var successCallback = function(response) {
 
 var detailsSuccessCallback = function(response) {
   var detailsTemplate = _.template($('#details-template').html());
-  var target = $('#trip-details');
+  var target = $('#trips');
   var generatedHtml = detailsTemplate({
     data: response
   });
@@ -45,12 +45,11 @@ var detailsFailureCallback = function(response) {
 };
 
 var reservationFailureCallback = function(response) {
-  $("#trip-details").empty();
+  $("#trips").empty();
   $(".errors").html("<h3>Sorry, but your reservation failed!</h3>");
 };
 
 var clickHandler = function() {
-  $("#trip-details").empty();
   $("#trips").empty();
   $.get(url, successCallback).fail(failureCallback);
 };

@@ -2,52 +2,45 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link href="css/trek.css" media="screen" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/foundation.css" />
+    <link href="css/trek.css" media="screen" rel="stylesheet" type="text/css">
     <title></title>
   </head>
   <body>
-    <h1>Globe Trotters</h1>
-    <section>
-      <button class="button" id="load">Get All Trips!</button>
+    <section id="background-image">
+      <div class="row">
+        <h1 class="small-10 large-10 columns">Globe Trotters</h1>
+        <section class="small-2 large-2 columns">
+          <button class="button" id="load">Get All Trips!</button>
+        </section>
+      </div>
+      <div class="errors"></div>
+      <div id="trips"></div>
     </section>
-    <div class="errors"></div>
 
-    <div id="trips"></div>
     <script id="list-template" type="text/template">
       <section>
+        <h3>
+          <a href="#" id="<%- data.id %>"><%- data.name %></a>
+        </h3>
         <p>
           <strong>Continent:</strong>
-          <%- data.continent %>
-        </p>
-        <p>
-          <strong>Name of the Trip:</strong>
-          <a href="#" id="<%- data.id %>"><%- data.name %></a>
-        </p>
-        <p>
-          <strong>Length:</strong>
+          <%- data.continent %>,
+          <strong> Length:</strong>
           <% var week = (data.weeks == 1) ? " week" : " weeks" %>
           <%- data.weeks + week %>
         </p>
       </section>
     </script>
 
-    <div id="trip-details"></div>
     <script id="details-template" type="text/template">
-      <section>
-        <h2><%- data.name %></h2>
-        <p><strong>ID:</strong> <%- data.id %></p>
-        <p><strong>Continent:</strong> <%- data.continent %></p>
-        <p><strong>Category:</strong> <%- data.category %></p>
-        <p><strong>About:</strong> <%- data.about %></p>
-      </section>
-
+      <section class="small-12 large-4 columns">
         <h3>Make a reservation!</h3>
         <div id="message"></div>
           <form id="reservation-form" action="https://trektravel.herokuapp.com/trips/<%- data.id %>/reserve" method="post">
             <section>
               <label>Name</label>
-              <input type="text" id="name" name="name"></input><br>
+              <input type="text" id="name" name="name"></input>
             </section>
             <section>
               <label>Email</label>
@@ -59,6 +52,14 @@
             </section>
               <button class="button" type="submit">Reserve</button>
           </form>
+      </section>
+
+      <section class="small-12 large-8 columns" id="trip-details">
+        <h2><%- data.name %></h2>
+        <p><strong>ID:</strong> <%- data.id %></p>
+        <p><strong>Continent:</strong> <%- data.continent %></p>
+        <p><strong>Category:</strong> <%- data.category %></p>
+        <p><strong>About:</strong> <%- data.about %></p>
       </section>
     </script>
 
