@@ -1,0 +1,28 @@
+* {
+  padding: 1%;
+}
+
+h1 {
+  margin: 0;
+  margin-top: 2%;
+  padding: 0;
+  text-align: center;
+}
+
+h3 {
+  color: blue;
+  background-color: Whitesmoke;
+  border-bottom: solid;
+  font-weight: bold;
+  text-align: center;
+}
+
+h3:hover {
+  background-color: lightgrey;
+  color:purple;
+}
+
+.reservedMessage {
+  color: red;
+  font-size: 1.75em;
+}
