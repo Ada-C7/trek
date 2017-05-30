@@ -11,7 +11,7 @@ $(document).ready(function() {
   });
 
   $("#button").click(tripsClickHandler);
-  $("#create_trip").click(createTripClicHandler);
+  $("#create_trip").click(createTripClickHandler);
 
 
   // ///============= Using Form instead of Dropdown menu================
@@ -131,7 +131,13 @@ var tripSuccessCallback = function(response){
     var formData = $(this).serialize();
 
     $.post(url, formData, function(response){
-      $('#message').html("<p> Reservation made! </p>");
+      $("#message").html("<h2> Reservation made! </h2>");
+      $("html, body").animate({
+        scrollTop: 0
+      }, 500);
+      setTimeout(function(){
+        tripsClickHandler()
+      },2000);
     })
     .fail(function(){
       $("#message").html("<p> Failed to make a reservation!</p>")
@@ -140,8 +146,9 @@ var tripSuccessCallback = function(response){
 
 }
 
-var createTripClicHandler = function(){
+var createTripClickHandler = function(){
   $("#display").empty();
+  $("#message").empty();
   var createTripTemplate = _.template($("#create-trip-template").html());
   var generatedHtml = createTripTemplate({
   });
@@ -153,7 +160,14 @@ var createTripClicHandler = function(){
     var formData = $(this).serialize();
 
     $.post(url, formData, function(response){
-      $('#message').html("<p> New trip is created! </p>");
+      $("#message").html("<h2> New trip is created! </h2>");
+      $("html, body").animate({
+        scrollTop: 0
+      }, 500);
+      setTimeout(function(){
+        tripsClickHandler()
+      },1500);
+
     })
     .fail(function(){
       $("#message").html("<p> Failed to create a trip!</p>")

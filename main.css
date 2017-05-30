@@ -38,11 +38,9 @@
     background-color: #3e8e41;
 }
 
-.button {
-    margin-right: 5px;
-}
 
 .button {
+    margin-right: 5px;
     color: white;
     background-color: black;
 }
@@ -128,4 +126,8 @@ form {
     width: 70%;
     margin: auto;
     margin-top: 20px;
+}
+
+#reserve-button {
+    color: white;
 }
