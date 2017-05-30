@@ -51,8 +51,8 @@ h3, a, h2 {
 }
 
 .button {
-  border-radius: 50px;
-  font-size: 0.8rem;
+  border-radius: 500px;
+  font-size: 1rem;
   color: white;
   font-weight: bold;
   border-color: white;
@@ -66,4 +66,13 @@ h3, a, h2 {
 .button:focus {
   outline: none;
   background-color: transparent;
+}
+
+#load {
+  margin-top: 20%;
+}
+
+#list {
+  max-width: 50%;
+  border-bottom: dashed white 1px;
 }
