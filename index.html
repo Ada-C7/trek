@@ -37,8 +37,8 @@
         <nav>
           <h2> Trip <%- data.id %>:  <%- data.name %> </h2>
           <ul>
-            <li id = index> <button class = "button" >Return to All Trips</button></li>
-            <li id = 'buy' class = 'button'> Buy | $ <%- data.cost %></li>
+            <li id = 'index'> <button class = "button" >Return to All Trips</button></li>
+            <li id = 'buy'><button class = 'button'> Buy | $ <%- data.cost %></button></li>
           </ul>
         </nav>
 
@@ -47,8 +47,8 @@
     </script>
 
 
-    <script id="reserve-trip-template" type="text/template">
-      <form id="reserve-trip"  data-trip-id =<%-tripId%> method="post">
+    <script id="reserve-trek-template" type="text/template">
+      <form id="reserve-trek" action=<%-tripId%> method="post">
         <section>
           <label for="name"> Name: </label>
           <input type="text" name="name">

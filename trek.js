@@ -1,17 +1,15 @@
 var url = 'https://trektravel.herokuapp.com/trips/';
 
-
 var failureCallback = function () {
   $("#errors").html("<h1> AJAX request failed! </h1>");
 };
 
 
 $(document).ready(function() {
-
-
   var index = function (trekData)
   {
     var treksTemplate = _.template($('#trek-item-template').html());
+
 
     for (var i = 0; i < (trekData.length/2); i++) {
 
@@ -28,7 +26,6 @@ $(document).ready(function() {
     });
   };
 
-
   var singleCallback = function (trekData){
     var trekTemplate = _.template($('#detailed-trip-template').html());
 
@@ -36,10 +33,7 @@ $(document).ready(function() {
 
     $('#vacations').empty();
     $('#vacations').show();
-
-
     $('#vacations').append($(generatedHtml));
-
   };
 
   $('#vacations').on("click", "#index",function() {
@@ -48,9 +42,16 @@ $(document).ready(function() {
     $.get(url, index);
   });
 
+  $('#vacations').on('click', '#buy', function(event){
+    var reserveTripTemplate = _.template($('#reserve-trek-template').html());
+    event.preventDefault();
+    var tripId = $(this).attr('data-trip-id');
+    var reservationForm = reserveTripTemplate({
+      tripId: tripId
+    });
 
+    $('vacations').append($(reservationForm));
+  });
 
   $.get(url, index);
-
-
 });
