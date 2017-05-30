@@ -19,7 +19,6 @@ $(document).ready(function() {
       tripsData.push(response[i]);
     }
 
-    console.log(response);
     var tripsListTemplate = _.template($("#trips-list-template").html());
 
 
@@ -88,7 +87,7 @@ $(document).ready(function() {
     console.log("Reserving A spot");
 
     var tripID = $(this).attr("data-tripID");
-    var reserveTripURL = url + "XXX/" + tripID + "/" + "reserve";
+    var reserveTripURL = url + "/" + tripID + "/" + "reserve";
 
     var reservationTemplate = _.template($("#reservation-template").html());
 
@@ -128,24 +127,20 @@ $(document).ready(function() {
 
 
 
-
-
   var continentHandler = function() {
 
     var continent = ($(this).html());
     var continentURL = url + "/continent?query=" + continent;
     $.get(continentURL, tripsSuccessCallback).fail(continentFailure);
-
   };
 
 
 
   var continentFailure = function() {
-    console.log("Getting trips for did not work");
-    $("#errors").html("<h1>Sorry, we could not retrieve the list of trips to this continent at this time.</h1>");
+    console.log("Getting trips by continent did not work");
+    $("#errors").addClass("errorsBox");
+    $("#errors").html("<h3>Sorry, we could not retrieve the list of trips by continent at this time.</h3>");
   };
-
-
 
 
 
@@ -175,7 +170,6 @@ $(document).ready(function() {
 
 
       console.log("Matching the heights");
-      console.log(tallestChild);
       childrenCols.css('height', tallestChild);
 
     });

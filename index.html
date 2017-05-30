@@ -55,92 +55,91 @@
           <%- data.name %>
         </h3>
 
-        <!-- <p>Continent:
+
+        <!-- <p>
+          Weeks:
+          <%- data.weeks%>
+        </p> -->
+
+        <button class="button" id="ShowDetails" data-tripID="<%- data.id%>"> Learn More </button>
+      </div>
+    </li>
+  </script>
+
+  <div id="singleTrip"></div>
+
+  <script id="indiv-trip-template" type="text/template">
+    <section>
+      <h3>
+        <%- data.name.toUpperCase() %>
+      </h3>
+
+      <div id=reservationForm>
+        <button class="button" id="reserve" data-tripID="<%- data.id%>"> RESERVE YOUR SPOT!</button>
+      </div>
+
+
+      <p>Continent:
         <%- data.continent %>
       </p>
+
       <p>
-      Weeks:
-      <%- data.weeks%>
-    </p> -->
-    <button class="button" id="ShowDetails" data-tripID="<%- data.id%>"> Learn More </button>
-  </div>
-</li>
-</script>
+        Length:
+        <%- data.weeks%> weeks
 
-<div id="singleTrip"></div>
-
-<script id="indiv-trip-template" type="text/template">
-  <section>
-    <h3>
-      <%- data.name.toUpperCase() %>
-    </h3>
-
-    <div id=reservationForm>
-      <button class="button" id="reserve" data-tripID="<%- data.id%>"> RESERVE YOUR SPOT!</button>
-    </div>
-
-
-    <p>Continent:
-      <%- data.continent %>
-    </p>
-
-    <p>
-      Length:
-      <%- data.weeks%> weeks
-
-    </p>
-
-    <p>
-      Cost: $<%- Number(data.cost).toFixed(2) %>
-    </p>
-    <p>Category:
-      <%- data.category.charAt(0).toUpperCase() + data.category.slice(1)%>
-    </p>
-
-    <p>Trip ID:
-      <%- data.id %>
-    </p>
-
-    <h4>
-      The Journey:</h4>
-      <p>
-        <%- data.about %>
       </p>
 
+      <p>
+        Cost: $<%- Number(data.cost).toFixed(2) %>
+      </p>
+      <p>Category:
+        <%- data.category.charAt(0).toUpperCase() + data.category.slice(1)%>
+      </p>
 
-      <button class="button" id="HideDetails"> Back to Trips List</button>
-    </div>
-  </section>
-</script>
+      <p>Trip ID:
+        <%- data.id %>
+      </p>
+
+      <h4>
+        The Journey:</h4>
+        <p>
+          <%- data.about %>
+        </p>
 
 
-<script id="reservation-template" type="text/template">
-
-  <form id="form-<%- tripID%>" action="<%- url %>" method="post">
-    <section>
-      <label>Name: </label>
-      <input type="text" id="name" name="name"></input>
+        <button class="button" id="HideDetails"> Back to Trips List</button>
+      </div>
     </section>
-
-    <section>
-      <label>Age: </label>
-      <input type="text" id="age" name="age"></input>
-    </section>
-
-    <section>
-      <label>Email: </label>
-      <input type="text" id="email" name="email"></input>
-    </section>
+  </script>
 
 
-    <button  class="button final_reserve" type="submit">Book it!</button>
+  <script id="reservation-template" type="text/template">
 
-    <button  class="button no_thanks">No thanks</button>
+    <form id="form-<%- tripID%>" action="<%- url %>" method="post">
+      <section>
+        <label>Name: </label>
+        <input type="text" id="name" name="name"></input>
+      </section>
 
-  </form>
+      <section>
+        <label>Age: </label>
+        <input type="text" id="age" name="age"></input>
+      </section>
+
+      <section>
+        <label>Email: </label>
+        <input type="text" id="email" name="email"></input>
+      </section>
 
 
-</script>
+      <button  class="button final_reserve" type="submit">Book it!</button>
+
+      <button  class="button no_thanks">No thanks</button>
+
+    </form>
+
+
+  </script>
 
 
 
