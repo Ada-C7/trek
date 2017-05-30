@@ -1,0 +1,133 @@
+.dropbtn {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+
+.button {
+    margin-right: 5px;
+    color: white;
+    background-color: black;
+}
+
+#trip-name {
+    cursor: pointer;
+
+}
+
+#trip-name:hover {
+    background-color: yellow;
+}
+
+#trips-box {
+    width: 18em;
+    height: 14em;
+    background-color: darkgray;
+    margin: auto;
+    margin-top: 12px;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+#trips-display {
+    margin: auto;
+    background: blue;
+    border-radius: 15px;
+}
+
+header {
+    background-color: black;
+    /*height: 10em;*/
+}
+
+#buttons {
+    padding: 10px;
+}
+
+#dropdown-buttons {
+    padding-left: 10px;
+    padding-bottom: 0px;
+    margin-bottom: 0;
+    display: inline-block;
+}
+
+.button {
+    font-size: 10px;
+    color: white;
+}
+
+h3 {
+    text-align: center;
+    color: white;
+}
+
+#submit-button {
+    color: white;
+}
+
+#message {
+    color: red;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.category-button {
+    color: darkblue;
+    font-size: 12px;
+    padding: 10px;
+    margin-right: 0
+}
+
+#options section {
+    display: inline-block;
+    margin: 0px;
+}
+
+#options {
+    margin: 0px;
+}
+
+form {
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#reserve-button {
+    color: white;
+}

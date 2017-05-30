@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>trek</title>
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link href="main.css" media="screen" rel="stylesheet" type="text/css">
+
+</head>
+
+
+<body>
+  <header>
+    <section id="buttons">
+        <button class="button" id="home">Home</button>
+        <button class="button" id="button">Show All Trips</button>
+        <button class="button" id="create_trip">Create New Trip</button>
+    </section>
+    <h3>Trek</h3>
+    <div id="dropdown-buttons">
+      <section class="dropdown category" >
+        <button class="dropbtn">Trips by Max Budget</button>
+        <div class="dropdown-content">
+          <a href="#" data-category="budget">500</a>
+          <a href="#" data-category="budget">1000</a>
+          <a href="#" data-category="budget">1500</a>
+          <a href="#" data-category="budget">2000</a>
+          <a href="#" data-category="budget">2500</a>
+          <a href="#" data-category="budget">3000</a>
+          <a href="#" data-category="budget">3500</a>
+          <a href="#" data-category="budget">4000</a>
+        </div>
+      </section>
+
+      <section class="dropdown category" >
+        <button class="dropbtn">Trips by Max Weeks</button>
+        <div class="dropdown-content">
+          <a href="#" data-category="weeks">1</a>
+          <a href="#" data-category="weeks">2</a>
+          <a href="#" data-category="weeks">3</a>
+        </div>
+      </section>
+
+      <section class="dropdown category" >
+        <button class="dropbtn">Trips by Continent</button>
+        <div class="dropdown-content" id="category-continent">
+          <a href="#" data-category="continent">Africa</a>
+          <a href="#" data-category="continent">Antarctica</a>
+          <a href="#" data-category="continent">Asia</a>
+          <a href="#" data-category="continent">Australia</a>
+          <a href="#" data-category="continent">Europe</a>
+          <a href="#" data-category="continent">North America</a>
+          <a href="#" data-category="continent">South America</a>
+        </div>
+      </section>
+    </div>
+
+
+
+    <!-- <form class="category-form">
+      <section id="category-budget">Trips by Max Budget
+        <select name="budget">
+          <option value="500">500</option>
+          <option value="1000">1000</option>
+          <option value="1500">1500</option>
+          <option value="2000">2000</option>
+          <option value="3000">3000</option>
+          <option value="4000">4000</option>
+        </select>
+        <section class="button">
+          <button type="submit">Go!</button>
+        </section>
+      </section>
+    </form>
+
+    <form class="category-form">
+      <section id="cateogry-weeks">Trips by Max Weeks
+        <select name="weeks">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <section class="button">
+          <button type="submit">Go!</button>
+        </section>
+      </section>
+    </form>
+
+    <form class="category-form">
+      <section id="category-continent">Trips by Continent
+        <select name="continent">
+          <option value="Africa">Africa</option>
+          <option value="Antarctica">Antarctica</option>
+          <option value="Asia">Asia</option>
+          <option value="Australia">Australia</option>
+          <option value="Europe">Europe</option>
+          <option value="North_America">North America</option>
+          <option value="South_America">South America</option>
+        </select>
+        <section class="button">
+          <button type="submit">Go!</button>
+        </section>
+      </section>
+    </form> -->
+
+
+  </header>
+
+  <main>
+    <section id="options"></section>
+    <div id="message"></div>
+    <section id="display"></section>
+
+    <script id="create-trip-template" type="text/template">
+      <form id="create-trip-form" action="https://trektravel.herokuapp.com/trips/" method="post">
+        <section>
+          <label>Name</label>
+          <input type="text" id="name" name= "name"></input>
+        </section>
+        <section>
+          <label>Continent</label>
+          <input type="text" id="continent" name= "continent"></input>
+        </section>
+        <section>
+          <label>About</label>
+          <input type="text" id="about" name= "name"></input>
+        </section>
+        <section>
+          <label>Category</label>
+          <input type="text" id="category" name= "category"></input>
+        </section>
+        <section>
+          <label>Weeks</label>
+          <input type="text" id="weeks" name= "weeks"></input>
+        </section>
+        <section>
+          <label>Cost</label>
+          <input type="text" id="cost" name= "cost"></input>
+        </section>
+        <section class="button">
+          <button type="submit" id="submit-button">Create a New Trip!</button>
+        </section>
+      </form>
+
+    </script>
+    <script id="trips-template" type="text/template">
+
+      <section class="trip columns large-3 medium-4 small-12"  >
+        <div  id="trips-box">
+
+        <!-- <div class="row small-up-2 medium-up-4 large-up-6" > -->
+
+        <!-- <br> -->
+        <!-- <table>
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Name</th>
+              <th>Continent</th>
+              <th>Length (weeks)</th>
+              <% if (data.cost != null){ %>
+                <th>cost</th>
+              <% } %>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr id="detail">
+              <td id="trip-id"><%- data.id %></td>
+              <td id="trip-name"><%- data.name %></td>
+              <td><%- data.continent %></td>
+              <td><%- data.weeks %></td>
+              <% if (data.cost != null){ %>
+              <td><%- data.cost %></td>
+              <% } %>
+            </tr>
+          </tbody>
+        </table> -->
+        <!-- <button class="button success">
+          Detail of Trip <%- data.id %>
+        </button> -->
+
+
+        <p id="trip-id">
+          <strong> id: </strong>
+          <%- data.id %>
+
+        </p>
+
+        <p id="trip-name">
+          <strong> name: </strong>
+          <%- data.name %>
+
+        </p>
+
+        <p>
+          <strong> continent: </strong>
+          <%- data.continent %>
+        </p>
+
+        <p>
+          <strong> weeks: </strong>
+          <%- data.weeks %>
+        </p>
+
+        <p>
+          <% if (data.cost != null){ %>
+          <strong> cost: </strong>
+          <%- data.cost %>
+          <% } %>
+        </p>
+
+      </div>
+
+      </section>
+
+    </script>
+
+    <script id="trip-template" type="text/template">
+      <section>
+        <p>
+          <strong> id: </strong>
+          <%- data.id %>
+
+        </p>
+
+        <p>
+          <strong> name: </strong>
+          <%- data.name %>
+
+        </p>
+
+        <p>
+          <strong> continent: </strong>
+          <%- data.continent %>
+        </p>
+
+        <p>
+          <strong> about: </strong>
+          <%- data.about %>
+
+        </p>
+
+        <p>
+          <strong> category: </strong>
+          <%- data.category %>
+
+        </p>
+
+        <p>
+          <strong> weeks: </strong>
+          <%- data.weeks %>
+        </p>
+
+        <p>
+          <strong> cost: </strong>
+          <%- data.cost %>
+        </p>
+      </section>
+
+      <form action="https://trektravel.herokuapp.com/trips/<%-data.id%>/reserve/"  id="reservation-form" method="post">
+        <section>
+          <label>Name</label>
+          <input type="text" id="name" name= "name"></input>
+        </section>
+        <section>
+          <label>Age</label>
+          <input type="text" id="age" age= "age"></input>
+        </section>
+        <section>
+          <label>Email</label>
+          <input type="text" id="email" name= "email"></input>
+        </section>
+        <section class="button">
+          <button type="submit" id="reserve-button">Reserve the trip!</button>
+        </section>
+      </form>
+    </script>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
+  <script src="index.js" type="text/javascript"></script>
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/vendor/foundation.min.js"></script>
+  <script>$(document).foundation();</script>
+</body>
+</html>
