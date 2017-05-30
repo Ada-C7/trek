@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 
-h1, h2, h3, body {
+h1, h2, h3, h4, body {
   font-family: "Playfair Display";
   color: #6b2e03;
 }
@@ -89,18 +89,31 @@ li.trip-container{
     display: inline-block;
 }
 
-div#reservationForm{
-  margin:0;
+.tripInfoBox{
+  border: 1px solid #6b2e03;
+  background-color: #fae9d6;
+  opacity: .8;
+  margin: 5%;
+  padding: 2%;
+}
+
+.tripInfoBox h3{
   text-align: center;
 }
 
 div#reservationForm{
+  margin: 1%;
+  text-align: center;
+}
+
+
+/*div#reservationForm{
   border: 1px solid #6b2e03;
   background-color: #fae9d6;
   margin: 1%;
   padding: 1%;
   width: 50%;
-}
+}*/
 
 
 

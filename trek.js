@@ -59,6 +59,7 @@ $(document).ready(function() {
     $('div.by-continent').hide();
     $('#trips').hide();
     $('#singleTrip').show();
+    $('#singleTrip').addClass("tripInfoBox");
     $('#singleTrip').html($(generatedHtml));
 
   };
@@ -112,7 +113,8 @@ $(document).ready(function() {
 
 
   var reserveSuccess = function(event){
-    $('div#reservationForm').html("Congratulations. You have booked this trip!");
+    $('div#reservationForm').html('<h4> Congratulations. You have booked this trip! </h4>');
+
     console.log("submit step 2");
   };
 
