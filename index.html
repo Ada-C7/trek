@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Treks for Trekkies</title>
+  <link rel="stylesheet" src="css/normalize.css" />
+  <link rel="stylesheet" href="css/foundation.css" />
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+  <header class="row column text-center">
+    <h1>Treks for Trekkies</h1>
+    <!-- Button to get all trips -->
+    <button id="allLoad" class="button"><em>Boldly go</em></button>
+  </header>
+
+  <section id="errors"></section>
+
+  <!-- load all trips to the left-->
+  <div id="all-trips" class="columns medium-6 small-12"></div>
+  <script id="all-trips-template" type="text/template">
+    <section>
+      <!-- Display results (name, continent, weeks) -->
+      <a href=<%- allData.id %>><h2><%- allData.name %></h2></a>
+      <p><%- allData.continent %></p>
+      <p><%- allData.weeks %> week(s)</p>
+    </section>
+  </script>
+
+  <!-- load specific trip info to the right-->
+  <div id="single-trip" class="columns medium-6 small-12"></div>
+  <script id="single-trip-template" type="text/template">
+    <section>
+      <h2><%- singleData.name %></h2>
+      <p><%- singleData.destination %></p>
+      <p><%- singleData.continent %></p>
+      <p><%- singleData.about %></p>
+      <p><%- singleData.category %></p>
+      <p><%- singleData.weeks %></p>
+      <p><%- singleData.cost %></p>
+    </section>
+  </script>
+
+  <!-- load JS files -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+  <script src="trek.js" type="text/javascript"></script>
+</body>
+</html>
