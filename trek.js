@@ -34,11 +34,12 @@ var singleTemplate = _.template($('#single-trip-template').html());
 
 var successSingleCallback = function(response) {
   // for (var i = 0; i < response.length; i++) {
-  //   var generatedSingleHTML = singleTemplate({
-  //     singleData: response[i]
-  //   });
-    $("#single-trip").append("bonjour");
-  // }
+    var generatedSingleHTML = singleTemplate({
+      singleData: response
+    });
+
+    $("#single-trip").append(generatedSingleHTML);
+  console.log(response);
 };
 
 var failureSingleCallback = function() {
