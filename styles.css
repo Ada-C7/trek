@@ -5,64 +5,108 @@
     "https://fonts.googleapis.com/css?family=Oswald");
 
 
-  body {
-    position: relative;
-    display: inline-block;
-    background-image:    url('http://geology.com/world/world-map-of-cities-at-night.jpg');
-    width: 100%;
-    height: 30em;
-    z-index: -1;
-    top: 5.5em;
-    padding: 30px;
-  }
+    body {
+      position: relative;
+      display: inline-block;
+      background-image:    url('http://geology.com/world/world-map-of-cities-at-night.jpg');
+      width: 100%;
+      height: 30em;
+      z-index: -1;
+      top: 5.5em;
+      padding: 30px;
+    }
 
-  table {
-    table-layout: fixed;
-    width: 100%;
-    border-collapse: collapse;
-    border: 10px solid   #323087;
-    margin-bottom: 3rem;
-    opacity: 0.8;
-  }
+    table{
+      table-layout: fixed;
+      width: 100%;
+      border-collapse: collapse;
+      border: 10px solid   #323087;
+      margin-bottom: 3rem;
+      vertical-align: middle;
+      opacity: 0.8;
+    }
 
 
-  tr {
-    background-color: #fbefb8;
-    color: #323087;
-  }
+    tr {
+      vertical-align: middle;
+      color: #323087;
+    }
 
-  #vacations{
-    padding: 100px;
-    margin: auto;
-  }
+    #vacations{
+      padding: 100px;
+      margin: auto;
+      magin-top: 8%;
+    }
 
-  /*.load{
-    border: 1px solid blue;
-    color: #fbefb8;
-    background-color: #323087;
-    padding: 5px;
-    font-family: impact;
-    font-size: 16px;
-  }*/
+    .button, article section,li{
+      color: #323087;
+      font-weight: bold;
+      font-size: 20px;
+      margin: 0;
+      background-color: #fbefb8;
+    }
 
-  header{
-    top: 0px;
-    z-index: 1;
-    position: fixed;
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    align-content: center;
-    text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;
-    font-family: impact;
-    background-color: #323087;
-    color: #fbefb8;
-  }
+    .button, li{
+      background-color: #fbefb8;
+    }
 
-  h1{
-    font-family: impact;
-  }
-  h2{
-    font-family: Oswald;
-    color: #fbefb8;
-  }
+    .button{
+      border: 1px solid blue;
+    }
+
+
+    header {
+      top: 0px;
+      z-index: 1;
+      position: fixed;
+      width: 100%;
+      justify-content: space-around;
+      position: fixed;
+    }
+    header, article h2{
+      display: flex;
+      align-content: center;
+      justify-content: space-around;
+      text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;
+      background-color: #323087;
+      color: #fbefb8;
+      font-family: impact;
+      margin-bottom: 0px;
+      border: 10px solid   #323087;
+    }
+    article{
+      margin-top: 8%;
+      display: block;
+      width: 100%;
+      border: 10px solid   #323087;
+
+    }
+    article nav{
+      display: block;
+      width: 100%;
+      background-color: #fbefb8;
+      border: 10px solid   #323087;
+    }
+
+    article ul{
+      display: flex;
+      justify-content: space-around;
+      margin: 0px;
+    padding: 10px;   }
+
+      article li {
+        display: inline-block;
+        list-style: none;
+        margin-top: 0px;
+      }
+
+      article section{
+        margin-top: 0px;
+        border: 10px solid   #323087;
+        font-size: 16px;
+        background: white;
+      }
+
+      h1{
+        font-family: impact;
+      }

@@ -9,34 +9,64 @@
 
 <body>
   <header>
-  <h1>World Treks</h1>
+    <h1>World Treks</h1>
     <h2>explore our planet one step at a time</h2>
   </header>
 
   <main class = "row">
     <div id = "vacations" class = "large-block-grid-1 ">
-
-    </div> </div>
-    <sidebar id =  "trip_info">  </sidebar>
-  </main>
+    </main>
 
 
-  <!--text.template makes the browser ignore it -->
-  <script id = "trek-item-template" type = "text/template">
-    <table>
-      <tr>
-        <th><%- data.continent %></th>
-        <th>
-          <button class = "load" data-trip-id = "<%- data.id %>"> <%- data.name%> </button></th>
-          <th><%- data.weeks %></th>
-        </tr>
-      </script>
-    </table>
+    <!--text.template makes the browser ignore it -->
+    <script id = "trek-item-template" type = "text/template">
+      <table>
+        <tr>
+          <th><%- data.continent %></th>
+          <th>
+            <button class = "load button" data-trip-id = "<%- data.id %>"> <%- data.name%> </button></th>
+            <th><%- data.weeks %></th>
+          </tr>
+        </script>
+      </table>
+    </script>
 
     <script id = "detailed-trip-template" type = "text/template">
+
       <article>
-        <h2>Trip <%- data.id %>: <%- data.name %> </h2>
+        <nav>
+          <h2> Trip <%- data.id %>:  <%- data.name %> </h2>
+          <ul>
+            <li id = index> <button class = "button" >Return to All Trips</button></li>
+            <li id = 'buy' class = 'button'> Buy | $ <%- data.cost %></li>
+          </ul>
+        </nav>
+
+        <section> <%- data.about %> </section>
       </article>
+    </script>
+
+
+    <script id="reserve-trip-template" type="text/template">
+      <form id="reserve-trip"  data-trip-id =<%-tripId%> method="post">
+        <section>
+          <label for="name"> Name: </label>
+          <input type="text" name="name">
+        </section>
+        <section>
+          <label for="age"> Age: </label>
+          <input type="text" name="age">
+        </section>
+        <section>
+          <label for="email"> Email: </label>
+          <input type="text" name="email">
+        </section>
+
+        <section>
+          <button type="submit" class="button"> Reserve! </button>
+        </section>
+
+      </form>
     </script>
 
     <script

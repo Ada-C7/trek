@@ -1,42 +1,18 @@
 var url = 'https://trektravel.herokuapp.com/trips/';
 
-var singleCallback = function (trekData){
-  var trekTemplate = _.template($('#detailed-trip-template').html());
-
-  generatedHtml = trekTemplate({  data: trekData});
-  $('#vacations').replaceWith($(generatedHtml));
-};
 
 var failureCallback = function () {
   $("#errors").html("<h1> AJAX request failed! </h1>");
 };
 
-var test = function (trekData)
-{
-  for (var i = 0; i < (trekData.length/2); i++) {
-
-    var generatedHtml = treksTemplate({
-      data: trekData[i],
-    });
-    $('#vacations').append($(generatedHtml));
-  }
-
-  $('.load').click(function(event){
-    id =  this.attributes["data-trip-id"].value;
-    show = url + id;
-    $.get(show,singleCallback);
-
-  });
-};
-
-
 
 $(document).ready(function() {
-  var treksTemplate = _.template($('#trek-item-template').html());
 
 
-  var test = function (trekData)
+  var index = function (trekData)
   {
+    var treksTemplate = _.template($('#trek-item-template').html());
+
     for (var i = 0; i < (trekData.length/2); i++) {
 
       var generatedHtml = treksTemplate({
@@ -49,9 +25,32 @@ $(document).ready(function() {
       id =  this.attributes["data-trip-id"].value;
       show = url + id;
       $.get(show,singleCallback);
-
     });
   };
 
-  $.get(url, test);
+
+  var singleCallback = function (trekData){
+    var trekTemplate = _.template($('#detailed-trip-template').html());
+
+    generatedHtml = trekTemplate({  data: trekData});
+
+    $('#vacations').empty();
+    $('#vacations').show();
+
+
+    $('#vacations').append($(generatedHtml));
+
+  };
+
+  $('#vacations').on("click", "#index",function() {
+    $('#vacations').empty();
+    $('#vacations').show();
+    $.get(url, index);
+  });
+
+
+
+  $.get(url, index);
+
+
 });
