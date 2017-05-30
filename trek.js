@@ -37,7 +37,7 @@ var successSingleCallback = function(response) {
   //   var generatedSingleHTML = singleTemplate({
   //     singleData: response[i]
   //   });
-    $("#single-trip").append("hello");
+    $("#single-trip").append("hello there");
   // }
 };
 
