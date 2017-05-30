@@ -28,11 +28,14 @@ var successReservationCallback = function() {
 
 var failureCallback = function() {
   console.log("Ajax request failed!");
+  $('#popup').fadeOut(500);
   $('#message').html("<h3>Unable to process request at this time.</h3>")
 };
 
 var tripsClickHandler = function() {
   $.get(BASE_URL, successTripsCallback).fail(failureCallback);
+  $('#load-trips').hide();
+  $('main').addClass("map");
 };
 
 var tripClickHandler = function() {
@@ -79,14 +82,6 @@ var formHandler = {
   }
 };
 
-// var submitFormHandler = function() {
-//     event.preventDefault();
-//     var id = $('#trip-info section').attr("id");
-//     var url = BASE_URL + id + $(this).attr("action");
-//     var formData = $(this).serialize();
-//
-//     $.post(url, formData, successReservationCallback).fail(failureCallback);
-// };
 
 $(document).ready(function() {
   // Complies template to display all trips and a single trip
