@@ -12,24 +12,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
 
   <link rel="stylesheet" href="trek.css"/>
-
 </head>
+
 <body>
   <h1 class="title">TREK</h1>
-  <section id="errors"></section>
-  <button id="load" class="button large">Where to?</button>
-  <div id="trips" class="columns medium-6 small-12">
 
+  <section id="errors"></section>
+  
+  <button id="load" class="button large">Where to?</button>
+
+  <div id="trips" class="columns medium-6 small-12">
     <script id="trips-item-template" type="text/template">
       <ul class="vacation">
-        <!-- <li><a class="trip-detail" id="<%- trip.id %>"><%- trip['name'] + ": " + trip['continent'] + ": " + trip["weeks"] + " weeks" %></a></li> -->
-
         <li><a class="trip-detail" id="<%- trip.id %>"><%- trip['name'] %></a></li>
-          <li><%- trip['continent'] %></li>
-          <li><%- trip['weeks'] + " weeks" %></li>
+        <li><%- trip['continent'] %></li>
+        <li><%- trip['weeks'] + " weeks" %></li>
       </ul>
     </script>
-
   </div>
 
   <div class="vacationDetails columns medium-6 small-12">
