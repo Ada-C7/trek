@@ -28,7 +28,7 @@ var indexSuccessCallback = function(response){
       var generatedHtml = tripIndexTemplate({
         trip: response[i],
       });
-    } 
+    }
   }
     $('#trip-index').append(generatedHtml);
   }

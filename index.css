@@ -1,0 +1,90 @@
+
+/**************************** General ***************************/
+
+main {
+  padding: 80px 0 24em 0;
+  background-image: url("https://cdn.pixabay.com/photo/2016/03/17/23/00/world-1264062_1280.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+
+a { color: #3B4463; }
+a:hover { color: #f7e7d7; }
+
+.button { background-color: #3B4463; }
+.button:hover { background-color: #3C6F47; }
+
+
+
+/**************************** nav ***************************/
+
+.top-bar, li {
+  background-color: white;
+  color: #0a0a0a;;
+  position: fixed;
+  width: 100%;
+}
+
+
+
+/**************************** footer ***************************/
+
+footer {
+  background-color: #070201;
+  padding: 2.5% 0;
+  bottom: 0;
+  left:0;
+  height:12em;
+  width:100%;
+}
+
+footer a, h4 {
+  color: #dbd9de;
+}
+footer h4 {
+  margin: 0;
+}
+
+footer a {
+display: block;
+position: relative;
+}
+
+
+/********************** Index ********************/
+
+.trip-block {
+  text-align: center;
+  background-color: rgba(255,255,255, 0.75);
+  padding: 2.25rem;
+  margin: 1em 0;
+  width: auto;
+  height: inherit;
+  border-radius: 2em;
+}
+
+.trip-block h3, h4 {
+    display: inline-block;
+    margin: 0 1rem;
+}
+
+.trip-block h3 { color: #3C6F47; }
+
+.trip-block h4 { color: #30271d; }
+
+/****************** Show Details *****************/
+
+#trip-index { color: #30271d; }
+
+.show {
+  background-color: white;
+  padding: 1em;
+  border: 1px solid #cacaca;
+}
+
+.show, form {
+  margin: 0 1em;
+}
