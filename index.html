@@ -48,7 +48,8 @@
         <% if (data.continent) { %>
           <li><strong>Continent:</strong> <%- data.continent %></li>
         <% } %>
-        <li><strong>Cost:</strong> $<%- data.cost.toFixed(2) %></li>
+        <% var cost = (data.cost) ? '$' + data.cost.toFixed(2) : 'Free!'; %>
+        <li><strong>Cost:</strong> <%- cost %></li>
         <% if (data.weeks) { %>
           <li><strong>Number of weeks:</strong> <%- data.weeks %></li>
         <% } %>
