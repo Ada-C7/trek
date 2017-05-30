@@ -1,0 +1,39 @@
+body {
+  background-image: url("../croatia1.jpg");
+  background-position: center;
+}
+
+main {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+#site-title {
+  color: white;
+  background-color: #CF5300;
+  opacity: 0.8;
+}
+
+.card {
+  border-radius: 1rem;
+}
+
+#menu-bar {
+}
+
+/* for nav bar alignment */
+#index-button {
+  margin-bottom: 0;
+}
+
+#new-button {
+  margin-bottom: 0;
+}
+
+#budget-button {
+  margin-bottom: 0;
+}
+
+#query {
+  margin-bottom: 0;
+}

@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Trek</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <!-- This is how you would link your custom stylesheet -->
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+
+  <body>
+    <header>
+      <section id="site-title">
+        <div class="row">
+          <h2>TREK</h2>
+        </div>
+      </section>
+
+      <section id="menu-bar">
+        <nav class="top-bar">
+          <div class="top-bar-left">
+              <button id="index-button" class="button"> All Trips </button>
+              <button id="new-button" class="button"> Add a Trip </button>
+          </div>
+
+          <div class="top-bar-right" id="budget-search">
+            <form action="https://trektravel.herokuapp.com/trips/budget" method="get">
+              <div class="row collapse">
+                <div class="large-8 small-9 columns">
+                  <input id="query" name="query" type="text" placeholder="By Max Budget" />
+                </div>
+                <div class="large-4 small-3 columns">
+                  <button id="budget-button" class="alert button expand" type="submit">$</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </nav>
+      </section>
+    </header>
+
+    <main>
+      <section id="errors"></section>
+      <section id="index-page"></section>
+      <section id="new-page"></section>
+      <section id="show-page"></section>
+    </main>
+
+
+    <!-- _____UNDERSCORE TEMPLATES______ -->
+
+      <!-- INDEX: to show all trips -->
+      <script id="index-trip-template" type="text/template">
+        <div id="all-trips" class="row small-up-2 medium-up-3 large-up-4" data-equalizer="card" data-equalize-by-row="true">
+        <% for (var i = 0; i < trips.length; i ++) { %>
+          <!-- to not display trips with no names -->
+          <% if (trips[i].name !== null && trips[i].name !== "") { %>
+                <div class="columns small-4">
+                  <a href="" data-id=<%- trips[i].id %>>
+                    <div class="card" data-equalizer-watch="card">
+                      <div class="card-divider">
+                        <strong><%- trips[i].name %></strong>
+                      </div>
+                      <div class="card-section">
+                        <!-- to better display trips with missing weeks/continent data -->
+                        <% if (trips[i].weeks !== null && trips[i].weeks !== 0) { %>
+                          <p><%- trips[i].weeks %> week(s)
+                        <% } else { %>
+                          <p>trip to
+                        <% } %>
+                        <% if (trips[i].continent !== null && trips[i].continent !== "") { %>
+                          in <%- trips[i].continent %></p>
+                        <% } else { %>
+                          a mysterious destination</p>
+                        <% } %>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+          <% } %>
+        <% } %>
+        </div>
+      </script>
+
+      <!-- SHOW: to show each trip w/reservation -->
+      <script id="show-trip-template" type="text/template">
+        <section id="individual-trip">
+          <div class="row small-6 large-8 columns">
+            <div class="card">
+              <div class="card-divider">
+                <h2><%- data.name %></h2>
+              </div>
+
+              <div class="card-section">
+                <p>
+                  <span class="success label"><%- data.continent %></span>
+                  <span class="warning label"><%- data.category %></span>
+                </p>
+
+                <p><strong>Duration:</strong> <%- data.weeks %> weeks</p>
+                <p><strong>Cost:</strong> $<%- data.cost %></p>
+                <p><strong>About:</strong> <%- data.about %></p>
+
+
+                <p>(ID #00<%- data.id %>)</p>
+              </div>
+
+              <div class="card-divider">
+                <!-- form to reserve a spot -->
+                <h4>Reserve your spot today!</h4>
+
+                <form action="https://trektravel.herokuapp.com/trips/1/reserve" method="post">
+
+                  <div class="row">
+                    <div class="small-6 columns">
+                      <label>Name:</label>
+                      <input id="name" name="name" type="text"/>
+                    </div>
+                    <div class="small-6 columns">
+                      <label>Email:</label>
+                      <input id="email" name="email" type="text"/>
+                    </div>
+                  </div>
+                  <button type="submit" class="button">Submit</button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </section>
+        </div>
+      </script>
+
+      <!-- NEW: form to create a new trip -->
+      <script id="new-trip-template" type="text/template">
+        <div class="row large-6 columns">
+          <div class="card">
+            <div class="card-section">
+              <h3>Add a Trip</h3>
+              <p>To create a new trip please fill out the information below.</p>
+            </div>
+            <div class="card-section">
+              <form action="https://trektravel.herokuapp.com/trips" method="post">
+
+                <label>Name:</label>
+                <input id="trip-name" name="name" type="text"/>
+
+                <label>Continent:</label>
+                <input id="continent" name="continent" type="text"/>
+
+                <label>Weeks:</label>
+                <input id="weeks" name="weeks" type="text"/>
+
+                <button id="create-new" type"submit" class="warning button">Submit</button>
+              </form>
+            <div>
+          </div>
+        </div>
+      </script>
+
+    <!-- include jquery, underscore, foundation  -->
+    <script src="js/vendor/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="js/vendor/foundation.min.js"></script>
+    <script src="css/foundation.min.css" type="text/css"></script>
+    <script>
+      $(document).foundation();
+    </script>
+
+    <script src="index.js"></script>
+  </body>
+</html>
