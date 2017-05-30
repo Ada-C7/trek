@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <!-- Underscore -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script>
+  <!-- Compressed CSS -->
+  <link rel="stylesheet" href="foundation/css/foundation.css" />
+  <link rel="stylesheet" href="foundation/css/app.css" />
+
+  <!-- Local js script -->
+  <script src="index.js" type="text/javascript" ></script>
+  <!-- Local Style Sheet -->
+  <link rel="stylesheet" href='trek.css'>
+</head>
+
+<body>
+
+  <section class = "container">
+    <header class = "row heading large-12 small-12">
+<h1> TripTakers </h1>
+    </header>
+
+
+    <!-- <section id="reservation-section"> -->
+
+
+  <h5 id="messages"></h5>
+    <section id= "main-view"></section>
+
+    <section>
+      <h4><button id = "all-trips"> See All Trips </button></h4>
+    </section>
+
+
+
+  </section>
+
+<!-- Templates -->
+    <script id = "single-trip-template" type='text/template'>
+      <article class = "columns large-8 small-12">
+        <h4> <%= data.continent %> : <%= data.name %> </h4>
+        <p  id= "single-trip-details">
+          <%= data.about %>
+        </p>
+      <!-- <button id="reservation-form-button" data-trip-id=<%-data.id%>> Save me a spot!</button> -->
+      </article>
+
+      <section class="please columns large-4">
+      <h4 id="res-header"> Reserve your place now! </h4><br>
+      <form id="reservation-form" method="post" action="" >
+        <section>
+          <label for="name"> Name: </label>
+          <input type="text" name="name">
+        </section>
+        <section>
+          <label for="age"> Age: </label>
+          <input type="text" name="age">
+        </section>
+        <section>
+          <label for="email"> Email: </label>
+          <input type="text" name="email">
+        </section>
+
+        <section>
+          <input type="submit" id= "reservation-complete-button" data-trip-id=<%-data.id%> value="Save me a spot!">
+        </section>
+      </form>
+    </script>
+
+
+
+
+
+    <script id= "trip-template" type='text/template'>
+      <article id = "trip-link" class = "columns large-3  medium-3 small-12">
+        <a  class="trip-name"><%= data.name %></a>
+      </article>
+    </script>
+
+
+
+
+
+    <script id="reservation-form-template"  type='text/template'>
+
+    </script>
+
+
+
+
+
+
+  </section>
+</section>
+
+        </body>
+
+        </html>
