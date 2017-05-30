@@ -27,7 +27,7 @@ $(document).ready(function() {
         data: response
       });
       console.log("obj id: " + "#trip-" + response.id);
-      
+
       $("#trip-" + response.id).append(generatedHtml); //need to make a specific trip append to the specific name
       $(".flip").click(function() {
         $(".info").slideToggle("slow");
@@ -49,7 +49,7 @@ $(document).ready(function() {
   });
 
   var clickHandler = function() {
-    $.get(tripUrl, allTrips) //passing a function around as a variable (to be invoted later.) when the request comes in, that is when it willb e called.
+    $.get(tripUrl, allTrips) //passing a function around as a variable (to be invoked later.) when the request comes in, that is when it willb e called.
   };
 
   $('#trips-list').on('click', '.trip', function(event){

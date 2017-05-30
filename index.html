@@ -7,6 +7,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="trek.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
+
   </head>
   <body>
     <section> <!--Would love to figure out how to hide this section after it's clicked -->
@@ -49,17 +50,19 @@
 
 
     <script id="trip-dets" type="text/template">
-
-
       <div id=<%= "trip-" + data.id %>>
-        <p><strong>Details: </strong> <%- data.about %></p>
         <ul>
         <li><strong>Category: </strong><%- data.category %></li>
         <li><strong>Cost: $</strong><%- data.cost %></li>
         </ul>
+        <p><strong>Details: </strong> <%- data.about %></p>
       </div>
 
-      <form action="https://trektravel.herokuapp.com/trips/" + <%-data.id%> + "/reserve" method="post">
+      <div>
+        <p><strong>Sign up for your next adventure!</strong></p>
+      </div>
+
+      <form action="https://trektravel.herokuapp.com/trips/<%- data.id + "/reserve"%>" method="post">
         <section>
           <label>Name</label>
           <input type="text" id="name" name="name"></input>
@@ -73,21 +76,11 @@
           <input type="text" id="email" email="email"></input>
         </section>
         <section class="button">
-          <button type="submit">Reserve Trip!</button>
+          <button type="submit">Reserve Trip</button>
         </section>
-
+      </form>
     </script>
 
 
   </body>
 </html>
-
-
-<!--info I probs wont' need, but just in case keeping it here  -->
-<!-- <div id="trip-info">
-  <script id="info-template" type="text/template">
-    <section id=<%- "trip-" + data.id %>>
-      <p> <%- data.about %> </p>
-    </section>
-  </script>
-</div> -->
