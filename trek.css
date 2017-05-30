@@ -1,7 +1,5 @@
-/*@import url('https://fonts.googleapis.com/css?family=Shrikhand');
-@import url('https://fonts.googleapis.com/css?family=Bungee+Outline|Shrikhand');*/
-/*@import url('https://fonts.googleapis.com/css?family=Bungee+Outline|Montserrat+Subrayada|Shrikhand');*/
-@import url('https://fonts.googleapis.com/css?family=Bungee+Outline|Montserrat+Subrayada|Russo+One|Shrikhand|Monoton|Oxygen');
+@import url('https://fonts.googleapis.com/css?family=Monoton|Oxygen');
+
 
 
 body {
@@ -16,13 +14,7 @@ li, h1, h3, h4 {
 }
 .title {
   color: rgba(250, 250, 250, 0.5);
-  /*font-family: 'Shrikhand', cursive;*/
-  /*font-family: 'Bungee Outline', cursive;*/
-  /*font-family: 'Montserrat Subrayada', sans-serif;*/
   font-family: 'Monoton', cursive;
-
-  /*font-family: 'Russo One', sans-serif;*/
-
   font-size: 12em;
   position: fixed;
   bottom: 0;
@@ -37,17 +29,10 @@ li, h1, h3, h4 {
   margin: 0 170px 180px 0;
 }
 
-#trips {
-  bottom: 0;
-  /*background-color: rgba(250, 250, 250, 0.9);*/
-
-}
-
 ul.vacation {
   background-color: rgba(0, 0, 0, 0.75);
   color: white;
   list-style: none;
-  /*font-family: 'Oxygen', sans-serif;*/
   font-size: 1.5em;
   padding: 25px;
 }
