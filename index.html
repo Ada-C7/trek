@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
+  <link rel="stylesheet" href="index.css">
+  <title>Tripsea</title>
+</head>
+<body>
+  <nav class='top-bar'>
+    <div class='top-bar-left'>
+      <h1> Tripsea </h1>
+    </div>
+    <div class='top-bar-right'>
+      <!-- Filtered Options Here -->
+    </div>
+  </nav>
+  <main>
+    <button id='explore' class='button'>  Explore All Trips </button>
+    <section id='errors'></section>
+    <div class="row">
+      <section id='trip-index'> </section>
+    </div>
+      <!-- <section id='trip-show'> </section> -->
+
+
+      <!-- Trip List Template  -->
+      <script id='trip-index-template' type='text/template'>
+        <div class="small-12 medium-6 large-4 columns">
+          <div class='trip-block'>
+            <a href="#" id="trip-link" >
+              <h2 id=<%- trip.id %>><%- trip.name %></h2>
+            </a>
+            <hr />
+            <h4><%- trip.weeks %> week(s)</h4>
+            <h3><%- trip.continent %></h3>
+          </div>
+        </div>
+      </script>
+
+      <!-- Trip Show Template  -->
+
+      <script id='trip-show-template' type='text/template'>
+        <div class="row">
+          <div class="small-12 large-6 columns">
+            <div class='show'>
+
+              <h1> <%- trip.name  %></h1>
+              <p>Location: <%- trip.continent %></p>
+              <p>Cost: $<%- trip.cost %></p>
+              <p>Duration: <%- trip.weeks %> week(s)</p>
+              <h3>About</h3>
+              <p><%- trip.about %></p>
+              <p>Trip id: <%- trip.id %></p>
+              <p>Category: <%- trip.category %></p>
+            </div>
+          </div>
+
+          <div class="small-12 large-6 columns">
+            <div id="message"></div>
+            <form action=<%- url %> method="post">
+              <section>
+                <label>Name</label>
+                <input type="text" id="name" name="name"></input>
+              </section>
+              <section>
+                <label>Email</label>
+                <input type="text" id="email" name="email"></input>
+              </section>
+              <section class="button">
+                <button type="submit">Request Reservation</button>
+              </section>
+            </form>
+          </div>
+        </div>
+      </script>
+    </main>
+      <footer>
+        <div class="wrap row small-up-1 medium-up-3">
+          <div class="column"><h4>Powered By</h4>
+            <!-- <hr /> -->
+          </div>
+          <div class="column"><h4>Social Media</h4>
+            <!-- <hr /> -->
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+          </div>
+          <div class="column"><h4>Site Map</h4>
+            <!-- <hr /> -->
+            <a href="#">About Us</a>
+            <a href="#">Services</a>
+            <a href="#">Contact US</a>
+          </div>
+        </div>
+      </footer>
+
+      <!-- JavaScript, Jquery & Underscore -->
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" type="text/javascript"></script>
+      <script src="index.js" type="text/javascript"></script>
+      <script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
+    </body>
+    </html>
+ 
