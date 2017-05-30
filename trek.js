@@ -40,8 +40,8 @@ $(document).ready(function () {
     $.get(url, tripCallback).fail(failCallback);
   });
 
-  $('main').on('click', "#trip-details input[type='submit']", function(e) {
-    e.preventDefault();
+  $('main').on('click', "input[type='submit']", function (event) {
+    event.preventDefault();
 
     var url = $('form').attr('action');
     var formData = $('form').serialize();
