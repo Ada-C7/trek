@@ -1,9 +1,8 @@
 var baseUrl = 'https://trektravel.herokuapp.com/trips/';
-var tripListTemplate = _.template($('#trip-list-template').html());
-var tripTemplate = _.template($('#trip-template').html());
 
 var tripListSuccess = function(response) {
   var tripList = $('<ul id="trip-list"></ul>');
+  var tripListTemplate = _.template($('#trip-list-template').html());
 
   for (i = 0; i < response.length; i++) {
     var generatedHtml = tripListTemplate( {
@@ -13,12 +12,14 @@ var tripListSuccess = function(response) {
       tripList.append(generatedHtml);
     }
   }
-  $('#trip-info').html(tripList);
+
+  $('#trip-info').append(tripList);
   $('#errors').empty();
 };
 
 var tripSuccess = function(response) {
-  console.log(response);
+  var tripTemplate = _.template($('#trip-template').html());
+
   var generatedHtml = tripTemplate( {
     data: response
   });
@@ -37,7 +38,16 @@ var formSuccess = function() {
 };
 
 var tripListClickHandler = function() {
+  $('#trip-info').html('<h2>Trips</h2>');
   $.get(baseUrl, tripListSuccess).fail(function() {
+    console.log('AJAX failed to load.');
+    $('#errors').html('Couldn\'t load trips.');
+  });
+};
+
+var budgetTripsClickHandler = function() {
+  $('#trip-info').html('<h2>Trips Under $1000</h2>');
+  $.get(baseUrl + 'budget?query=999', tripListSuccess).fail(function() {
     console.log('AJAX failed to load.');
     $('#errors').html('Couldn\'t load trips.');
   });
@@ -77,6 +87,7 @@ var formClickHandler = function(e) {
 
 $(document).ready(function() {
   $('#load-trips').click(tripListClickHandler);
+  $('#budget-trips').click(budgetTripsClickHandler);
   $('#new-trip').click(newTripClickHandler);
   $('#trip-info').on('click', 'ul a', tripClickHandler);
   $('#trip-info').on('submit', 'form', formClickHandler);

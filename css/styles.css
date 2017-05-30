@@ -23,6 +23,10 @@ header .button {
   border-radius: 5px;
 }
 
+h2 {
+  text-align: center;
+}
+
 #trip-list ul {
   margin: 0;
 }
