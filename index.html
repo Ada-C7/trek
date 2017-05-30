@@ -47,9 +47,7 @@
         <% if (data.continent) { %>
           <li><strong>Continent:</strong> <%- data.continent %></li>
         <% } %>
-        <% if (data.cost) { %>
-          <li><strong>Cost:</strong> $<%- data.cost %></li>
-        <% } %>
+        <li><strong>Cost:</strong> $<%- data.cost.toFixed(2) %></li>
         <% if (data.weeks) { %>
           <li><strong>Number of weeks:</strong> <%- data.weeks %></li>
         <% } %>
