@@ -3,15 +3,25 @@ body {
   background-position: center;
 }
 
+main {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
 #site-title {
   color: white;
+  background-color: #CF5300;
+  opacity: 0.8;
 }
 
-.each-card {
+.card {
   border-radius: 1rem;
-  margin-left: 1rem;
 }
 
+#menu-bar {
+}
+
+/* for nav bar alignment */
 #index-button {
   margin-bottom: 0;
 }

@@ -3,6 +3,7 @@
 var failureCallback = function(response) {
   console.log(response);
   console.log("Fail :(");
+  $("#errors").removeClass().addClass("alert callout");
   $("#errors").html("<h1>Your AJAX request failed!</h1>");
 };
 
@@ -51,17 +52,21 @@ var budgetCallback = function(response) {
 $(document).ready(function() {
   var baseUrl = "https://trektravel.herokuapp.com/trips"; // Trek API
 
-  // INDEX ~ event handler for button
+  // INDEX ~ event handler for button "All Trips"
   $("#index-page").toggle(false); // start with trips toggled to 'off'
 
   $("#index-button").click(function(event) {
+
+    $("#errors").html("").removeClass();
+    console.log("Alerts cleared!");
+
     $.get(baseUrl, indexCallback).fail(failureCallback);
     $("#index-page").toggle();
     $("#new-page").hide();
     $("#show-page").hide();
   });
 
-  // SHOW ~ event handler for link
+  // SHOW ~ event handler for click on trip card
   $("#index-page").on("click", "a", function(event) {
     console.log("success!");
     event.preventDefault();
@@ -89,8 +94,10 @@ $(document).ready(function() {
 
     $.post(reserveUrl, formData, function(response) {
       console.log("success!");
+      console.log(response);
       alert("Reservation added!");
       console.log("Form submitted!");
+      $('#show-page').hide();
     }).fail(failureCallback);
 
     this.reset();
@@ -102,6 +109,8 @@ $(document).ready(function() {
 
   $("#new-button").click(function(event) {
     console.log("success!");
+    $('#show-page').hide();
+    $('#index-page').hide();
     $("#new-page").toggle();
   });
 
@@ -131,12 +140,17 @@ $(document).ready(function() {
   $('#budget-search').on("submit", "form", (function(event) {
     event.preventDefault();
     console.log("success!");
-    var query = $(this).serialize();
-    var budgetUrl = this.action + "?" + query;
+    var queryText = $(this).serialize();
+    var budgetUrl = this.action + "?" + queryText;
     $.get(budgetUrl, indexCallback).fail(failureCallback);
     $("#index-page").show();
-    var budgetMessage = "Now showing trips with max budget: " + query;
+
+    // alert user when search is restricted by budget
+    var budgetMessage = "Now showing trips up to $" + queryText.substring(6);
     $("#errors").html(budgetMessage);
+    $("#errors").removeClass().addClass("success callout");
+
+    this.reset();
     return false;
   }));
 });
