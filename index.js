@@ -70,7 +70,7 @@ var clickHandlerDetails = function(event) {
   $.get(url + '/' + this.id, tripDetailCallback).fail(failureCallback)
   // render template
   console.log("hi");
-
+  $('body').animate({ scrollTop: 0}, "slow");
 
 };
 
