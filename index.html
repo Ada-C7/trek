@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Trek</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="trek.css"/>
+  </head>
+  <body>
+
+    <!-- All Pages -->
+    <section id="messages" class="row"></section>
+    <h1 class="list-trips-btn"><i class="material-icons md-48">filter_hdr</i>Trek</h1>
+
+    <section id="homepage" class="row clear">
+      <img src="https://unsplash.it/500/500?image=1057/?blur" alt="">
+      <button class="list-trips-btn hollow button secondary continent-filter">Find Your Trek</button>
+    </section>
+
+    <!-- Trips List -->
+    <section id="trips-list" class="row">
+      <section id="trip-filters" class="clear">
+      </section>
+      <table>
+        <thead>
+          <tr class="clear">
+          </tr>
+        </thead>
+        <tbody class="clear">
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Show Trip Details -->
+    <section id="trip-details" class="clear">
+    </section>
+
+    <!-- Trips List Template-->
+    <script id="trips-list-template" type="text/template">
+      <tr>
+        <td class="trip-details-btn" id="<%= trip.id %>"><%= trip.name %></td>
+        <td><%= trip.weeks %></td>
+      </tr>
+    </script>
+
+    <!-- Continent Filter Template -->
+    <script id="continent-filter-template" type="text/template">
+      <button id="<%= continent %>" class="hollow button secondary continent-filter"><%= continent %></button>
+    </script>
+
+    <!--  Budget Filter Template -->
+    <script id="budget-filter-template" type="text/template">
+      <div class="slider" data-slider data-initial-start="0" data-end="<%= maxBudget %>">
+        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
+        <span class="slider-fill" data-slider-fill></span>
+        <input type="hidden">
+      </div>
+    </script>
+
+
+    <!-- Trip Details Template-->
+    <script id="trip-details-template" type="text/template">
+      <section>
+        <h2><%= trip.name %></h2>
+        <h3><%= trip.weeks %> Week Trek Around <%= trip.continent %> | $<%= trip.cost %></h3>
+        <p><%= trip.about %></p>
+        <p class="radius secondary label"><%= trip.category %></p>
+      </section>
+      <section id="reserve-trip">
+        <h3>Reserve this Trek!</h3>
+        <form action="https://trektravel.herokuapp.com/trips/<%- trip.id %>/reserve" method="post">
+          <label>Name</label>
+          <input type="text" id="name" name="name" class="clear-form"></input>
+          <label>Age</label>
+          <input type="text" id="age" name="age" class="clear-form"></input>
+          <label>Email</label>
+          <input type="text" id="email" name="email" class="clear-form"></input>
+          <button type="submit" id="reserve" class="hollow button secondary">Reserve</button>
+        </form>
+      </section>
+    </script>
+
+    <!-- Load JS after pageload-->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="index.js" type="text/javascript"></script>
+  </body>
+</html>
