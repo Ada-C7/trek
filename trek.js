@@ -2,7 +2,6 @@ $(document).ready(function() {
 
   var url = "https://trektravel.herokuapp.com/trips";
 
-
   var tripsData = [];
 
   var tripsSuccessCallback = function(response) {
@@ -36,14 +35,14 @@ $(document).ready(function() {
 
   var tripsFailureCallback = function() {
     console.log("Getting all trips did not work");
-    $("#errors").html("<h1>Sorry, we could not retrieve the list of trips at this time.</h1>");
+    $("#errors").addClass("errorsBox");
+    $("#errors").html("<h3>Sorry, we could not retrieve the list of trips at this time.</h3>");
   };
+
 
   var tripsClickHandler = function(event) {
-
     $.get(url, tripsSuccessCallback).fail(tripsFailureCallback);
   };
-
 
 
   var singleTripSuccess= function(response) {
@@ -61,21 +60,21 @@ $(document).ready(function() {
     $('#singleTrip').show();
     $('#singleTrip').addClass("tripInfoBox");
     $('#singleTrip').html($(generatedHtml));
-
   };
-
-
 
 
   var singleTripFailure = function(){
     console.log("Getting an individual trip did not work");
-    // $("#single-trip-errors").html("<h1>Sorry, we could not retrieve this trip at this time.</h1>");
+    $("#errors").addClass("errorsBox");
+    $("#errors").html("<h3>Sorry, we could not retrieve the requested trip at this time.</h3>");
   };
+
 
   var singleTripHandler = function(event){
     tripURL = url + "/" + $(this).attr("data-tripID");
     $.get(tripURL, singleTripSuccess).fail(singleTripFailure);
   };
+
 
   var hideTripHandler = function(event){
     $('#singleTrip').hide();
@@ -84,11 +83,12 @@ $(document).ready(function() {
     $('#trips').show();
   };
 
+
   var ReserveTripHandler = function(event){
     console.log("Reserving A spot");
 
     var tripID = $(this).attr("data-tripID");
-    var reserveTripURL = url + "/" + tripID + "/" + "reserve";
+    var reserveTripURL = url + "XXX/" + tripID + "/" + "reserve";
 
     var reservationTemplate = _.template($("#reservation-template").html());
 
@@ -103,7 +103,8 @@ $(document).ready(function() {
       event.preventDefault();
       var postURL = $(this).attr("action");
       var formData = $(this).serialize();
-      $.post(postURL, formData, reserveSuccess);
+      $.post(postURL, formData, reserveSuccess).fail(reserveFailure);
+
       console.log("submit step 1");
     });
 
@@ -114,12 +115,16 @@ $(document).ready(function() {
 
   var reserveSuccess = function(event){
     $('div#reservationForm').html('<h4> Congratulations. You have booked this trip! </h4>');
-
     console.log("submit step 2");
   };
 
 
-
+  var reserveFailure = function(){
+    console.log("Reserving a trip did not work");
+    $("#errors").addClass("errorsBox");
+    $("#errors").html("<h3>Sorry, we were unable to reserve a spot for you at this time.</h3>");
+    $('div#reservationForm').hide();
+  };
 
 
 

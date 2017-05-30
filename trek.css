@@ -5,6 +5,14 @@ h1, h2, h3, h4, body {
   color: #6b2e03;
 }
 
+.errorsBox{
+  border: 1px solid #6b2e03;
+  background-color: #fae9d6;
+  margin: 1%;
+  padding: 1%;
+  opacity: .8;
+}
+
 #trips > h2 {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -25,16 +33,6 @@ body {
   min-height: 675px;
 }
 
-/*body{
-  background-image:url(./sunset.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin-top:3rem;
-  padding-bottom:3rem;
-  background-color: #f7d9b6;
-  font-family: Times;
-}*/
 
 body::after {
   content: "";
@@ -52,22 +50,14 @@ body::after {
 }
 
 
-
-
-
-
 .button {
   background-color: #6b2e03;
-  /*border-radius: 10%;*/
-
 }
 
 .button:hover, .button:focus {
   background-color: #af4e08;
   color: #fefefe;
-s
 }
-
 
 h1{
   text-align: center;
