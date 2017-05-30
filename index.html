@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Lazy Traveler</title>
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+  <header>
+    <section>
+      <h5>"Peculiar travel suggestions are dancing lessons from God."</h5>
+      <p>Kurt Vonnegut, Cat's Cradle</p>
+    </section>
+  </header>
+  <main class="row">
+    <section class="small-12 medium-12 large-4 columns" id="trips">
+      <h1 >Welcome, Lazy Travelers</h1>
+      <button class="button" id="load">See All Trips</button>
+      <button class="button" id="show-filter">See Filters</button>
+      <button class="button" id="hide-filter">Hide Filters</button>
+
+      <div id="filter">
+        <form action="https://trektravel.herokuapp.com/trips/" method="get" id="continent-filter">
+          <label for="continent">Search by Continent</label>
+          <div class="share">
+            <input type="text" name="continent" placeholder="Africa" required="required"></input>
+            <button class="button">Go!</button>
+          </div>
+        </form>
+
+        <form action="https://trektravel.herokuapp.com/trips/" method="get" id="week-filter">
+          <label for="maximum-weeks">Search by Weeks</label>
+          <div class="share">
+            <input type="number" name="weeks" min="1" max="20" placeholder= "1" required="required"></input>
+            <button class="button">Go!</button>
+          </div>
+        </form>
+
+        <form action="https://trektravel.herokuapp.com/trips/" method="get" id="budget-filter">
+          <label for="maximun-budget">Search by Budget (USD)</label>
+          <div class="share">
+            <input type="text"  name="budget" placeholder="999.99" required="required"></input>
+            <button class="button">Go!</button>
+          </div>
+        </form>
+      </div>
+
+    </section>
+
+    <section class="small-12 medium-12 large-4 columns">
+      <div id="errors"></div>
+
+      <div id="list"></div>
+      <script id="list-template" type="text/template">
+        <section class="tripBlock">
+          <a href="#" id=<%- data.id %>><h3><%- data.name %></h3></a>
+          <p>
+            <strong>Continent: </strong>
+            <%- data.continent %>
+          </p>
+          <p>
+            <strong>Weeks: </strong>
+            <%- data.weeks %>
+          </p>
+        </section>
+      </script>
+
+      <div id="trip"></div>
+      <script id="details-template" type="text/template">
+        <section class="detail">
+          <h2>
+            <%- trip.name %>
+          </h2>
+          <p>
+            <strong>Trip ID: </strong>
+            <%- trip.id %>
+          </p>
+          <p>
+            <strong>Category: </strong>
+            <%- trip.category %>
+          </p>
+          <p>
+            <strong>Continent: </strong>
+            <%- trip.continent %>
+          </p>
+          <p>
+            <strong>Weeks: </strong>
+            <%- trip.weeks %>
+          </p>
+          <p>
+            <strong>Cost: $ </strong>
+            <%- trip.cost %>
+          </p>
+          <p>
+            <strong>About: </strong>
+            <%- trip.about %>
+          </p>
+        </section>
+      </script>
+    </section>
+
+
+    <section class="small-12 medium-12 large-4 columns" id="reserve">
+      <h2>Reserve Your Spot</h2>
+      <div id="message"></div>
+      <form action="https://trektravel.herokuapp.com/trips/" method="post" id="reserveForm">
+        <section>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required="required"></input>
+        </section>
+        <section>
+          <label for="age">Age</label>
+          <input type="text" id="age" name="age" required="required"></input>
+        </section>
+        <section>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required="required"></input>
+        </section>
+
+        <section>
+          <button class="button" type="submit">Make Reservation</button>
+        </section>
+      </form>
+    </section>
+  </main>
+
+
+  <script type="text/javascript"
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+
+  <script type="text/javascript" src="js/index.js"></script>
+
+
+</body>
+</html>
