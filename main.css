@@ -1,8 +1,8 @@
 .dropbtn {
-    background-color: #4CAF50;
+    background-color: black;
     color: white;
-    padding: 16px;
-    font-size: 16px;
+    padding: 10px;
+    font-size: 13px;
     border: none;
     cursor: pointer;
 }
@@ -42,6 +42,90 @@
     margin-right: 5px;
 }
 
-.button button {
+.button {
     color: white;
+    background-color: black;
+}
+
+#trip-name {
+    cursor: pointer;
+
+}
+
+#trip-name:hover {
+    background-color: yellow;
+}
+
+#trips-box {
+    width: 18em;
+    height: 14em;
+    background-color: darkgray;
+    margin: auto;
+    margin-top: 12px;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+#trips-display {
+    margin: auto;
+    background: blue;
+    border-radius: 15px;
+}
+
+header {
+    background-color: black;
+    /*height: 10em;*/
+}
+
+#buttons {
+    padding: 10px;
+}
+
+#dropdown-buttons {
+    padding-left: 10px;
+    padding-bottom: 0px;
+    margin-bottom: 0;
+    display: inline-block;
+}
+
+.button {
+    font-size: 10px;
+    color: white;
+}
+
+h3 {
+    text-align: center;
+    color: white;
+}
+
+#submit-button {
+    color: white;
+}
+
+#message {
+    color: red;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.category-button {
+    color: darkblue;
+    font-size: 12px;
+    padding: 10px;
+    margin-right: 0
+}
+
+#options section {
+    display: inline-block;
+    margin: 0px;
+}
+
+#options {
+    margin: 0px;
+}
+
+form {
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
 }

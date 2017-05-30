@@ -5,6 +5,7 @@ var buildUrl = function(option){
 };
 
 $(document).ready(function() {
+  tripsClickHandler();
   $("#home").click(function() {
     window.location.reload(true);
   });
@@ -64,6 +65,14 @@ var displayTrips = function(data){
   }
 };
 
+var tripClick = function(){
+  $(".trip").on("click", (function(){
+    var tripId = $(this).find("#trip-id").html().replace("<strong> id: </strong>", "");
+    var tripUrl = buildUrl(tripId)
+    $.get(tripUrl, tripSuccessCallback).fail(failureCallback);
+  }));
+}
+
 var tripsSuccessCallback = function(response){
   // $(".category-form").hide();  // For using forms for categories instead
   $('#message').empty();
@@ -73,41 +82,41 @@ var tripsSuccessCallback = function(response){
     displayTrips(sortedResponse);
 
     if (response[0].cost != null){
-      $("#options").append("<section class='button tiny'><button id='sort-budget'> Sort by Budget </button></section>");
+      $("#options").append("<section><button id='sort-budget' class='category-button'> Sort by Budget </button></section>");
       $("#sort-budget").on("click", function(){
 
         sortedResponse = _.sortBy( response, "cost")
         $("#display").empty();
 
         displayTrips(sortedResponse);
+        tripClick();
       })
     }
     if (response[0].weeks != null){
 
-      $("#options").append("<section class='button tiny'><button id='sort-length'> Sort by Length </button></section>")
+      $("#options").append("<section><button id='sort-length' class='category-button'> Sort by Length </button></section>")
 
       $("#sort-length").on("click", function(){
 
         sortedResponse = _.sortBy( response, "weeks")
         $("#display").empty();
         displayTrips(sortedResponse);
+        tripClick();
       })
     }
 
   } else {
     $("#message").html("<p> No trips to show! </p>");
-  }
-  $(".trip").on("click", "button",   (function(){
-    var tripId = $(this).html().replace("Detail of Trip ", "");
-    var tripUrl = buildUrl(tripId);
-    $.get(tripUrl, tripSuccessCallback).fail(failureCallback);
-  }));
+  };
+
+  tripClick();
 
 };
 
 
 
 var tripSuccessCallback = function(response){
+  $("#options").empty();
   var tripTemplate = _.template($("#trip-template").html());
   var generatedHtml = tripTemplate({
     data: response
