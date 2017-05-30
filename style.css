@@ -1,0 +1,34 @@
+
+p, h2, h3, button {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.w {
+  font-size: 1500%;
+  color: #62c4d6;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+#bon-voyage {
+  width: 35%;
+  text-align: center;
+}
+
+.submit-button {
+  text-align: center;
+  width: 30%;
+  padding-top: 2%;
+}
+
+.form-box {
+  border-style: groove;
+}
+div {
+  font-family: 'Cormorant Garamond', serif;
+  text-align: center;
+}

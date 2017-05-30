@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tripper</title>
+  <link rel="stylesheet" href="foundation.css"  type="text/css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Dosis|Philosopher|Quicksand" rel="stylesheet">
+</head>
+
+<body class="container">
+  <div class= "w">W</div>
+  <div>
+    <button id="bon-voyage" class="button">Where do you want to go?</button>
+  </div>
+</section>
+<section id="print-trippy" class="row"></section>
+
+<script id="trippy-template" type="text/template">
+  <div class="row" id="tripper">
+    <div class= "small-12 large-6 columns" id="trip-titles">
+      <p>
+        <h2>
+          <%- trip.name %>
+        </h2>
+      </p>
+      <p>
+        <strong>Continent</strong>
+        <%- trip.continent %>
+      </p>
+      <p>
+        <strong>Weeks</strong>
+        <%- trip.weeks %>
+      </p>
+
+      <button class="detail-buttons button" id="<%= trip.id %>">Find out more about this trip
+      </button>
+    </script>
+
+    <!-- ***********************************
+    *********************************** -->
+
+    <section id="print-tripper"></section>
+    <div class="row" id="trippy">
+     <div class= "small-12 large-6 columns" id="trip-titles">
+    <script id="tripper" type="text/template">
+      <ul>
+        <h2>
+          <li>
+          <strong><%- thisTrip.name %></strong>
+        </li></h2>
+        <li>
+          <p>
+            <strong>Duration: </strong>
+            <%- thisTrip.weeks %> weeks
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>Cost: </strong>
+            $<%- thisTrip.cost %>
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>World Region: </strong>
+            <%- thisTrip.continent %>
+          </p>
+        </li>
+        <li>
+          <p>
+            <strong>Category: </strong>
+            <%- thisTrip.category %>
+          </p>
+        </li>
+        <li>
+          <strong> Description: </strong>
+          <p>
+            <%- thisTrip.about %>
+          </p>
+        </li>
+      </div>
+    </div>
+
+    <section>
+      <div class="form-box">
+        <section>
+          <h3>
+            <strong>Reserve this trip!</strong>
+          </h3>
+        </section>
+
+        <form id="reservation-form">
+          <section>
+            <label>Name</label>
+            <input type="text" id="name" name="name"></input>
+            <label>Email</label>
+            <input type="text" id="email" name="email"></input>
+          </section>
+        </form>
+
+        <section class="submit-button">
+          <button type="submit">Submit Reservation</button>
+          <p class="hidden" id="reservation-id"<%- thisTrip.id %> </p>
+        </section>
+
+        <section id="trip-reserved"></section>
+      </div>
+    </section>
+
+  </script>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+  <script src="trek.js"type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" type="text/javascript"></script>
+
+</body>
+
+</html>
+<!-- Wave 1 Click button or link to show all trips DONE
+
+Wave 2 Can click on a trip, from the list of trips, to see more information about that trip
+Should be able to see id, name, destination, continent, about, category, weeks and cost
+
+
+Wave 3 While viewing a single trip, you can reserve a spot
+Use a form to submit your name to reserve a spot on the trip you are viewing
+
+
+For All Waves
+Any dynamic elements on the page shall be rendered using Underscore templates
+Any errors encountered while interacting with the API shall be politely reported to the user
+You shall use HTML best-practices. You should organize your HTML by grouping content using semantic HTML tags.
+Site should be attractively styled, using Foundation for a responsive grid layout -->
