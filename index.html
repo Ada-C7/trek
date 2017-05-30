@@ -60,6 +60,8 @@
         </p>
       </section>
 
+      <div id="reservation"></div>
+      <h5> Reserve your spot! </h5>
       <form action="https://trektravel.herokuapp.com/trips/<%-singleTrip.id%>/reserve" method="post">
         <section>
           <label>Name</label>
@@ -82,7 +84,7 @@
 
   <div id="trips" class="columns medium-6 small-12"></div>
   <div id="single-trip" data-id="<%- trip.id %>" class="columns medium-6 small-12"></div>
-  <div id="reservation"></div>
+
 
 
 
