@@ -4,12 +4,15 @@ var urlTrips;
 
 //// form validation functions ////
 var validateName = function(name) {
-  var regex = /^[A-Za-z][-'a-zA-Z]{0,100}$/;
-  var result = regex.test(name);
-
-  if (result == false) {
-    alert("please eneter a first and last name");
-  } else { return result; }
+//   var regex = /^[-'A-Za-z][a-zA-Z]{0,100}$/;
+//   var result = regex.test(name);
+//
+//   if (result == false) {
+//     alert("please eneter a first and last name");
+//   } else { return result; }
+  if (name.length >= 1) {
+    return true;
+  } else { return false; }
 };
 
 var validateAge = function(age) {
@@ -56,7 +59,7 @@ var successCallbackTrip = function(response){
 
   $('#trip-' + response.id).replaceWith($(generateHTML));
   $('#show-hide-id-' + response.id).removeClass('closed').addClass('open');
-  $('#tripDetails-' + response.id).slideDown("slow");
+  $('#tripDetails-' + response.id).slide("slow");
 };
 
 var successCallbackReserve = function(response){

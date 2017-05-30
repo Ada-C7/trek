@@ -2,24 +2,7 @@
   padding: 1%;
 }
 
-.row {
-  max-width: 100%;
-  margin: 2%;
-}
-
-.trip {
-  /*display: inline-block;*/
-  padding: 1%;
-  /*margin: 1%;*/
-  /*border: solid;*/
-  /*display: inline-block;*/
-  /*text-align: center;*/
-  /*padding: 1%*/
-}
-
 h1 {
-  /*background-color: grey;*/
-  /*color: white;*/
   margin: 0;
   margin-top: 2%;
   padding: 0;
@@ -28,21 +11,19 @@ h1 {
 
 h3 {
   color: blue;
-  background-color: lightgrey;
-  /*border-bottom: solid;*/
+  background-color: Whitesmoke;
+  border-bottom: solid;
   font-weight: bold;
   text-align: center;
 }
 
 h3:hover {
+  background-color: lightgrey;
   color:purple;
-  background-color: Whitesmoke;
+
 }
 
 .reservedMessage {
   color: red;
   font-size: 1.75em;
 }
-/*form {
-  border: none;
-}*/
