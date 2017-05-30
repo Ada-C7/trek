@@ -65,17 +65,22 @@ var showTripClickHandler = function() {
 
 //***************** reserve trip **********************************
 
+$('form').submit(function(e) {
 var resClickHandler = function(event) {
   $("#errors").empty();
   event.preventDefault();
   console.log("reserved!");
   $("#reserve").empty();
+
   var data = $(this).serialize();
   console.log(data);
   var reservationBaseUrl = "https://trektravel.herokuapp.com/trips/";
+
   var reservationUrl = reservationBaseUrl + $('#reservation-id').html() + "/reserved";
+
   $.post(reservationUrl, data, reserveCallback).fail(resfailureCallback);
 };
+});
 
 $(document).ready(function() {
   $('#bon-voyage').click(allTripsClickHandler);
