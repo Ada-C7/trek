@@ -20,7 +20,7 @@ var tripDetailCallback = function(response) {
   console.log("Success");
   console.log(response);
   var generatedHtml = tripsDetailTemplate({trip: response});
-$('.vacationDetails').append($(generatedHtml));
+$('.vacationDetails').empty().show().append($(generatedHtml));
 
   $(".reserveForm").hide();
 
