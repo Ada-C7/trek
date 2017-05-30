@@ -40,13 +40,21 @@
       </ul>
       <button id="hideTrip" class="button" onclick="hideTripDetails()">Hide Trip Details</button>
       <button id="reserve" class="button" onclick="reserve()">Reserve</button>
-      <form class="reserveForm">
-        Name:<br>
-        <input type="text" name="name"><br>
-        Email:<br>
-        <input type="text" name="email">
-        <input type="submit" value="Submit" class="button">
+
+      <form class="reserveForm" action="https://trektravel.herokuapp.com/trips/<%- trip.id %>/reserve" method="post">
+        <section>
+          <label>Name:</label>
+          <input type="text" id="name" name="name"></input>
+        </section>
+        <section>
+          <label>Email:</label>
+          <input type="text" id="email" name="email"></input>
+        </section>
+        <section class="button">
+          <button type="submit">Reserve</button>
+        </section>
       </form>
+      <div id="message"></div>
     </div>
   </script>
 

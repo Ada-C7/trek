@@ -24,6 +24,24 @@ $('.vacationDetails').append($(generatedHtml));
 
   $(".reserveForm").hide();
 
+
+    $('.reserveForm').submit(function(e) {
+      e.preventDefault();
+
+      var postUrl = $(this).attr("action");
+      var formData = $(this).serialize();
+      console.log(postUrl, formData);
+
+      $.post(postUrl, formData, function(response) {
+        $('#message').html('<p>We saved you a spot!</p>');
+        console.log(response);
+        console.log("reservation");
+      })
+      .fail(function(){
+        $('#message').html('<p>Reservation failed</p>');
+      });
+    });
+
 };
 
 function hideTripDetails() {
@@ -52,10 +70,10 @@ var clickHandlerDetails = function(event) {
   $.get(url + '/' + this.id, tripDetailCallback).fail(failureCallback)
   // render template
   console.log("hi");
+
+
 };
 
-
-// Not sure if I need a click handler for the hide button?
 
 
 // to get around scope
