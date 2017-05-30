@@ -41,30 +41,30 @@
 
 
 
-<div id="trips">
-<ul class="row small-up-2 medium-up-3 large-up-4" data-equalize>  </ul>
-</div>
+  <div id="trips">
+    <ul class="row small-up-2 medium-up-3 large-up-4" data-equalize>  </ul>
+  </div>
 
-<script id="trips-list-template" type="text/template">
+  <script id="trips-list-template" type="text/template">
 
-        <li  class="column ">
-          <div data-equalizer-watch class="oneTrip">
+    <li   data-equalizer-watch  class="column trip-container">
+      <div class="oneTrip">
 
 
-            <h3>
-              <%- data.name %>
-            </h3>
+        <h3>
+          <%- data.name %>
+        </h3>
 
-            <!-- <p>Continent:
-            <%- data.continent %>
-          </p>
-          <p>
-          Weeks:
-          <%- data.weeks%>
-        </p> -->
-        <button class="button" id="ShowDetails" data-tripID="<%- data.id%>"> Learn More </button>
-    </div>
-    </li>
+        <!-- <p>Continent:
+        <%- data.continent %>
+      </p>
+      <p>
+      Weeks:
+      <%- data.weeks%>
+    </p> -->
+    <button class="button" id="ShowDetails" data-tripID="<%- data.id%>"> Learn More </button>
+  </div>
+</li>
 </script>
 
 <div id="singleTrip"></div>
@@ -132,10 +132,13 @@
       <input type="text" id="email" name="email"></input>
     </section>
 
-    <section>
-      <button  class="button" type="submit">Make Reservation</button>
-    </section>
+
+    <button  class="button final_reserve" type="submit">Book it!</button>
+
+    <button  class="button no_thanks">No thanks</button>
+
   </form>
+
 
 </script>
 

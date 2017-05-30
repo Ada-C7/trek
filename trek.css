@@ -103,6 +103,13 @@ div#reservationForm{
 }
 
 
+
+button.final_reserve, button.no_thanks{
+  display: inline-block;
+  margin: 1%;
+}
+
+
 div.dropdown.by-continent{
   margin-left: 2%;
 }

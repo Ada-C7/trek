@@ -30,7 +30,7 @@ $(document).ready(function() {
       });
       $('#trips ul').append(generatedHtml);
     }
-      matchHeight();
+    matchHeight();
   };
 
 
@@ -106,8 +106,9 @@ $(document).ready(function() {
       console.log("submit step 1");
     });
 
-  };
+    $('#form-'+tripID).on("click", "button.no_thanks", hideTripHandler);
 
+  };
 
 
   var reserveSuccess = function(event){
@@ -118,21 +119,24 @@ $(document).ready(function() {
 
 
 
-var continentHandler = function() {
-
-  var continent = ($(this).html());
-  var continentURL = url + "/continent?query=" + continent;
-  $.get(continentURL, tripsSuccessCallback).fail(continentFailure);
-
-};
 
 
 
 
-var continentFailure = function() {
-  console.log("Getting trips for did not work");
-  $("#errors").html("<h1>Sorry, we could not retrieve the list of trips to this continent at this time.</h1>");
-};
+  var continentHandler = function() {
+
+    var continent = ($(this).html());
+    var continentURL = url + "/continent?query=" + continent;
+    $.get(continentURL, tripsSuccessCallback).fail(continentFailure);
+
+  };
+
+
+
+  var continentFailure = function() {
+    console.log("Getting trips for did not work");
+    $("#errors").html("<h1>Sorry, we could not retrieve the list of trips to this continent at this time.</h1>");
+  };
 
 
 
@@ -148,26 +152,27 @@ var continentFailure = function() {
 
   $("#singleTrip").on("click", "button#reserve", ReserveTripHandler);
 
+
   $("[href]").on("click", continentHandler);
 
 
 
   var matchHeight = function(){
-      $("[data-equalize]").each(function() {
+    $("[data-equalize]").each(function() {
 
 
-        var parentRow = $(this),
-            childrenCols = $(this).find("[data-equalizer-watch]"),
-            childHeights = childrenCols.map(function(){ return $(this).height(); }).get(),
-            tallestChild = Math.max.apply(Math, childHeights);
+      var parentRow = $(this),
+      childrenCols = $(this).find("[data-equalizer-watch]"),
+      childHeights = childrenCols.map(function(){ return $(this).height(); }).get(),
+      tallestChild = Math.max.apply(Math, childHeights);
 
 
-        console.log("Matching the heights");
-        console.log(tallestChild);
-        childrenCols.css('height', tallestChild);
+      console.log("Matching the heights");
+      console.log(tallestChild);
+      childrenCols.css('height', tallestChild);
 
-      });
-    };
+    });
+  };
 
 
 });
