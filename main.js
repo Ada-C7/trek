@@ -57,6 +57,22 @@ var clickHandler = function(event) {
   $.get(tripUrl, successCallback).fail(failureCallback);
 };
 
+
+$('form').submit(function(event) {
+
+  event.preventDefault();
+
+  var url = $(this).attr("action");
+  var formData = $(this).serialize();
+
+  $.post(url, formData, function(response){
+    $('#reservation').html('<p> Reservation confirmed! </p>');
+    console.log(response);
+  }).fail(function(){
+    $('#reservation').html('<p>Unable to save reservation</p>');
+  });
+});
+
 $(document).ready(function() {
   $('#load').click(clickHandler);
   // $(".name").click(toggleHandler)
