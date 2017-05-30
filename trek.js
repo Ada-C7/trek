@@ -5,10 +5,10 @@ $(document).ready(function() {
   var oneTripsTemplate = _.template($('#one-trip-template').html());
 
   var clickButtonHandler = function() {
-    $.get(url).success(successTripList).fail(failureTripList);
+    $.get(url).success(successTripsList).fail(failureTripList);
   };
 
-  var successTripList = function(response){
+  var successTripsList = function(response){
     for (var i = 0; i < response.length; i++){
       var generatedHTML = tripsTemplate({
         data: response[i]
@@ -24,7 +24,6 @@ $(document).ready(function() {
     console.log("did not work :()");
     $('#errors').html("<h1>AJAX request failed!</h1>");
   };
-
 
 
   var successSingleTrip = function(response){
@@ -45,20 +44,24 @@ $(document).ready(function() {
   };
 
   var successReservation = function(response){
+    $('#info-to-hide').hide();
     $('#message').html('<p> You have reserved your trip successfully! </p>');
     $('form').hide();
   }
 
   var failureReservation = function(response){
-    $('#message').html('<p> We are sorry. Something has gone wrong! </p>');
+    $('#info-to-hide').hide();
+    $('#message').html('<p> We are sorry. Something has gone wrong! Your reservation has not been added. </p>');
     $('form').hide();
   }
 
   var clickShowInfoHandler = function(event){
     var tripId = event.currentTarget.dataset.id;
-    $.get('https://trektravel.herokuapp.com/trips/' + tripId, successSingleTrip);
+    $.get(url + '/' + tripId, successSingleTrip);
+    // $('#info-to-hide').toggle();
   };
 
   $('#load').click(clickButtonHandler);
+  $('body').css('background-image', 'url(' + 'https://c1.staticflickr.com/3/2696/4125192347_09ecd8904c_z.jpg?zz=1' + ')');
 
-}); // final documento listo.
+}); // document ready closing

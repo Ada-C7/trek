@@ -12,19 +12,26 @@
   <script src="trek.js" type="text/javascript"></script>
 
   <script id="trips-template" type="text/template">
-    <li id='<%- data.id %>'>
-      <div>
+    <section>
+      <li id='<%- data.id %>'>
         <h3>
           <a data-id='<%- data.id %>' class="more-info"> <%- data.name  %> </a>
         </h3>
-      </div>
-    </li>
+      </li>
+    </section>
   </script>
 
   <script id='one-trip-template' type="text/template">
-    <div>
-      <p> <%- data.continent %></p>
-    </div>
+    <section id="info-to-hide">
+      <h3><strong><%- data.name %></strong></h3>
+      <h4>Trip ID: <%- data.id %></h4>
+      <h4>Destination: <%- data.destination %></h4>
+      <h4>Continent: <%- data.continent %></h4>
+      <h4>Category: <%- data.category %></h4>
+      <h4>Weeks: <%- data.weeks %></h4>
+      <h4>ost: <%- data.cost %></h4>
+      <p> <%- data.about %></p>
+    </section>
 
     <div id="message"></div>
     <form action=<%-"https://trektravel.herokuapp.com/trips/" + data.id + "/reserve" %> method="post" >
@@ -44,13 +51,24 @@
   <header>
     <h1>All the trips with TREK!</h1>
     <h3> Do you want to find exciting trips? click the button to find them! </h3>
+
     <div id='errors'></div>
     <button id='load' class='button'>Trips</button>
   </header>
 
+
+
   <main>
-    <ul id="trips-list"></ul>
+    <div class="row">
+      <div class="small-12 large-12">
+        <ul id="trips-list"></ul>
+      </div>
+    </div>
   </main>
+
+  <footer>
+
+  </footer>
 
 </body>
 </html>
