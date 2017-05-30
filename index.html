@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+     <link rel="stylesheet" type="text/css" href="styles.css">
+       <link rel="stylesheet" href="css/foundation.css">
+       <script src="/js/foundation.min.js"></script>
+     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="trek.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    <section> <!--Would love to figure out how to hide this section after it's clicked -->
+      <h1>Travel Treks</h1>
+    <button id="load"> Let's Trek! </button>
+    </section>
+
+    <section id="errors"></section>
+
+    <div id="trips-list">
+      <script id="trips-template" type="text/template">
+        <section class="trip" id=<%- "trip-" + data.id %> >
+        <h2 class="flip" data-id=<%- data.id %> >
+          <%- data.name %>
+        </h2>
+
+        <ul>
+          <li><strong>Continent:</strong>
+          <%- data.continent %></li>
+          <li><strong>Duration:</strong>
+            <%- data.weeks %> weeks</li>
+        </ul>
+      </script>
+    </div>
+
+
+
+
+
+    <script id="trip-dets" type="text/template">
+      <div id=<%= "trip-" + data.id %>>
+        <ul>
+        <li><strong>Category: </strong><%- data.category %></li>
+        <li><strong>Cost: $</strong><%- data.cost %></li>
+        </ul>
+        <p><strong>Details: </strong> <%- data.about %></p>
+      </div>
+
+      <div>
+        <p><strong>Sign up for your next adventure!</strong></p>
+      </div>
+
+      <form action="https://trektravel.herokuapp.com/trips/<%- data.id + "/reserve"%>" method="post">
+        <section>
+          <label>Name</label>
+          <input type="text" id="name" name="name"></input>
+        </section>
+        <section>
+          <label>Age</label>
+          <input type="text" id='age' age="age"></input>
+        </section>
+        <section>
+          <label>Email</label>
+          <input type="text" id="email" email="email"></input>
+        </section>
+        <section class="button">
+          <button type="submit">Reserve Trip</button>
+        </section>
+      </form>
+    </script>
+
+
+  </body>
+</html>
