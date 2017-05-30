@@ -18,12 +18,12 @@ var indexCallback = function(response) {
     trips: response
   });
 
-  $('#index-page').append(all_trips);
+  $('#index-page').html(all_trips);
 };
 
 // SHOW ~ callback for each trip + template
 var showCallback = function(response) {
-  console.log("Success!");
+  console.log("success!");
   console.log(response);
 
   var tripData = response;
@@ -38,6 +38,13 @@ var showCallback = function(response) {
 var newTemplate = _.template($('#new-trip-template').html());
 $('#new-page').append(newTemplate);
 
+// BY BUDGET
+//https://trektravel.herokuapp.com/trips/budget?query=5000
+var budgetCallback = function(response) {
+  console.log("success!");
+  console.log(response);
+};
+
 //***********************ONCE DOM IS READY************************
 
 $(document).ready(function() {
@@ -46,9 +53,11 @@ $(document).ready(function() {
   // INDEX ~ event handler for button
   $("#index-page").toggle(false); // start with trips toggled to 'off'
 
-  $("#load-button").click(function(event) {
+  $("#index-button").click(function(event) {
     $.get(baseUrl, indexCallback).fail(failureCallback);
     $("#index-page").toggle();
+    $("#new-page").hide();
+    $("#show-page").hide();
   });
 
   // SHOW ~ event handler for link
@@ -59,7 +68,9 @@ $(document).ready(function() {
     var showUrl = baseUrl + "/" + tripId.toString();
     console.log(showUrl);
     $.get(showUrl, showCallback).fail(failureCallback);
+    $("#show-page").show();
     $("#index-page").toggle(false); // hide all trips
+
     return false;
   });
 
@@ -112,6 +123,19 @@ $(document).ready(function() {
     });
 
     this.reset();
+    return false;
+  }));
+
+  // BY BUDGET
+  $('#budget-search').on("submit", "form", (function(event) {
+    event.preventDefault();
+    console.log("success!");
+    var query = $(this).serialize();
+    var budgetUrl = this.action + "?" + query;
+    $.get(budgetUrl, indexCallback).fail(failureCallback);
+    $("#index-page").show();
+    var budgetMessage = "Now showing trips with max budget: " + query;
+    $("#errors").html(budgetMessage);
     return false;
   }));
 });

@@ -18,19 +18,21 @@
       <nav class="top-bar data-topbar">
 
         <div class="top-bar-left">
-          <button id="load-button" class="button"> All Trips </button>
+          <button id="index-button" class="button"> All Trips </button>
           <button id="new-button" class="button"> Add a Trip </button>
         </div>
 
-        <div class="top-bar-right">
-          <div class="row collapse align-bottom">
-            <div class="large-8 small-9 columns">
-              <input type="text" placeholder="Search By Budget">
+        <div class="top-bar-right" id="budget-search">
+          <form action="https://trektravel.herokuapp.com/trips/budget" method="get">
+            <div class="row collapse align-bottom">
+              <div class="large-8 small-9 columns">
+                <input id="query" name="query" type="text" placeholder="By Max Budget" />
+              </div>
+              <div class="large-4 small-3 columns">
+                <button id="budget-button" class="alert button expand" type="submit">$</button>
+              </div>
             </div>
-            <div class="large-4 small-3 columns">
-              <a href="#" class="alert button expand">$</a>
-            </div>
-          </div>
+          </form>
         </div>
 
       </nav>
@@ -97,7 +99,7 @@
           <label>Email:</label>
           <input id="email" name="email" type="text"/>
 
-          <button id="submit" type"submit" class="button">Submit</button>
+          <button type="submit" class="button">Submit</button>
         </form>
       </section>
     </script>
