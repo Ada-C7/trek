@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Trek Travel</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
+
+    <link href="trek.css" media="screen" rel="stylesheet" type="text/css">
+  </head>
+
+  <body >
+    <header>
+      <div class="row">
+        <div class="columns small-6 medium-3 large-3">
+          <button id = "load">Explore our Trips</button>
+        </div>
+      <div class="columns small-6 medium-5 large-5">
+      <form  id="trips-continent" action="https://trektravel.herokuapp.com/trips/continent?query=" >
+      <select id = "continent" style="width:200px" >
+        <option value="1">Africa</option>
+        <option value="2">Antarctica</option>
+        <option value="3">Asia</option>
+        <option value="4">Australasia</option>
+        <option value="5">Europe</option>
+        <option value="6">North America</option>
+        <option value="7">South America</option>
+      </select>
+      <button id="button-continent" type="submit">Trips by Continent </button>
+    </form>
+    </div>
+    <div class="columns small-6 medium-4 large-4">
+      <h1 class="header">Welcome to TrekTravel</h1>
+    </div>
+    </div>
+  </header>
+
+    <section id = "message"></section>
+    <section id = "errors"></section>
+
+    <section id = "alltrips">
+      <table id = "table">
+        <thead>
+          <th> ID</th>
+          <th> Name</th>
+          <th> Continent</th>
+          <th> Weeks</th>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+
+      </table>
+    </section>
+
+    <!-- Show trips list -->
+    <script id="trips" type="text/template">
+    <tr>
+      <td><%- data.id %></td>
+    <!-- data- is special attribute -->
+      <td><a href = "#" class= "trip-link" data-trip-id= "<%- data.id %>"><%- data.name %></a></td>
+      <td><%- data.continent %></td>
+      <td><%- data.weeks %></td>
+    </tr>
+    </script>
+
+<!-- Show information for a specific trip -->
+    <section id= "show-trip" ></section>
+
+    <script id= "one-trip" type="text/template" >
+      <div class="row">
+        <div class="columns small-12 medium-8">
+          <h1><%- data.name %> </h1>
+          <h2><%- data.continent + " Continent" %></h2>
+
+          <p><strong>Category: </strong><%- data.category %></p>
+
+          <p><strong>Cost: </strong><%- "$" + Math.round(data.cost) %></p>
+
+          <p><strong>Duration: </strong><%- data.weeks +" weeks" %></p>
+
+          <div class="about-trip" >
+          <p ><h2>About this trip: </h2><%- data.about %></p></div>
+
+        </div>
+
+        <div class ="columns small-12 medium-4">
+          <form id="reserve-form" action="https://trektravel.herokuapp.com/trips/<%-data.id%>/reserve" method="post">
+          <section>
+          <fieldset>
+
+          <h2>Reserve a Spot for This Trip</h2>
+
+          <label>Name</label>
+          <input type="text" id="name" name="name"></input>
+
+          <label>Age</label>
+          <input type="text" id="name" name="age"></input>
+
+          <label>Email</label>
+          <input type="text" id="name" name="email"></input>
+
+          <section class="button">
+          <button type="submit">Submit</button>
+          </section>
+          </fieldset>
+          </form>
+        </div>
+      </div>
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
+
+    <script src="trek.js" type="text/javascript"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+
+  </body>
+</html>
