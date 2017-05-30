@@ -13,32 +13,13 @@ var tripListSuccess = function(response) {
     }
   }
 
+  var tripListHeader = ($(this).attr('url').includes('999')) ? 'Trips Under $1000' : 'Available Trips';
+  $('#trip-info').html('<h2>' + tripListHeader + '</h2>');
   $('#trip-info').append(tripList);
   $('#errors').empty();
 };
 
-var tripSuccess = function(response) {
-  var tripTemplate = _.template($('#trip-template').html());
-
-  var generatedHtml = tripTemplate( {
-    data: response
-  });
-  $('#trip-info').html(generatedHtml);
-  $('#errors').empty();
-};
-
-var formSuccess = function() {
-  var tripAction = $('form .button').attr('id');
-  tripAction = tripAction.substring(0, tripAction.length - 7);
-
-  console.log('Trip ' + tripAction + 'd.');
-  $('form').trigger('reset');
-  $('#form-message').html('Trip ' + tripAction + 'd!').removeClass("errors");
-  $('#errors').empty();
-};
-
 var tripListClickHandler = function() {
-  $('#trip-info').html('<h2>Trips</h2>');
   $.get(baseUrl, tripListSuccess).fail(function() {
     console.log('AJAX failed to load.');
     $('#errors').html('Couldn\'t load trips.');
@@ -46,7 +27,6 @@ var tripListClickHandler = function() {
 };
 
 var budgetTripsClickHandler = function() {
-  $('#trip-info').html('<h2>Trips Under $1000</h2>');
   $.get(baseUrl + 'budget?query=999', tripListSuccess).fail(function() {
     console.log('AJAX failed to load.');
     $('#errors').html('Couldn\'t load trips.');
@@ -60,6 +40,17 @@ var newTripClickHandler = function() {
   $('#errors').empty();
 };
 
+
+var tripSuccess = function(response) {
+  var tripTemplate = _.template($('#trip-template').html());
+
+  var generatedHtml = tripTemplate( {
+    data: response
+  });
+  $('#trip-info').html(generatedHtml);
+  $('#errors').empty();
+};
+
 var tripClickHandler = function(e) {
   e.preventDefault();
   var trip = $(this).attr('id');
@@ -69,6 +60,16 @@ var tripClickHandler = function(e) {
     console.log('AJAX failed to load trip');
     $('#errors').html('Couldn\'t load trip.');
   });
+};
+
+var formSuccess = function() {
+  var tripAction = $('form .button').attr('id');
+  tripAction = tripAction.substring(0, tripAction.length - 7);
+
+  console.log('Trip ' + tripAction + 'd.');
+  $('form').trigger('reset');
+  $('#form-message').html('Trip ' + tripAction + 'd!').removeClass("errors");
+  $('#errors').empty();
 };
 
 var formClickHandler = function(e) {
