@@ -22,49 +22,82 @@
 
   <section class = "container">
     <header class = "row heading large-12 small-12">
-
+<h1> TripTakers </h1>
     </header>
 
 
-    <section id= "mainView" class = "panel">
+    <!-- <section id="reservation-section"> -->
 
-      <script id = "single-trip-template" type='text/template'>
-        <article class = "columns large-5 small-12">
-          <h4> <%= data.continent %> : <%= data.name %> </h4>
 
-          <p  id= "single-trip-details">
-          <%= data.about %>
-          <p>
-        </article>
-        <button id="reservation-form-button" data-trip-id =<%data.id%> > Save me a spot!</button>
-      </script>
+  <h5 id="messages"></h5>
+    <section id= "main-view"></section>
 
+    <section>
+      <h4><button id = "all-trips"> See All Trips </button></h4>
     </section>
 
-    <!-- <section  id="allTrips" class = "group"> -->
 
-      <h4>
-        <button id = "all-trips"> See All Trips </button>
-      </h4>
 
-        <script id= "trip-template" type='text/template'>
-          <article class = "columns large-3  medium-3 small-12">
+  </section>
 
-            <a  class="tripName"><%= data.name %></a>
+<!-- Templates -->
+    <script id = "single-trip-template" type='text/template'>
+      <article class = "columns large-8 small-12">
+        <h4> <%= data.continent %> : <%= data.name %> </h4>
+        <p  id= "single-trip-details">
+          <%= data.about %>
+        </p>
+      <!-- <button id="reservation-form-button" data-trip-id=<%-data.id%>> Save me a spot!</button> -->
+      </article>
 
-          </article>
-          <!-- <article class= "columns large-10 small-0" id="placeholder">
-          </article> -->
-        </script>
-      <!-- </section> -->
+      <section class="please columns large-4">
+      <h4 id="res-header"> Reserve your place now! </h4><br>
+      <form id="reservation-form" method="post" action="" >
+        <section>
+          <label for="name"> Name: </label>
+          <input type="text" name="name">
+        </section>
+        <section>
+          <label for="age"> Age: </label>
+          <input type="text" name="age">
+        </section>
+        <section>
+          <label for="email"> Email: </label>
+          <input type="text" name="email">
+        </section>
+
+        <section>
+          <input type="submit" id= "reservation-complete-button" data-trip-id=<%-data.id%> value="Save me a spot!">
+        </section>
+      </form>
+    </script>
+
+
+
+
+
+    <script id= "trip-template" type='text/template'>
+      <article id = "trip-link" class = "columns large-3  medium-3 small-12">
+        <a  class="trip-name"><%= data.name %></a>
+      </article>
+    </script>
+
+
+
+
+
+    <script id="reservation-form-template"  type='text/template'>
+
+    </script>
+
 
 
 
 
 
   </section>
+</section>
 
+        </body>
 
-  </body>
-
-</html>
+        </html>
