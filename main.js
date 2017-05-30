@@ -1,15 +1,9 @@
-// taking advantage of hositing?
 var tripsTemplate;
 var urlTrips;
 
+
 //// form validation functions ////
 var validateName = function(name) {
-//   var regex = /^[-'A-Za-z][a-zA-Z]{0,100}$/;
-//   var result = regex.test(name);
-//
-//   if (result == false) {
-//     alert("please eneter a first and last name");
-//   } else { return result; }
   if (name.length >= 1) {
     return true;
   } else { return false; }
@@ -31,6 +25,7 @@ var validateEmail = function(email) {
     alert("please enter a complete email address");
   } else { return result; }
 };
+
 
 //// callback functions /////
 
@@ -75,7 +70,8 @@ var failureCallback = function() {
   $("#errors").html("<h2>Something went wrong - check back later</h2>");
 };
 
-//// click handler functions /////
+
+//// click handler functions ////
 
 $(document).ready(function(){
   tripsTemplate = _.template($('#trips-template').html());
