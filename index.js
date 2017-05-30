@@ -12,7 +12,6 @@ var listOfTrips = null;
 
 var sortBy = null;
 
-var
 
 // HELPER functions ****************************************
 
