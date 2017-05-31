@@ -154,9 +154,7 @@ $(document).ready(function() {
 
   $("#singleTrip").on("click", "button#reserve", ReserveTripHandler);
 
-
-  $("[href]").on("click", continentHandler);
-
+  $(".dropdown-item.continent").on("click", continentHandler);
 
 
   var matchHeight = function(){
