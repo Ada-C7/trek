@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Trek</title>
+    <link href="styles.css" media="screen" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <header>
+      <div class="row dropdown">
+        <h1 class="small-7 small-centered large-8 large-centered columns" id="load-treks"> VISIT... </h1>
+        <div id="myDropdown" class="dropdown-content small-5 small-centered large-6 large-centered columns">
+          <input type="text" placeholder="Search" id="myInput" />
+          <h6 id="message"></h6>
+          <ul id="treks"> </ul>
+        </div>
+      </div>
+
+      <!-- attempt at using foundation dropdown
+      <button class="button" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false">Where to?</button>
+      <ul class="treks" id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+        <li>
+          <input type="text" placeholder="Search" id="myInput" onkeyup="filterFunction()"  />
+        </li>
+      </ul> -->
+    </header>
+
+    <script id="trek-list" type="text/template">
+      <li>
+        <a class="load-trek" id=<%- trek.id %> ><%- trek.name %></a>
+      </li>
+      <!-- <ul>
+        <li>
+          Continent: <%- trek.continent %>
+        </li>
+        <li>
+          Weeks: <%- trek.weeks %>
+        </li>
+      </ul> -->
+    </script>
+    <script id="show-trek" type="text/template">
+      <div id="trek" >
+        <h2 id="load-trek"><%- trek.name %></h2>
+        <ul>
+          <li>
+            Continent: <%- trek.continent %>
+          </li>
+          <li>
+            About: <%- trek.about %>
+          </li>
+          <li>
+            Category: <%- trek.category %>
+          </li>
+          <li>
+            Weeks: <%- trek.weeks %>
+          </li>
+          <li>
+            Cost: $<%- trek.cost %>
+          </li>
+        </ul>
+        <form action=<%- "https://trektravel.herokuapp.com/trips/" + trek.id + "/reserve" %> method="post">
+          <ul>
+            <li>
+              <label>NAME: </label>
+              <input type="text" id="name" name="name" /></input>
+            </li>
+            <li>
+              <label>EMAIL: </label>
+              <input type="text" id="email" name="email" /></input>
+            </li>
+            <li>
+              <button class="button" type="submit">SIGN ME UP!</button>
+            </li>
+          </ul>
+      </form>
+    </div>
+    </script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
+    <script src="index.js" type="text/javascript"></script>
+  </body>
+  <footer>
+    <p>
+      TREKS MIX (image + code) © BRENNA DARROCH, 2017.
+    </p>
+  </footer>
+</html>
