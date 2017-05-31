@@ -16,22 +16,35 @@ var homeSuccessCallback = function(response) {
     });
     $('#trip-list').append(generatedHtml);
   }
-  console.log("hello from homeClickHandler");
   $('#trip-list').on('click', 'a', showClickHandler);
 };
 
 var showSuccessCallback = function(response) {
-  console.log(response);
-
+  // console.log(response);
   var showTemplate = _.template($('#trips-show-template').html());
 
+  var url = 'https://trektravel.herokuapp.com/trips/'+ response.id +'/reserve';
+
   var generatedHtml = showTemplate({
-    trip: response
+    trip: response,
+    url: url
   });
 
   $('#trip-list').html($(generatedHtml));
-    console.log("Ha");
+  // console.log("Ha");
 };
+
+$('#trip-list').on('click', 'button', function(e) {
+  e.preventDefault();
+
+  var url = $('form').attr("action");
+  var data = $('form').serialize();
+
+  $.post(url, data, function(response) {
+    alert("Trip reserved");
+    $('form').empty();
+  }).fail(failureCallback);
+});
 
 var failureCallback = function() {
   console.log("Didn't work:");
@@ -45,12 +58,13 @@ var homeClickHandler = function() {
 
 var showClickHandler = function() {
   var tripId = $(this).attr('id');
-    // console.log("This is " + e);
   var urlShow = 'https://trektravel.herokuapp.com/trips/' + tripId;
-
   console.log('this is the url', urlShow);
   $.get(urlShow, showSuccessCallback).fail(failureCallback);
 };
+
+
+// "https://trektravel.herokuapp.com/trips/" + trip.id + "/reserve"
 
 $(document).ready(function() {
   $('#load').click(homeClickHandler);

@@ -9,32 +9,40 @@
 <body>
   <button type="button" name="button" class="button" id="load">Get Trips!</button>
   <section id='trip-list'></section>
-  <!-- <section id='trips-show'></section> -->
-
 
   <!-- Templates -->
   <script id="trips-template" type="text/template">
     <a href="#" class="trip-link" id=<%- trip.id %>><h1><%- trip.name %></h1></a>
   </script>
 
-<script id='trips-show-template' type="text/template">
-<h2><%- trip.name %></h2>
-<h2>About</h2>
-<p><%- trip.about %></p>
-<h2>Trip Number</h2>
-<p> <%- trip.id %></p>
-<h2>Location</h2>
-<p>< <%- trip.continent %></p>
-<h2>Category</h2>
-<p><%- trip.category %></p>
-<h2>Duration</h2>
-<p> <%- trip.weeks %></p>
-<h2>Money</h2>
-<p> <%- trip.cost %></p>
-</script>
-    <!-- <tr class="trips-main"></tr>
-    <tbody id="trips-body"></tbody> -->
-    <!-- </table> -->
+  <script id='trips-show-template' type="text/template">
+    <h2><%- trip.name %></h2>
+    <h2>About</h2>
+    <p><%- trip.about %></p>
+    <h2>Trip Number</h2>
+    <p> <%- trip.id %></p>
+    <h2>Location</h2>
+    <p> <%- trip.continent %></p>
+    <h2>Category</h2>
+    <p><%- trip.category %></p>
+    <h2>Duration</h2>
+    <p> <%- trip.weeks %> Days</p>
+    <h2>Money</h2>
+    <p> <%- trip.cost %></p>
+    <form id="reserve-trip" action=<%- url %> method="post">
+      <label>Name</label>
+      <input type="text" name="name" />
+      <label>Email</label>
+      <input type="text" name="email" />
+      <label>Age</label>
+      <input type="text" name="age" />
+      <button type="submit" class="success button">Reserve Trip!</button>
+    </form>
+    <!-- https://trektravel.herokuapp.com/trips/1/reserve -->
+  </script>
+  <!-- <tr class="trips-main"></tr>
+  <tbody id="trips-body"></tbody> -->
+  <!-- </table> -->
 
 
   <!-- Scripts -->
