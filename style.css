@@ -1,0 +1,9 @@
+.title-boxes {
+  border: solid;
+  height: 90px;
+}
+
+h1, .trip-link {
+  text-align: center;
+  padding-top: 30px;
+}
