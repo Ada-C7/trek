@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+
+h1, h2, h3, h4, body {
+  font-family: "Playfair Display";
+  color: #6b2e03;
+}
+
+.errorsBox{
+  border: 1px solid #6b2e03;
+  background-color: #fae9d6;
+  margin: 1%;
+  padding: 1%;
+  opacity: .8;
+}
+
+#trips > h2 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#load-all-trips{
+margin-left: 40%;
+}
+
+
+body {
+  display: block;
+  position: relative;
+  min-height: 675px;
+}
+
+
+body::after {
+  content: "";
+  background: url(./sunset.jpg) no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: .7;
+  display: block;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+
+.button {
+  background-color: #6b2e03;
+}
+
+.button:hover, .button:focus {
+  background-color: #af4e08;
+  color: #fefefe;
+}
+
+h1{
+  text-align: center;
+}
+
+.oneTrip{
+  border: 1px solid #6b2e03;
+  text-align: center;
+
+  background-color: rgba(250, 233, 214, 0.76);
+  /*background-color: #fae9d6;*/
+  margin: 1%;
+  padding: 1%;
+  margin-bottom: 2rem;
+
+}
+
+li.trip-container{
+    display: inline-block;
+}
+
+.tripInfoBox{
+  border: 1px solid #6b2e03;
+  background-color: #fae9d6;
+  opacity: .8;
+  margin: 5%;
+  padding: 2%;
+}
+
+.tripInfoBox h3{
+  text-align: center;
+}
+
+div#reservationForm{
+  margin: 1%;
+  text-align: center;
+}
+
+
+/*div#reservationForm{
+  border: 1px solid #6b2e03;
+  background-color: #fae9d6;
+  margin: 1%;
+  padding: 1%;
+  width: 50%;
+}*/
+
+
+
+button.final_reserve, button.no_thanks{
+  display: inline-block;
+  margin: 1%;
+}
+
+
+div.dropdown.by-continent{
+  margin-left: 2%;
+}
+
+.dropbtn {
+    background-color: #6b2e03;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 28%;
+}
+
+.button.dropbtn{
+  margin-bottom: 0;
+};
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fae9d6;
+    /*min-width: 160px;*/
+    width: 28%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    /*opacity: .8;*/
+}
+
+.dropdown-content a {
+    color: #411c02;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #fdf2e7}
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #af4e08;

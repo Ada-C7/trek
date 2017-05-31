@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <link href="foundation.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="trek.css" media="screen" rel="stylesheet" type="text/css">
+  <title>Trekkin'</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js" integrity="sha256-SzKOQsVYGX1bmddyfPzGC6yXY/rWYGUSMOi6+T9gZ+0=" crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+  <script src="trek.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+  <h1>Thinking about taking a journey?</h1>
+
+  <button class="button" id="load-all-trips"> Show All Trips </button>
+  <section id="errors"></section>
+
+
+  <div class="dropdown by-continent">
+    <button class="button dropbtn" id="trips-by-continent"> Search by continent </button>
+    <div class="dropdown-content">
+      <a href="#" class="dropdown-item continent">Africa</a>
+      <a href="#" class="dropdown-item continent">Antarctica</a>
+      <a href="#" class="dropdown-item continent">Asia</a>
+      <a href="#" class="dropdown-item continent">Australasia</a>
+      <a href="#" class="dropdown-item continent">Europe</a>
+      <a href="#" class="dropdown-item continent">North America</a>
+      <a href="#" class="dropdown-item continent">South America</a>
+    </div>
+  </div>
+
+
+
+  <div id="trips">
+    <ul class="row small-up-2 medium-up-3 large-up-4" data-equalize>  </ul>
+  </div>
+
+  <script id="trips-list-template" type="text/template">
+
+    <li   data-equalizer-watch  class="column trip-container">
+      <div class="oneTrip">
+
+
+        <h3>
+          <%- data.name %>
+        </h3>
+
+
+        <!-- <p>
+          Weeks:
+          <%- data.weeks%>
+        </p> -->
+
+        <button class="button" id="ShowDetails" data-tripID="<%- data.id%>"> Learn More </button>
+      </div>
+    </li>
+  </script>
+
+  <div id="singleTrip"></div>
+
+  <script id="indiv-trip-template" type="text/template">
+    <section>
+      <h3>
+        <%- data.name.toUpperCase() %>
+      </h3>
+
+      <div id=reservationForm>
+        <button class="button" id="reserve" data-tripID="<%- data.id%>"> RESERVE YOUR SPOT!</button>
+      </div>
+
+
+      <p>Continent:
+        <%- data.continent %>
+      </p>
+
+      <p>
+        Length:
+        <%- data.weeks%> weeks
+
+      </p>
+
+      <p>
+        Cost: $<%- Number(data.cost).toFixed(2) %>
+      </p>
+      <p>Category:
+        <%- data.category.charAt(0).toUpperCase() + data.category.slice(1)%>
+      </p>
+
+      <p>Trip ID:
+        <%- data.id %>
+      </p>
+
+      <h4>
+        The Journey:</h4>
+        <p>
+          <%- data.about %>
+        </p>
+
+
+        <button class="button" id="HideDetails"> Back to Trips List</button>
+      </div>
+    </section>
+  </script>
+
+
+  <script id="reservation-template" type="text/template">
+
+    <form id="form-<%- tripID%>" action="<%- url %>" method="post">
+      <section>
+        <label>Name: </label>
+        <input type="text" id="name" name="name"></input>
+      </section>
+
+      <section>
+        <label>Age: </label>
+        <input type="text" id="age" name="age"></input>
+      </section>
+
+      <section>
+        <label>Email: </label>
+        <input type="text" id="email" name="email"></input>
+      </section>
+
+
+      <button  class="button final_reserve" type="submit">Book it!</button>
+
+      <button  class="button no_thanks">No thanks</button>
+
+    </form>
+
+
+  </script>
+
+
+
+</body>
+</html>
