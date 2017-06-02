@@ -1,0 +1,23 @@
+html {
+  /*margin: 5em;*/
+  /*padding: 10em,*/
+
+}
+
+#hero {
+  width: 100%
+}
+
+h1 {
+
+}
+
+button {
+  left: 50vw
+}
+
+#trip-list {
+  font: 500px,
+  color: black
+
+}

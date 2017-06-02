@@ -1,42 +1,68 @@
-// var url = "https://trektravel.herokuapp.com/trips";
-//
-//
-//
-// var successCallback = function(response) {
-//   console.log("Success!");
-//   console.log(response);
-//
-//   var target = $("#trip-list");
-//   for (var i = 0; i < response.length; i++) {
-//     var trip = response[i];
-//     target.append("<p>" +  trip["name"] +  "</p>");
-//   }
-// };
-//
-//
-// var failureCallback = function() {
-//   console.log("Didn't work :(");
-//   $("#errors").html("<h1>AJAX request failed!</h1>");
-// };
-//
-// var clickHandler = function() {
-//   $.get(url, successCallback);
-//   $.get(url, successCallback).fail(failureCallback);
-// };
-//
-//
-//
-//
-//
-// $(document).ready(function() {
-//   $('#load').click(clickHandler); {
-//   };
-// });
-//
-//
-//
-//
-// //
-// //  var $trips = $("#trip-list");
-// //    $("#trip-list").find('p').on('click', function(e){
-// //    	e.preventDefault();
+$(document).ready(function() {
+
+  var tripsTemplate = _.template($('#trips-template').html());
+  var tripTemplate = _.template($('#trip-template').html());
+
+  var url = 'https://trektravel.herokuapp.com/trips';
+
+var reserveCallback = function(response){
+
+}
+
+
+
+  var singleTripCallback = function(response) {
+    var generatedHTML = tripTemplate({
+      trip: response
+    });
+    $('#trips').append($(generatedHTML));
+  };
+
+  var successCallback = function(response) {
+      for (var i = 0; i < response.length; i++) {
+        var generatedHTML = tripsTemplate({
+          trip: response[i]
+        });
+        $('#trips').append($(generatedHTML));
+      }
+
+      $('a').on("click", function() {
+        var id = $(this).parent().parent().attr('id');
+
+        $("#trips").empty();
+
+        $.get(url + "/" + id, singleTripCallback);
+
+        console.log($('#trips').children().length);
+
+
+      });
+
+    return successCallback;
+  };
+
+  $('.button').click(function() {
+    if( $('#trips').children().length < 2 ) {
+      $('#trips').empty();
+      $.get(url, successCallback);
+    }
+  });
+
+  $('form').submit(function(e) {
+
+  e.preventDefault();
+
+  var url = $(this).attr("action");
+  var formData = $(this).serialize();
+
+  $.post(url, formData, function(response){
+
+
+    // What do we get in the response?
+    console.log(response);
+  });
+});
+
+
+
+});
