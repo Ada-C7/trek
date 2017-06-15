@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Yellowtail');
+@import url('https://fonts.googleapis.com/css?family=Stalemate');
+
+
+
+.trip-tile {
+  display: inline;
+  height: 300px;
+  width: 200px;
+  color: white;
+  background-color: gray;
+  margin: auto;
+  border: 3px solid white;
+  padding: 100px 40px;
+  background-color:	#f08080;
+}
+
+
+#logo {
+  color: black;
+  font-family: 'Stalemate', cursive;
+  font-size: 150px;
+  -ms-transform: rotate(-3deg); /* IE 9 */
+  -webkit-transform: rotate(-3deg); /* Chrome, Safari, Opera */
+  transform: rotate(-3deg);
+  padding-bottom: 15px;
+}
+
+.button {
+  background-color: #ffffff;
+  color: #E24E42;
+  border: 2px solid #E24E42;
+  border-radius: 500px;
+  text-transform: uppercase;
+}
+
+
+.button:hover {
+  color: #ffffff;
+  background-color: #E24E42;
+}
+
+
+li {
+  display: inline-block;
+  padding: 15px 15px 15px 15px;
+  text-transform: uppercase;
+  font-size: .9em;
+  border-color: black;
+}
+
+li.highlight a, a:hover {
+  color: #E24E42;
+}
+
+.center {
+    padding: 300px 10px 0;
+    text-align: center;
+}
+
+.center-vertical {
+    text-align: center;
+}
+
+.forms {
+
+}

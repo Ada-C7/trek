@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Trips</title>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="trek.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+  <h1 class="center-vertical" id="logo">GlobePlotter</h1>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/app.css">
+
+
+</head>
+<body>
+  <div class="center-vertical">
+    <button class="button" id="all-trips"> Get Trips! </button>
+  </div>
+
+  <div id=trips-by-continent class="center-vertical">
+    <button class="button" id="Asia"> Asia </button>
+    <button class="button" id="Africa"> Africa </button>
+    <button class="button" id="Antarctica"> Antarctica </button>
+    <button class="button" id="South America"> South America </button>
+    <button class="button" id="Australasia"> Australasia </button>
+    <button class="button" id="Europe"> Europe </button>
+  </div>
+
+  <div class="center-vertical">
+    <button class="button" id="new-trip"> Create a New Trip </button>
+  </div>
+
+  <section id="trips"></section>
+  <section id="success"></section>
+  <section id="errors"></section>
+  <script class="column" id="trip-details-template" type="text/template">
+    <section class="center-vertical small-12 medium-12 large-12 columns">
+      <h2>
+        <%- data.name %>
+      </h2>
+        <p>
+          <%- data.continent %>
+        </p>
+        <p>
+          $<%- data.cost %>
+        </p>
+        <p>
+          <%- data.weeks %> weeks
+        </p>
+        <div class="columns">
+          <div class="small-12 medium-12 large-6 columns">
+            <p>
+              <%- data.about %>
+            </p>
+            <p>
+              Categories:
+            </p>
+            <p class="label">
+              <%- data.category %>
+            </p>
+          </div>
+          <div class="forms small-12 medium-12 large-6 columns"  type="text/template">
+            <form id="reserve-form" action="https://trektravel.herokuapp.com/trips/"method = "post">
+              <div hidden id="hidden-id"><%-data.id%></div>
+              <!-- id needs to be dynamically added -->
+              <section>
+                <label>Name</label>
+                <input type="text" id="name" name="name"></input>
+              </section>
+              <section>
+                <label>Age</label>
+                <input type="text" id="age" name="age"></input>
+              </section>
+              <section>
+                <label>Email</label>
+                <input type="text" id="email" name="email"></input>
+              </section>
+              <section>
+                <button class="button" type="submit">Reserve Trip</button>
+              </section>
+            </form>
+          </div>
+        </div>
+
+    </section>
+
+  </script>
+
+
+
+
+  <script id="trips-template" type="text/template">
+    <section class="center-vertical">
+      <li class="column small-12 medium-12 large-12 columns trip-tile" id=<%-data.id%>>
+        <%- data.name %>
+      </li>
+    </section>
+  </script>
+
+    <div hidden id="new-trip-template" class="forms center-vertical columns"  type="text/template">
+      <form id="trip-form" action="https://trektravel.herokuapp.com/trips/"method = "post">
+        <div class="small-12 medium-6 large-6 columns">
+          <section>
+            <label>Name</label>
+            <input type="text" id="name" name="name"></input>
+          </section>
+          <section>
+            <label>Continent</label>
+            <input type="text" id="continent" name="continent"></input>
+          </section>
+          <section>
+            <label>About</label>
+            <input type="text" id="about" name="about"></input>
+          </section>
+          <section>
+        </div>
+
+        <div class="small-12 medium-6 large-6 columns">
+          <label>Category</label>
+          <input type="text" id="category" name="category"></input>
+        </section>
+        <section>
+          <label>Duration</label>
+          <input type="text" id="weeks" name="weeks"></input>
+        </section>
+        <section>
+          <label>Cost</label>
+          <input type="text" id="cost" name="cost"></input>
+        </section>
+        </div>
+
+        <section class="small-12 medium-12 large-12 center-vertical">
+          <button class="button" type="submit">Submit a Trip</button>
+        </section>
+      </form>
+    </div>
+
+</body>
+<footer>
+</footer>
+</html>
