@@ -1,10 +1,8 @@
 // shared failure callback
 
 var failureCallback = function(){
-  console.log('bad call');
   $('#errors').html('<h1>Ajax request failed.</h1>');
 };
-
 
 var url = 'https://trektravel.herokuapp.com/trips';
 
@@ -24,6 +22,26 @@ var successTripsCallback = function(response) {
 };
 
 
+var successSingleTripCallback = function(response) {
+  var template = $('#trip-details-template');
+  var apiData = response;
+  response.id = apiData.id;
+  var html = generateHTML(template, apiData);
+  console.log(html);
+  $('#trips').append(html);
+  submitForm();
+
+};
+
+var generateHTML = function(template, apiData){
+  var userInput = _.template(template.html());
+  var html = userInput({
+    data: apiData
+  });
+return html;
+};
+
+
 var getTrips = function() {
   $('#trips').empty();
   $('#success').empty();
@@ -34,18 +52,6 @@ var getTrips = function() {
 
 // get single trip detail
 
-var successSingleTripCallback = function(response) {
-  var target = $('#trip-details-template');
-  var trip = response;
-  response.id = trip.id;
-  var tripDetails = _.template(target.html());
-  var generatedHtml = tripDetails({
-    data: trip
-    });
-  $('#trips').append($(generatedHtml));
-  submitForm();
-
-};
 
 
 var getTripDetails = function(id) {
@@ -71,7 +77,7 @@ var submitForm = function(){$('#reserve-form').submit(function(e) {
   })
 
   .fail(function(){
-    $('#message').html('<p>Reservation Failed</p>');
+    $('#errors').html('<p>Reservation Failed</p>');
   });
 });
 };
@@ -90,7 +96,7 @@ function submitTrip() {$('#trip-form').submit(function(e){
   })
 
   .fail(function(){
-    $('#message').html('<p>New Trip Failed</p>');
+    $('#errors').html('<p>New Trip Failed</p>');
   });
 });
 }
@@ -115,15 +121,22 @@ var getTripsByContinent = function(id) {
 
 
 $(document).ready(function() {
-  $('#load').click(getTrips);
-  $('#new-trip').click(getNewTripForm);
 
-  $('#trips').on('click','li', function() {
-    var id = $(this).attr("id");
-    getTripDetails(id);
-  });
+  $('#all-trips').click(getTrips);
+
+
   $('#trips-by-continent').on('click','button',function(){
     var id = $(this).attr("id");
     getTripsByContinent(id);
   });
+
+
+  $('#new-trip').click(getNewTripForm);
+
+  //Single Trip Details
+  $('#trips').on('click','li', function() {
+    var id = $(this).attr("id");
+    getTripDetails(id);
+  });
+
 });
