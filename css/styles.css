@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Fondamento');
+
+body {
+  background-color: #fcf7fc;
+  background-image: url('../images/foggy-birds.png');
+  padding: 1%;
+  /*image from https://www.transparenttextures.com/*/
+}
+
+header {
+  text-align: center;
+}
+
+header .button {
+  width: 140px;
+}
+
+:focus {
+  outline: #bea8be auto 5px;
+}
+
+.button {
+  border-radius: 5px;
+}
+
+h2 {
+  text-align: center;
+}
+
+#trip-list ul {
+  margin: 0;
+}
+
+#trip-list {
+  margin: 0;
+  column-count: 2;
+  text-align: center;
+}
+
+#trip-list li {
+  list-style-type: none;
+}
+
+.trip-listing {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 3%;
+}
+
+#trip-creation {
+  max-width: 800px;
+  margin: auto;
+}
+
+.errors {
+  color: red;
+}
+
+#errors, #form-message {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+
+@media print, screen and (max-width: 40em) {
+  #trip-list {
+    column-count: 1;
+  }
+}
