@@ -1,7 +1,7 @@
 
 # TREK
 
-TREK is a web application that displays deals on travel packages.  It was completed as an individual project at Ada Developers Academy.
+TREK is a web application that displays deals on travel packages.  It was completed as an individual project at Ada Developers Academy.  It was not deployed.
 
 This is a [stage 2](https://github.com/Ada-Developers-Academy/pedagogy/blob/master/rule-of-three.md) individual project.
 
