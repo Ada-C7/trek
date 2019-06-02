@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>World Treks</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body>
+  <header>
+    <h1>World Treks</h1>
+    <h2>explore our planet one step at a time</h2>
+  </header>
+
+  <main class = "row">
+    <div id = "vacations" class = "large-block-grid-1 ">
+    </main>
+
+
+    <!--text.template makes the browser ignore it -->
+    <script id = "trek-item-template" type = "text/template">
+      <table>
+        <tr>
+          <th><%- data.continent %></th>
+          <th>
+            <button class = "load button" data-trip-id = "<%- data.id %>"> <%- data.name%> </button></th>
+            <th><%- data.weeks %></th>
+          </tr>
+        </script>
+      </table>
+    </script>
+
+    <script id = "detailed-trip-template" type = "text/template">
+
+      <article>
+        <nav>
+          <h2> Trip <%- data.id %>:  <%- data.name %> </h2>
+          <ul>
+            <li id = 'index'> <button class = "button" >Return to All Trips</button></li>
+            <li id = 'buy'><button class = 'button'> Buy | $ <%- data.cost %></button></li>
+          </ul>
+        </nav>
+
+        <section> <%- data.about %> </section>
+      </article>
+    </script>
+
+
+    <script id="reserve-trek-template" type="text/template">
+      <form id="reserve-trek" action=<%-tripId%> method="post">
+        <section>
+          <label for="name"> Name: </label>
+          <input type="text" name="name">
+        </section>
+        <section>
+          <label for="age"> Age: </label>
+          <input type="text" name="age">
+        </section>
+        <section>
+          <label for="email"> Email: </label>
+          <input type="text" name="email">
+        </section>
+
+        <section>
+          <button type="submit" class="button"> Reserve! </button>
+        </section>
+
+      </form>
+    </script>
+
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+    <script
+    src="trek.js"
+    type = "text/javascript"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"
+    type = "text/javascript"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+  </body>
+  </html>
