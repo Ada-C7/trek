@@ -1,0 +1,11 @@
+#trips-list {
+    /*background-color: honeydew;*/
+}
+
+#individual-trip {
+    background-color: cadetblue;
+    border-style: solid;
+    border-color: black;
+    height: 300px;
+    
+}

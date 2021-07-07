@@ -1,0 +1,85 @@
+<html>
+<head>
+    <title>Trek</title>
+    <meta charset="utf-8">
+    <link href="trek.css" media="screen" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <h1>Trek!</h1>
+    <button id="load">See Trips!</button>
+    <section id="errors">
+
+    </section>
+
+    <div id="trips-list" class='row'></div>
+    <script id='trips-template' type='text/template'>
+        <section class='each-trip' id='<%= trip.id %>' >
+            <div class='small-6 medium-4 column' id='individual-trip'>
+                <h2>
+                    <%- trip.name %>
+                    <!-- <%- trip.id %> -->
+                </h2>
+                <p>
+                    <%- trip.continent %> for <%- trip.weeks %> weeks
+                </p>
+            </div>
+        </section>
+    </script>
+    <div id='show-list'></div>
+
+    <script id='show-template' type='text/template' >
+        <h2>
+            <%- trip.name %>
+        </h2>
+        <div id='whole-page'class='row'>
+            <div id='trip-details' class="small-12 medium-6 columns">
+                <p>
+                    Continent: <%- trip.continent %>
+                </p>
+                <p>
+                    About: <%- trip.about %>
+                </p>
+                <p>
+                    Category: <%- trip.category %>
+                </p>
+                <p>
+                    Weeks: <%- trip.weeks %>
+                </p>
+                <p>
+                    Cost: $ <%- trip.cost %>
+                </p>
+            </div>
+
+            <div id='message'></div>
+            <form  id='reserve-form' action='https://trektravel.herokuapp.com/trips/1/reserve' method='post'>
+                <div id='reserve-details' class="small-12 medium-6 columns">
+                    <section>
+                        <label>Name</label>
+                        <input type='text' id='name' name='name' />
+                    </section>
+                    <section>
+                        <label>Age</label>
+                        <input type='text' id='age' age='age' />
+                    </section>
+                    <section>
+                        <label>email</label>
+                        <input type='text' id='email' name='email' />
+                    </section>
+                    <section class='button'>
+                        <button type='submit'>Reserve now!</button>
+                    </section>
+                </form>
+                </div>
+        </div>
+    </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="trek.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+    <!-- Compressed CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
+
+    <!-- Compressed JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script>
+</body>
+</html>
